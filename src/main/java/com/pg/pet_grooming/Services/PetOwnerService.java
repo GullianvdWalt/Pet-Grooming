@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PetOwnerService {
-    //Created Object of Pet Owner Repository
+    //Inject PetRepository
     @Autowired
     private PetOwnerRepository petOwnerRepository;
     

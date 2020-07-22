@@ -1,7 +1,7 @@
 /*
  * 
  *  This is the Pet Repository 
-    The Pet Service Class will implment this interface.
+    The Pet Service Class will implement this interface.
  *  This interface will extend the JpaRepository interface.
     This will provide services such as CRUD operations
  */

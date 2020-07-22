@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "pet_owner")
-@Data  //Lombok, Adds Getters, Setters and ToString Methodss
+@Data  //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
-@AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (Pet)
+@AllArgsConstructor         //JsonIdentityInfo for @ManyToOne relationship (Pet)
 public class PetOwner {
     
     @Id
