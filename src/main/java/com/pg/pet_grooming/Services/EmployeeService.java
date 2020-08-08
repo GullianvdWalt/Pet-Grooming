@@ -1,6 +1,6 @@
 /*
  * This is the Employee Service Class
- * This Class implements the Pet Owner Reposistory 
+ * This Class implements the EmployeeReposistory 
  * The controller sends request to this class
  */
 package com.pg.pet_grooming.Services;

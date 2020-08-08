@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenses</title>
+    <!-- Window Icon -->
+    <link rel="icon" href="/static/Icons/icon.ico">
+    <!--    Styles      -->
+    <link rel="stylesheet" href="/static/css/styles-all.css" />
+    <link rel="stylesheet" href="/static/css/salaries.css">
+    <!--    Font Awesome    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--    Navbar Start  -->
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="Dashboard.html"><img src="/static/Icons/dogHouse.png" alt="home" class="home-icon" /></a>
+                <h1 class="logo">@Home Mobile Pet Grooming</h1>
+            </div>
+
+            <div class="expenses-logo-container">
+                <img src="/static/Icons/exspense.png" alt="invoice" class="expenses-icon" />
+                <h2 class="expenses-nav-header">Expenses</h2>
+            </div>
+        </div>
+        <!--    Navbar Ends  -->
+        <!-- Main Section Start -->
+        <div class="main-section-container">
+            <!-- Salary Containers Start -->
+            <!-- Salary Container top Starts -->
+            <div class="salary-container-row">
+                <div class="salary-container-col">
+                    <!-- Payment Options Start -->
+                    <div class="salary-form-row-left">
+                        <label for="payment-date" class="salary-form-label">Payment Date:</label>
+                        <input type="text" name="payment-date" id="payment-date">
+                    </div>
+                    <div class="salary-form-row-left">
+                        <label for="payment-period" class="salary-form-label">Pay Period:</label>
+                        <input type="text" name="payment-period" id="payment-period">
+                    </div>
+                    <div class="salary-form-row-left">
+                        <label for="payment-type" class="salary-form-label">Payment Method</label>
+                        <select name="payment-type" id="payment-type">
+                            <option value="EFT" class="payment-type-select">EFT</option>
+                            <option value="CASH" class="payment-type-select">CASH</option>
+                        </select>
+                    </div><br><br><br>
+                    <!-- Payment Options End -->
+                    <!-- Employee Details Start -->
+                    <div class="salary-form-row-left">
+                        <label for="employee-id" class="salary-form-label">Employee ID:</label>
+                        <input type="text" name="employee-id" id="employee-id">
+                    </div>
+                    <div class="salary-form-row-left">
+                        <label for="employee-name" class="salary-form-label">Employee Name:</label>
+                        <input type="text" name="employee-name" id="employee-name">
+                    </div>
+                    <div class="salary-form-row-left">
+                        <label for="employee-occupation" class="salary-form-label">Employee Occupation:</label>
+                        <input type="text" name="employee-occupation" id="employee-occupation">
+
+                    </div>
+                    <div class="salary-form-row-left">
+                        <label for="basic-wage" class="salary-form-label">Basic Wage:</label>
+                        <input type="text" name="basic-wage" id="basic-wage">
+                    </div>
+                    <!-- Employee Details End -->
+                </div>
+                <!-- Salary Col Container Right Starts -->
+                <div class="salary-container-col">
+                    <!-- Overtime Row Starts -->
+                    <div class="overtime-row">
+                        <h4 class="salary-form-row-right-head"> Overtime</h4>
+                        <div class="overtime-row-col">
+                            <div class="overtime-row-col-row">
+                                <label for="overtime-hours">Overtime - Hours</label>
+                                <input type="text" id="overtime-hours">
+                            </div>
+                            <div>
+                                <label for="overtime-public-holiday">Public Holiday</label>
+                                <input type="text" id="overtime-public-holiday">
+                            </div>
+                        </div>
+                        <div class="overtime-row-col-row">
+                            <div>
+                                <label for="overtime-rate">Overtime - Rate</label>
+                                <input type="text" id="overtime-rate">
+                            </div>
+                            <div>
+                                <label for="overtime-sunday">Sundays</label>
+                                <input type="text" id="overtime-sunday">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Overtime Row Ends -->
+
+                    <!-- Deductions Row Starts -->
+                    <div class="deductions-row">
+                        <h4 class="salary-form-row-right-head">Deductions</h4>
+                        <div class="deductions-row-col">
+                            <div class="deductions-row-col-row">
+                                <label for="deduction-description">Description: </label>
+                                <input type="text" id="deduction-description">
+                            </div>
+                            <div class=" deductions-row-col-row">
+                                <label for="deduction-total">Deduction Total: </label>
+                                <input type="text" id="deduction-total">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deductions Row Ends -->
+
+                    <!-- Transport Row Starts -->
+                    <div class="transport-money-row">
+                        <h4 class="salary-form-row-right-head">Transport Money</h4>
+                    </div>
+                    <!-- Transport Row Ends -->
+
+                    <!-- Bonus Row Starts -->
+                    <div class="bonus-row">
+                        <h4 class="salary-form-row-right-head"> Bonus</h4>
+                    </div>
+                    <!-- Bonus Row Ends -->
+                </div>
+                <!-- Salary Col Container Right Ends -->
+            </div>
+            <!-- Salary Container top Ends-->
+
+            <!-- Salary Container Row Bottom Starts -->
+            <div class="salary-container-row">
+                <div class="salary-total-col-left">
+                    <div class="salary-total-row"></div>
+                    <div class="salary-total-row"></div>
+                </div>
+                <div class="salary-total-col-right">
+                    <div class="salary-total-row"></div>
+                    <div class="salary-total-row"></div>
+                </div>
+            </div>
+            <!-- Salary Container Row Bottom Ends -->
+
+            <!-- Salary Containers End -->
+        </div>
+        <!-- Main Section End -->
+        <!-- Button section start-->
+        <div class="button-container">
+            <div class="back-button-container">
+                <a href="templates/Finance.html" class="back-button" title="Back to Finance">
+                    <img src="/static/Icons/back.png" alt="cancel" id="back-button-icon">
+                </a>
+            </div>
+        </div>
+        <!--Button Section end-->
+        <!-- Footer -->
+        <div class="footer">Pet Grooming &copy; 2020</div>
+    </div>
+    <!-- Main Wrapper Ends -->
+</body>
+
+</html>

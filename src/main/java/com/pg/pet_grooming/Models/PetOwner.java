@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,21 +26,23 @@ import lombok.NoArgsConstructor;
 public class PetOwner {
     
     @Id
-    @Column(name = "pet_owner_ID")
+    @Column(name = "pet_owner_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long petOwnerID;
+    private Long pet_owner_id;
+
     
     @NotNull
-    @Column(name = "pet_owner_full_name", length = 100)
+    @Column(name = "pet_owner_full_name", length = 100,nullable = false)
     private String pet_owner_full_name;
     
     @NotNull
-    @Column(name = "pet_owner_cell", length = 20)
+    @Column(name = "pet_owner_cell", length = 20,nullable = false)
     private String pet_owner_cell;
     
     @NotNull
-    @Column(name = "pet_owner_address", length = 255)
+    @Column(name = "pet_owner_address", length = 255,nullable = false)
     private String pet_owner_address;
+    
     
     
     // Constructor handled by Lombok
