@@ -22,7 +22,7 @@ public class ApplicationController {
    // Method To Return index.html
     @GetMapping("/index")
     public String goHome(){
-        return "Dashboard";
+        return "index";
     }
     // Method To Login
     @GetMapping("/login")
