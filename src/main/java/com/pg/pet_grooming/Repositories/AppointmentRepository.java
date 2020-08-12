@@ -5,10 +5,14 @@
  */
 package com.pg.pet_grooming.Repositories;
 
+// Imnports
+import com.pg.pet_grooming.Models.Appointments;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author Gullian
  */
-public interface AppointmentRepository {
+public interface AppointmentRepository extends JpaRepository<Appointments,Long>{
     
 }

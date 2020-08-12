@@ -318,9 +318,8 @@ th div {
   display: inline-block;
   background-color: #505050;
   margin-left: 8rem;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
+
+
   border-radius: 25px;
   text-align: center;
 }
@@ -331,14 +330,17 @@ th div {
   display: inline-block;
   background-color: #505050;
   margin-right: 15rem;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
   border-radius: 25px;
   text-align: center;
 }
-.save-button:hover,
-.cancel-button:hover {
+.cancel-button a, .save-button a{    
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white; 
+}
+.save-buttona a:hover,
+.cancel-button a:hover {
   cursor: pointer;
   color: #ff69b4;
 }
