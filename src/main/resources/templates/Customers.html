@@ -11,135 +11,154 @@
   <link rel="stylesheet" href="css/styles-all.css" />
   <link rel="stylesheet" href="css/customers.css" />
   <link rel="stylesheet" href="css/customerModals.css" />
+  <link rel="stylesheet" href="css/fragments/partials.css" />
   <!--    Font Awesome    -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
 <body>
+
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+
   <!--    Customer Section Starts    -->
-  <div class="customer-section">
-    <!--    Filter Section Starts   -->
-    <div class="filter-section">
-      <div class="new-customer-button">
-        <a th:href="@{/newCustomer}" class="newCustomer"><img src="/icons/plusCircle.jpg" alt="add-customer"
-            class="add-customer-icon" />New Customer</a>
-      </div>
+  <div class="content-section">
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar">
+      <!-- Navigation Included With Fragments -->
+    </nav>
+    <!-- Content-Container-Start -->
+    <div class="content-container">
+      <!-- Customers Container Start -->
+      <div class="customers-container">
+        <!--    Filter Section Starts   -->
+        <div class="filter-section">
+          <div class="new-customer-button">
+            <a th:href="@{/newCustomer}" class="newCustomer"><img src="/icons/plusCircle.jpg" alt="add-customer"
+                class="add-customer-icon" />New Customer</a>
+          </div>
 
-      <div class="filter-container">
-        <div class="filter-heading">
-          <img src="/icons/filter.png" alt="filter" />
-          <h3 class="filter-text">Filter</h3>
+          <div class="filter-container">
+            <div class="filter-heading">
+              <img src="/icons/filter.png" alt="filter" />
+              <h3 class="filter-text">Filter</h3>
+            </div>
+            <div class="filter-input-container">
+              <div>
+                <label for="owner-name-input">Owner Name</label><br />
+                <input type="text" name="owner-name" id="owner-name-input" class="filter-input" />
+              </div>
+              <div>
+                <label for="pet-breed-input">Pet Breed</label><br />
+                <input type="text" name="owner-name" id="pet-breed-input" class="filter-input" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="filter-input-container">
-          <div>
-            <label for="owner-name-input">Owner Name</label><br />
-            <input type="text" name="owner-name" id="owner-name-input" class="filter-input" />
-          </div>
-          <div>
-            <label for="pet-breed-input">Pet Breed</label><br />
-            <input type="text" name="owner-name" id="pet-breed-input" class="filter-input" />
-          </div>
+        <!--    Filter Section Ends     -->
+
+        <!--    Customer Table Section Starts   -->
+        <div class="customer-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Cell</th>
+                <th>Address</th>
+                <th>Pet Name</th>
+                <th>Pet Breed</th>
+                <th>Last Appointment</th>
+                <th>Number of Appointments</th>
+                <th colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="id">001</td>
+                <td class="name">Lelanie Snyman</td>
+                <td class="cell">083-750-8818</td>
+                <td class="address">145 Breed Street Sasolburg</td>
+                <td class="pet-name">
+                  Buddy, <br />
+                  Lady, <br />
+                  Mila
+                </td>
+                <td class="breed">
+                  Airdale Terrier, <br />
+                  Airdale Terrier, <br />
+                  Wirehead Foxterrier
+                </td>
+                <td class="last-appointment">04-12-2019</td>
+                <td class="num-appointments">5</td>
+                <td>
+                  <a href="#" id="edit-button"><img src="/icons/editSmall.png" alt="edit" class="edit-icon"
+                      title="Edit Customer" /></a>
+                </td>
+                <td>
+                  <a href="#" id="delete-button"><img src="/icons/trash.png" alt="delete" class="delete-icon"
+                      title="Delete Customer" /></a>
+                </td>
+              </tr>
+              <tr>
+                <td class="id">001</td>
+                <td class="name">Lelanie Snyman</td>
+                <td class="cell">083-750-8818</td>
+                <td class="address">145 Breed Street Sasolburg</td>
+                <td class="pet-name">
+                  Buddy, <br />
+                  Lady, <br />
+                  Mila
+                </td>
+                <td class="breed">
+                  Airdale Terrier, <br />
+                  Airdale Terrier, <br />
+                  Wirehead Foxterrier
+                </td>
+                <td class="last-appointment">04-12-2019</td>
+                <td class="num-appointments">5</td>
+                <td>
+                  <a href="#" id="edit"><img src="/icons/editSmall.png" alt="edit" class="edit-icon"
+                      title="Edit Customer" /></a>
+                </td>
+                <td>
+                  <a href="#" id="delete"><img src="/icons/trash.png" alt="delete" class="delete-icon"
+                      title="Delete Customer" /></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-    <!--    Filter Section Ends     -->
 
-    <!--    Customer Table Section Starts   -->
-    <div class="customer-table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Cell</th>
-            <th>Address</th>
-            <th>Pet Name</th>
-            <th>Pet Breed</th>
-            <th>Last Appointment</th>
-            <th>Number of Appointments</th>
-            <th colspan="2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="id">001</td>
-            <td class="name">Lelanie Snyman</td>
-            <td class="cell">083-750-8818</td>
-            <td class="address">145 Breed Street Sasolburg</td>
-            <td class="pet-name">
-              Buddy, <br />
-              Lady, <br />
-              Mila
-            </td>
-            <td class="breed">
-              Airdale Terrier, <br />
-              Airdale Terrier, <br />
-              Wirehead Foxterrier
-            </td>
-            <td class="last-appointment">04-12-2019</td>
-            <td class="num-appointments">5</td>
-            <td>
-              <a href="#" id="edit-button"><img src="/icons/editSmall.png" alt="edit" class="edit-icon"
-                  title="Edit Customer" /></a>
-            </td>
-            <td>
-              <a href="#" id="delete-button"><img src="/icons/trash.png" alt="delete" class="delete-icon"
-                  title="Delete Customer" /></a>
-            </td>
-          </tr>
-          <tr>
-            <td class="id">001</td>
-            <td class="name">Lelanie Snyman</td>
-            <td class="cell">083-750-8818</td>
-            <td class="address">145 Breed Street Sasolburg</td>
-            <td class="pet-name">
-              Buddy, <br />
-              Lady, <br />
-              Mila
-            </td>
-            <td class="breed">
-              Airdale Terrier, <br />
-              Airdale Terrier, <br />
-              Wirehead Foxterrier
-            </td>
-            <td class="last-appointment">04-12-2019</td>
-            <td class="num-appointments">5</td>
-            <td>
-              <a href="#" id="edit"><img src="/icons/editSmall.png" alt="edit" class="edit-icon"
-                  title="Edit Customer" /></a>
-            </td>
-            <td>
-              <a href="#" id="delete"><img src="/icons/trash.png" alt="delete" class="delete-icon"
-                  title="Delete Customer" /></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+
+
     <!--    Customer Table Section Ends   -->
-  </div>
 
-  <!--    Customer Details Modal (User Clicks On Edit)    -->
-  <div class="customer-details-modal" id="customer-details-modal">
-    <div id="customer-details-modal-content" class="customer-details-modal-content">
-      <div id="modal-pet-owner-details" class="modal-pet-owner-details">
-        <!--    Customer Details Heading    -->
-        <div class="heading">
+    <!--    Customer Details Modal (User Clicks On Edit)    -->
+    <!-- <div class="customer-details-modal" id="customer-details-modal"> -->
+    <!-- <div id="customer-details-modal-content" class="customer-details-modal-content">
+      <div id="modal-pet-owner-details" class="modal-pet-owner-details"> -->
+    <!--    Customer Details Heading    -->
+    <!-- <div class="heading">
           <img src="/icons/petOwner.png" alt="petOwner" class="pet-owner-icon" />
           <h3 class="customer-details-heading">Customer Details</h3>
-        </div>
+        </div> -->
 
-        <form class="customer-details-input-container">
-          <!--    Customer Details Content    -->
-          <label for="customer-name-input" class="customer-label">Name</label><br />
+    <!-- <form class="customer-details-input-container"> -->
+    <!--    Customer Details Content    -->
+    <!-- <label for="customer-name-input" class="customer-label">Name</label><br />
           <input type="text" id="customer-name-input" class="customer-input" /><br /><br />
           <label for="customer-cell-input" class="customer-label">Cell</label><br />
           <input type="text" id="customer-cell-input" class="customer-input" /><br /><br />
           <label for="customer-address-input" class="customer-label">Address</label><br />
-          <input type="text" id="customer-address-input" class="customer-address-input" /><br /><br />
+          <input type="text" id="customer-address-input" class="customer-address-input" /><br /><br /> -->
 
-          <!--    Buttons     -->
-          <div class="button-container customer-button-container">
+    <!--    Buttons     -->
+    <!-- <div class="button-container customer-button-container">
             <div class="buttons">
               <a href="#" id="close-button"><img src="/icons/cancelSmall.png" alt="close"
                   class="button-icon" />Close</a>
@@ -149,15 +168,15 @@
             </div>
           </div>
         </form>
-      </div>
-
+      </div> -->
+    <!--
       <div id="modal-pet-details" class="modal-pet-details">
         <div class="heading">
           <img src="/icons/petPaw.png" alt="petPaw" class="pet-paw-icon" />
           <h3 class="pet-details-heading">Pet Details</h3>
-        </div>
-        <!--    Pet Details Content    -->
-        <form class="pet-details-input-container" id="pet-details-input-container">
+        </div> -->
+    <!--    Pet Details Content    -->
+    <!-- <form class="pet-details-input-container" id="pet-details-input-container">
           <select id="pet" name="pet" class="pet-select">
             <option value="select">Select Pet</option>
             <option value="jackRusselTerrier">Mila</option>
@@ -173,9 +192,9 @@
           <label for="pet-breed-input" class="pet-label">Breed</label><br />
           <input type="text" id="pet-input-breed" class="pet-input" onkeypress="resetBreedFunction()" /><br /><br />
           <label for="pet-notes-input" class="pet-label">Notes</label><br />
-          <input type="text" id="pet-notes-input" class="pet-input" autocomplete="off" /><br /><br />
-          <!--    Buttons     -->
-          <div class="button-container">
+          <input type="text" id="pet-notes-input" class="pet-input" autocomplete="off" /><br /><br /> -->
+    <!--    Buttons     -->
+    <!-- <div class="button-container">
             <div class="buttons">
               <a href="#" id="save-pet">
                 <img src="/icons/save.png" alt="save" class="button-icon" id="save-pet-button" />
@@ -191,16 +210,17 @@
             </div>
           </div>
         </form>
-      </div>
-    </div>
+      </div> -->
+
+    <!-- </div> -->
   </div>
 
   <!--  Customer  Delete Modal    -->
-  <div class="delete-modal" id="delete-modal">
+  <!-- <div class="delete-modal" id="delete-modal">
     <h3>Confrim Delete of Lelanie Snyman</h3>
     <button id="customer-delete-cancel">Cancel</button>
     <button id="customer-delete-confirm">Confirm</button>
-  </div>
+  </div> -->
 
   <footer th:insert="fragments/footer :: footer">
     <!-- Footer Included With Fragments -->

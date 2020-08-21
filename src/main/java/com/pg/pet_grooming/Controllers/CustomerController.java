@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CustomerController {
     
-    
+
     // Main Customer Dashboard
     @RequestMapping("/customers")
-    public String Customer(){
-        
+    public String Customer(Model model){
+              // Set Page Title
+      String pageTitle = "Customers";
+      model.addAttribute("pageTitle", pageTitle);
+      String iconUrl = "dog.jpg";
+      model.addAttribute("iconUrl", iconUrl);
         return "Customers";
     }
     
