@@ -1,6 +1,12 @@
 {
     "elements": {},
     "attributes": {
+        "integrity": {
+            "context": "script"
+        },
+        "th:action": {
+            "context": "form"
+        },
         "th:href": {
             "context": "a"
         }

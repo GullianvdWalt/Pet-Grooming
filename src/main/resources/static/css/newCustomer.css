@@ -121,7 +121,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 50%;
+  width: 80%;
   padding: 1em;
   margin: 2% auto;
   border: 2px solid #dcdcdc;
@@ -161,7 +161,8 @@
 /*  Customer Details Form Section Start */
 .customer-label {
   font-family: 'Lato', sans-serif;
-  font-size: 1.4em;
+  font-size: 1.5em;
+  font-weight: 800;
 }
 .customer-details-input-container {
   width: 100%;
@@ -171,13 +172,14 @@
   margin-bottom: 5%;
 }
 .customer-input {
-  font-size: 1.4em;
+  font-size: 1.3em;
+  padding: 1rem;
   width: 45%;
   color: #ff69b4;
   margin: 0.5em;
   border: 2px solid #505050;
   font-family: 'Lato', sans-serif;
-  font-weight: 800;
+  font-weight: 600;
 }
 .customer-address-input {
   font-size: 1.7em;
@@ -203,9 +205,9 @@
 }
 .buttons {
   background-color: #505050;
-  width: 30%;
-  height: 44%;
-  border-radius: 15px;
+  width: 240px;
+  height: 75px;
+  border-radius: 18px;
   margin-top: 1%;
   font-family: 'Roboto', sans-serif;
   color: #fff;
@@ -214,16 +216,10 @@
   text-align: center;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
   cursor: pointer;
+  text-transform: uppercase;
 }
-#save-customer-details {
-  font-family: 'Lato', sans-serif;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1em;
-  max-width: 75px;
-  max-height: 75px;
-}
-#save-customer-details img {
+
+.save-customer-details img {
   min-width: 45px;
   min-height: 45px;
 }
@@ -258,18 +254,14 @@
 
 /* Footer Section */
 .footer {
-  width: auto;
-  max-height: 50px;
+  min-width: 100%;
+  height: 10%;
   text-align: center;
-  font-family: 'Lato', sans-serif;
-  font-style: italic;
-  font-size: 1.5em;
-  color: #ff69b4;
-  padding: 0.5em;
+  color: #ffffff;
+  background-color: #ff69b4;
+  padding: 1rem;
 }
-
-/*  Media Queries */
-
+ Media Queries *
 /*  Smaller Desktop*/
 @media screen and (max-width: 1606px) {
 }
@@ -438,4 +430,13 @@
   .customer-details-heading {
     width: 100%;
   }
+}
+/* Footer Section */
+.footer {
+  min-width: 100%;
+  height: 10%;
+  text-align: center;
+  color: #ffffff;
+  background-color: #ff69b4;
+  padding: 1rem;
 }

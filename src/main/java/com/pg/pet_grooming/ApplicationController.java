@@ -1,8 +1,8 @@
 /*
-*   © Pet Grooming 
+*   © Pet Grooming
     © Gullian Van Der Walt
 *   Pearson Pretoria ITSP300 - Project 2020
-*   
+*
 
     This is the main class for the main pet grooming application
     This Is The Main Application Controller Class
@@ -14,11 +14,20 @@ package com.pg.pet_grooming;
 // Imports
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ApplicationController {
-    
+
+    @RequestMapping
+    public String title(Model model){
+      // Set Page Title
+      String pageTitle = "Dashboard";
+      model.addAttribute("pageTitle", pageTitle);
+      return "index";
+    }
+
    // Method To Return index.html
     @GetMapping("/index")
     public String goHome(){

@@ -1,6 +1,7 @@
 /*
  * This is the Customer Controller Class
- * This class will handle the CRUD operations and Thymeleaf.
+   This Controller will be responsible for the routing of the customer pages
+ * 
  * 
  */
 package com.pg.pet_grooming.Controllers;
@@ -8,14 +9,24 @@ package com.pg.pet_grooming.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
 public class CustomerController {
     
-    @GetMapping("/customers")
-    public String newAppointment(Model model){
+    
+    // Main Customer Dashboard
+    @RequestMapping("/customers")
+    public String Customer(){
         
-        return "NewAppointment";
+        return "Customers";
+    }
+    
+    // New Customer
+    @RequestMapping("/newCustomer")
+    public String newCustomer(){
+        
+        return "NewCustomer";
     }
 }

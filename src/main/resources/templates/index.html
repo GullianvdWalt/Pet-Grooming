@@ -5,64 +5,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@Home Mobile Pet Grooming</title>
+
   <!-- Window Icon -->
   <link rel="icon" href="/icons/icon.ico">
+
   <!--    Styles     -->
   <link rel="stylesheet" href="css/styles-all.css" />
   <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/fragments/partials.css" />
+
   <!-- Mobile Menu -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!-- For Colapsing Menu -->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Material Icons -->
+
 </head>
 
 <body>
-  <div class="wrapper">
-    <!--     Navigation Start        -->
-    <div class="navbar-container">
-      <div class="logo-container">
-        <h1 class="logo">@Home Mobile Pet Grooming</h1>
-      </div>
-
-      <div class="navigation-container">
-        <a href="javascript:void(0);" class="icon" onclick="viewMenu()" id="icon">
-          <i class="fa fa-bars"> </i>
-        </a>
-        <ul class="navigation-list" id="nav-list">
-          <li>
-            <a href="Customers.html"><img src="/icons/dog.jpg" alt="customers" class="nav-icon" /> Customers</a>
-          </li>
-          <li>
-            <a th:href="@{/newAppointments}"><img src="/icons/newAppointment.png" alt="newAppointment"
-                class="nav-icon" />New Appointment</a>
-          </li>
-          <li>
-            <a href="Employees.html"><img src="/icons/employee.png" alt="employee"
-                class="nav-icon" />Employees</a>
-          </li>
-          <li>
-            <a href="Finance.html"><img src="/icons/finance.png" alt="finance" class="nav-icon" /> Finance</a>
-          </li>
-          <li>
-            <a href="JobCard.html"><img src="/icons/grooming.png" alt="jobCard" class="nav-icon" /> Job Card</a>
-          </li>
-          <li>
-            <a href="ManageBusiness.html"><img src="/icons/manage.png" alt="manageBusiness" class="nav-icon" />
-              Manage
-              Business</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!--     Navigation End        -->
-    <div class="body-section">
-      <!-- Schedule Section  Start -->
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+  <!-- Content Section Start -->
+  <div class="content-section">
+    <nav th:insert="fragments/navbar :: navbar">
+      <!-- Navigation Included With Fragments -->
+    </nav>
+    <!-- Content Container Start -->
+    <div class="content-container">
+      <!-- Schedule Container Start -->
       <div class="schedule-container">
+        <!-- Schedule Container Head -->
         <div class="head-container">
           <img src="/icons/schedule.jpg" alt="schedule" class="schedule-icon" />
           <h2 class="schedule-head">Schedule</h2>
         </div>
-
         <div class="calender-pick-container">
           <h3>Date</h3>
           <div class="date-picker">
@@ -79,7 +56,7 @@
             </div>
           </div>
         </div>
-
+        <!-- Schedule Container Table -->
         <div class="schedule-table-container">
           <table>
             <thead>
@@ -120,11 +97,14 @@
           </table>
         </div>
       </div>
-      <!-- Schedule Section  End -->
-      <div class="footer">Pet Grooming &copy; 2020</div>
-    </div>
-  </div>
+      <!-- Schedule Container End -->
 
+    </div>
+    <!-- Schedule Section  End -->
+  </div>
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
   <!--    Scripts         -->
   <script src="/js/dashboard.js"></script>
 </body>

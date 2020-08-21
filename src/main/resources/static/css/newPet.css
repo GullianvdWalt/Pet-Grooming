@@ -1,14 +1,130 @@
-/*      Styles For New Pept       */
+/*      Styles For New Pet      */
+
+/* The styles in this CSS file are the general styles which appliet to all pages*/
+
+/*
+    Fonts
+
+    Import Fonts:
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+/*
+    For Applying Fonts: 
+                            font-family: 'Montserrat', sans-serif;
+                            font-family: 'Roboto', sans-serif;
+                            font-family: 'Lato', sans-serif;
+                            font-family: 'Open Sans', sans-serif;
+    colors:
+            Body Background: #ffffff
+            Background nav: #505050
+            Pink: #FF69B4
+
+    Shadow Effects:
+                        Text  - standard -  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+
+                              - hard shadow - text-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+
+                              - heavy shadow - text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                                                            0px 8px 13px rgba(0,0,0,0.1),
+                                                            0px 18px 23px rgba(0,0,0,0.1);  
+
+                        Box Shadow :    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+                        Icons:
+                                -
+                    
+*/
+
+/*  Main Page Container */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+/*  Style Navbar Starts  */
+.navbar-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 2em;
+}
+.logo-container {
+  display: inline-block;
+  padding-left: 1.5em;
+  width: auto;
+  padding: 1em;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+.logo {
+  display: inline;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+  padding: 1em;
+  margin-left: 10px;
+  font-size: 30px;
+}
+.home-icon {
+  display: inline;
+  vertical-align: bottom;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+  width: 93px;
+  height: 93px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  /*  For Grow Effect */
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+/*  For Grow Effect */
+.home-icon:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.customer-logo-container {
+  padding: 1em;
+  width: auto;
+  margin-right: 10%;
+  margin-top: 10px;
+}
+.customer-icon {
+  width: 93px;
+  height: 93px;
+  display: inline;
+  margin-right: 20px;
+  vertical-align: bottom;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+}
+.customer-nav-header {
+  display: inline;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8em;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+  letter-spacing: 3px;
+  margin-left: 20px;
+}
+/*  Style Navbar Ends */
 
 /* Customer Details Section Style Start */
 .pet-details-section{
-    display: none;
+    display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 60%;    
+    height: 80%;
+    width: 80%;    
     padding: 1em;
-    margin: 2% 20%;
     border: 2px solid #DCDCDC;
+    margin: 2rem 10%;
         /*  Shadow Effects  */
     -webkit-box-shadow: 0px -2px 5px -1px rgba(80,80,80,0.46);
     -moz-box-shadow: 0px -2px 5px -1px rgba(80,80,80,0.46);
@@ -43,12 +159,23 @@
 
 /*  Pet Details Form Section Start */
 /* Form Container */
-.pet-details-input-container{
+.pet-form{
     width: 100%;
-    height: 55%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 0.5em;   
     margin-bottom: 5%;
+}
+.form-group{
+   width: 50%;
+   display: flex;
+   padding: 1rem;
+   flex-direction: row;
+   justify-content: space-between;
+   margin: 1rem 25%;
+    
 }
 /* Label Styles */
 .pet-label{
@@ -56,21 +183,43 @@
     font-size: 1.4em;
 }
 /* Input Boxes  */
-.pet-input, .pet-select{
+.pet-input{
+    width: 60%;
+    max-width: 422px;
+    height: 50px;
     font-size: 1.4em;
-    width: 30%;
     color: #FF69B4;
-    margin: 2% 35%;
     border: 2px solid #505050;
     font-family: 'Lato', sans-serif;
-    font-weight: 800;
+    font-weight: 800; 
+    
+} 
+.form-group-gender-container{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    max-width: 422px;
+    justify-content: space-between
+}
+.form-group-gender{
+  width: 30%;
+  margin: 0 15%;
+    
+}
+.pet-gender-select{
+    font-size: 1.6em;
+    color: #FF69B4;
+    border: 2px solid #505050;
+}
+.pet-label-radio{
+    font-size: 1.4em;
+    font-family: 'Lato', sans-serif;
 }
 /* Notes Input */
 #pet-notes-input{
     font-size: 1.7em;
-    width: 50%;
     font-weight: 200;
-    margin: 0.5em;
+    height: 70px;
     border: 2px solid #505050;
     font-family: 'Lato', sans-serif;
     font-weight: 800;
@@ -86,8 +235,8 @@
 }
 .buttons{
     background-color: #505050;
-    width: 25%;
-    height: 44%;
+    width: 200px;
+    height: 70px;
     border-radius: 15px;
     margin: 1% 2%;
     font-family: 'Roboto', sans-serif;
@@ -106,8 +255,8 @@
     font-size: 1em;
 }
 #new-pet-back-button{
-    width: 30%;
-    height: 44%;
+    width: 200px;
+    height: 70px; 
     filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4));
 }
 .buttons img{
@@ -134,7 +283,8 @@
     font-family: 'Lato', sans-serif;
     font-style: italic;
     font-size: 1.5em;
-    color: #FF69B4;
+    background-color: #FF69B4;
+    color:#FFF;
     padding: 0.5em;
 }
 
