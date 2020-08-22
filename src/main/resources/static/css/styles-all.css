@@ -1,4 +1,4 @@
-/* The styles in this CSS file are the general styles which appliet to all pages*/
+/* The styles in this CSS file are the general styles which applies to all pages*/
 
 /*
     Fonts
@@ -7,6 +7,27 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+
+/* Pages */
+@import url('editCustomer.css');
+@import url('appointmentComplete.css');
+@import url('customers.css');
+@import url('customerSelect.css');
+@import url('employeeDetails.css');
+@import url('expenses.css');
+@import url('exspenseReports.css');
+@import url('finance.css');
+@import url('index.css');
+@import url('invoice.css');
+@import url('job-card.css');
+@import url('login.css');
+@import url('manage-business.css');
+@import url('newAppointment.css');
+@import url('newCustomer.css');
+@import url('salaries.css');
+/* Fragments */
+@import url('fragments/partials.css');
+
 /*
     For Applying Fonts:
                             font-family: 'Montserrat', sans-serif;
@@ -90,9 +111,8 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
-/*  Media Queries */
 
-/*  Smaller Desktop*/
+/*  Media Queries */ /*  Smaller Desktop*/
 @media screen and (max-width: 1680px) {
 }
 

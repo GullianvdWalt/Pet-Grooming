@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pet Grooming | New Customer</title>
+  <title>Pet Grooming | Edit Customer</title>
   <!-- Window Icon -->
   <link rel="icon" href="/icons/icon.ico">
   <!-- JQuery -->
@@ -12,7 +12,6 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <!--    Styles      -->
   <link rel="stylesheet" href="css/styles-all.css" />
-
   <!--    Font Awesome    -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
@@ -33,15 +32,15 @@
     <!-- Content-Container-Start -->
     <div class="content-container">
 
-      <!-- New Customer Container Start -->
-      <form class="new-customer-container" th:action="@{/addNewCustomer}" method="post">
+      <!-- Edit Customer Container Start -->
+      <form class="edit-customer-container" th:action="@{/addNewCustomer}" method="post">
 
-        <div class="new-customer-header-container">
-          <h3 class="new-customer-heading">New Customer</h3>
+        <div class="edit-customer-header-container">
+          <h3 class="edit-customer-heading">Edit Customer</h3>
         </div>
 
-        <!-- New Customer Main Form Container Start -->
-        <div class="new-customer-main-form-container">
+        <!-- edit Customer Main Form Container Start -->
+        <div class="edit-customer-main-form-container">
 
           <!-- Customer Form Container Start -->
           <div class="customer-details-container" id="customer-details-section">
@@ -148,9 +147,9 @@
           <!-- Pet Form Container End -->
         </div>
 
-        <!-- New Customer Main Form Container End -->
+        <!-- Edit Customer Main Form Container End -->
       </form>
-      <!-- New Customer Container End -->
+      <!-- Edit Customer Container End -->
 
     </div>
     <!-- Content-Container-End -->
