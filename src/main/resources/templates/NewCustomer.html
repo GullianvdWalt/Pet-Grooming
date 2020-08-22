@@ -51,25 +51,39 @@
               <img src="/icons/petOwner.png" alt="petOwner" class="icon" />
               <h3 class="form-details-heading">Customer Details</h3>
             </div>
-            <div th:action="@{/addPetOwner}" class="customer-details-form">
-              <!--    Customer Details Content    -->
-              <div class="form-row">
-                <label for="customer-name-input" class="customer-label">Name & Surname</label><br>
-                <input type="text" id="customer-name-input" class="customer-input" name="pet_owner_full_name"
-                  required /><br><br>
+            <div class="customer-details-form-container">
+              <div th:action="@{/addPetOwner}" class="customer-details-form">
+                <!--    Customer Details Content    -->
+                <div class="form-row">
+                  <label for="customer-name-input" class="customer-label">Name & Surname</label><br>
+                  <input type="text" id="customer-name-input" class="customer-input" name="pet_owner_full_name"
+                    required /><br><br>
+                </div>
+                <div class="form-row">
+                  <label for="customer-cell-input" class="customer-label">Cell</label><br>
+                  <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell"
+                    required /><br><br>
+                </div>
+                <div class="form-row">
+                  <label for="customer-address-input" class="customer-label">Address</label><br>
+                  <input type="text" id="customer-address-input" class="customer-address-input"
+                    name="pet_owner_address" /><br><br>
+                </div>
               </div>
-              <div class="form-row">
-                <label for="customer-cell-input" class="customer-label">Cell</label><br>
-                <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell"
-                  required /><br><br>
-              </div>
-              <div class="form-row">
-                <label for="customer-address-input" class="customer-label">Address</label><br>
-                <input type="text" id="customer-address-input" class="customer-address-input"
-                  name="pet_owner_address" /><br><br>
+              <!--    Buttons     -->
+              <div class="button-container">
+                <div class="buttons">
+                  <a th:href="@{/customers}" id="cancelButton">
+                    <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" /> Cancel
+                  </a>
+                </div>
+                <div class="buttons">
+                  <a type="submit" th:href="@{/customers}" id="saveButton">
+                    <img src="/icons/save.png" alt="back" title="Back To Customers" /> Save
+                  </a>
+                </div>
               </div>
             </div>
-
           </div>
           <!-- Customer Form Container End -->
 
@@ -79,50 +93,60 @@
               <img src="/icons/petPaw.png" alt="petOwner" class="icon" />
               <h3 class="form-details-heading">Pet Details</h3>
             </div>
-            <div class="pet-details-form" id="pet-details-form">
-              <div class="form-row">
-                <select id="pet" name="pet" class="pet-select">
-                  <option value="select">Select Pet</option>
-                  <option value="jackRusselTerrier">Mila</option>
-                </select><br /><br />
+            <div class="pet-details-form-container">
+              <div class="pet-details-form" id="pet-details-form">
+                <div class="form-row-new-pet">
+                  <div class="buttons">
+                    <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
+                    <a th:href="@{/newCustomer}">
+                      New Pet
+                    </a>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <label for="pet" class="pet-label">Select Pet</label>
+                  <select id="pet" name="pet" class="pet-select">
+                    <option value="select">Select Pet</option>
+                    <option value="jackRusselTerrier">Mila</option>
+                  </select><br /><br />
+                </div>
+                <div class="form-row">
+                  <label for="pet-name-input" class="pet-label">Name</label>
+                  <input type="text" id="pet-name-input" class="pet-input" onkeypress="resetNameFunction()"
+                    autocomplete="off" />
+                </div>
+                <div class="form-row-gender">
+                  <label class="pet-label" id="gender-label">Gender</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" id="m-option" name="selector" onclick="resetGenderFunction()" />
+                  <label class="pet-label-radio" id="gender-male-label" for="m-option">M</label>&nbsp;
+                  <input type="radio" id="f-option" name="selector" onclick="resetGenderFunction()" />
+                  <label class="pet-label-radio" id="gender-female-label" for="f-option">F</label>
+                </div>
+                <div class="form-row">
+                  <label for="pet-breed-input" class="pet-label">Breed</label><br />
+                  <input type="text" id="pet-input-breed" class="pet-input" onkeypress="resetBreedFunction()" />
+                </div>
+                <div class="form-row">
+                  <label for="pet-notes-input" class="pet-label">Notes</label><br />
+                  <input type="text" id="pet-notes-input" class="pet-input" autocomplete="off" />
+                </div>
               </div>
-              <div class="form-row">
-                <label for="pet-name-input" class="pet-label">Name</label>
-                <input type="text" id="pet-name-input" class="pet-input" onkeypress="resetNameFunction()"
-                  autocomplete="off" />
-              </div>
-              <div class="form-row-gender">
-                <label class="pet-label" id="gender-label">Gender</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="m-option" name="selector" onclick="resetGenderFunction()" />
-                <label class="pet-label-radio" id="gender-male-label" for="m-option">M</label>&nbsp;
-                <input type="radio" id="f-option" name="selector" onclick="resetGenderFunction()" />
-                <label class="pet-label-radio" id="gender-female-label" for="f-option">F</label>
-              </div>
-              <div class="form-row">
-                <label for="pet-breed-input" class="pet-label">Breed</label><br />
-                <input type="text" id="pet-input-breed" class="pet-input" onkeypress="resetBreedFunction()" />
-              </div>
-              <div class="form-row">
-                <label for="pet-notes-input" class="pet-label">Notes</label><br />
-                <input type="text" id="pet-notes-input" class="pet-input" autocomplete="off" />
+              <!--    Buttons     -->
+              <div class="button-container">
+                <div class="buttons">
+                  <a th:href="@{/customers}" id="cancelButton">
+                    <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" /> Cancel
+                  </a>
+                </div>
+                <div class="buttons">
+                  <a type="submit" th:href="@{/customers}" id="saveButton">
+                    <img src="/icons/save.png" alt="back" title="Back To Customers" /> Save
+                  </a>
+                </div>
               </div>
             </div>
-
           </div>
           <!-- Pet Form Container End -->
-        </div>
-        <!--    Buttons     -->
-        <div class="button-container">
-          <div class="buttons">
-            <a th:href="@{/customers}" id="cancelButton">
-              <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" /> Cancel
-            </a>
-          </div>
-          <div class="buttons">
-            <a type="submit" th:href="@{/customers}" id="saveButton">
-              <img src="/icons/save.png" alt="back" title="Back To Customers" /> Save
-            </a>
-          </div>
         </div>
 
         <!-- New Customer Main Form Container End -->

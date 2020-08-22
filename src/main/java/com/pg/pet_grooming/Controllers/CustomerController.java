@@ -39,4 +39,16 @@ public class CustomerController {
         model.addAttribute("iconUrl", iconUrl);
         return "NewCustomer";
     }
+    
+    // Edit Customer
+    @RequestMapping("/editCustomer")
+    public String EditCustomer(Model model){
+         // Set Page Title
+        String pageTitle = "Customers";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "dog.jpg";
+        model.addAttribute("iconUrl", iconUrl);
+        return "EditCustomer";
+    }
 }
