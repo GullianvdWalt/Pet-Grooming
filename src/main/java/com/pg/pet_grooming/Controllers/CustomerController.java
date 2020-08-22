@@ -19,9 +19,10 @@ public class CustomerController {
     // Main Customer Dashboard
     @RequestMapping("/customers")
     public String Customer(Model model){
-              // Set Page Title
+      // Set Page Title
       String pageTitle = "Customers";
       model.addAttribute("pageTitle", pageTitle);
+      // Set Page Title Icon
       String iconUrl = "dog.jpg";
       model.addAttribute("iconUrl", iconUrl);
         return "Customers";
@@ -29,8 +30,13 @@ public class CustomerController {
     
     // New Customer
     @RequestMapping("/newCustomer")
-    public String newCustomer(){
-        
+    public String newCustomer(Model model){
+         // Set Page Title
+        String pageTitle = "Customers";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "dog.jpg";
+        model.addAttribute("iconUrl", iconUrl);
         return "NewCustomer";
     }
 }
