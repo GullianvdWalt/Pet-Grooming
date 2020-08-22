@@ -104,6 +104,8 @@ header {
 }
 .logout-button:hover {
   cursor: pointer;
+  color: #ff69b4;
+  transition: 0.5s;
 }
 /* ######################################### */
 /* Style Header Ends */

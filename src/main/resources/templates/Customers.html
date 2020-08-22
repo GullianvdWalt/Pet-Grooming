@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customers</title>
   <!-- Window Icon -->
-  <link rel="icon" href="/static/Icons/icon.ico">
+  <link rel="icon" href="/icons/icon.ico">
   <!--    Styles      -->
   <link rel="stylesheet" href="css/styles-all.css" />
   <link rel="stylesheet" href="css/customers.css" />
-  <link rel="stylesheet" href="css/customerModals.css" />
+  <!-- <link rel="stylesheet" href="css/customerModals.css" /> -->
   <link rel="stylesheet" href="css/fragments/partials.css" />
   <!--    Font Awesome    -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -34,14 +34,19 @@
       <div class="customers-container">
         <!--    Filter Section Starts   -->
         <div class="filter-section">
-          <div class="new-customer-button">
-            <a th:href="@{/newCustomer}" class="newCustomer"><img src="/icons/plusCircle.jpg" alt="add-customer"
-                class="add-customer-icon" />New Customer</a>
+          <div class="new-customer-button-container">
+            <div class="buttons">
+              <img src="/icons/plusCircle.jpg" alt="add-customer" class="icon">
+              <a th:href="@{/newCustomer}">
+                New Customer
+              </a>
+            </div>
+
           </div>
 
           <div class="filter-container">
             <div class="filter-heading">
-              <img src="/icons/filter.png" alt="filter" />
+              <img src="/icons/filter.png" alt="filter" class="icon" />
               <h3 class="filter-text">Filter</h3>
             </div>
             <div class="filter-input-container">
