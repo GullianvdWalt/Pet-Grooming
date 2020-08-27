@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<body>
+  <div th:fragment="header" class="header-container">
+
+    <div class="logo-container">
+      <a class="fa fa-bars" aria-hidden="true"></a>
+      <h3 class="logo"> Pet Grooming</h3>
+    </div>
+
+    <div class="title-container">
+      <!-- /icons/dog.jpg -->
+      <img th:src="@{/icons/{icon}(icon=${iconUrl})}" alt="Page Icon" class="page-title-icon">
+      <!-- Title Is Return Via Controller -->
+      <h2 class="page-title" th:text="${pageTitle}">Page Title</h2>
+    </div>
+    <div class="content-right-container">
+      <a class="logout-button">Logout</a>
+    </div>
+
+  </div>
+</body>
+
+</html>

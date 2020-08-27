@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Grooming | Login</title>
+  <link rel="icon" href="/icons/icon.ico">
+  <!-- Styles -->
+  <link rel="stylesheet" href="/static/css/styles-all.css" />
+
+  <style th:inline="text">
+    .login-section {
+      height: 700px;
+      background: url('../images/login_background3.jpg') no-repeat !important;
+      background-position: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-container">
+      <img src="/icons/paw-white.png" alt="logo" class="logo">
+      <h1 class="heading">Pet Grooming - Login</h1>
+    </div>
+  </div>
+  <div class="login-section">
+    <div class="form-container">
+      <form class="login-form" th:action="@{/login}" method="post">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" required autofocus>
+        </div><br>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required>
+        </div><br>
+        &nbsp;
+        <div class="button-container"><input type="submit" class="login-button" value="Login">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</body>
+
+</html>
