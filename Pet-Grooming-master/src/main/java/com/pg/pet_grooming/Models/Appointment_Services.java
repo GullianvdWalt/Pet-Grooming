@@ -1,6 +1,6 @@
 /*
  * 
- * This is the Appointment_Services (Entity/Table)
+ * This the Appointment_Services (Entity/Table)
  * 
  */
 
