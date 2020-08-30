@@ -14,8 +14,7 @@ import com.pg.pet_grooming.Models.UserLoginPrincipal;
 @Service
 public class MyUserDetailsService implements UserDetailsService{
         
-        @Autowired
-        UserLoginRepository userLoginRepository;
+        @Autowired UserLoginRepository userLoginRepository;
     
     	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

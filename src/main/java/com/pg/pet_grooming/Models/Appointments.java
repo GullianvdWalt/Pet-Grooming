@@ -42,7 +42,7 @@ public class Appointments {
     @Id
     @Column(name = "app_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long app_id;
+    private Integer app_id;
     
     @NotNull
     @Column(name = "date_created",nullable = false)

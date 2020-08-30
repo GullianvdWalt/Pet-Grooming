@@ -41,7 +41,9 @@ public class Employees {
     @Column(name = "date_hired",nullable = false)
     private Date date_hired;
     
-    
+    @NotNull
+    @Column(columnDefinition="VARCHAR(15)",name = "cell",nullable = false)
+    private String cell;
     
     // Constructor handled by Lombok
     // Getters and Setters handled by Lombok
