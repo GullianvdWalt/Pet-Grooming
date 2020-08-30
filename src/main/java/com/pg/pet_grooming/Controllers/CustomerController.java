@@ -1,8 +1,6 @@
 /*
  * This is the Customer Controller Class
-   This Controller will be responsible for the routing of the customer pages
- * 
- * 
+ * This Controller will be responsible for the routing of the customer pages
  */
 package com.pg.pet_grooming.Controllers;
 // Imports
