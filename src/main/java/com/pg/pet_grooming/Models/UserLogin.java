@@ -15,13 +15,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 
 @Entity
 @Table(name = "user")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
+@Data
+ //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
 public class UserLogin {
@@ -34,4 +37,7 @@ public class UserLogin {
     private int id;
     private String username;
     private String password;
+
+    
+   
 }

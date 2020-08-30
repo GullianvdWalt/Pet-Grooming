@@ -1,4 +1,4 @@
-/*
+ /*
  * 
  * This is the Appointment_Services (Entity/Table)
  * 
@@ -9,12 +9,16 @@ package com.pg.pet_grooming.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,7 +38,7 @@ public class Appointment_Services {
     // Primary Key
     @Id
     @Column(name = "app_service_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long app_service_id;
     
     @ManyToOne // Many Appointment Services to one appointment
@@ -47,16 +51,8 @@ public class Appointment_Services {
     private Pet pet; //Pet Object
     private Long pet_id; // Foreign Key
     
-    @Column(name = "trim")
-    private Boolean trim;
-    @Column(name = "nail_cut")
-    private Boolean nail_cut;
-    @Column(name = "shave")
-    private Boolean shave;
-    @Column(name = "bath")
-    private Boolean bath;
-    @Column(name = "dip")
-    private Boolean dip;
+    @OneToMany (mappedBy = "appointment_services")
+    private List<Services> services;
     
     
 }
