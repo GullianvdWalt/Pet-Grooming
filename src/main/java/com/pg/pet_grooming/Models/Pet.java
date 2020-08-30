@@ -33,7 +33,7 @@ public class Pet {
     @Id
     @Column(name = "pet_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long petID;
+    private Integer petID;
     
     @ManyToOne // Many Pets have one owner
     @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)

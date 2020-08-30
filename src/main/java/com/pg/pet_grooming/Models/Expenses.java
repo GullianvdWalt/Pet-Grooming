@@ -32,7 +32,7 @@ public class Expenses {
     @Id
     @Column(name = "expense_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long expense_id;
+    private Integer expense_id;
     
     @Column(name = "expense_date",nullable = false)
     private Date expense_date;

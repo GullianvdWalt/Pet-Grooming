@@ -42,7 +42,7 @@ public class Invoice {
     @Id
     @Column(name = "invoice_num",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long invoice_num;
+    private Integer invoice_num;
     
     @NotNull
     @Column(name = "invoice_date",nullable = false)

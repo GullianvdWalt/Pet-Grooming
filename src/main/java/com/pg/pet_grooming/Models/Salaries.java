@@ -40,7 +40,7 @@ public class Salaries {
     @Id
     @Column(name = "salary_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long salary_id;
+    private Integer salary_id;
     
     @NotNull
     @Column(name = "pay_period",nullable = false)

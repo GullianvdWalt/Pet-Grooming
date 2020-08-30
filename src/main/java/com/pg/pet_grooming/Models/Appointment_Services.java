@@ -39,7 +39,7 @@ public class Appointment_Services {
     @Id
     @Column(name = "app_service_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long app_service_id;
+    private Integer app_service_id;
     
     @ManyToOne // Many Appointment Services to one appointment
     @JoinColumn(name="app_id", insertable=false, updatable=false)

@@ -28,7 +28,7 @@ public class PetOwner {
     @Id
     @Column(name = "pet_owner_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pet_owner_id;
+    private Integer pet_owner_id;
 
     
     @NotNull

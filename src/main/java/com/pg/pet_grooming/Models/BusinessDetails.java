@@ -6,6 +6,6 @@ package com.pg.pet_grooming.Models;
  * 
  */
 
-public class BussinessDetails {
+public class BusinessDetails {
     
 }
