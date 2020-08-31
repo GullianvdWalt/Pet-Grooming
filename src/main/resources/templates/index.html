@@ -10,8 +10,9 @@
   <link rel="icon" href="/icons/icon.ico">
 
   <!--    Styles     -->
-  <link rel="stylesheet" href="css/styles-all.css" />
-
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
   <!-- Mobile Menu -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!-- For Colapsing Menu -->
@@ -39,7 +40,7 @@
           <h2 class="schedule-head">Schedule</h2>
         </div>
         <div class="calender-pick-container">
-          <h3>Date</h3>
+          <h3 class="time-picker-heading">Date</h3>
           <div class="date-picker">
             <div class="selected-date"></div>
 
@@ -64,9 +65,9 @@
             </thead>
 
             <tbody>
-              <tr>
+              <tr class="schedule-row">
                 <td class="time">09:00 - 10:15</td>
-                <td class="">
+                <td class="schedule-details">
                   Sonja Van Der Merwe <br />
                   084 5076 275 <br />
                   7 Bunteberg Str Sasolburg <br />
@@ -74,20 +75,35 @@
                 </td>
                 <td class="checkbox-column">
                   <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="checkbox" />
+                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" />
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td class="time">10:30 - 11:30</td>
-                <td>
-                  Sonja Van Der Merwe <br />
-                  084 5076 275 <br />
+              <tr class="schedule-row">
+                <td class="time">09:00 - 10:15</td>
+                <td class="schedule-details">
+                  <div>Sonja Van Der Merwe</div>
+                  <div>084 5076 275</div>
+                  <div>7 Bunteberg Str Sasolburg </div>
+                  <div>Rocky (Jack Russel Terrier) Wash & Dip</div>
                 </td>
-
                 <td class="checkbox-column">
                   <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="checkbox" data-tip="" />
+                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" />
+                  </div>
+                </td>
+              </tr>
+              <tr class="schedule-row">
+                <td class="time">09:00 - 10:15</td>
+                <td class="schedule-details">
+                  Sonja Van Der Merwe <br />
+                  084 5076 275 <br />
+                  7 Bunteberg Str Sasolburg <br />
+                  Rocky (Jack Russel Terrier) Wash & Dip <br />
+                </td>
+                <td class="checkbox-column">
+                  <div class="checkbox-container">
+                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" />
                   </div>
                 </td>
               </tr>

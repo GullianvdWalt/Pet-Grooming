@@ -10,7 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 /*
-    For Applying Fonts: 
+    For Applying Fonts:
                             font-family: 'Montserrat', sans-serif;
                             font-family: 'Roboto', sans-serif;
                             font-family: 'Lato', sans-serif;
@@ -27,72 +27,22 @@
 
                               - heavy shadow - text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
                                                             0px 8px 13px rgba(0,0,0,0.1),
-                                                            0px 18px 23px rgba(0,0,0,0.1);  
+                                                            0px 18px 23px rgba(0,0,0,0.1);
 
                         Box Shadow :    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
                         Icons:
                                 -
-                    
+
 */
 
-/*  Main Page Container */
-.wrapper {
+/* New Appointment Container Style Start  */
+.new-appointment-container {
   display: flex;
   flex-direction: column;
-  width: auto;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
+  padding: 1rem;
+  margin-top: 50px;
 }
 
-/*  Style Navbar Starts  */
-.navbar-container {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 2em;
-}
-.logo-container {
-  display: inline-block;
-  padding-left: 1.5em;
-  width: auto;
-  padding: 1em;
-  margin-top: 10px;
-  margin-left: 40px;
-}
-.logo {
-  display: inline;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  padding: 1em;
-  margin-left: 10px;
-  font-size: 30px;
-}
-.home-icon {
-  display: inline;
-  vertical-align: bottom;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  width: 93px;
-  height: 93px;
-  margin-right: 20px;
-  margin-left: 20px;
-
-  /*  For Grow Effect */
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-/*  For Grow Effect */
-.home-icon:hover {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
 /* Appointment Logo Container */
 .new-appointment-logo-container {
   display: flex;
@@ -159,35 +109,50 @@
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
+.date-time-heading {
+  margin-bottom: 3rem;
+}
 .date-time-heading img,
 .customer-details-header img {
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-top: 10px;
 }
 .date-time-heading h3,
 .customer-details-header h3 {
-  margin-left: 0.5rem;
+  margin-left: 20px;
 }
 /* Date Container - Input Elements */
 .date-container,
 .time-container {
+  display: flex;
   width: 100%;
-  height: 35%;
+  justify-content: center;
 }
 /* Style Date & Time Labels */
 .date-container label,
 .time-container label {
   margin-left: 1.5rem;
   margin-right: 2rem;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 /* Style Date & Time Inputs */
+.date-container input {
+  width: 50%;
+  margin-bottom: 1.5rem;
+}
 .date-container input,
 .time-container input {
   height: 30px;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
   font-size: 1.3rem;
+}
+.time-container div {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 /* Style Input Boxes When User Click To Type*/
 #date-input:focus,
@@ -196,10 +161,7 @@
   background-color: rgb(255, 105, 180, 0.8);
   font-weight: bold;
 }
-.date-container input {
-  width: 200px;
-  margin-bottom: 1.5rem;
-}
+
 .time-container input {
   width: 120px;
   margin-bottom: 2rem;
@@ -214,11 +176,17 @@
   height: 35%;
   text-align: left;
 }
+.customer-details div {
+  display: flex;
+  width: 70%;
+  margin: 0 15%;
+  justify-content: space-between;
+}
 /* Style Customer Details Input Labels */
 .customer-details label {
   margin-left: 1.5rem;
   margin-right: 2rem;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 #cell-input {
   margin-left: 5rem;
@@ -307,9 +275,8 @@ th div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-  margin-top: 4rem;
-  margin-bottom: 5rem;
+  width: 80%;
+  margin: 5rem 10%;
 }
 .cancel-button {
   width: 170px;
@@ -318,7 +285,6 @@ th div {
   display: inline-block;
   background-color: #505050;
   margin-left: 8rem;
-
 
   border-radius: 25px;
   text-align: center;
@@ -333,11 +299,12 @@ th div {
   border-radius: 25px;
   text-align: center;
 }
-.cancel-button a, .save-button a{    
+.cancel-button a,
+.save-button a {
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
-  color: white; 
+  color: white;
 }
 .save-buttona a:hover,
 .cancel-button a:hover {
@@ -353,15 +320,3 @@ th div {
   margin-right: 0.5rem;
 }
 /* Button Container Styles Ends */
-/* Footer Section */
-.footer {
-  width: auto;
-  max-height: 50px;
-  text-align: center;
-  font-family: 'Lato', sans-serif;
-  font-style: italic;
-  font-size: 1.5em;
-  color: #ff69b4;
-  padding: 0.5em;
-  overflow: hidden;
-}

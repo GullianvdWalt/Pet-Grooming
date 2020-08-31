@@ -8,10 +8,9 @@
   <!-- Window Icon -->
   <link rel="icon" href="/icons/icon.ico">
   <!--    Styles      -->
-  <link rel="stylesheet" href="css/styles-all.css" />
-  <link rel="stylesheet" href="css/customers.css" />
-  <!-- <link rel="stylesheet" href="css/customerModals.css" /> -->
-  <link rel="stylesheet" href="css/fragments/partials.css" />
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/customers.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
   <!--    Font Awesome    -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
@@ -28,6 +27,7 @@
     <nav th:insert="fragments/navbar :: navbar">
       <!-- Navigation Included With Fragments -->
     </nav>
+
     <!-- Content-Container-Start -->
     <div class="content-container">
       <!-- Customers Container Start -->
@@ -81,11 +81,11 @@
             </thead>
             <tbody>
               <tr>
-                <td class="id">001</td>
-                <td class="name">Lelanie Snyman</td>
-                <td class="cell">083-750-8818</td>
-                <td class="address">145 Breed Street Sasolburg</td>
-                <td class="pet-name">
+                <td class="id-customers">001</td>
+                <td class="name-customers">Lelanie Snyman</td>
+                <td class="cell-customers">083-750-8818</td>
+                <td class="address-customers">145 Breed Street Sasolburg</td>
+                <td class="pet-name-customers">
                   Buddy, <br />
                   Lady, <br />
                   Mila
@@ -98,8 +98,8 @@
                 <td class="last-appointment">04-12-2019</td>
                 <td class="num-appointments">5</td>
                 <td>
-                  <a th:href="@{/editCustomer}" id="edit-button"><img src="/icons/editSmall.png" alt="edit" class="edit-icon"
-                      title="Edit Customer" /></a>
+                  <a th:href="@{/editCustomer}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
+                      class="edit-icon" title="Edit Customer" /></a>
                 </td>
                 <td>
                   <a href="#" id="delete-button"><img src="/icons/trash.png" alt="delete" class="delete-icon"
@@ -181,7 +181,7 @@
           <h3 class="pet-details-heading">Pet Details</h3>
         </div> -->
 
-  </div> -->
+  </div>
 
   <!-- </div> -->
   </div>

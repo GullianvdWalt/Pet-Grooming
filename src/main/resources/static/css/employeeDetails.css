@@ -1,33 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-body {
-  padding: 0;
-  margin: 0;
-  min-height: 100vh;
-}
-.wrapper {
-  min-width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-}
-/* Style Main Container */
-.navbar-container {
-  min-width: 100%;
-  min-height: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 2em;
-}
 .Employee-Details-Container {
   min-width: 100%;
   min-height: 80%;
@@ -202,13 +175,4 @@ body {
   color: #ffffff;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.footer {
-  min-width: 100%;
-  min-height: 10%;
-  margin-top: 10%;
-  text-align: center;
-  padding: 1rem;
-  color: #ffffff;
-  background-color: #ff69b4;
 }

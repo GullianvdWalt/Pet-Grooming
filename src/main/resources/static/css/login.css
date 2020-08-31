@@ -5,10 +5,10 @@
 
     Import Fonts:
 */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 /*
-    For Applying Fonts: 
+    For Applying Fonts:
                             font-family: 'Montserrat', sans-serif;
                             font-family: 'Roboto', sans-serif;
                             font-family: 'Lato', sans-serif;
@@ -32,30 +32,37 @@ body {
   margin: 0;
   background-color: rgba(205, 205, 205, 0.23);
   min-height: 100vh;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
-
-.header {
+a {
+  text-decoration: none;
+}
+.login-header {
+  width: 100%;
   height: 250px;
   background-color: #ff69b4;
   text-align: center;
+  justify-content: center;
   color: #fff;
   display: flex;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
-.header-container {
+.login-header-container {
   flex-direction: row;
-  justify-content: center;
-  width: 70%;
-  margin: 1rem 15%;
+  justify-content: space-around;
+  width: 50%;
+  margin: 2rem 25%;
+  padding: 1rem;
 }
-.logo {
+.login-logo {
   width: 90px;
   height: 90px;
+  float: left;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-h1 {
+.login-heading {
   font-size: 36px;
+  position: relative;
   font-weight: bold;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -88,10 +95,10 @@ label {
   margin-top: 10px;
   font-weight: 700;
   letter-spacing: 4px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
-input {
+.login-input {
   width: 500px;
   height: 60px;
   border-radius: 20px;
@@ -107,6 +114,10 @@ input {
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.login-button-container {
+  width: 700px;
+  margin: 1rem;
+}
 .login-button {
   text-transform: uppercase;
   outline: none;
@@ -119,13 +130,9 @@ input {
   border-radius: 25px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 28px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.button-container {
-  width: 700px;
-  margin: 1rem;
 }
 .login-button:hover {
   cursor: pointer;

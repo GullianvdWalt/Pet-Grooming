@@ -9,24 +9,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 
 /* Pages */
-@import url('editCustomer.css');
+/* @import url('editCustomer.css');
 @import url('appointmentComplete.css');
-@import url('customers.css');
 @import url('customerSelect.css');
 @import url('employeeDetails.css');
 @import url('expenses.css');
 @import url('exspenseReports.css');
 @import url('finance.css');
-@import url('index.css');
 @import url('invoice.css');
 @import url('job-card.css');
 @import url('login.css');
 @import url('manage-business.css');
 @import url('newAppointment.css');
 @import url('newCustomer.css');
-@import url('salaries.css');
-/* Fragments */
-@import url('fragments/partials.css');
+@import url('salaries.css'); */
 
 /*
     For Applying Fonts:
@@ -87,6 +83,7 @@ body {
   width: 240px;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
 }
 .buttons:hover {
   cursor: pointer;
@@ -111,6 +108,18 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
+/* Footer Section */
+/* footer {
+  width: 100%;
+  height: 5%;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  font-size: 1.5em;
+  color: #f3f3f3;
+  background-color: #ff69b4;
+  padding: 0.5em;
+} */
 
 /*  Media Queries */ /*  Smaller Desktop*/
 @media screen and (max-width: 1680px) {

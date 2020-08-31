@@ -120,11 +120,11 @@ nav {
 .navigation-list {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
   margin: 0;
   list-style: none;
   padding: 0;
-  margin-left: 50px;
+  margin-left: 25px;
   margin-top: 50px;
 }
 .navigation-list li {
@@ -160,11 +160,11 @@ footer {
   width: 100%;
   height: 10%;
   text-align: center;
-  text-align: center;
   padding: 1rem;
   color: #ffffff;
   background-color: #ff69b4;
   font-size: 22px;
 }
+
 /* ######################################### */
 /* Style Footer Ends */

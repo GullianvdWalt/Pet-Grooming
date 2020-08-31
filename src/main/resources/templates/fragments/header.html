@@ -21,7 +21,14 @@ and open the template in the editor.
       <h2 class="page-title" th:text="${pageTitle}">Page Title</h2>
     </div>
     <div class="content-right-container">
-      <a class="logout-button">Logout</a>
+      <!-- # - Thymeleaf syntax to display logged-in user -->
+      <div>
+        <!-- <span><img th:src="@{'/img/icons'} + ${#authentication.getPrincipal().getUsername()} + '.jpg'" alt="user-icon"></span> -->
+        <span class="username" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+      </div>
+      <div>
+      <a href="login.html" class="logout-button">Logout</a>
+    </div>
     </div>
 
   </div>
