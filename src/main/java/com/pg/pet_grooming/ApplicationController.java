@@ -50,4 +50,10 @@ public class ApplicationController {
     public String logout(){
         return "Login";
     }
+    
+     // Method To Logout
+    @GetMapping("/register")
+    public String register(){
+        return "Register";
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * This Is The User Login Class
+ * This Is The UserLogin Login Class
  * 
  * 
  */
@@ -23,13 +23,14 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "user")
-@Data
+@Getter
+@Setter
  //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
 public class UserLogin {
     
-    // User Attributes
+    // UserLogin Attributes
     // Primary Key
     @Column(name = "id",nullable = false)
     @Id
@@ -37,7 +38,5 @@ public class UserLogin {
     private int id;
     private String username;
     private String password;
-
-    
    
 }

@@ -7,14 +7,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 // Local Imports
-import com.pg.pet_grooming.Repositories.UserLoginRepository;
 import com.pg.pet_grooming.Models.UserLogin;
 import com.pg.pet_grooming.Models.UserLoginPrincipal;
+import com.pg.pet_grooming.Repositories.UserRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService{
         
-        @Autowired UserLoginRepository userLoginRepository;
+        @Autowired UserRepository userLoginRepository;
     
     	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

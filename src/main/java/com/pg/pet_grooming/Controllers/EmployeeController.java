@@ -58,7 +58,7 @@ public class EmployeeController {
       // Set Page Title Icon
       String iconUrl = "employee.png";
       model.addAttribute("iconUrl", iconUrl);
-        return "Employees";
+        return "NewEmployee";
     }
 
 }
