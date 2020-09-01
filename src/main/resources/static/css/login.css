@@ -39,7 +39,7 @@ a {
 }
 .login-header {
   width: 100%;
-  height: 250px;
+  height: 10%;
   background-color: #ff69b4;
   text-align: center;
   justify-content: center;
@@ -52,11 +52,10 @@ a {
   justify-content: space-around;
   width: 50%;
   margin: 2rem 25%;
-  padding: 1rem;
 }
 .login-logo {
-  width: 90px;
-  height: 90px;
+  width: 75px;
+  height: 75px;
   float: left;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -68,6 +67,7 @@ a {
 }
 .login-section {
   height: 700px;
+  height: 80%;
   background: url('../images/login_background3.jpg') no-repeat !important;
   background-position: center;
 }
@@ -97,6 +97,7 @@ label {
   letter-spacing: 4px;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+  color: #505050;
 }
 .login-input {
   width: 500px;
@@ -137,4 +138,17 @@ label {
 .login-button:hover {
   cursor: pointer;
   color: #ff69b4;
+}
+footer {
+  height: 10%;
+  width: 100%;
+  background-color: #ff69b4;
+  padding: 0.5rem;
+}
+.footer-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
 }

@@ -34,9 +34,126 @@
 */
 
 /* Customer Container Style Start*/
-.customers-container {
+.select-customers-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 700px;
+  padding: 1rem;
+  margin-top: 50px;
+}
+.select-customers-header-container {
+  height: 20%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   padding: 1rem;
-  margin-top: 50px;
+  justify-content: center;
+}
+.select-customer-details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 80%;
+  padding: 1rem;
+  border: 3px solid #dcdcdc;
+}
+.select-customer-heading-container {
+  width: 50%;
+  text-align: center;
+}
+.select-customer-heading-container h3 {
+  font-size: 20px;
+}
+.next-button-container {
+  width: 50%;
+  text-align: center;
+  padding: 1rem;
+}
+.next-button {
+  background-color: #505050;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 15px;
+}
+.next-button:hover {
+  color: #ff69b4;
+}
+.customers-col,
+.pet-col {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  min-height: 500px;
+}
+.customers-col {
+  border-right: 2px solid #ff69b4;
+}
+.customer-select-search-container {
+  width: 80%;
+  margin: 2rem 10%;
+  text-align: center;
+}
+.search-input {
+  width: 60%;
+  margin: 1rem 20%;
+  padding: 1rem;
+  border: 2px solid #c4c4c4;
+}
+.customer-select-table-customer,
+.customer-select-table-pet {
+  width: 100%;
+  padding: 1rem;
+  border-collapse: collapse;
+}
+th {
+  background-color: #505050;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  color: #ffffff;
+}
+tbody tr td {
+  padding-top: 1rem;
+}
+/* Checkbox Styles Start */
+.checkbox-column {
+  background-color: #ffffff;
+  text-align: center;
+  text-align: left;
+}
+/*  Checkbox */
+.customer-select-checkbox {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  -webkit-appearance: none;
+  outline: none;
+  transition: 0.5s;
+  padding-left: 5px;
+  cursor: pointer;
+}
+.customer-select-checkbox:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid #ff69b4;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+.customer-select-checkbox:checked:before {
+  border-left: none;
+  border-top: none;
+  width: 20px;
+  border-color: #ff69b4;
+  transform: rotate(45deg);
 }

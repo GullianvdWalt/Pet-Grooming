@@ -83,24 +83,19 @@ body {
   width: 240px;
   text-decoration: none;
   display: inline-block;
+  vertical-align: middle;
   text-align: center;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 18px;
+  font: 600;
 }
 .buttons:hover {
   cursor: pointer;
-}
-.buttons a {
-  color: #ffffff;
-  font-size: 18px;
-  font: 600;
-  text-transform: uppercase;
-  display: inline-block;
-  vertical-align: middle;
-  text-decoration: none;
-}
-.buttons a:hover {
   color: #ff69b4;
   transition: 0.5s;
 }
+
 .buttons img {
   width: 45px;
   height: 45px;

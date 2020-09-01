@@ -15,8 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppointmentController {
     
+    // New Appointment Page - Select Customer
+    @RequestMapping("/newAppointments/select")
+    public String newAppointmentSelect(Model model){
+      // Set Page Title
+      String pageTitle = "Customers";
+      model.addAttribute("pageTitle", pageTitle);
+      // Set Page Title Icon
+      String iconUrl = "dog.jpg";
+      model.addAttribute("iconUrl", iconUrl);
+        return "SelectCustomer";
+    }
+    
     // Main New Appointment Page
-    @RequestMapping("/newAppointments")
+    @RequestMapping("/newAppointments/select/new")
     public String newAppointment(Model model){
       // Set Page Title
       String pageTitle = "New Appointment";
@@ -27,5 +39,16 @@ public class AppointmentController {
         return "NewAppointment";
     }
     
+    // Appointment Complete
+    @RequestMapping("/appointmentComplete")
+    public String appointmentComplete(Model model){
+      // Set Page Title
+      String pageTitle = "Appointment Complete";
+      model.addAttribute("pageTitle", pageTitle);
+      // Set Page Title Icon
+      String iconUrl = "servicesSmall.png";
+      model.addAttribute("iconUrl", iconUrl);
+        return "AppointmentComplete";
+    }
 
 }

@@ -1,0 +1,81 @@
+.employees-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-top: 50px;
+}
+.employee-search-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 2px solid #dcdcdc;
+  padding: 1rem;
+}
+.employee-search-container-left {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  padding: 1rem;
+}
+.employee-search-container-right {
+  width: 40%;
+  padding: 1rem;
+}
+.search-employee {
+  border: 2px solid #c4c4c4;
+  width: 50%;
+  margin-left: 20px;
+}
+.employee-search-container-right a {
+  float: right;
+}
+.employee-table-container {
+  min-height: 400px;
+  padding: 1rem;
+  border: 2px solid #dcdcdc;
+  margin-top: 2rem;
+}
+.employees-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+th {
+  background-color: #505050;
+  color: #ffffff;
+  text-align: left;
+  padding: 1rem;
+}
+tbody tr {
+}
+td {
+  padding: 1rem;
+}
+table tr:nth-child(even) {
+  background-color: rgb(80, 80, 80, 0.8);
+  color: #fff;
+}
+/* Action Buttons */
+.edit-icon,
+.delete-icon {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+  background: transparent;
+
+  /*  For Grow Effect */
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+/*  For Grow Effect */
+.edit-icon:hover,
+.delete-icon:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}

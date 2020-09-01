@@ -13,12 +13,10 @@
   <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
   <link rel="stylesheet" th:href="@{/css/index.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-  <!-- Mobile Menu -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!-- For Colapsing Menu -->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <!-- Material Icons -->
-
 </head>
 
 <body>
@@ -75,7 +73,8 @@
                 </td>
                 <td class="checkbox-column">
                   <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" />
+                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" id="schedule-checkbox"
+                      onclick="appComplete()" />
                   </div>
                 </td>
               </tr>
@@ -89,7 +88,8 @@
                 </td>
                 <td class="checkbox-column">
                   <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" />
+                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" id="schedule-checkbox"
+                      onclick="appComplete()" />
                   </div>
                 </td>
               </tr>
@@ -103,7 +103,8 @@
                 </td>
                 <td class="checkbox-column">
                   <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" />
+                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" id="schedule-checkbox"
+                      onclick="appComplete()" />
                   </div>
                 </td>
               </tr>
@@ -119,8 +120,8 @@
   <footer th:insert="fragments/footer :: footer">
     <!-- Footer Included With Fragments -->
   </footer>
-  <!--    Scripts         -->
-  <script src="/js/dashboard.js"></script>
+  <!-- Scripts  -->
+  <script th:src="@{/js/index.js}"></script>
 </body>
 
 </html>
