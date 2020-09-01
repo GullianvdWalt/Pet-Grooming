@@ -2,7 +2,6 @@
 *   © Pet Grooming 
 *   Pearson Pretoria ITSP300 - Project 2020
 *   
-
     This is the main class for the main pet grooming application
 */
 

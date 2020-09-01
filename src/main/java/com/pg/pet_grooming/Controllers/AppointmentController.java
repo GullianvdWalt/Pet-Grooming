@@ -1,4 +1,6 @@
 /*
+   Created By Gullian Van Der Walt
+
  * This is the Appointment Controller Class
  * This class will handle the CRUD operations and Thymeleaf.
  * 
