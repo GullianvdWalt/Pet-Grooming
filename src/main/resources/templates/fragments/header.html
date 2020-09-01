@@ -27,7 +27,7 @@ and open the template in the editor.
         <span class="username" th:text="${#authentication.getPrincipal().getUsername()}"></span>
       </div>
       <div>
-      <a href="login.html" class="logout-button">Logout</a>
+      <a th:href="@{/logout}" class="logout-button">Logout</a>
     </div>
     </div>
 

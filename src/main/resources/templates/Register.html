@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Grooming | Login</title>
+  <title>Pet Grooming | Register</title>
   <link rel="icon" href="/icons/icon.ico">
   <!-- Styles -->
   <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-  <link rel="stylesheet" th:href="@{/css/login.css}" />
+  <link rel="stylesheet" th:href="@{/css/registration.css}" />
   <style th:inline="text">
     .login-section {
       height: 700px;
@@ -22,40 +22,45 @@
   <div class="login-header">
     <div class="login-header-container">
       <img src="/icons/paw-white.png" alt="logo" class="login-logo">
-      <h1 class="login-heading">Pet Grooming - Login</h1>
+      <h1 class="login-heading">Pet Grooming - Register</h1>
     </div>
   </div>
   <div class="login-section">
     <div class="form-container">
-      <form class="login-form" th:action="@{/login}" method="post">
-
-        <!-- Success Message after registration -->
-        <div style="text-align: center; font-size: 18px; color: green; font-weight: bold;">
-          <span th:utext="${message}"></span>
-        </div>
-
+      <form class="login-form" th:action="@{/users/addNew}" method="POST">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" name="username" id="username" class="login-input" required autofocus>
-        </div><br>
+        </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" name="password" id="password" class="login-input" required>
-        </div><br>
+        </div>
+        <div class="form-group">
+          <label for="password">Confirm Password</label>
+          <input type="password" id="confirmPassword" class="login-input" required>
+        </div>
         &nbsp;
         <div class="login-button-container">
-          <input type="submit" class="login-button" value="Login">
-          <a th:href="@{/register}" class="register-button">Register</a>
+          <button type="submit" class="login-button">Submit</button>
         </div>
       </form>
 
     </div>
   </div>
+
   <footer>
     <div>
       <h3 class="footer-text">Pet Grooming &copy; 2020 </h3>
     </div>
   </footer>
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+    </script>
+  <!-- JS -->
+  <script th:src="@{/js/registration.js}"></script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+// Created By Gullian Van Der Walt
+
 /* Menu hide/show function */
 function viewMenu() {
   var y = document.getElementById("nav-list");
