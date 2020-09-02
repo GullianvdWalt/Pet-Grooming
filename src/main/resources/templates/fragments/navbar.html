@@ -5,31 +5,40 @@
 <body>
   <div class="navbar-container" th:fragment="navbar">
     <ul class="navigation-list" id="nav-list">
-      <li>
-        <a th:href="@{/}"><img src="/icons/dogHouse.png" alt="customers" class="icon" /> Dashboard</a>
+      <li id="dashboardLink">
+        <a th:href="@{/}"><img src="/icons/dogHouse.png" alt="customers" class="icon" title="Dashboard" />
+          <span id="navLinkDashboard">Dashboard</span></a>
       </li>
-      <li>
-        <a th:href="@{/customers}"><img src="/icons/dog.jpg" alt="customers" class="icon" /> Customers</a>
+      <li id="customersLink">
+        <a th:href="@{/customers}"><img src="/icons/dog.jpg" alt="customers" class="icon" title="Customers" /> <span
+            id="navLinkCustomers">Customers</span></a>
       </li>
-      <li>
+      <li id="newAppLink">
         <a th:href="@{/newAppointments/select}"><img src="/icons/newAppointment.png" alt="newAppointment"
-            class="icon" />New
-          Appointment
+            title="New Appointment" class="icon" />
+          <span id="navLinkNewApp">New
+            Appointment</span>
         </a>
       </li>
-      <li>
-        <a th:href="@{/employees}"><img src="/icons/employee.png" alt="employee" class="icon" />Employees</a>
+      <li id="employeesLink">
+        <a th:href="@{/employees}"><img src="/icons/employee.png" alt="employee" class="icon" title="Employees" />
+          <span id="navLinkEmployees">Employees</span>
+        </a>
       </li>
-      <li>
-        <a th:href="@{/finance}"><img src="/icons/finance.png" alt="finance" class="icon" /> Finance</a>
+      <li id="financeLink">
+        <a th:href="@{/finance}"><img src="/icons/finance.png" alt="finance" class="icon" title="Finance" />
+          <span id="navLinkFinance">Finance</span>
+        </a>
       </li>
-      <li>
-        <a href="#"><img src="/icons/grooming.png" alt="jobCard" class="icon" /> Job Card</a>
+      <li id="jobCardLink">
+        <a href="#"><img src="/icons/grooming.png" alt="jobCard" class="icon" title="Job Card" />
+          <span id="navLinkJobCard">Job Card</span>
+        </a>
       </li>
-      <li>
-        <a href="#"><img src="/icons/manage.png" alt="manageBusiness" class="icon" />
-          Manage
-          Business</a>
+      <li id="manageBusinessLink">
+        <a href="#"><img src="/icons/manage.png" alt="manageBusiness" class="icon" title="Manage Business" />
+          <span id="navLinkManageBusiness"> Manage Business</span>
+        </a>
       </li>
     </ul>
   </div>

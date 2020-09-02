@@ -73,6 +73,7 @@ body {
 }
 .content-container {
   width: 80%;
+  justify-content: center;
 }
 /* Style for All Buttons */
 .buttons {
