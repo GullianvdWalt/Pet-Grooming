@@ -44,7 +44,7 @@ public class EmployeeController {
     @RequestMapping("/employees/details")
     public String getEmployees(Model model){
       // Set Page Title
-      String pageTitle = "Employees";
+      String pageTitle = "Edit Employee";
       model.addAttribute("pageTitle", pageTitle);
       // Set Page Title Icon
       String iconUrl = "employee.png";
