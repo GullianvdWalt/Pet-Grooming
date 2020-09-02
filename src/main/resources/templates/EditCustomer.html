@@ -27,12 +27,12 @@
   <div class="content-section">
 
     <!-- Navbar Starts -->
-    <nav th:insert="fragments/navbar :: navbar">
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
       <!-- Navigation Included With Fragments -->
     </nav>
 
     <!-- Content-Container-Start -->
-    <div class="content-container">
+    <div class="content-container" id="contentContainer">
 
       <!-- Edit Customer Container Start -->
       <form class="edit-customer-container" th:action="@{/addNewCustomer}" method="post">

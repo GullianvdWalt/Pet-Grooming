@@ -24,12 +24,12 @@
   <!--    Customer Section Starts    -->
   <div class="content-section">
     <!-- Navbar Starts -->
-    <nav th:insert="fragments/navbar :: navbar">
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
       <!-- Navigation Included With Fragments -->
     </nav>
 
     <!-- Content-Container-Start -->
-    <div class="content-container">
+    <div class="content-container" id="contentContainer">
       <!-- Customers Container Start -->
       <div class="customers-container">
         <!--    Filter Section Starts   -->
@@ -198,7 +198,7 @@
   </footer>
 
   <!--   Scripts     -->
-  <script src="/js/customer.js"></script>
+  <!-- <script src="/js/customer.js"></script> -->
   <script th:src="@{/js/sidenav.js}"></script>
 </body>
 

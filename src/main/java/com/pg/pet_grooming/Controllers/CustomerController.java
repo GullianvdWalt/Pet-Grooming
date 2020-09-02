@@ -6,6 +6,7 @@
  */
 package com.pg.pet_grooming.Controllers;
 // Imports
+import com.pg.pet_grooming.Models.Auditable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class CustomerController {
+public class CustomerController extends Auditable<String>{
     
 
     // Main Customer Dashboard

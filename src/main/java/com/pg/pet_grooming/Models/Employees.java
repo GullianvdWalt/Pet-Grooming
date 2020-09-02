@@ -30,11 +30,13 @@ import lombok.ToString;
 public class Employees extends Auditable<String>{
     
     // Attributes
-    
-    // SA ID of Employee is Used to identify
     @Id
     @Column(columnDefinition="VARCHAR(15)",name = "employee_id", length = 15,nullable = false)
     private String employee_id;
+    
+    @NotNull
+    @Column(name = "emp_sa_id",nullable = false)
+    private int emp_sa_id;
     
     @NotNull
     @Column(name = "employee_full_name", length = 255,nullable = false)

@@ -91,6 +91,14 @@ body {
   font-size: 18px;
   font: 600;
 }
+.buttons a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.buttons a:hover {
+  cursor: pointer;
+  color: #ff69b4;
+}
 .buttons:hover {
   cursor: pointer;
   color: #ff69b4;

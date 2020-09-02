@@ -1,0 +1,58 @@
+.new-employee-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-top: 50px;
+}
+.employee-details-section {
+  height: 80%;
+  padding: 1rem;
+}
+.new-employee-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  margin: 2rem 15%;
+}
+.employee-from {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  border: 3px solid #dcdcdc;
+  justify-content: space-between;
+}
+.new-employee-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  width: 90%;
+  margin: 10px 5%;
+  height: 10%;
+}
+.employee-form-col {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50%;
+}
+.employee-form-row {
+  display: flex;
+  width: 90%;
+  margin-bottom: 50px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.employee-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+.employee-input,
+.auditable-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  padding: 1rem;
+  border: 2px solid #ff69b4;
+}
