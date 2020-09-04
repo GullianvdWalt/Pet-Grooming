@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ExpenseController {
     
      // Main Expense View
-    @RequestMapping("/expenses")
+    @RequestMapping("/finance/expenses")
     public String getExpenses(Model model){
       // Set Page Title
       String pageTitle = "Expenses";
@@ -25,7 +25,7 @@ public class ExpenseController {
         return "Expenses";
     }   
     
-    @RequestMapping("/finance/reports")
+    @RequestMapping("/finance/expenseReports")
     public String getExpenseReports(Model model){
       // Set Page Title
       String pageTitle = "Expense Reports";

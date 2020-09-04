@@ -37,7 +37,7 @@ public class InvoiceController {
       return "Invoice";
     }
     
-    @RequestMapping("/viewInvoices")
+    @RequestMapping("/finance/viewInvoices")
     public String viewInvoices (Model model){
       // Set Page Title
       String pageTitle = "Invoices";

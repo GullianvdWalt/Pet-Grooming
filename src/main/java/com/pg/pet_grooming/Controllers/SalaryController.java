@@ -18,7 +18,7 @@ public class SalaryController {
     // Inject Service
     @Autowired SalariesService salaryService;
     
-    @RequestMapping("/salaries")
+    @RequestMapping("/finance/salaries")
     public String getSalaries(Model model){
       // Set Page Title
       String pageTitle = "Salaries";

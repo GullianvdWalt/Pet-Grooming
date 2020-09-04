@@ -19,7 +19,17 @@
   display: flex;
   flex-direction: column;
 }
-.salary-container-col-left,
+
+.salary-container-col-left {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4c4c4;
+  padding: 2rem;
+  margin: 1rem;
+  justify-content: center;
+  height: 100%;
+  width: 40%;
+}
 .salary-container-col-right {
   display: flex;
   flex-direction: column;
@@ -27,11 +37,6 @@
   padding: 1rem;
   margin: 1rem;
   justify-content: center;
-}
-.salary-container-col-left {
-  width: 40%;
-}
-.salary-container-col-right {
   width: 60%;
 }
 .salary-form-row-left {
@@ -64,6 +69,9 @@ h3 {
   width: 70%;
   margin: 1rem 15%;
 }
+.deductions-row-row-row input {
+  float: right;
+}
 .overtime-row-row-col,
 .deductions-row-row {
   display: flex;
@@ -83,17 +91,24 @@ h3 {
   flex-direction: column;
 }
 .transport-money-row-row-col-row {
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 1rem 15%;
 }
+
 .transport-money-row-row-col-row label {
   margin-right: 10px;
 }
 .transport-money-row-row-col-col {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
+}
+.transport-money-row-row-col-col input {
+  width: 50%;
+  margin: 1rem 25%;
 }
 .transport-money-row-row-col-col label {
   margin-bottom: 10px;
@@ -101,6 +116,8 @@ h3 {
 .bonus-row-row {
   display: flex;
   flex-direction: row;
+  padding: 4rem;
+  justify-content: space-evenly;
 }
 .bonus-row-row-col {
   display: flex;
@@ -108,8 +125,9 @@ h3 {
 }
 .bonus-row-row-col-col-row {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  padding: 1rem;
 }
 .salary-total-row {
   display: flex;
@@ -119,7 +137,13 @@ h3 {
 }
 .salary-total-col {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  margin: 1rem 15%;
+}
+.salary-total-col label {
+  margin-bottom: 10px;
 }
 .button-container {
   height: 10%;
