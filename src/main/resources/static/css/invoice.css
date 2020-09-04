@@ -43,13 +43,15 @@
 .invoice-label,
 .invoice-data {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .invoice-data-note {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3rem;
   width: 80%;
+  margin: 1rem 10%;
   height: 120px;
+  text-align: center;
 }
 .discount-input {
   font-size: 1.2rem;

@@ -55,7 +55,7 @@
           <div class="finance-button-grid-item">
             <div class="finance-button">
               <img th:src=" @{/Icons/Invoice.png}" alt="Invoices">
-              <a th:href="@{/invoices}">Invoices</a>
+              <a th:href="@{/viewInvoices}">Invoices</a>
             </div>
           </div>
           <div class="finance-button-grid-item">
@@ -87,6 +87,10 @@
 
   </div>
   <!--    Main Section Ends    -->
+
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
 
   <!-- Scripts -->
   <script th:src="@{/js/sidenav.js}"></script>

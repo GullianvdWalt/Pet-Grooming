@@ -59,7 +59,8 @@
             </div>
             <div class="invoice-row-note">
               <p class="invoice-label">Note</p>
-              <input type="text" class="invoice-data-note" id="invoice-note" value="Thank You For Your Support">
+              <input type="text" class="invoice-data-note" id="invoice-note" value="Thank You For Your Support"
+                name="invoice_note">
             </div>
 
           </div>
@@ -101,15 +102,15 @@
         <!-- Button section start-->
         <div class="button-container">
           <div class="cancel-button-container">
-            <a href="#" class="cancel-button">
-              <img src="/static/Icons/cancelSmall.png" alt="cancel" id="cancel-image">
+            <a th:href="@{/finance}" class="cancel-button">
+              <img src="/Icons/cancelSmall.png" alt="cancel" id="cancel-image" class="icon">
               Cancel
             </a>
           </div>
           <div class="save-button-container">
 
             <a href="#" class="save-button">
-              <img src="/static/Icons/save.png" alt="save" id="save-image">Save
+              <img src="/Icons/save.png" alt="save" id="save-image" class="icon">Save
             </a>
           </div>
 
