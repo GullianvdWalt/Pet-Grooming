@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ExpenseController {
     
-     // Employees
+     // Main Expense View
     @RequestMapping("/expenses")
     public String getExpenses(Model model){
       // Set Page Title
@@ -24,5 +24,16 @@ public class ExpenseController {
       model.addAttribute("iconUrl", iconUrl);
         return "Expenses";
     }   
+    
+    @RequestMapping("/finance/reports")
+    public String getExpenseReports(Model model){
+      // Set Page Title
+      String pageTitle = "Expense Reports";
+      model.addAttribute("pageTitle", pageTitle);
+      // Set Page Title Icon
+      String iconUrl = "exspense.png";
+      model.addAttribute("iconUrl", iconUrl);
+       return "ExpenseReports";
+    } 
     
 }

@@ -5,24 +5,27 @@
 package com.pg.pet_grooming.Controllers;
 
 //Imports
-import com.pg.pet_grooming.Models.Invoice;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 // Local Imports
 import com.pg.pet_grooming.Services.SalariesService;
-import com.pg.pet_grooming.Models.Salaries;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 public class SalaryController {
    
     // Inject Service
     @Autowired SalariesService salaryService;
     
-    @GetMapping("/salaries")
+    @RequestMapping("/salaries")
     public String getSalaries(Model model){
-        List<Salaries> salaryList = salaryService.getSalaries();
-        return "Salaries";
-    }
+      // Set Page Title
+      String pageTitle = "Salaries";
+      model.addAttribute("pageTitle", pageTitle);
+      // Set Page Title Icon
+      String iconUrl = "payroll.png";
+      model.addAttribute("iconUrl", iconUrl);
+      return "Salaries";
+    } 
 }

@@ -14,8 +14,6 @@
   background: #505050;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  width: 100%;
-  height: 100%;
   padding: 1rem;
 }
 .finance-button {
@@ -24,21 +22,17 @@
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 30px;
-}
-.finance-button a {
   color: #ffffff;
   text-transform: uppercase;
   font-size: 22px;
   text-align: center;
   text-decoration: none;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin: 1rem;
 }
+
 .finance-button:hover {
-  cursor: pointer;
-}
-.finance-button a:hover {
   color: #ff69b4;
+  cursor: pointer;
 }
 .finance-button img {
   width: 65px;
@@ -46,4 +40,5 @@
   vertical-align: middle;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   margin-bottom: 20px;
+  margin-right: 10px;
 }
