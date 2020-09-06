@@ -15,14 +15,15 @@ import org.springframework.ui.Model;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestParam;
 // Local Imports
 import com.pg.pet_grooming.Services.PetService;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Models.Pet;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.pg.pet_grooming.Models.PetOwner;
+
 
 @Controller
 public class PetController {
@@ -33,28 +34,30 @@ public class PetController {
     @Autowired private PetRepository petRepository;
     @Autowired private PetOwnerRepository petOwnerRepository;
     
-    
-    
+        
     @GetMapping("/newCustomer/pet/{id}")
     public String newCustomerPet(Model model,@PathVariable("id")int id) throws ResourceNotFoundException {
-        // @PathVariable("id") int id,
-//       List <PetOwner> petOwnerList = petOwnerService.findPetOwnerById(id);
-//       Pet pet = new Pet();
-       
+       PetOwner petOwner = new PetOwner();
+       Pet pet = new Pet();
          // Set Page Title
         String pageTitle = "New Customer";
         model.addAttribute("pageTitle", pageTitle);
         // Set Page Title Icon
         String iconUrl = "dog.jpg";
         model.addAttribute("iconUrl", iconUrl);
-//        model.addAttribute("petOwner", petOwner);
         model.addAttribute("id", id);
-//        model.addAttribute("petOwnerLis  
-        //model.addAttribute("petOwnerId", petOwnerId);", petOwnerList);
-//        model.addAttribute("pet", pet);
+        model.addAttribute("pet",pet);
+        model.addAttribute("petOwner", petOwnerService.findPetOwnerById(id));
         return "NewPet";
     }
     
+        
+     // Add New Pet
+    @PostMapping("/newCustomer/pet/new")
+    public String addPet(Pet pet, Model model){
+       petService.save(pet);
+       return "redirect:/newCustomer/pet/new";
+    }  
     
     
     // Get Pet by PetOwnerId

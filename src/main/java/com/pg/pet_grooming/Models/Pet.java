@@ -43,10 +43,11 @@ public class Pet extends Auditable<String>{
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)
     private PetOwner petOwner; //Pet Owner Object
+    private String pet_owner_id;
     
     @NotNull
     @Column(name = "pet_name", length = 255,nullable = false)
-    private String petName;
+    private String pet_name;
     
     @NotNull
     @Column(name = "pet_gender", length = 1)

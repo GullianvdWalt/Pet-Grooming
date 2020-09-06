@@ -1,14 +1,24 @@
 /* Created By Gullian Van Der Walt - 09-08-2020 */
-/* Last Updated - 05-09-2020 */
+/* Last Updated - 06-09-2020 */
 
 /* Styles For New Customer  - New Pet */
 
 /* Customer Details Section Style Start */
+.new-pet-form {
+  display: flex;
+  flex-direction: column;
+}
 .new-customer-container {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin-top: 50px;
+}
+.customers-new-customer-pet-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80%;
 }
 .new-customer-header-container {
   height: 10%;
@@ -104,6 +114,7 @@
   border: 2px solid #505050;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
+  color: #ff69b4;
 }
 
 #customer-id:hover {
@@ -117,6 +128,7 @@
   border: 2px solid #505050;
   font-family: 'Lato', sans-serif;
   font-weight: 800;
+  color: #ff69b4;
 }
 
 .button-container {
@@ -125,8 +137,8 @@
   justify-content: space-between;
   text-align: center;
   width: 90%;
-  margin: 10px 5%;
   height: 10%;
+  margin: 10px 5%;
 }
 
 /* Label Styles */
@@ -149,8 +161,8 @@
 .pet-select {
   width: 50%;
   margin: 0;
+  color: #ff69b4;
 }
-
 .pet-gender-select {
   font-size: 1.6em;
   color: #ff69b4;
@@ -163,12 +175,14 @@
 }
 /* Notes Input */
 #pet-notes-input {
-  font-size: 1.7em;
+  font-size: 1.2em;
+  padding: 1rem;
   font-weight: 200;
   height: 70px;
   border: 2px solid #505050;
   font-family: 'Lato', sans-serif;
   font-weight: 800;
+  color: #ff69b4;
 }
 
 /* Responsive */

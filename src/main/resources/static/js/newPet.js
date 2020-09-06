@@ -1,5 +1,13 @@
 // Created By Gullian Van Der Walt
 
+// Set Value of Pet Owner Id for submission
+function setPetOwnerId(){
+  var id = document.getElementById("customer-id").value;
+  var petOwnerId = docuemnt.getElementById("petOwnerId");
+    
+}
+
+
 /* Add New Pet Alert*/
 function addPetFunction() {
   alert("Enter Pet Details In Highlighted Fields.\n"

@@ -42,7 +42,7 @@ public class PetOwnerController {
     
     // Get Pet Owners
     @GetMapping("/getPetOwners")
-    public List<PetOwner>getPetOwners(){
+    public List<PetOwner>getPetOwners(BindingResult bindingResult){
         return petOwnerService.getPetOwners();
     }
     
@@ -58,6 +58,7 @@ public class PetOwnerController {
         String iconUrl = "petOwner.png";
         model.addAttribute("iconUrl", iconUrl);
         model.addAttribute("petOwner", petOwner);
+        
         return "NewPetOwner";
     }
     
@@ -67,7 +68,7 @@ public class PetOwnerController {
        petOwnerRepository.save(petOwner);
        // Set PathVariable In PetController to New Pet Owner Id
        int id = petOwner.getId();
-        System.out.println(id);
+       
        // Direct to New Pet and pass Pet Owner Id
        return "redirect:/newCustomer/pet/"+id;
     }  
