@@ -45,5 +45,8 @@ public class PetOwnerService {
    public List<PetOwner> findPetOwnerByKeyword(String keyword){
        return petOwnerRepository.findByKeyword(keyword);
    }
-
+   
+   public List<PetOwner> findPetOwnerById(Integer id){
+       return petOwnerRepository.findPetOwnerById(id);
+   }
 }

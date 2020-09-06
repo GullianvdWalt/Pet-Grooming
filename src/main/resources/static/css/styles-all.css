@@ -112,18 +112,10 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
-/* Footer Section */
-/* footer {
-  width: 100%;
-  height: 5%;
-  text-align: center;
-  font-family: 'Lato', sans-serif;
-  font-style: italic;
-  font-size: 1.5em;
-  color: #f3f3f3;
-  background-color: #ff69b4;
-  padding: 0.5em;
-} */
+.auditing-label {
+  font-size: 1.2em;
+  color: gray;
+}
 
 /*  Media Queries */ /*  Smaller Desktop*/
 @media screen and (max-width: 1680px) {

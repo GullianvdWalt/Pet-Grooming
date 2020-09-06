@@ -6,23 +6,26 @@
 package com.pg.pet_grooming.Services;
 
 // Imports
-import com.pg.pet_grooming.Models.Employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 // Local Imports
 import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Models.Pet;
-import java.util.List;
+import com.pg.pet_grooming.Models.PetOwner;
+import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 
 @Service
 public class PetService {
     
     // Inject PetRepository
     @Autowired private PetRepository petRepository;
+    @Autowired private PetOwnerRepository petOwnerRepository;
    
     // Return Pets
-    public List<Pet> getEmployees(){
+    public List<Pet> getPets(){
         return petRepository.findAll();
     }
     
@@ -36,6 +39,14 @@ public class PetService {
         petRepository.deleteById(id);
     }
     
+    // Get Pet By Owner ID
+    public Optional<PetOwner> findPetOwnerById(Integer id){
+        return petOwnerRepository.findById(id);
+    }
+       // Get Pet By ID
+    public Optional<Pet> findPetById(Integer id){
+        return petRepository.findById(id);
+    }
     
    // Get Pet By Keyword from SQL Query Defined in the PetRepository
    public List<Pet> findPetByKeyword(String keyword){

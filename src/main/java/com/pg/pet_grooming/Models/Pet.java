@@ -20,25 +20,29 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import javax.persistence.CascadeType;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "pet")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
-@NoArgsConstructor //Lombok, Adds The Default Constructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor           //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Pet {
+public class Pet extends Auditable<String>{
     
     // Attributes
     @Id
-    @Column(name = "pet_id",nullable = false)
+    @Column(name = "id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer petID;
+    private Integer id;
     
-    @ManyToOne // Many Pets have one owner
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)
     private PetOwner petOwner; //Pet Owner Object
-    private Long pet_owner_id;
     
     @NotNull
     @Column(name = "pet_name", length = 255,nullable = false)

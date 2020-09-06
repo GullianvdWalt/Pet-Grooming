@@ -28,51 +28,52 @@ public abstract class Auditable<U> { // Other Classes will define variable type.
     // Attributes
     
     @CreatedBy
-    protected U createdBy;
+    protected U created_by;
     
     @CreatedDate
-    protected Date createdDate;
+    protected Date created_date;
     
     @LastModifiedBy
-    protected U lastModifiedBy;
+    protected U last_modified_by;
     
     @LastModifiedDate
     @Temporal(TIMESTAMP)
-    protected Date lastModifiedDate;
+    protected Date last_modified_date;
 
     // Getter and Setter Methods
+
+    public U getCreated_by() {
+        return created_by;
+    }
+
+    public void setCreated_by(U created_by) {
+        this.created_by = created_by;
+    }
+
+    public Date getCreated_date() {
+        return created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        this.created_date = created_date;
+    }
+
+    public U getLast_modified_by() {
+        return last_modified_by;
+    }
+
+    public void setLast_modified_by(U last_modified_by) {
+        this.last_modified_by = last_modified_by;
+    }
+
+    public Date getLast_modified_date() {
+        return last_modified_date;
+    }
+
+    public void setLast_modified_date(Date last_modified_date) {
+        this.last_modified_date = last_modified_date;
+    }
     
-    public U getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(U createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public U getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(U lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
     
     
 }
