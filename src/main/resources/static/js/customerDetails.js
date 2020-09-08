@@ -11,8 +11,6 @@ $(document).ready(function () {
         contentType: "application/json",
         url: '/loadPetDetails',
         data: JSON.stringify(params),
-        cache: false,
-        timeout: 600000,
         success: function (result) {
           var petName = '';
           var length = result.length;
