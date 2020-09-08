@@ -15,19 +15,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "employee")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor      
-public class Employees {
+public class Employees extends Auditable<String>{
     
-    // SA ID of Employee is Used to identify
+    // Attributes
     @Id
-    @Column(name = "employee_id", length = 15,nullable = false)
-    private Long employee_id;
+    @Column(columnDefinition="VARCHAR(15)",name = "employee_id", length = 15,nullable = false)
+    private String employee_id;
+    
+    @NotNull
+    @Column(name = "emp_sa_id",nullable = false)
+    private int emp_sa_id;
     
     @NotNull
     @Column(name = "employee_full_name", length = 255,nullable = false)
@@ -41,7 +50,13 @@ public class Employees {
     @Column(name = "date_hired",nullable = false)
     private Date date_hired;
     
+    @NotNull
+    @Column(columnDefinition="VARCHAR(15)",name = "cell",nullable = false)
+    private String cell;
+    
+    
+    
     // Constructor handled by Lombok
     // Getters and Setters handled by Lombok
-    
+    // toString Method handled by Lombok
 }

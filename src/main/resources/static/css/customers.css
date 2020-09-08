@@ -93,13 +93,13 @@
   display: inline;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 26px;
+  font-size: 20px;
   color: #505050;
 }
 label {
   font-family: 'Montserrat', sans-serif;
   color: #505050;
-  font-size: 26px;
+  font-size: 20px;
 }
 .filter-input {
   width: 90%;
@@ -167,25 +167,6 @@ table tr:nth-child(even) {
 }
 #edit-button {
   cursor: pointer;
-}
-/*  Adjust Row Widths   */
-.id {
-  width: 5%;
-}
-.name {
-  width: 9%;
-}
-.cell {
-  width: 20%;
-}
-.address {
-  width: 20%;
-}
-.pet-name {
-  width: 12%;
-}
-.breed {
-  width: 20%;
 }
 .last-appointment {
   width: 10%;

@@ -20,10 +20,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.pg.pet_grooming.Models.Invoice;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name = "appointments")
@@ -37,8 +41,8 @@ public class Appointments {
     // Primary Key
     @Id
     @Column(name = "app_id",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long app_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer app_id;
     
     @NotNull
     @Column(name = "date_created",nullable = false)
@@ -68,8 +72,9 @@ public class Appointments {
     private Pet pet; //Pet Object
     private Long pet_id; // Foreign Key
     
-
-    
+//    // One Appointmment, One Invoice
+//    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "invoice")
+//    private Invoice invoice;
     
     // Constructor handled by Lombok
     // Getters and Setters handled by Lombok

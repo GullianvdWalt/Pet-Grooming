@@ -10,7 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 /*
-    For Applying Fonts: 
+    For Applying Fonts:
                             font-family: 'Montserrat', sans-serif;
                             font-family: 'Roboto', sans-serif;
                             font-family: 'Lato', sans-serif;
@@ -27,94 +27,29 @@
 
                               - heavy shadow - text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
                                                             0px 8px 13px rgba(0,0,0,0.1),
-                                                            0px 18px 23px rgba(0,0,0,0.1);  
+                                                            0px 18px 23px rgba(0,0,0,0.1);
 
                         Box Shadow :    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
                         Icons:
                                 -
-                    
+
 */
 
-/*  Main Page Container */
-.wrapper {
+/* Appointment Complete Details Section Style Starts */
+.appointment-complete-container {
   display: flex;
   flex-direction: column;
-  width: auto;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
+  padding: 1rem;
+  margin-top: 50px;
 }
-
-/*  Style Navbar Starts  */
-.navbar-container {
+/* Appointment Complete Details Section Header Styles */
+.appointment-details-header {
+  text-align: center;
   width: 100%;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 2em;
+  height: 20%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
 }
-.logo-container {
-  display: inline-block;
-  padding-left: 1.5em;
-  width: auto;
-  padding: 1em;
-  margin-top: 10px;
-  margin-left: 40px;
-}
-.logo {
-  display: inline;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  padding: 1em;
-  margin-left: 10px;
-  font-size: 30px;
-}
-.home-icon {
-  display: inline;
-  vertical-align: bottom;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  width: 93px;
-  height: 93px;
-  margin-right: 20px;
-  margin-left: 20px;
-
-  /*  For Grow Effect */
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-/*  For Grow Effect */
-.home-icon:hover {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-/* Appointment Complete Logo Container */
-.appointment-complete-logo-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 35%;
-  margin-top: 2rem;
-  margin-right: 4rem;
-  font-size: 1rem;
-  letter-spacing: 4px;
-  font-weight: bold;
-}
-/* Appointment Logo Icon */
-.appointment-complete-icon {
-  width: 70px;
-  height: 70px;
-  vertical-align: middle;
-  margin-right: 2rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
-}
-/* Navbar Styling Ends */
-
-/* Appointment Complete Details Section Style Starts */
 .appointment-details-section {
   width: 100%;
   height: 80%;
@@ -122,14 +57,7 @@
   flex-direction: column;
   justify-content: center;
 }
-/* Appointment Complete Details Section Header Styles */
-.appointment-details-header {
-  text-align: center;
-  width: 100%;
-  height: 10%;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.6rem;
-}
+
 /*Appointment Details Section Container Styles Starts*/
 .appointment-details-section-container {
   width: 80%;
@@ -145,7 +73,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1rem;
+  padding: 1rem;
+  margin-top: 10px;
 }
 /* Date-Time & Customer Details Containers */
 .date-time-container,
@@ -153,20 +82,21 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  margin: 0.6rem;
   padding: 1rem;
 }
 /* Date Container - Input Elements */
 .date-container,
 .time-container {
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
 }
 /* Style Date & Time Labels */
 .date-container label,
 .time-container label {
   margin-left: 1.5rem;
   margin-right: 2rem;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 /* Style Date & Time Inputs */
 .date-container input,
@@ -176,34 +106,35 @@
   border-radius: 5px;
   font-size: 1.3rem;
 }
-/* Style Input Boxes When User Click To Type*/
-#date-input:focus,
-#time-input-start:focus,
-.time-input-end:focus {
-  background-color: rgb(255, 105, 180, 0.8);
-  font-weight: bold;
-}
 .date-container input {
-  width: 200px;
+  width: 50%;
   margin-bottom: 1.5rem;
+  min-width: 150px;
+}
+.time-container div {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
 }
 .time-container input {
-  width: 120px;
+  min-width: 60px;
   margin-bottom: 2rem;
 }
 /* Dash Inbetween Time Input Boxes */
 .dash {
   margin-left: 0;
 }
+.customer-name-container,
+.customer-cell-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 /* Style Customer Details Input Labels */
 .customer-details-container label {
-  margin-left: 1.5rem;
-  margin-right: 2rem;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
-#cell-input {
-  margin-left: 5rem;
-}
+
 /* Style Customer Details Container - Input Boxes */
 .customer-details-container input {
   width: 300px;
@@ -212,14 +143,7 @@
   border-radius: 5px;
   margin-bottom: 1.5rem;
 }
-#customer-fullname-input:focus,
-#cell-input:focus {
-  background-color: rgb(255, 105, 180, 0.8);
-  font-weight: bold;
-}
-#cell-input {
-  margin-left: 9.8rem;
-}
+
 /* Styles Services Table Container */
 .services-container {
   width: 100%;
@@ -228,21 +152,18 @@
 /* Style Services Table  */
 table {
   width: 70%;
-  height: 100%;
+  min-height: 400px;
   border: 2px solid #c4c4c4;
   margin: 2rem 15%;
   padding: 2rem;
   font-size: 1.3rem;
 }
-/* Style Services Row and Columns  */
 tr {
-  margin: 1rem;
-}
-td {
-  margin: 1rem;
   padding: 1rem;
 }
-
+tr {
+  font-size: 18px;
+}
 /* Button Container */
 .button-container {
   width: 80%;
@@ -294,15 +215,3 @@ td {
 }
 
 /* Appointment Complete Details Section Style Ends */
-/* Footer Section */
-.footer {
-  width: auto;
-  max-height: 50px;
-  text-align: center;
-  font-family: 'Lato', sans-serif;
-  font-style: italic;
-  font-size: 1.5em;
-  color: #ff69b4;
-  padding: 0.5em;
-  margin-top: 4rem;
-}

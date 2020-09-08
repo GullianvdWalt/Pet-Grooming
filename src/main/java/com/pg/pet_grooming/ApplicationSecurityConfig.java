@@ -1,5 +1,5 @@
 
-
+// Created By Gullian Van Der Walt
         
 package com.pg.pet_grooming;
 
@@ -28,23 +28,29 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
         .csrf().disable()
 	.authorizeRequests()
 	.antMatchers("/login", "/resources/**", "/css/**", "/fonts/**", "/images/**","/icons/**").permitAll()
+        .antMatchers("/register", "/resources/**", "/css/**", "/fonts/**", "/images/**","/icons/**","/js/**").permitAll()
+        .antMatchers("/users/addNew").permitAll()
 	.anyRequest().authenticated()
 	.and()
 	.formLogin()
 	.loginPage("/login").permitAll()
 	.and()
-	.logout().invalidateHttpSession(true)
+	.logout().invalidateHttpSession(true) // set invalidation state when logout
 	.clearAuthentication(true)
 	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-	.logoutSuccessUrl("/login").permitAll(); 
+	.logoutSuccessUrl("/login").permitAll()
+        .deleteCookies("JSESSIONID")
+        .and()
+        .exceptionHandling()
+        .accessDeniedPage("/403"); 
         
     }
     
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
-        
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
     }
+    
     
     // Inject UserDetailsService
     @Autowired
@@ -58,7 +64,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
         provider.setUserDetailsService(userDetailsService);
         
         // Constructor Overloading
-        provider.setPasswordEncoder(passwordEncoder());
+        provider.setPasswordEncoder(bCryptPasswordEncoder());
         
         return provider;
     }

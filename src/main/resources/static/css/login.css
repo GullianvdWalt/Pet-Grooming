@@ -5,10 +5,10 @@
 
     Import Fonts:
 */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 /*
-    For Applying Fonts: 
+    For Applying Fonts:
                             font-family: 'Montserrat', sans-serif;
                             font-family: 'Roboto', sans-serif;
                             font-family: 'Lato', sans-serif;
@@ -32,35 +32,42 @@ body {
   margin: 0;
   background-color: rgba(205, 205, 205, 0.23);
   min-height: 100vh;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
-
-.header {
-  height: 250px;
+a {
+  text-decoration: none;
+}
+.login-header {
+  width: 100%;
+  height: 10%;
   background-color: #ff69b4;
   text-align: center;
+  justify-content: center;
   color: #fff;
   display: flex;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
-.header-container {
+.login-header-container {
   flex-direction: row;
-  justify-content: center;
-  width: 70%;
-  margin: 1rem 15%;
+  justify-content: space-around;
+  width: 50%;
+  margin: 2rem 25%;
 }
-.logo {
-  width: 90px;
-  height: 90px;
+.login-logo {
+  width: 75px;
+  height: 75px;
+  float: left;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-h1 {
+.login-heading {
   font-size: 36px;
+  position: relative;
   font-weight: bold;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .login-section {
   height: 700px;
+  height: 80%;
   background: url('../images/login_background3.jpg') no-repeat !important;
   background-position: center;
 }
@@ -88,10 +95,11 @@ label {
   margin-top: 10px;
   font-weight: 700;
   letter-spacing: 4px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
+  color: #505050;
 }
-input {
+.login-input {
   width: 500px;
   height: 60px;
   border-radius: 20px;
@@ -107,27 +115,48 @@ input {
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.login-button {
+.login-button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-button,
+.register-button {
   text-transform: uppercase;
   outline: none;
   background-color: #848484;
   border: none;
-  width: 300px;
-  margin: 0 200px;
+  width: 150px;
+  margin: 0 100px;
   text-align: center;
   height: 60px;
   border-radius: 25px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 28px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.button-container {
-  width: 700px;
-  margin: 1rem;
+.register-button {
+  padding-top: 10px;
 }
-.login-button:hover {
+.login-button:hover,
+.register-button:hover {
   cursor: pointer;
   color: #ff69b4;
+}
+footer {
+  height: 10%;
+  width: 100%;
+  background-color: #ff69b4;
+  padding: 0.5rem;
+}
+.footer-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
 }

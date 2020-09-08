@@ -1,3 +1,5 @@
+// Created By Gullian Van Der Walt
+
 package com.pg.pet_grooming.Models;
 
 // Imports
@@ -25,7 +27,7 @@ public class UserLoginPrincipal implements UserDetails{
 	}
         
         // Getters
-        // Get User Password
+        // Get UserLogin Password
         @Override
         public String getPassword(){
             return userLogin.getPassword();   

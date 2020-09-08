@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pg.pet_grooming.Models;
+package com.pg.pet_grooming.Controllers;
 
 /**
  *
  * @author Gullian
  */
-public class Cash_Count {
+public class CashCountController {
     
 }

@@ -2,90 +2,128 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Details</title>
-    <link rel="icon" href="/static/Icons/icon.ico">
-    <!-- Styles -->
-    <link rel="stylesheet" href="/static/css/styles-all.css">
-    <link rel="stylesheet" href="/static/css/employeeDetails.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Grooming | Edit Employee</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/employeeDetails.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
 <body>
-    <!-- Wrapper-Start -->
-    <div class="wrapper">
 
-        <!-- Navbar-Starts -->
-        <div class="navbar-container">
-            <div class="logo-container">
-                <a href="index.html"><img src="/static/Icons/dogHouse.png" alt="home" class="home-icon" /></a>
-                <h1 class="logo">@Home Mobile Pet Grooming</h1>
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+
+  <!--    Main Section Starts    -->
+  <div class="content-section">
+
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
+
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
+
+      <!-- Edit Employee Container Starts -->
+      <div class="edit-employee-container">
+
+        <!-- Employee Details Section Starts -->
+        <div class="employee-details-section">
+
+          <!-- Employee Details Form Start -->
+          <form class="employee-from" method="POST">
+            <div class="employee-form-col">
+              <div class="employee-form-row">
+                <label for="employee-id-input" class="employee-label" id="employee-id-label">Employee
+                  ID</label><br>
+                <input type="text" id="employee-id-input" class="employee-input" name="employee_id" required autofocus>
+              </div>
+              <div class="employee-form-row">
+                <label for="employee-sa-id" class="employee-label" id="employee-sa-id-label">Employee
+                  SA ID
+                  Number</label><br>
+                <input type="text" id="employee-sa-id" class="employee-input" name="emp_sa_id">
+              </div>
+              <!-- JPA Auditing -->
+              <div class="employee-form-row">
+                <label for="createdByDetails" class="employee-label">Created By:</label><br>
+                <input type="text" id="createdByDetails" class="auditable-input" name="createdBy" readonly
+                  placeholder="handled by system" />
+              </div>
+              <div class="employee-form-row">
+                <label for="createdDateDetails" class="employee-label">Created Date:</label><br>
+                <input type="text" id="createdDateDetails" class="auditable-input" name="createdDate"
+                  placeholder="handled by system" readonly />
+              </div>
+            </div>
+            <div class="employee-form-col">
+              <div class="employee-form-row">
+                <label for="employee-name-input" class="employee-label" id="employee-name-label">Name</label><br>
+                <input type="text" id="employee-name-input" class="employee-input" name="employee_full_name" required>
+              </div>
+              <div class="employee-form-row">
+                <label for="employee-occupation-input" class="employee-label" id="employee-occupation-label">Employee
+                  Occupation</label><br>
+                <input type="text" id="employee-occupation-input" class="employee-input" name="occupation" required>
+              </div>
+              <!-- JPA Auditing -->
+              <div class="employee-form-row">
+                <label for="lastUpdateDetails" class="employee-label">Last Updated By</label><br>
+                <input type="text" id="lastUpdateDetails" class="auditable-input" name="lastUpdate" readonly
+                  placeholder="handled by system" />
+              </div>
+              <div class="employee-form-row">
+                <label for="lastUpdateDateDetails" class="employee-label">Last Updated On</label><br>
+                <input type="text" id="lastUpdateDateDetails" class="auditable-input" name="lastUpdateDate"
+                  placeholder="handled by system" readonly />
+              </div>
             </div>
 
-            <div class="employee-details-logo-container">
-                <img src="/static/Icons/employee.png" alt="employee-details" class="employee-details-icon" />
-                <h2 class="employee-details-nav-headeing">Employee Details</h2>
-            </div>
+          </form>
+          <!-- Employee Details Form End -->
         </div>
-        <!--    Navbar-Ends  -->
-        <div class="Employee-Details-Container">
-            <!-- Employee Details Section Starts -->
-            <div class="employee-details-section">
-                <!-- Employee Details Form Start -->
-                <form class="employee-from">
-                    <div class="employee-form-col">
-                        <div class="employee-form-row">
-                            <label for="employee-id-input" class="employee-label" id="employee-id-label">Employee
-                                ID</label><br>
-                            <input type="text" id="employee-id-input" class="employee-input">
-                        </div>
-                        <div class="employee-form-row">
-                            <label for="employee-sa-id" class="employee-label" id="employee-sa-id-label">SA ID
-                                Number</label><br>
-                            <input type="text" id="employee-sa-id" class="employee-input">
-                        </div>
-                    </div>
-                    <div class="employee-form-col">
-                        <div class="employee-form-row">
-                            <label for="employee-name-input" class="employee-label"
-                                id="employee-name-label">Name</label><br>
-                            <input type="text" id="employee-name-input" class="employee-input">
-                        </div>
-                        <div class="employee-form-row">
-                            <label for="employee-occupation-input" class="employee-label"
-                                id="employee-occupation-label">Employee Occupation</label><br>
-                            <input type="text" id="employee-occupation-input" class="employee-input">
-                        </div>
-                    </div>
-                </form>
-                <!-- Employee Details Form End -->
-            </div>
-            <!-- Employee Details Section Ends -->
+        <!-- Employee Details Section Ends -->
 
-            <!-- Button section start-->
-            <div class="button-container">
-                <div class="cancel-button-container">
-                    <a href="#" class="cancel-button">
-                        <img src="/static/Icons/cancelSmall.png" alt="cancel" id="cancel-image">
-                        Cancel
-                    </a>
-                </div>
-                <div class="save-button-container">
+        <!-- Button section start-->
+        <div class="edit-employee-button-container">
 
-                    <a href="#" class="save-button">
-                        <img src="/static/Icons/save.png" alt="save" id="save-image">Save
-                    </a>
-                </div>
+          <div class="buttons">
+            <a th:href="@{/employees}" id="cancelButton">
+              <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" /> Cancel
+            </a>
+          </div>
+          <div class="buttons">
+            <a type="submit" th:href="@{/newEmployee}" id="saveButton">
+              <img src="/icons/save.png" alt="back" title="Back To Customers" /> Save
+            </a>
+          </div>
 
-            </div>
-            <!--Button Section end-->
         </div>
-        <!-- Footer -->
-        <div class="footer">
-            Pet Grooming &copy; 2020
-        </div>
+        <!--Button Section end-->
+
+      </div>
+      <!-- New Employee Container Ends -->
+
     </div>
-    <!--Wrapper-End-->
+    <!-- Content-Container-Ends -->
+
+  </div>
+  <!--  Main Section Ends   -->
+
+
+  <!-- Scripts -->
+  <script th:src="@{/js/sidenav.js}"></script>
 </body>
 
 </html>

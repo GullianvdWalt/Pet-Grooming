@@ -23,8 +23,6 @@ public class PetOwnerService {
     
     //Method To Return A List of PetOwners FROM MySQL Database, PetOwner Table
     public List<PetOwner> getPetOwners(){
-   
-        
         return petOwnerRepository.findAll();
     }
 
@@ -34,14 +32,21 @@ public class PetOwnerService {
     }
 
    //Get PetOwner by Id
-    public Optional<PetOwner> findById(Long id){
+    public Optional<PetOwner> findById(Integer id){
         return petOwnerRepository.findById(id);
     }
 
     // Delete PetOwner By ID
-    public void delete(Long id) {
+    public void delete(Integer id) {
         petOwnerRepository.deleteById(id);
     }
     
-
+   // Get PetOwner By Keyword from SQL Query Defined in the PetOwnerRepository
+   public List<PetOwner> findPetOwnerByKeyword(String keyword){
+       return petOwnerRepository.findByKeyword(keyword);
+   }
+   
+   public List<PetOwner> findPetOwnerById(Integer id){
+       return petOwnerRepository.findPetOwnerById(id);
+   }
 }

@@ -1,7 +1,7 @@
 /*
- * This Is The User Login Class
- * 
- * 
+   Created By Gullian Van Der Walt
+
+ * This Is The UserLogin Login Class
  */
 package com.pg.pet_grooming.Models;
 
@@ -15,18 +15,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 
 @Entity
 @Table(name = "user")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
+@Getter
+@Setter
+ //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
 public class UserLogin {
     
-    // User Attributes
+    // UserLogin Attributes
     // Primary Key
     @Column(name = "id",nullable = false)
     @Id
@@ -34,4 +38,5 @@ public class UserLogin {
     private int id;
     private String username;
     private String password;
+   
 }

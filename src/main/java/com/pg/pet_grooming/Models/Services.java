@@ -1,14 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ /*
+ * 
+ * This is the Services (Entity/Table)
+ * 
  */
+
 package com.pg.pet_grooming.Models;
 
-/**
- *
- * @author Gullian
- */
+// Imports
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "services")
+@Data  //Lombok, Adds Getters, Setters and ToString Methods
+@NoArgsConstructor //Lombok, Adds The Default Constructor
+@AllArgsConstructor         //JsonIdentityInfo 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Services {
+   
+    // Services Attributes
     
+    // Primary Key
+    @Id
+    @Column(name = "service_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer service_id;
+    
+    @Column(name = "service_name", length = 255,nullable = false)
+    private String service_name;
+    
+    @Column(name = "service_icon", length = 255,nullable = true)
+    private String service_icon;
+    
+    @Column(name = "service_price", length = 255,nullable = false)
+    private double service_price;
+    
+    @Column(name = "service_status",nullable = false)
+    private boolean service_status;
+    
+    @ManyToOne
+    @JoinColumn(name="app_service_id",insertable = false,updatable = false)
+    private Appointment_Services appointment_services;
+    private Long app_service_id;
 }

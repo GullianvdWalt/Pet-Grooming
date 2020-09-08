@@ -1,19 +1,19 @@
 /*
- * This is the UserLoginRepository Interface
-   The UserLoginService Class will implement this interface.
+ * This is the InvoiceRepository Interface
+   The InvoiceService Class will implement this interface.
  * This interface will extend the JpaRepository interface.
    This will provide services such as CRUD operations
  */
 package com.pg.pet_grooming.Repositories;
 
-// Imports
+//Imports
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.pg.pet_grooming.Models.UserLogin;
 import org.springframework.stereotype.Repository;
 
+//Local Imports
+import com.pg.pet_grooming.Models.Invoice;
+
 @Repository
-public interface UserLoginRepository extends JpaRepository<UserLogin, Integer>{
-    
-    UserLogin findByUsername(String username);
+public interface InvoiceRepository extends JpaRepository<Invoice, Integer>{
     
 }

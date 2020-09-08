@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Grooming | Select Customer</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!--    Styles      -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/selectCustomer.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+
+  <!--  Content Section Starts    -->
+  <div class="content-section">
+
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
+
+    <!--  Content Container Starts    -->
+    <div class="content-container" id="contentContainer">
+
+      <!--  Select Customer Container Starts    -->
+      <div class="select-customers-container">
+
+        <div class="select-customers-header-container">
+          <div class="select-customer-heading-container">
+            <h3>Select Customer</h3>
+          </div>
+          <div class="next-button-container">
+            <a class="next-button" th:src="@{/newAppointments/select/new}">Next</a>
+          </div>
+        </div>
+
+        <!-- Select Customers Details Container Start -->
+        <div class="select-customer-details-container">
+
+          <div class="customers-col">
+
+            <div class="customer-select-search-container">
+              <input type="text" value="search owner...." class="search-input">
+            </div>
+            <!-- Customers Table -->
+            <div>
+              <table class="customer-select-table-customer">
+                <thead>
+                  <tr>
+                    <th colspan="3">Customers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="checkbox-column"><input type="checkbox" class="customer-select-checkbox"></td>
+                    <td>Lelanie Snyman</td>
+                    <td>083 750 8818</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <div class="pet-col">
+
+            <div class="customer-select-search-container">
+              <input type="text" value="search pet..." class="search-input">
+            </div>
+            <!-- Pet Table -->
+            <div>
+              <table class="customer-select-table-pet">
+                <thead>
+                  <tr>
+                    <th colspan="3">Pet</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="checkbox-column"><input type="checkbox" class="customer-select-checkbox"></td>
+                    <td>Buddy</td>
+                    <td>Airdale Terrier</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Select Customers Details Container End -->
+
+      </div>
+      <!--  Select Customer Container Starts    -->
+
+    </div>
+    <!-- Content Container End   -->
+
+  </div>
+  <!--  Select Customer Section Ends   -->
+
+
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
+
+  <!-- Scripts -->
+  <script th:src="@{/js/sidenav.js}"></script>
+</body>
+
+</html>
