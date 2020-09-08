@@ -37,11 +37,10 @@
 
       <form class="new-pet-form" th:action="@{/newCustomer/pet/new}" th:object="${pet}" method="post">
         <!-- New Customer Container Start -->
-
+        <div class="new-customer-header-container">
+          <h3 class="new-customer-heading">Add Pet</h3>
+        </div>
         <div class="customers-new-customer-pet-container">
-          <div class="new-customer-header-container">
-            <h3 class="new-customer-heading">Add Pet</h3>
-          </div>
           <form class="new-customer-container" th:each="petOwner : ${petOwner}">
 
             <!-- Customer Form Container Start -->
@@ -104,33 +103,43 @@
                     </div>
                   </div>
                   <div class="form-row">
-                    <label for="pet" class="pet-label" hidden>Select Pet</label>
-                    <select id="pet" name="pet" class="pet-select" hidden>
+                    <label for="pet" class="pet-label">Select Pet</label>
+                    <select id="pet" name="pet" class="pet-select">
                       <option value="select">Select Pet</option>
                       <option value="jackRusselTerrier">Mila</option>
                     </select><br /><br />
                   </div>
                   <div class="form-row">
+                    <label for="pet-id-input" class="pet-label">Pet Id</label><br>
+                    <input type="text" id="petId" class="pet-input" name="id" th:field="*{id}" readonly />
+                  </div>
+                  <div class="form-row">
                     <label for="pet-name-input" class="pet-label">Name</label>
+                    <span class="form-error" th:if="${#fields.hasErrors('pet_name')}" th:errors="*{pet_name}">There was an error</span>
                     <input type="text" id="pet-name-input" class="pet-input" autocomplete="off"
                       th:field="*{pet_name}" />
+
                   </div>
                   <!-- <input type=" text" id="pet_owner_sid" class="customer-input" th:field="*{pet_owner_id}" name="id"
                     hidden /> -->
                   <div class="form-row-gender">
                     <label class="pet-label" id="gender-label">Gender</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span></span>
                     <Select class="gender-select" th:field="*{pet_gender}" required>
                       <option value="select">Select</option>
                       <option value="male" th:value="'M'" th:text="Male"></option>
                       <option value="female" th:value="'F'" th:text="Female"></option>
                     </Select>
+
                   </div>
                   <div class="form-row">
                     <label for="pet-breed-input" class="pet-label">Breed</label><br />
+                    <span></span>
                     <input type="text" id="pet-input-breed" class="pet-input" th:field="*{pet_breed}" />
                   </div><br>
                   <div class="form-row">
                     <label for="pet-size-input" class="pet-label">Size</label><br />
+                    <span></span>
                     <input type="text" id="pet-input-size" class="pet-input" th:field="*{pet_size}" />
                   </div><br>
                   <div class="form-row">

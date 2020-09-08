@@ -23,6 +23,9 @@ import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Models.Pet;
 import com.pg.pet_grooming.Models.PetOwner;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 @Controller
@@ -54,10 +57,23 @@ public class PetController {
         
      // Add New Pet
     @PostMapping("/newCustomer/pet/new")
-    public String addPet(Pet pet, Model model){
+    public String addPet(@Valid @ModelAttribute("pet") Pet pet,BindingResult bindingResult,Model model){
+       
+//       bindingResult.addError(new FieldError("pet", "id", ""));
+        
+//       int petId = pet.getId();
+       int ownerId = pet.getPet_owner_id();
+       
+       if(bindingResult.hasErrors()){
+           return "newPetForm";
+       }
+       
        petService.save(pet);
-       return "redirect:/newCustomer/pet/new";
+       // Direct to New Pet and pass Pet Owner Id
+       return "redirect:/customerDetails/"+ownerId;
     }  
+    
+    // Return Customer Details
     
     
     // Get Pet by PetOwnerId

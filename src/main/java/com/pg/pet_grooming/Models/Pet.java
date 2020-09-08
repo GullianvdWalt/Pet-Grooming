@@ -1,11 +1,13 @@
 /*
- * 
- * This is the Pet Model (Entity/Table)
+ * Created By Gullian Van Der Walt - 01/08/2020
+   Last Updated - 20/09/07, 04:51
+ * This is the PetOwner Model (Entity/Table)
  * 
  */
 package com.pg.pet_grooming.Models;
 
 // Imports
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
@@ -40,10 +42,11 @@ public class Pet extends Auditable<String>{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+ 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)
     private PetOwner petOwner; //Pet Owner Object
-    private String pet_owner_id;
+    private int pet_owner_id;
     
     @NotNull
     @Column(name = "pet_name", length = 255,nullable = false)

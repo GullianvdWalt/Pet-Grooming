@@ -1,215 +1,205 @@
-/*      Styles for the Dashboard        */
+/* Created By Gullian Van Der Walt 01/08/2020 */
+/* Last Updated 07/09/2020 */
 
-/* The styles in this CSS file are the general styles which appliet to all pages*/
-
-/*
-    Fonts
-
-    Import Fonts:
-*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
-/*
-    For Applying Fonts: 
-                            font-family: 'Montserrat', sans-serif;
-                            font-family: 'Roboto', sans-serif;
-                            font-family: 'Lato', sans-serif;
-                            font-family: 'Open Sans', sans-serif;
-    colors:
-            Body Background: #ffffff
-            Background nav: #505050
-            Pink: #FF69B4
-
-    Shadow Effects:
-                        Text  - standard -  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
-
-                              - hard shadow - text-shadow: 5px 5px 0px rgba(0,0,0,0.2);
-
-                              - heavy shadow - text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-                                                            0px 8px 13px rgba(0,0,0,0.1),
-                                                            0px 18px 23px rgba(0,0,0,0.1);  
-
-                        Box Shadow :    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
-                        Icons:
-                                -
-                    
-*/
-
-/*  Customer Details Modal  */
-/* Main Container of Modal  */
-.customer-details-modal{
-    display: none;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(255, 255, 255, 0.6);
-    overflow: hidden;
-    
+.new-pet-form {
+  display: flex;
+  flex-direction: column;
+  display: none;
 }
-/*   Inner Container  */
-.customer-details-modal-content{
-    /*  Center  */
-    margin: 1% auto; 
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 15px;
-    margin-top: 1%;
+
+.customer-details-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-/*  Individual Containers   */
-.modal-pet-owner-details, .modal-pet-details{
-    display: flex; 
-    width: 40%;
-    height: 90%;
-    flex-direction: column;
-    border: 2px solid #DCDCDC;
-    padding: 10px;
-    border-radius: 15px;
-    margin: 1em;
-    background-color: rgb(255, 255, 255);
-    /*  Shadow Effects  */
-    -webkit-box-shadow: 0px -2px 5px -1px rgba(80,80,80,0.46);
-    -moz-box-shadow: 0px -2px 5px -1px rgba(80,80,80,0.46);
-    box-shadow: 0px -2px 5px -1px rgba(80,80,80,0.46);
-    
+.customers-update-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+.new-customer-header-container {
+  height: 10%;
+  width: 100%;
+  text-align: center;
+}
+.new-customer-heading {
+  font-size: 30px;
+  color: #505050;
+  font-family: 'Roboto', sans-serif;
+}
+.new-customer-main-form-container {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 100%;
+  margin: 1rem;
+}
+/* Customer Forms Details Containers  */
+.update-pet-ownerform,
+.update-pet-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 1rem;
+  border: 2px solid #dcdcdc;
+}
+.customer-details-form-container,
+.pet-details-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.customer-details-form,
+.pet-details-form {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 /*  Heading container   */
-.heading{
-    display: inline-flex;
-    justify-content: space-between;
-    width: 50%;
-    padding: 1em;
-    margin-left: 20%;
-    margin-bottom: 2%;
-    height: 20%;
-    
-}
-.pet-owner-icon, .pet-paw-icon{
-    filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4));
-    width: 95px;
-    height: 95px;
+.form-heading-container {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2%;
+  height: 20%;
 }
 /*  Text of Heaidng */
-.customer-details-heading, .pet-details-heading{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-size: 1.5em;
-    color: #505050;
-    
+.form-details-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: #505050;
+  margin-left: 10px;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 80%;
+  margin: 0 10%;
+}
+.form-row-gender {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  width: 80%;
+  margin: 20px 10%;
+}
+.form-row-new-pet {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  width: 80%;
+  margin: 40px 10%;
+}
+.customer-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+#petOwnerIdLbl {
+  color: gray;
+}
+.customer-input {
+  font-size: 1.2em;
+  width: 80%;
+  border: 2px solid #505050;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  color: #ff69b4;
 }
 
-/*  Inputs  */
-.customer-details-input-container, .pet-details-input-container{
-    width: 100%;
-    height: 50%;
-    text-align: center;
-    padding: 0.5em;   
-    margin-bottom: 4%;
+#customer-id:hover {
+  cursor: not-allowed;
 }
-.customer-input, .pet-input{
-    font-size: 1.4em;
-    color: #FF69B4;
-    margin: 0.5em;
-    border: 2px solid #505050;
-    font-family: 'Lato', sans-serif;
-    font-weight: 800;
-    
-}
-.pet-select{
-    font-size: 1.3em;
-}
-.customer-address-input, #pet-notes-input{
-    font-size: 1.7em;
-    color: #FF69B4;
-    font-weight: 200;
-    margin: 0.5em;
-    border: 2px solid #505050;
-    font-family: 'Lato', sans-serif;
-    font-weight: 800;
-
-}
-input[type=radio]{
-    width: 6%;
-    height: 6%;
+.customer-address-input {
+  font-size: 1.2em;
+  width: 80%;
+  padding: 1rem;
+  font-weight: 200;
+  border: 2px solid #505050;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+  color: #ff69b4;
 }
 
-.button-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 50%;
-    padding: 1em;
-
-}
-.customer-button-container{
-    margin-top: 11%;
-    height: 50%;
-}
-.buttons{
-    background-color: #505050;
-    width: 30%;
-    height: 44%;
-    border-radius: 15px;
-    margin-top: 1%;
-    font-family: 'Roboto', sans-serif;
-    color: #FFF;
-    font-size: 1.5em;
-    padding: 0.5em;
-    text-align: center;
-    filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4));
-    cursor: pointer;
-
-}
-#close-button,#new-pet, #save-customer, #save-pet, #delete-pet{
-    font-family: 'Lato', sans-serif;
-    color: #FFF;
-    text-decoration: none;
-    font-size: 1em;
-}
-.buttons img{
-    width: 30%;
-    height: auto;
-}
-.buttons:hover, #close-button:hover{
-    color: #FF69B4;
-}
-.button-icon{
-    vertical-align: middle;
-    margin-right: 8%;
-    filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4));
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  width: 90%;
+  height: 10%;
+  margin: 10px 5%;
 }
 
+/* Label Styles */
+.pet-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+/* Input Boxes  */
+.pet-input {
+  width: 100%;
+  max-width: 422px;
+  height: 50px;
+  font-size: 1.2em;
+  color: #ff69b4;
+  border: 2px solid #505050;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+}
+.pet-select {
+  width: 50%;
+  margin: 0;
+  color: #ff69b4;
+}
+.pet-gender-select {
+  font-size: 1.6em;
+  color: #ff69b4;
+  border: 2px solid #505050;
+  margin: 0 10px;
+}
+.pet-label-radio {
+  font-size: 1.4em;
+  font-family: 'Lato', sans-serif;
+}
+/* Notes Input */
+#pet-notes-input {
+  font-size: 1.2em;
+  padding: 1rem;
+  font-weight: 200;
+  height: 70px;
+  border: 2px solid #505050;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+  color: #ff69b4;
+}
 
-/*  Delete Modal*/
-.delete-modal{
-    display: none;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    width: 30%;
-    height: 20%;
-    margin: 10% 35%; 
-    padding: 1em;
-    background-color: white;
-    overflow: hidden;
-    filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4)); 
-    text-align: center;
+/* Responsive */
+@media screen and (max-width: 1606px) {
 }
-.delete-modal h3, .delete-modal button{
-    font-family: 'Lato', sans-serif;
-    font-size: 1.2em;
-    margin-top: 5%;
-    
+
+@media screen and (max-width: 1510px) {
 }
-.delete-modal button{
-    cursor: pointer;
-    margin: 1em;
+@media screen and (max-width: 1370px) {
 }
-.delete-modal button:hover{
- color: #FF69B4;
+
+@media screen and (max-width: 1310px) {
+}
+@media screen and (max-width: 1262px) {
+}
+@media screen and (max-width: 1090px) {
+}
+
+@media screen and (max-width: 1000px) {
+}
+
+@media screen and (max-width: 500px) {
 }

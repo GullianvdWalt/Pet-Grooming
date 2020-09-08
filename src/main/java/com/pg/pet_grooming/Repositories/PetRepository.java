@@ -30,4 +30,10 @@ public interface PetRepository extends JpaRepository<Pet, Integer>{
         
         List<Pet> findByPetOwnerId(int pet_owner_id);
         Optional<Pet> findByIdAndPetOwnerId(Integer id, Integer pet_owner_id);
+        
+//        @Query(value="SELECT pet_name FROM pet WHERE id =:ID ORDER BY id",nativeQuery=true)
+//        public String getPetName(@Param("ID") int pId);
+        
+        @Query(value="SELECT * FROM pet WHERE id =:ID",nativeQuery=true)
+        public List<Pet> getPetByPetID(@Param("ID") int ID);
 }
