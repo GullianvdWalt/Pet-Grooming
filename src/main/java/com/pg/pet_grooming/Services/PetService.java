@@ -1,4 +1,5 @@
-/*
+/* Create By Gullian Van Der Walt 15/07/2020
+   Last Updated 08/09/2020
  * This is the Pet Service Class
  * This Class implements the PetReposistory 
  * The controller sends request to this class
@@ -52,4 +53,40 @@ public class PetService {
    public List<Pet> findPetByKeyword(String keyword){
        return petRepository.findByKeyword(keyword);
    }
+   
+   // Save or Update Pet
+   public List<Pet> getPetbyId(int petID){
+       return petRepository.getPetByPetID(petID);
+   }
+   
+       public Pet createOrUpdatePet(Pet pet){
+       // New PetOwner
+       if(pet.getId() == null ){
+           pet = petRepository.save(pet);
+           return pet;
+       }else{
+           // Update
+           Optional<Pet> petEntity = petRepository.findById(pet.getId());
+           if(petEntity.isPresent()){
+               Pet newPet = petEntity.get();
+               newPet.setPetOwner(pet.getPetOwner());
+               newPet.setPet_name(pet.getPet_name());
+               newPet.setPet_breed(pet.getPet_breed());
+               newPet.setPet_gender(pet.getPet_gender());
+               newPet.setPet_size(pet.getPet_size());
+               newPet.setPet_notes(pet.getPet_notes());
+             
+               newPet = petRepository.save(newPet);
+               
+               return newPet;
+           }else{
+               pet = petRepository.save(pet);
+               
+              return pet;
+           }
+       
+       }
+       
+   }
+
 }

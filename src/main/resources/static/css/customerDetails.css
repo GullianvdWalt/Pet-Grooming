@@ -1,5 +1,126 @@
 /* Created By Gullian Van Der Walt 01/08/2020 */
-/* Last Updated 07/09/2020 */
+/* Last Updated 09/09/2020 */
+
+.customers-update-section {
+  display: flex;
+  flex-direction: column;
+}
+.customers-update-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.edit-customer-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3rem;
+  width: 70%;
+  margin: 1rem 15%;
+}
+
+/* New Pet Button */
+.form-row-new-pet {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  float: right;
+}
+/* Customer Forms Details Containers  */
+.update-pet-owner-form,
+.update-pet-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 1rem;
+  border: 2px solid #dcdcdc;
+}
+/* #############################*/
+/*  Style Pet Table Starts      */
+/* #############################*/
+.pet-table-container {
+  width: 50%;
+  margin: 1rem;
+  border: 2px solid #dcdcdc;
+}
+.pet-table-heading-container {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2%;
+  height: 20%;
+}
+
+table {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9em;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+thead {
+  background-color: #505050;
+  width: 100%;
+}
+th {
+  text-align: left;
+  padding: 10px;
+  color: #fff;
+  background-color: #505050;
+  font-size: 18px;
+}
+tbody tr {
+  height: 10.3em;
+  /* White Space Between Rows */
+
+  text-align: justify;
+}
+
+td {
+  font-size: 18px;
+  text-align: left;
+  padding: 10px;
+  line-height: 1.6;
+}
+table tr:nth-child(even) {
+  background-color: rgb(80, 80, 80, 0.8);
+  color: #fff;
+}
+#edit-button {
+  cursor: pointer;
+}
+/* Action Buttons */
+.edit-icon,
+.delete-icon {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+  background: transparent;
+
+  /*  For Grow Effect */
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+/*  For Grow Effect */
+.edit-icon:hover,
+.delete-icon:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+/* ######################################## */
+/*  Style Pet Table Ends     */
+/* ######################################## */
 
 .new-pet-form {
   display: flex;
@@ -12,17 +133,13 @@
   flex-direction: column;
   width: 100%;
 }
-.customers-update-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+
 .new-customer-header-container {
   height: 10%;
   width: 100%;
   text-align: center;
 }
-.new-customer-heading {
+.edit-customer-heading {
   font-size: 30px;
   color: #505050;
   font-family: 'Roboto', sans-serif;
@@ -34,15 +151,15 @@
   width: 100%;
   margin: 1rem;
 }
-/* Customer Forms Details Containers  */
-.update-pet-ownerform,
+
 .update-pet-form {
+  display: none;
+}
+.customer-details {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 1rem;
-  border: 2px solid #dcdcdc;
 }
+
 .customer-details-form-container,
 .pet-details-form-container {
   display: flex;
@@ -70,7 +187,8 @@
   height: 20%;
 }
 /*  Text of Heaidng */
-.form-details-heading {
+.form-details-heading,
+.pet-details-headings {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   color: #505050;
@@ -90,14 +208,7 @@
   width: 80%;
   margin: 20px 10%;
 }
-.form-row-new-pet {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  width: 80%;
-  margin: 40px 10%;
-}
+
 .customer-label {
   font-family: 'Lato', sans-serif;
   font-size: 18px;
