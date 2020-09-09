@@ -62,7 +62,7 @@ public class PetOwnerController {
         return "NewPetOwner";
     }
     
-     // Add New PetOwner (Customer)
+     // Add New PetOwner(Customer)
     @PostMapping("/newCustomer/petOwner/new")
     public String addPetOwner(PetOwner petOwner){
        petOwnerRepository.save(petOwner);
@@ -87,10 +87,21 @@ public class PetOwnerController {
     
     
     // Update Pet Owner
-    @RequestMapping(value="/customers/update/petOwner",method = {RequestMethod.PUT,RequestMethod.GET})
-    public void updatePetOwner(PetOwner petOwner){
+    @RequestMapping("/customers/update/petOwner/{id}")
+    public String updatePetOwner(@PathVariable int id, Model model){
+        PetOwner petOwner = petOwnerService.findById(id).get();
+        model.addAttribute("petOwner", petOwner);
         petOwnerService.save(petOwner);
+        
+        return "CustomerDetails";
     }
+    
+    @RequestMapping(path="/createNewPetOwner", method= RequestMethod.POST)
+    public String createOrUpdatePetOwner(PetOwner petOwner){
+        petOwnerService.createOrUpdatePetOwner(petOwner);
+        return "redirect:/customers";
+    }
+    
     
     // Delete Pet Owner
    @RequestMapping(value="/customers/delete/petOwner",method={RequestMethod.DELETE,RequestMethod.GET})

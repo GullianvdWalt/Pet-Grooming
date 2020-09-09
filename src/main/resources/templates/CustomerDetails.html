@@ -1,5 +1,5 @@
 <!-- Created By Gullian Van Der Walt 01/08/2020 -->
-<!-- Last Updated 07/09/2020 -->
+<!-- Last Updated 09/09/2020 -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -37,25 +37,33 @@
     <div class="content-container" id="contentContainer">
 
 
-      <!-- Customer Details Container-Start -->
-      <div class="customer-details-containers">
+      <!-- Customer Update Section Start -->
+      <div class="customers-update-section">
 
-        <!-- Customer Details Container-Start -->
+        <div class="edit-customer-header-container">
+          <div class="edit-customer-heading-container">
+            <h3 class="edit-customer-heading">Customer Details</h3>
+          </div>
+          <div class="form-row-new-pet">
+            <a class="buttons" th:href="@{/newCustomer}">
+              <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
+              Add Pet
+            </a>
+          </div>
+        </div>
+
+        <!-- Customer Update Container Start -->
         <div class="customers-update-container">
 
-          <div class="new-customer-header-container">
-            <h3 class="new-customer-heading">Edit Customer</h3>
-          </div>
-
-          <form class="update-pet-owner-form" th:action="@{/customerDetails/update/pet}">
+          <form class="update-pet-owner-form" th:action="@{/createNewPetOwner}" th:object="${petOwner}" method="post">
 
             <!-- Customer Form Container Start -->
-            <div class="customer-details" id="customer-details-section" th:each="petOwner : ${petOwner}">
+            <div class="customer-details" id="customer-details-section">
 
               <!--    Customer Details Heading    -->
-              <div class=" form-heading-container">
+              <div class="form-heading-container">
                 <img src="/icons/petOwner.png" alt="petOwner" class="icon" />
-                <h3 class="form-details-heading">Customer Details</h3>
+                <h3 class="form-details-heading">Owner Details</h3>
               </div>
 
               <div class="customer-details-form-container">
@@ -65,27 +73,26 @@
                   </div>
                   <!--    Customer Details Content    -->
                   <div class="form-row">
-                    <label for="customer-id-input" class="customer-label" id="petOwnerIdLbl">Pet Owner Id</label><br>
-                    <input type="text" id="pet_owner_id" class="customer-input" th:value="${petOwner.id}"
-                      name="pet_owner_id" readonly />
+                    <label for="pet_owner_id" class="customer-label" id="petOwnerIdLbl">Pet Owner Id</label><br>
+                    <input type="text" id="pet_owner_id" class="customer-input" th:field="*{id}" name="id" readonly />
                     <br><br>
                   </div>
                   <div class="form-row">
-                    <label for="customer-name-input" class="customer-label">Name & Surname</label><br>
-                    <input type="text" id="customer-name-input" class="customer-input" name="pet_owner_full_name"
-                      required th:value="${petOwner.pet_owner_full_name}" />
+                    <label for="pet_owner_name_input" class="customer-label">Name & Surname</label><br>
+                    <input type="text" id="pet_owner_name_input" class="customer-input" name="pet_owner_full_name"
+                      required th:field="*{pet_owner_full_name}" />
                     <br><br>
                   </div>
                   <div class="form-row">
                     <label for="customer-cell-input" class="customer-label">Cell</label><br>
                     <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell" required
-                      th:value="${petOwner.pet_owner_cell}" />
+                      th:field="*{pet_owner_cell}" />
                     <br><br>
                   </div>
                   <div class="form-row">
                     <label for="customer-address-input" class="customer-label">Address</label><br>
                     <input type="text" id="customer-address-input" class="customer-address-input"
-                      name="pet_owner_address" th:value="${petOwner.pet_owner_address}" />
+                      name="pet_owner_address" th:field="*{pet_owner_address}" />
                     <br><br>
                   </div>
                 </div>
@@ -105,96 +112,61 @@
           </form>
           <!-- Update Pet Owner Form Ends -->
 
-          <!-- Update Pet Form Startscustomer-details-form-container -->
-          <form class="update-pet-form" th:action="@{/customerDetails/update/pet}" th:object="${pet}" method="post">
-            <!--    Pet Form Container Start    -->
-            <div class="pet-details-container" th:each="pet : ${petList}">
-              <div class="form-heading-container">
-                <img src="/icons/petPaw.png" alt="petOwner" class="icon" />
-                <h3 class="form-details-heading">Pet Details</h3>
-              </div>
-              <div class="pet-details-form-container">
-                <div class="pet-details-form" id="pet-details-form">
-                  <div class="form-row-new-pet">
-                    <div class="buttons">
-                      <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
-                      <a th:href="@{/newCustomer}">
-                        New Pet
-                      </a>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <label for="pet" class="pet-label">Select Pet</label>
-                    <select id="selectPet" class="pet-select" name="selectPet">
-                      <option value="select">Select Pet</option>
-                      <option th:each="pet : ${petList}" th:value="${pet.id}" th:text="${pet.pet_name}">
-                      </option>
-                    </select><br /><br />
-                  </div>
-                  <div class="form-row">
-                    <label for="pet-id-input" class="pet-label">Pet Id</label><br>
-                    <input type="text" id="petId" class="pet-input" name="id" th:field="*{id}" th:value="${pet.id}"
-                      readonly />
-                  </div>
-                  <div class="form-row">
-                    <div id="textBox"></div>
-                    <label for="pet-name-input" class="pet-label">Name</label>
-                    <span class="form-error" th:if="${#fields.hasErrors('pet_name')}" th:errors="*{pet_name}">There was an error</span>
-                    <input type="text" id="pet-name-input" class="pet-input" autocomplete="off"
-                      th:field="*{pet_name}" />
+          <!-- Pet Table Container Startss -->
+          <div class="pet-table-container" th:each="pet : ${petList}">
 
-                  </div>
-                  <!-- <input type=" text" id="pet_owner_sid" class="customer-input" th:field="*{pet_owner_id}" name="id"
-                    hidden /> -->
-                  <div class="form-row-gender">
-                    <label class="pet-label" id="gender-label">Gender</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span></span>
-                    <Select class="gender-select" th:field="*{pet_gender}" required>
-                      <option value="select">Select</option>
-                      <option value="male" th:value="'M'" th:text="Male"></option>
-                      <option value="female" th:value="'F'" th:text="Female"></option>
-                    </Select>
-
-                  </div>
-                  <div class="form-row">
-                    <label for="pet-breed-input" class="pet-label">Breed</label><br />
-                    <span></span>
-                    <input type="text" id="pet-input-breed" class="pet-input" th:field="*{pet_breed}" />
-                  </div><br>
-                  <div class="form-row">
-                    <label for="pet-size-input" class="pet-label">Size</label><br />
-                    <span></span>
-                    <input type="text" id="pet-input-size" class="pet-input" th:field="*{pet_size}" />
-                  </div><br>
-                  <div class="form-row">
-                    <label for="pet-notes-input" class="pet-label">Notes</label><br />
-                    <input type="text" id="pet-notes-input" class="pet-input" autocomplete="off" th:field="*{pet_notes}"
-                      placeholder="None" />
-                  </div>
-                </div>
-              </div>
+            <div class="pet-table-heading-container">
+              <img th:src="@{/Icons/petPaw.png}" alt="Pet Details" class="icon">
+              <h3 class="pet-details-heading">Pet Details</h3>
             </div>
-            <!--    Buttons     -->
-            <div class="button-container">
-                <a class="buttons" th:href="@{/customers}">
-                  <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" />
-                  Cancel
-                </a>
-                <button class="buttons" type="submit">
-                  <img src="/icons/save.png" alt="back" title="Back To Customers" />
-                  Save
-                </button>
-            </div>
-          </form>
-      <!-- Pet Form Ends -->
-    </div>
-    <!-- Customer Update Container Ends -->
 
-    </div>
-    <!-- Customer Details Container End -->
+            <!-- Pets Table Starts -->
+            <table class="pets-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Breed</th>
+                  <th>Gender</th>
+                  <th>Size</th>
+                  <th>Notes</th>
+                  <th colspan="2">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td th:text="${pet.id}"></td>
+                  <td th:text="${pet.pet_name}"></td>
+                  <td th:text="${pet.pet_breed}"></td>
+                  <td th:text="${pet.pet_gender}"></td>
+                  <td th:text="${pet.pet_size}"></td>
+                  <td th:text="${pet.pet_notes}"></td>
+                  <td>
+                    <a th:href="@{/customers/update/pet}" id="editPet">
+                      <img th:src="@{/Icons/editSmall.png}" alt="Edit Pet" class="edit-icon">
+                    </a>
+                  </td>
+                  <td>
+                    <a th:href="@{/customers/delete/pet}" id="deletePet">
+                      <img th:src="@{/Icons/trash.png}" alt="Delete Pet" class="delete-icon">
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- Pets Table Ends -->
+          </div>
+          <!-- Pet Table Container Ends -->
 
-  </div>
-  <!-- Content-Container-End -->
+        </div>
+        <!-- Customer Update Container Ends -->
+
+      </div>
+      <!-- Customer Details Container End -->
+    </div>
+    <!-- Content-Container-End -->
   </div>
   <!-- Content Section End -->
 
@@ -205,10 +177,9 @@
 
 
 
-<!-- Scirpts -->
-<script th:src="@{/js/sidenav.js}"></script>
-<script th:src="@{/js/customerDetails.js}"></script>
+  <!-- Scirpts -->
+  <script th:src="@{/js/sidenav.js}"></script>
+  <script th:src="@{/js/customerDetails.js}"></script>
 </body>
 
 </html>
-

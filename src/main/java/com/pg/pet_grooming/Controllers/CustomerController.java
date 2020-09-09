@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
 import com.pg.pet_grooming.Models.Auditable;
+import javax.json.Json;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,7 @@ import com.pg.pet_grooming.Models.Pet;
 import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Services.PetService;
-import org.springframework.http.MediaType;
+
 
 
 
@@ -60,49 +61,47 @@ public class CustomerController{
     }   
     
     // View Customer Details
-    @GetMapping("/customerDetails/{ownerId}")
-    public String viewCustomerDetails(@PathVariable(name = "ownerId") Integer petOwnerId,Model model){
+    @RequestMapping("/customerDetails/{ownerId}")
+    public String viewCustomerDetails(@PathVariable(name = "ownerId") Integer petOwnerId,
+            Model model)throws ResourceNotFoundException{
 
         // Objects
         Pet pet = new Pet();
-        PetOwner petOwner = new PetOwner();
-         
+        System.out.println(petOwnerId);
         // Pet List : all by owner id
         List <Pet> petList = petRepository.findByPetOwnerId(petOwnerId);
-      
+        
        
          // Set Page Title
-        String pageTitle = "Customer Details";
+        String pageTitle = "Edit Customer";
         model.addAttribute("pageTitle", pageTitle);
+        
         // Set Page Title Icon
         String iconUrl = "dog.jpg";
         model.addAttribute("iconUrl", iconUrl);
-        model.addAttribute("petOwner", petOwnerService.findPetOwnerById(petOwnerId));
+        
+        if(!petOwnerId.equals(null)){
+        PetOwner petOwnerEntity = petOwnerService.findPetOwnerById(petOwnerId);
+        model.addAttribute("petOwner", petOwnerEntity);
+        }else{
+            return"redirect:/customers";
+        }
+        
+        // Set 
         model.addAttribute("petList", petList);
         model.addAttribute("pet", pet);
         return "CustomerDetails";
-    }
-        
+    }       
     
-    // JS Ajax Controller for setting pet fields on select
-    @RequestMapping(value="/loadPetDetails", method={ RequestMethod.GET, RequestMethod.POST }, 
-       produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Pet> setPetFields(@RequestParam("ID") int pId){
-        List<Pet> petList = petRepository.getPetByPetID(pId);
-        return petList;
-    }
-    
-
-    
-    // Edit Customer
-    @RequestMapping("/editCustomer")
-    public String EditCustomer(Model model){
-         // Set Page Title
-        String pageTitle = "Customers";
-        model.addAttribute("pageTitle", pageTitle);
-        // Set Page Title Icon
-        String iconUrl = "dog.jpg";
-        model.addAttribute("iconUrl", iconUrl);
-        return "EditCustomer";
-    }
+//    // Edit Customer
+//    @RequestMapping("/editCustomer")
+//    public String EditCustomer(Model model){
+//         // Set Page Title
+//        String pageTitle = "Customers";
+//        model.addAttribute("pageTitle", pageTitle);
+//        // Set Page Title Icon
+//        String iconUrl = "dog.jpg";
+//        model.addAttribute("iconUrl", iconUrl);
+//        return "EditCustomer";
+//    }
 }
