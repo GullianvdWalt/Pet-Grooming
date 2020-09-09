@@ -67,7 +67,6 @@ public class CustomerController{
 
         // Objects
         Pet pet = new Pet();
-        System.out.println(petOwnerId);
         // Pet List : all by owner id
         List <Pet> petList = petRepository.findByPetOwnerId(petOwnerId);
         

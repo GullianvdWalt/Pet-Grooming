@@ -28,6 +28,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -73,42 +74,52 @@ public class PetController {
        return "redirect:/customerDetails/"+ownerId;
     }  
     
-    // Return Customer Details
-    
-    
-    // Get Pet by PetOwnerId
-    @GetMapping("/petOwner/{petOwnerId}/pets")
-    public List<Pet> getPetsByPetOwnerId(@PathVariable(value="ID")Integer petOwnerId){
-        return petService.getPetbyId(petOwnerId);
+    // Get Pet By ID
+    @RequestMapping("/pet/findPetById/{ID}")
+    @ResponseBody
+    public Optional<Pet>GetEditPetById(@PathVariable("ID")int id){
+        System.out.println(id);
+        return petRepository.findById(id);
     }
+    
+//    // Get Pet by PetOwnerId
+//    @GetMapping("/petOwner/{petOwnerId}/pets")
+//    public List<Pet> getPetsByPetOwnerId(@PathVariable(value="ID")Integer petOwnerId){
+//         
+//        return petService.getPetbyId(petOwnerId);
+//    }
     
     // Save Pet 
     @PostMapping("petOwners/{petOwnerId}/pets")
-    public Pet addPet(@PathVariable(value="petOwnerId") Integer petOwnerId,
+    public Pet addNewPet(@PathVariable(value="petOwnerId") Integer petOwnerId,
         @Valid @RequestBody Pet pet) throws ResourceNotFoundException{
             return petOwnerRepository.findById(petOwnerId).map(petOwner -> {
                 pet.setPetOwner(petOwner);
                 return petRepository.save(pet);
             }).orElseThrow(()-> new ResourceNotFoundException("Pet owner not found"));
         }
-            
-       // Update Pet Owner
-    @RequestMapping("/customers/update/pet")
-    public String updatePetOwner(@RequestParam("petID")int petID,Model model){
-        Pet editPet = petService.findPetById(petID).get();
-        System.out.println(editPet.getPet_name());
-       System.out.println(petID);
-        model.addAttribute("editPet", editPet);
-        petService.save(editPet);
-        
-        return "CustomerDetails";
-    }
-    // Create Pet or Update Pet
-    @RequestMapping(path="/createNewPet", method={RequestMethod.GET,RequestMethod.POST})
-    public String createOrUpdatePet(Pet pet){        
-        petService.createOrUpdatePet(pet);
+           
+//    // Create Pet or Update Pet
+//    @RequestMapping(path="/editPet", method={RequestMethod.PUT,RequestMethod.GET})
+//    public String createOrUpdatePet(Pet pet){        
+//        petService.createOrUpdatePet(pet);
+//        return "redirect:/customers";
+//    }
+    
+        // Create Pet or Update Pet
+    @RequestMapping(value="/pet/update", method={RequestMethod.PUT,RequestMethod.GET})
+    public String UpdatePet(Pet pet){        
+        petService.save(pet);
         return "redirect:/customers";
     }
+    
+    @RequestMapping(value="/pet/delete", method={RequestMethod.DELETE,RequestMethod.GET})
+    public String deletePet(Integer id){
+        //, @PathVariable("pet_owner_id")int petOwnerId
+        petService.deletePet(id);
+        return "redirect:/customers";
+    }
+    
     
 //        // JS Ajax Controller for setting pet fields on select
 //    @RequestMapping(value="/loadPetDetails", method={RequestMethod.GET,RequestMethod.POST})

@@ -23,6 +23,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,8 +33,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor           //Lombok, Adds The Default Constructor
-@AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
+@NoArgsConstructor          
+@AllArgsConstructor         
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Pet extends Auditable<String>{
     
     // Attributes
@@ -42,9 +44,10 @@ public class Pet extends Auditable<String>{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
- 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)
+    @JsonBackReference
     private PetOwner petOwner; //Pet Owner Object
     private int pet_owner_id;
     

@@ -34,6 +34,6 @@ public interface PetRepository extends JpaRepository<Pet, Integer>{
 //        @Query(value="SELECT pet_name FROM pet WHERE id =:ID ORDER BY id",nativeQuery=true)
 //        public String getPetName(@Param("ID") int pId);
         
-        @Query(value="SELECT * FROM pet WHERE id =:petID",nativeQuery=true)
-        public List<Pet> getPetByPetID(int petID);
+        @Query(value="SELECT id,created_by,last_modified_by,last_modified_date,pet_name,pet_breed,pet_gender,pet_size,pet_notes,pet_owner_id FROM pet WHERE id =:ID",nativeQuery=true)
+        public List<Pet> getPetByPetID(int ID);
 }

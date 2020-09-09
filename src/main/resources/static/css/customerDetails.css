@@ -77,7 +77,7 @@ th {
 tbody tr {
   height: 10.3em;
   /* White Space Between Rows */
-
+  border-bottom: 2px solid #ff69b4;
   text-align: justify;
 }
 
@@ -159,7 +159,10 @@ table tr:nth-child(even) {
   display: flex;
   flex-direction: column;
 }
-
+.pet-details-container {
+  display: flex;
+  flex-direction: column;
+}
 .customer-details-form-container,
 .pet-details-form-container {
   display: flex;
@@ -167,8 +170,7 @@ table tr:nth-child(even) {
   justify-content: space-between;
   height: 100%;
 }
-.customer-details-form,
-.pet-details-form {
+.customer-details-form {
   width: 100%;
   height: 90%;
   display: flex;
@@ -176,7 +178,45 @@ table tr:nth-child(even) {
   justify-content: center;
   margin-bottom: 20px;
 }
-
+.pet-details-form {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.pet-edit-modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.pet-delete-modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 15px;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.update-pet-form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 60%;
+  padding: 1rem;
+  margin: 0 20%;
+  border-radius: 15px;
+}
 /*  Heading container   */
 .form-heading-container {
   display: inline-flex;
@@ -188,19 +228,25 @@ table tr:nth-child(even) {
 }
 /*  Text of Heaidng */
 .form-details-heading,
-.pet-details-headings {
+.pet-details-heading {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   color: #505050;
   margin-left: 10px;
+}
+.pet-form-col {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 .form-row {
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 80%;
-  margin: 0 10%;
+  margin: 1rem 10%;
 }
+
 .form-row-gender {
   display: flex;
   flex-direction: row;
@@ -223,6 +269,7 @@ table tr:nth-child(even) {
   font-family: 'Lato', sans-serif;
   font-weight: 600;
   color: #ff69b4;
+  padding: 1rem;
 }
 
 #customer-id:hover {
