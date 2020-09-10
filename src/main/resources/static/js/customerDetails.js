@@ -49,14 +49,14 @@ $(document).ready(function () {
     event.preventDefault();
     // Display Modal
     petEditModal.style.display = "block";
-    // window.location.hash = '#petEditModal';
+    window.location.hash = '#petEditModal';
 
     // Current Button URL
     var href = $(this).attr('href');
     // Get Values from inputs
     $.get(href, function (pet, status) {
       $('#petId').val(pet.id);
-      $('#pet_owner_id').val(pet.pet_owner_id);
+      $('#petOwnerId').val(pet.pet_owner_id);
       $('#petName').val(pet.pet_name);
       $('#petBreed').val(pet.pet_breed);
       if ($('#petGender').length < 2) {

@@ -44,6 +44,7 @@
   width: 50%;
   margin: 1rem;
   border: 2px solid #dcdcdc;
+  padding: 1rem;
 }
 .pet-table-heading-container {
   display: inline-flex;
@@ -82,10 +83,9 @@ tbody tr {
 }
 
 td {
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   padding: 10px;
-  line-height: 1.6;
 }
 table tr:nth-child(even) {
   background-color: rgb(80, 80, 80, 0.8);

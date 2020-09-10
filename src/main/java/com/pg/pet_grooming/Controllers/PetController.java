@@ -108,11 +108,16 @@ public class PetController {
     
         // Create Pet or Update Pet
     @RequestMapping(value="/pet/update", method={RequestMethod.PUT,RequestMethod.GET})
-    public String UpdatePet(Pet pet){        
+    public String UpdatePet(Pet pet, @RequestParam("pet_owner_id")int petOwnerId){      
+        petOwnerId = pet.getPet_owner_id();
         petService.save(pet);
+        
+        if(petOwnerId >= 1){
+            return "redirect:/customerDetails/"+petOwnerId;
+        }
         return "redirect:/customers";
     }
-    
+    // Delete Pet
     @RequestMapping(value="/pet/delete", method={RequestMethod.DELETE,RequestMethod.GET})
     public String deletePet(Integer id){
         //, @PathVariable("pet_owner_id")int petOwnerId
