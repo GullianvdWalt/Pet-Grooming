@@ -52,33 +52,30 @@
               </div>
               <div class="customer-details-form-container">
                 <div class="customer-details-form">
-                  <div class="form-row-new-pet">
-
-                  </div>
                   <!--    Customer Details Content    -->
                   <div class="form-row">
                     <label for="customer-id-input" class="customer-label" id="petOwnerIdLbl">Pet Owner Id</label><br>
                     <input type="text" id="pet_owner_id" class="customer-input" th:value="${id}" name="pet_owner_id"
                       readonly />
-                    <br><br>
                   </div>
                   <div class="form-row">
                     <label for="customer-name-input" class="customer-label">Name & Surname</label><br>
                     <input type="text" id="customer-name-input" class="customer-input" name="pet_owner_full_name"
-                      required th:value="${petOwner.pet_owner_full_name}" />
-                    <br><br>
+                      required readonly th:value="${petOwner.pet_owner_full_name}" />
+
                   </div>
                   <div class="form-row">
                     <label for="customer-cell-input" class="customer-label">Cell</label><br>
                     <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell" required
-                      th:value="${petOwner.pet_owner_cell}" />
-                    <br><br>
+                      readonly th:value="${petOwner.pet_owner_cell}" />
+
                   </div>
                   <div class="form-row">
                     <label for="customer-address-input" class="customer-label">Address</label><br>
-                    <input type="text" id="customer-address-input" class="customer-address-input"
-                      name="pet_owner_address" th:value="${petOwner.pet_owner_address}" />
-                    <br><br>
+                    <textarea type="text" id="customer-address-input" class="customer-address-input"
+                      name="pet_owner_address" th:value="${petOwner.pet_owner_address}"
+                      th:text="${petOwner.pet_owner_address}" readonly></textarea>
+
                   </div>
                 </div>
 
@@ -99,7 +96,7 @@
                     <input type="text" id="petId" class="pet-input" name="id" th:field="*{id}" readonly />
                   </div>
                   <div class="form-row">
-                    <label for="pet-name-input" class="pet-label">Name</label>
+                    <label for="pet-name-input" class="pet-label">Name</label><br>
                     <span class="form-error" th:if="${#fields.hasErrors('pet_name')}" th:errors="*{pet_name}">There was an error</span>
                     <input type="text" id="pet-name-input" class="pet-input" autocomplete="off"
                       th:field="*{pet_name}" />
@@ -108,29 +105,29 @@
                   <!-- <input type=" text" id="pet_owner_sid" class="customer-input" th:field="*{pet_owner_id}" name="id"
                     hidden /> -->
                   <div class="form-row-gender">
-                    <label class="pet-label" id="gender-label">Gender</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="pet-label" id="gender-label">Gender</label>
+                    <div class="spacer"></div>
                     <span></span>
                     <Select class="gender-select" th:field="*{pet_gender}" required>
                       <option value="select">Select</option>
                       <option value="male" th:value="'M'" th:text="Male"></option>
                       <option value="female" th:value="'F'" th:text="Female"></option>
                     </Select>
-
                   </div>
                   <div class="form-row">
                     <label for="pet-breed-input" class="pet-label">Breed</label><br />
                     <span></span>
                     <input type="text" id="pet-input-breed" class="pet-input" th:field="*{pet_breed}" />
-                  </div><br>
+                  </div>
                   <div class="form-row">
                     <label for="pet-size-input" class="pet-label">Size</label><br />
                     <span></span>
                     <input type="text" id="pet-input-size" class="pet-input" th:field="*{pet_size}" />
-                  </div><br>
+                  </div>
                   <div class="form-row">
                     <label for="pet-notes-input" class="pet-label">Notes</label><br />
-                    <input type="text" id="pet-notes-input" class="pet-input" autocomplete="off" th:field="*{pet_notes}"
-                      placeholder="None" />
+                    <textarea type="text" id="pet-notes-input" class="pet-input" autocomplete="off" th:field="*{pet_notes}"
+                      placeholder="Write pet notes..."></textarea>
                   </div>
                 </div>
               </div>

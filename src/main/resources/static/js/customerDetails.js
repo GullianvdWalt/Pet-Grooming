@@ -1,5 +1,5 @@
 // Created by Gullian Van Der Walt - 07-09-2020
-// Last Updated - 08-09-2020
+// Last Updated - 10-09-2020
 
 // $("#selectPet").change(function () {
 //   try {
@@ -37,6 +37,8 @@ var petEditModal = document.getElementById("petEditModal");
 var openPetEdit = document.getElementById("editPet");
 // Get Delete Modals
 var petDeleteModal = document.getElementById("petDeleteModal");
+// Get Delete Modals
+var petOwnerDeleteModal = document.getElementById("petOwnerDeleteModal");
 // Get Pet Owner Id
 var petOwnerId = document.getElementById("pet_owner_id");
 // Get edit pet modal close button
@@ -72,31 +74,50 @@ $(document).ready(function () {
   });
 
 });
+
 $(document).ready(function () {
   // Close Edit Modal
   $('#closePetEdit').on('click', function (event) {
     petEditModal.style.display = "none";
   });
 });
+// Delete Pet Modal
 $(document).ready(function () {
-
-  // Delete Pet Modal
   $('table #deletePet').on('click', function (event) {
     event.preventDefault();
     petDeleteModal.style.display = "block";
-    // Delete Button (Confirm Delete) action
+    // Delete Button URL
     var href = $(this).attr('href');
     console.log(href);
     $('#confirmPetDelete').attr('href', href);
     $('#petDeleteModal').modal();
   });
-
 });
-
+// Delete Pet Owner Modal
+$(document).ready(function () {
+  $('#deletePetOwner').on('click', function (event) {
+    event.preventDefault();
+    petOwnerDeleteModal.style.display = "block";
+    // Delete Button URL
+    var href = $(this).attr('href');
+    console.log(href);
+    $('#confirmPetOwnerDelete').attr('href', href);
+    $('#petOwnerDeleteModal').modal();
+  });
+});
+// Close Pet Delete Model
 $(document).ready(function () {
   // Close Delete Modal
-  $("#cancel").on('click', function (event) {
+  $("#petCancel").on('click', function (event) {
     petDeleteModal.style.display = "none";
+  });
+});
+
+// Close Pet Owner Delete Model
+$(document).ready(function () {
+  // Close Delete Modal
+  $("#petOwnerCancel").on('click', function (event) {
+    petOwnerDeleteModal.style.display = "none";
   });
 
 });

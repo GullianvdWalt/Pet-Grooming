@@ -46,7 +46,7 @@ public class PetOwner extends Auditable<String>{
     @NotNull
     @Column(name = "pet_owner_full_name", length = 100,nullable = false)
     private String pet_owner_full_name;
-    
+      
     @NotNull
     @Size
     @Column(name = "pet_owner_cell", length = 20,nullable = false)
@@ -62,7 +62,7 @@ public class PetOwner extends Auditable<String>{
 //    private String pet__owner_email;
     
     
-    @OneToMany(mappedBy = "petOwner",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "petOwner",fetch = FetchType.LAZY, orphanRemoval = true,cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Pet> pets;
     

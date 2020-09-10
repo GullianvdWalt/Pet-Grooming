@@ -34,34 +34,21 @@
     <div class="content-container" id="contentContainer">
       <!-- Customers Container Start -->
       <div class="customers-container">
-        <!--    Filter Section Starts   -->
-        <div class="filter-section">
+
+        <!-- Search Section Starts   -->
+        <div class="search-section">
+          <div class="search-input-container">
+            <input type="text" name="searchCustomers" id="SearchCustomers" class="search-customers-input"
+              placeholder="Search" />
+          </div>
           <div class="new-customer-button-container">
             <a class="buttons" th:href="@{/newCustomer/petOwner}">
               <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
               New Customer
             </a>
-
-          </div>
-
-          <div class="filter-container">
-            <div class="filter-heading">
-              <img src="/icons/filter.png" alt="filter" class="icon" />
-              <h3 class="filter-text">Filter</h3>
-            </div>
-            <div class="filter-input-container">
-              <div>
-                <label for="owner-name-input">Owner Name</label><br />
-                <input type="text" name="owner-name" id="owner-name-input" class="filter-input" />
-              </div>
-              <div>
-                <label for="pet-breed-input">Pet Breed</label><br />
-                <input type="text" name="owner-name" id="pet-breed-input" class="filter-input" />
-              </div>
-            </div>
           </div>
         </div>
-        <!--    Filter Section Ends     -->
+        <!--    Search Section Ends     -->
 
         <!--    Customer Table Section Starts   -->
         <div class="customer-table-container">
@@ -74,63 +61,33 @@
                 <th>Address</th>
                 <th>Pet Name</th>
                 <th>Pet Breed</th>
-                <th>Last Appointment</th>
-                <th>Number of Appointments</th>
                 <th colspan="2">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="id-customers">001</td>
-                <td class="name-customers">Lelanie Snyman</td>
-                <td class="cell-customers">083-750-8818</td>
-                <td class="address-customers">145 Breed Street Sasolburg</td>
-                <td class="pet-name-customers">
-                  Buddy, <br />
-                  Lady, <br />
-                  Mila
-                </td>
-                <td class="breed">
-                  Airdale Terrier, <br />
-                  Airdale Terrier, <br />
-                  Wirehead Foxterrier
-                </td>
-                <td class="last-appointment">04-12-2019</td>
-                <td class="num-appointments">5</td>
-                <td>
-                  <a th:href="@{/editCustomer}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
-                      class="edit-icon" title="Edit Customer" /></a>
-                </td>
-                <td>
-                  <a href="#" id="delete-button"><img src="/icons/trash.png" alt="delete" class="delete-icon"
-                      title="Delete Customer" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td class="id">001</td>
-                <td class="name">Lelanie Snyman</td>
-                <td class="cell">083-750-8818</td>
-                <td class="address">145 Breed Street Sasolburg</td>
-                <td class="pet-name">
-                  Buddy, <br />
-                  Lady, <br />
-                  Mila
-                </td>
-                <td class="breed">
-                  Airdale Terrier, <br />
-                  Airdale Terrier, <br />
-                  Wirehead Foxterrier
-                </td>
-                <td class="last-appointment">04-12-2019</td>
-                <td class="num-appointments">5</td>
-                <td>
-                  <a href="#" id="edit"><img src="/icons/editSmall.png" alt="edit" class="edit-icon"
-                      title="Edit Customer" /></a>
-                </td>
-                <td>
-                  <a href="#" id="delete"><img src="/icons/trash.png" alt="delete" class="delete-icon"
-                      title="Delete Customer" /></a>
-                </td>
+              <div th:if="!${#lists.isEmpty(customerList)}">
+                <tr th:each="PetOwnerPet : ${customerList}">
+
+                  <td th:text="${PetOwnerPet.id}"></td>
+
+                  <td th:text="${PetOwnerPet.pet_owner_full_name}"></td>
+
+                  <td th:text="${PetOwnerPet.pet_owner_address}">145 Breed Street Sasolburg</td>
+                  <td th:text="${PetOwnerPet.pet_owner_cell}"></td>
+                  <td th:text="${PetOwnerPet.pet_name}"></td>
+                  <td th:text="${PetOwnerPet.pet_breed}"></td>
+                  <td>
+                    <a th:href="@{/editCustomer}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
+                        class="edit-icon" title="Edit Customer" /></a>
+                  </td>
+                  <td>
+                    <a href="#" id="delete-button"><img src="/icons/trash.png" alt="delete" class="delete-icon"
+                        title="Delete Customer" /></a>
+                  </td>
+                </tr>
+              </div>
+              <tr th:if="${#lists.isEmpty(customerList)}">
+                <td colspan="8" class="empty-customers-table-text"> There are no customers yet!</td>
               </tr>
             </tbody>
           </table>
@@ -141,58 +98,12 @@
 
 
 
-    <!--    Customer Table Section Ends   -->
 
-    <!--    Customer Details Modal (User Clicks On Edit)    -->
-    <!-- <div class="customer-details-modal" id="customer-details-modal"> -->
-    <!-- <div id="customer-details-modal-content" class="customer-details-modal-content">
-      <div id="modal-pet-owner-details" class="modal-pet-owner-details"> -->
-    <!--    Customer Details Heading    -->
-    <!-- <div class="heading">
-          <img src="/icons/petOwner.png" alt="petOwner" class="pet-owner-icon" />
-          <h3 class="customer-details-heading">Customer Details</h3>
-        </div> -->
-
-    <!-- <form class="customer-details-input-container"> -->
-    <!--    Customer Details Content    -->
-    <!-- <label for="customer-name-input" class="customer-label">Name</label><br />
-          <input type="text" id="customer-name-input" class="customer-input" /><br /><br />
-          <label for="customer-cell-input" class="customer-label">Cell</label><br />
-          <input type="text" id="customer-cell-input" class="customer-input" /><br /><br />
-          <label for="customer-address-input" class="customer-label">Address</label><br />
-          <input type="text" id="customer-address-input" class="customer-address-input" /><br /><br /> -->
-
-    <!--    Buttons     -->
-    <!-- <div class="button-container customer-button-container">
-            <div class="buttons">
-              <a href="#" id="close-button"><img src="/icons/cancelSmall.png" alt="close"
-                  class="button-icon" />Close</a>
-            </div>
-            <div class="buttons">
-              <img src="/icons/save.png" alt="save" class="button-icon" id="save-customer-details" />Save
-            </div>
-          </div>
-        </form>
-      </div> -->
-    <!--
-      <div id="modal-pet-details" class="modal-pet-details">
-        <div class="heading">
-          <img src="/icons/petPaw.png" alt="petPaw" class="pet-paw-icon" />
-          <h3 class="pet-details-heading">Pet Details</h3>
-        </div> -->
 
   </div>
 
-  <!-- </div> -->
+
   </div>
-
-  <!--  Customer  Delete Modal    -->
-  <!-- <div class="delete-modal" id="delete-modal">
-    <h3>Confrim Delete of Lelanie Snyman</h3>
-    <button id="customer-delete-cancel">Cancel</button>
-    <button id="customer-delete-confirm">Confirm</button>
-  </div> -->
-
   <footer th:insert="fragments/footer :: footer">
     <!-- Footer Included With Fragments -->
   </footer>

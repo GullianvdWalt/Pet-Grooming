@@ -45,7 +45,7 @@
             <h3 class="edit-customer-heading">Customer Details</h3>
           </div>
           <div class="form-row-new-pet">
-            <a class="buttons" th:href="@{/newCustomer}">
+            <a class="buttons" th:href="@{/newCustomer/pet/{id}(id = ${petOwner.id})}">
               <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
               Add Pet
             </a>
@@ -75,35 +75,36 @@
                   <div class="form-row">
                     <label for="pet_owner_id" class="customer-label" id="petOwnerIdLbl">Pet Owner Id</label><br>
                     <input type="text" id="pet_owner_id" class="customer-input" th:field="*{id}" name="id" readonly />
-                    <br><br>
                   </div>
                   <div class="form-row">
                     <label for="pet_owner_name_input" class="customer-label">Name & Surname</label><br>
                     <input type="text" id="pet_owner_name_input" class="customer-input" name="pet_owner_full_name"
                       required th:field="*{pet_owner_full_name}" />
-                    <br><br>
                   </div>
                   <div class="form-row">
                     <label for="customer-cell-input" class="customer-label">Cell</label><br>
                     <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell" required
                       th:field="*{pet_owner_cell}" />
-                    <br><br>
                   </div>
                   <div class="form-row">
                     <label for="customer-address-input" class="customer-label">Address</label><br>
                     <input type="text" id="customer-address-input" class="customer-address-input"
                       name="pet_owner_address" th:field="*{pet_owner_address}" />
-                    <br><br>
                   </div>
                 </div>
               </div>
               <!--    Buttons     -->
               <div class="button-container">
-                <a class="buttons" th:href="@{/customers}">
+                <a class="customer-details-buttons" th:href="@{/customers}">
                   <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" />
                   Cancel
                 </a>
-                <button class="buttons" type="submit">
+                <a class=" customer-details-buttons" id="deletePetOwner"
+                  th:href="@{/customers/delete/petOwner/(id=${petOwner.id})}">
+                  <img th:src="@{/Icons/trash.png}" alt="Delete Pet Owner">
+                  Delete
+                </a>
+                <button class="customer-details-buttons" type="submit">
                   <img src="/icons/save.png" alt="back" title="Back To Customers" />
                   Save
                 </button>
@@ -113,7 +114,7 @@
           <!-- Update Pet Owner Form Ends -->
 
           <!-- Pet Table Container Startss -->
-          <div class="pet-table-container" th:each="pet : ${petList}">
+          <div class="pet-table-container">
 
             <div class="pet-table-heading-container">
               <img th:src="@{/Icons/petPaw.png}" alt="Pet Details" class="icon">
@@ -136,7 +137,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr th:each="pet : ${petList}">
                   <td th:text="${pet.id}"></td>
                   <td th:text="${pet.pet_name}"></td>
                   <td th:text="${pet.pet_breed}"></td>
@@ -145,12 +146,12 @@
                   <td th:text="${pet.pet_notes}"></td>
                   <td>
                     <a th:href="@{/pet/findPetById/{ID}(ID = ${pet.id})}" id="editPet">
-                      <img th:src="@{/Icons/editSmall.png}" alt="Edit Pet" class="edit-icon">
+                      <img th:src="@{/Icons/editSmall.png}" alt="Edit Pet" class="icon">
                     </a>
                   </td>
                   <td>
                     <a th:href="@{/pet/delete/(id=${pet.id})}" id="deletePet">
-                      <img th:src="@{/Icons/trash.png}" alt="Delete Pet" class="delete-icon">
+                      <img th:src="@{/Icons/trash.png}" alt="Delete Pet" class="icon">
                     </a>
                   </td>
                 </tr>
@@ -228,11 +229,11 @@
               </div>
               <!--    Buttons     -->
               <div class="button-container">
-                <button class="buttons" id="closePetEdit">
+                <button class="customer-details-buttons" id="closePetEdit">
                   <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" />
                   Close
                 </button>
-                <button class="buttons" type="submit">
+                <button class="customer-details-buttons" type="submit">
                   <img src="/icons/save.png" alt="back" title="Back To Customers" />
                   Save
                 </button>
@@ -242,17 +243,36 @@
           </div>
 
 
+          <!-- Delete Pet Owner Modal Starts -->
+          <div class="delete-modal" id="petOwnerDeleteModal">
+            <div class="delete-modal-container">
+              <div class="delete-modal-header">
+                <h3>Confirm Delete</h3>
+              </div>
+              <div class="delete-modal-body">
+                <h4>Are you sure you want to delete this owner?</h4>
+              </div>
+              <div class="delete-modal-footer">
+                <a href="#" class="customer-details-buttons" id="confirmPetOwnerDelete">Yes, delete</a>
+                <a href="#" class="customer-details-buttons" id="petOwnerCancel">Cancel</a>
+              </div>
+            </div>
+          </div>
+          <!-- Delete Pet Modal Ends -->
+
           <!-- Delete Pet Modal Starts -->
-          <div class="pet-delete-modal" id="petDeleteModal">
-            <div class="pet-delete-modal-header">
-              Confirm Delete
-            </div>
-            <div class="pet-delete-modal-body">
-              <h4>Are you sure you want to delete this pet?</h4>
-            </div>
-            <div class="pet-delete-modal-footer">
-              <a href="#" class="buttons" id="confirmPetDelete">Yes, delete</a>
-              <button class="buttons" id="cancel">Cancel</button>
+          <div class="delete-modal" id="petDeleteModal">
+            <div class="delete-modal-container">
+              <div class="delete-modal-header">
+                <h3>Confirm Delete</h3>
+              </div>
+              <div class="delete-modal-body">
+                <h4>Are you sure you want to delete this pet?</h4>
+              </div>
+              <div class="delete-modal-footer">
+                <a href="#" class="customer-details-buttons" id="confirmPetDelete">Yes, delete</a>
+                <a href="#" class="customer-details-buttons" id="petCancel">Cancel</a>
+              </div>
             </div>
           </div>
           <!-- Delete Pet Modal Ends -->
