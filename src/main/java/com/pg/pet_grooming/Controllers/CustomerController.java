@@ -1,6 +1,6 @@
 /*
    Created By Gullian Van Der Walt 01/08/2020
-   Last Update: 2020/09/07, 05:31
+   Last Update: 10/09/2020
 
  * This is the Customer Controller Class
  * This Controller will be responsible for the routing of the customer pages
@@ -35,11 +35,6 @@ import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Services.PetService;
 
 
-
-
-
-
-
 @Controller
 public class CustomerController{
     
@@ -67,7 +62,6 @@ public class CustomerController{
 
         // Objects
         Pet pet = new Pet();
-        System.out.println(petOwnerId);
         // Pet List : all by owner id
         List <Pet> petList = petRepository.findByPetOwnerId(petOwnerId);
         

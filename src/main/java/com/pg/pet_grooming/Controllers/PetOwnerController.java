@@ -96,16 +96,22 @@ public class PetOwnerController {
         return "CustomerDetails";
     }
     
-    @RequestMapping(path="/createNewPetOwner", method= RequestMethod.POST)
-    public String createOrUpdatePetOwner(PetOwner petOwner){
-        petOwnerService.createOrUpdatePetOwner(petOwner);
-        return "redirect:/customers";
+    // Edit PetOwner
+    @RequestMapping(path="/createNewPetOwner", method={RequestMethod.POST, RequestMethod.PUT})
+    public String createOrUpdatePetOwner(PetOwner petOwner, @RequestParam("id")int petOwnerId){
+       petOwnerId = petOwner.getId();
+       petOwnerService.createOrUpdatePetOwner(petOwner);
+       if(petOwnerId >= 1){
+        return "redirect:/customerDetails/"+petOwnerId;
+       }
+       return "redirect:/customers";
     }
     
     
     // Delete Pet Owner
    @RequestMapping(value="/customers/delete/petOwner",method={RequestMethod.DELETE,RequestMethod.GET})
-   public void deletePetOwner(Integer id){
+   public String deletePetOwner(Integer id){
        petOwnerService.delete(id);
+       return "redirect:/customers";
    }
 }
