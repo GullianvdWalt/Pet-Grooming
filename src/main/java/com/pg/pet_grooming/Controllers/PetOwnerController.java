@@ -1,35 +1,26 @@
 /*
- * This is the Pet Owner Controller Class
- * CRUD operations for PetOwner will be handled here.
+   Created By Gullian Van Der Walt 01/08/2020
+   Last Update: 10/09/2020
  */
 package com.pg.pet_grooming.Controllers;
 // Imports
-import com.pg.pet_grooming.Models.Auditable;
-import com.pg.pet_grooming.Models.Pet;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
-import javax.validation.Valid;
-import java.util.Optional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 // Local Imports
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Models.PetOwner;
 import com.pg.pet_grooming.Repositories.PetOwnerRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.pg.pet_grooming.Models.Pet;
 
 
 
@@ -38,7 +29,9 @@ public class PetOwnerController {
 
     // Inject Service
     @Autowired private PetOwnerService petOwnerService;
+    // Inject Repository
     @Autowired private PetOwnerRepository petOwnerRepository;
+
     
     // Get Pet Owners
     @GetMapping("/getPetOwners")

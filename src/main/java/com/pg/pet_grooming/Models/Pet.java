@@ -45,11 +45,11 @@ public class Pet extends Auditable<String>{
     private Integer id;
     
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)
     @JsonBackReference
     private PetOwner petOwner; //Pet Owner Object
-    private int pet_owner_id;
+    private Integer pet_owner_id;
     
     @NotNull
     @Column(name = "pet_name", length = 255,nullable = false)

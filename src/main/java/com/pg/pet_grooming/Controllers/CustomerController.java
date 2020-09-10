@@ -7,52 +7,51 @@
  */
 package com.pg.pet_grooming.Controllers;
 // Imports
+import com.pg.pet_grooming.DTO.PetOwnerPet;
 import java.util.List;
-import java.util.Optional;
-import javax.validation.Valid;
-import com.pg.pet_grooming.Models.Auditable;
-import javax.json.Json;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import com.google.gson.Gson; 
-
+import java.util.stream.Stream;
 // Local Imports
 import com.pg.pet_grooming.Models.PetOwner;
 import com.pg.pet_grooming.Models.Pet;
+import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Services.PetService;
 
 
+
 @Controller
 public class CustomerController{
     
-    // Inject Services
     @Autowired private PetOwnerService petOwnerService;
     @Autowired private PetService petService;
     @Autowired private PetRepository petRepository;
+    @Autowired private PetOwnerRepository petOwnerRepository;
     
     // Main Customer Dashboard
     @RequestMapping("/customers")
-    public String Customer(Model model){
+    public String Customer(Model model, Pet pet, PetOwner petOwner,PetOwnerPet petOwnerPet){
+       
+//      // Get Pets
+      List<Pet> petList = petService.getPets();
+      // Get Pet Owners
+      List<PetOwnerPet> customerList= petOwnerRepository.customerList();
+      model.addAttribute("pet", pet);
+      
+      model.addAttribute("customerList", customerList);
+      model.addAttribute("petList", petList);
       // Set Page Title
       String pageTitle = "Customers";
       model.addAttribute("pageTitle", pageTitle);
       // Set Page Title Icon
       String iconUrl = "dog.jpg";
       model.addAttribute("iconUrl", iconUrl);
-        return "Customers";
+      return "Customers";
     }   
     
     // View Customer Details
@@ -64,8 +63,6 @@ public class CustomerController{
         Pet pet = new Pet();
         // Pet List : all by owner id
         List <Pet> petList = petRepository.findByPetOwnerId(petOwnerId);
-        
-       
          // Set Page Title
         String pageTitle = "Edit Customer";
         model.addAttribute("pageTitle", pageTitle);
@@ -80,7 +77,6 @@ public class CustomerController{
         }else{
             return"redirect:/customers";
         }
-        
         // Set 
         model.addAttribute("petList", petList);
         model.addAttribute("pet", pet);

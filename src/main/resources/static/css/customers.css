@@ -36,17 +36,17 @@
 /* Customer Container Style Start*/
 .customers-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem;
   margin-top: 50px;
 }
 /*      Filter Section   Start */
-.filter-section {
-  width: 20%;
-  height: 100%;
+.search-section {
+  width: 100%;
+  height: 20%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
   border: 2px solid #dcdcdc;
   padding: 1em;
   text-align: center;
@@ -56,72 +56,47 @@
   -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
   box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
 }
+
+.search-input-container {
+  width: 50%;
+  padding: 1rem;
+}
 /*      New Customer Button     */
 .new-customer-button-container {
-  height: 30%;
-  margin-bottom: 20px;
+  width: 30%;
+  padding: 1rem;
 }
 
-/* .new-customer-button a img {
-  width: 60px;
-  height: 60px;
-
-  vertical-align: middle;
-  margin-right: 10px;
-} */
-/*  Filter Container  Start  */
-.filter-container {
-  display: block;
-  padding: 1em;
-  min-width: 50%;
-  height: 70%;
-  border: 2px solid #dcdcdc;
-  padding: 1em;
-  text-align: center;
-}
-.filter-heading {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 40px;
-  text-align: center;
-}
-.filter-heading img {
-  vertical-align: middle;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-}
-.filter-text {
-  display: inline;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-  color: #505050;
+.search-customers-input {
+  width: 70%;
+  margin: 0 15%;
+  padding: 1rem;
+  border: 2px solid #505050;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #ff69b4;
+  border-radius: 15px;
+  outline: none;
 }
 label {
   font-family: 'Montserrat', sans-serif;
   color: #505050;
   font-size: 20px;
 }
-.filter-input {
-  width: 90%;
-  height: 60px;
-  border: 2px solid #505050;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.7em;
-  font-weight: 800;
-  color: #ff69b4;
-}
-/*  Filter Container  End  */
 
-/*  Filter Section    End */
+/*  Search Container  End  */
+
+/*  search Section End */
 
 /*  Custome Table Section Start */
 .customer-table-container {
-  width: 78%;
+  width: 100%;
+  height: 80%;
+  padding: 1rem;
+  margin-top: 2rem;
   border: 2px solid #dcdcdc;
-  padding: 1em;
-  margin-left: 20px;
+  padding: 1rem;
 
   /*  Shadow Effects  */
   -webkit-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
@@ -154,7 +129,6 @@ tbody tr {
 
   text-align: justify;
 }
-
 td {
   font-size: 18px;
   text-align: left;
@@ -164,6 +138,9 @@ td {
 table tr:nth-child(even) {
   background-color: rgb(80, 80, 80, 0.8);
   color: #fff;
+}
+.empty-customers-table-text {
+  text-align: center;
 }
 #edit-button {
   cursor: pointer;

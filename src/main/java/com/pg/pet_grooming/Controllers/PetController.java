@@ -16,6 +16,12 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Optional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 // Local Imports
 import com.pg.pet_grooming.Services.PetService;
 import com.pg.pet_grooming.Services.PetOwnerService;
@@ -23,12 +29,6 @@ import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Models.Pet;
 import com.pg.pet_grooming.Models.PetOwner;
-import java.util.Optional;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -41,7 +41,7 @@ public class PetController {
     @Autowired private PetOwnerRepository petOwnerRepository;
     
         
-    @GetMapping("/newCustomer/pet/{id}")
+    @RequestMapping(value="/newCustomer/pet/{id}", method={RequestMethod.POST,RequestMethod.GET})
     public String newCustomerPet(Model model,@PathVariable("id")int id) throws ResourceNotFoundException {
        PetOwner petOwner = new PetOwner();
        Pet pet = new Pet();
@@ -59,16 +59,12 @@ public class PetController {
      // Add New Pet
     @PostMapping("/newCustomer/pet/new")
     public String addPet(@Valid @ModelAttribute("pet") Pet pet,BindingResult bindingResult,Model model){
-       
 //       bindingResult.addError(new FieldError("pet", "id", ""));
-        
 //       int petId = pet.getId();
        int ownerId = pet.getPet_owner_id();
-       
        if(bindingResult.hasErrors()){
            return "newPetForm";
        }
-       
        petService.save(pet);
        // Direct to New Pet and pass Pet Owner Id
        return "redirect:/customerDetails/"+ownerId;
