@@ -77,17 +77,13 @@
                   <td th:text="${PetOwnerPet.pet_name}"></td>
                   <td th:text="${PetOwnerPet.pet_breed}"></td>
                   <td>
-                    <a th:href="@{/editCustomer}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
+                    <a th:href="@{/customerDetails/{ownerId}(ownerId = ${PetOwnerPet.id})}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
                         class="edit-icon" title="Edit Customer" /></a>
-                  </td>
-                  <td>
-                    <a href="#" id="delete-button"><img src="/icons/trash.png" alt="delete" class="delete-icon"
-                        title="Delete Customer" /></a>
                   </td>
                 </tr>
               </div>
               <tr th:if="${#lists.isEmpty(customerList)}">
-                <td colspan="8" class="empty-customers-table-text"> There are no customers yet!</td>
+                <td colspan="8" class="empty-customers-table-text"> There are currently no customers.</td>
               </tr>
             </tbody>
           </table>
