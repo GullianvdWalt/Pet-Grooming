@@ -24,7 +24,6 @@ import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Services.PetService;
 
 
-
 @Controller
 public class CustomerController{
     
@@ -41,6 +40,7 @@ public class CustomerController{
       List<Pet> petList = petService.getPets();
       // Get Pet Owners
       List<PetOwnerPet> customerList= petOwnerRepository.customerList();
+//      List<PetOwner> customerList= petOwnerRepository.customerList();
       model.addAttribute("pet", pet);
       
       model.addAttribute("customerList", customerList);

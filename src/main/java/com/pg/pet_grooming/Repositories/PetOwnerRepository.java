@@ -16,6 +16,7 @@ import com.pg.pet_grooming.DTO.PetOwnerPet;
 
 @Repository
 public interface PetOwnerRepository extends JpaRepository<PetOwner, Integer>{
+    //EntityManagerSupplier
             // SQL Query
     	@Query(value="SELECT * FROM pet_owner p WHERE p.pet_owner_full_name LIKE %:keyword% "
                 + "OR p.pet_owner_address LIKE %:keyword% OR p.pet_owner_cell LIKE %:keyword% ", nativeQuery=true)
@@ -24,7 +25,13 @@ public interface PetOwnerRepository extends JpaRepository<PetOwner, Integer>{
         @Query(value = "SELECT * FROM pet_owner WHERE id LIKE %:id%", nativeQuery=true)
         List<PetOwner>findPetOwnerById(Integer id);
         
-        
-        @Query("SELECT new com.pg.pet_grooming.DTO.PetOwnerPet(p.id,p.pet_owner_full_name,p.pet_owner_cell,p.pet_owner_address,e.pet_name,e.pet_breed)FROM PetOwner p JOIN p.pets e")
+        // JPA Query
+        @Query("SELECT new com.pg.pet_grooming.DTO.PetOwnerPet(p.id,p.pet_owner_full_name,p.pet_owner_cell,p.pet_owner_address,"
+        +"e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e")
         List<PetOwnerPet> customerList();
+        
+//        @Query(value ="SELECT pet_owner.id, pet_owner.pet_owner_full_name, "
+//                + "GROUP_CONCAT(pet.pet_name) as `Pet_Names`, "
+//                + "GROUP_CONCAT(pet.pet_breed) as `Pet_Breed` FROM pet_owner, pet group by pet_owner.id",nativeQuery=true)
+//        List<PetOwner> customerList();
 }
