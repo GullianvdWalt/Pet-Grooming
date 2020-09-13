@@ -12,7 +12,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <!--    Styles      -->
   <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-  <link rel="stylesheet" th:href="@{/css/selectCustomer.css}" />
+  <link rel="stylesheet" th:href="@{/css/selectPet.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
   <!--    Font Awesome    -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -40,43 +40,44 @@
 
         <div class="select-customers-header-container">
           <div class="select-customer-heading-container">
-            <h3>Select Owner</h3>
+            <h3>Select Pet</h3>
           </div>
         </div>
 
         <!-- Select Customers Details Container Start -->
         <div class="select-customer-details-container">
 
-          <div class="customers-col">
+          <form class="pet-col">
 
-            <div class="customer-select-search-container">
-              <input type="text" placeholder="search owner...." class="search-input">
-            </div>
-            <!-- Customers Table -->
-            <div>
-              <table class="customer-select-table-customer">
+            <!-- Pet Table -->
+            <div class="select-pet-form-details">
+              <table class="customer-select-table-pet">
                 <thead>
                   <tr>
-                    <th colspan="4"><img th:src="@{/Icons/petOwner.png}" alt="Pet Owner" class="icon">
-                      Customers
-                    </th>
+                    <th colspan="4">Pet</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="petOwner : ${petOwnerList}">
-                    <td class="checkbox-column">
-                      <a th:href="@{/newAppointments/select/petOwner/{petOwnerId}(petOwnerId = ${petOwner.id})}"
-                        id="petOwnerSelect" class="customer-select-checkbox">Select</a>
-                    </td>
-                    <input type="hidden" th:name="petOwnerId" th:value="${petOwner.id}" id="petOwnerId">
-                    <td th:text=${petOwner.pet_owner_full_name}></td>
-                    <td th:text=${petOwner.pet_owner_cell}></td>
-                    <td th:text=${petOwner.pet_owner_address}></td>
+                  <div th:if="!${#lists.isEmpty(petList)}">
+                    <!--  -->
+                    <tr th:each="pet : ${petList}">
+                      <td class="checkbox-column"><input type="checkbox" class="customer-select-checkbox"
+                          th:value="${pet.id}"></td>
+                      <td th:text="${pet.id}"></td>
+                      <td th:text="${pet.pet_name}"></td>
+                      <td th:text="${pet.pet_breed}"></td>
+                    </tr>
+                  </div>
+                  <tr th:if="${#lists.isEmpty(petList)}">
+                      <td colspan="8" class="pet-owner-not-selected"> Select Pet</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </div>
+            <div class="next-button-container">
+              <input class="next-button" type="submit" value="Next">
+            </div>
+          </form>
 
         </div>
         <!-- Select Customers Details Container End -->
