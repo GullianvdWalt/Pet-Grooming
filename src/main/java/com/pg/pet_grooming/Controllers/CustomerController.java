@@ -7,14 +7,13 @@
  */
 package com.pg.pet_grooming.Controllers;
 // Imports
-import com.pg.pet_grooming.DTO.PetOwnerPet;
+
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import java.util.stream.Stream;
 // Local Imports
 import com.pg.pet_grooming.Models.PetOwner;
 import com.pg.pet_grooming.Models.Pet;
@@ -22,6 +21,7 @@ import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Services.PetService;
+import com.pg.pet_grooming.DTO.PetOwnerPet;
 
 
 @Controller
