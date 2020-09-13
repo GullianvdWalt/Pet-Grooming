@@ -44,6 +44,12 @@ public class PetService {
     public Optional<PetOwner> findPetOwnerById(Integer id){
         return petOwnerRepository.findById(id);
     }
+    
+    // Get Pets by PetOwnerID
+    public List<Pet> findPetByPetOwnerId(int petOwnerId){
+        return petRepository.getPetByPetOwnerId(petOwnerId);
+    }
+    
        // Get Pet By ID
     public Optional<Pet> findPetById(int id){
         return petRepository.findById(id);
