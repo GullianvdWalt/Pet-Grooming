@@ -16,7 +16,7 @@ and open the template in the editor.
 
     <div class="title-container">
       <!-- /icons/dog.jpg -->
-      <img th:src="@{/icons/{icon}(icon=${iconUrl})}" alt="Page Icon" class="page-title-icon">
+      <img th:src="@{/Icons/{icon}(icon=${iconUrl})}" alt="Page Icon" class="page-title-icon">
       <!-- Title Is Return Via Controller -->
       <h2 class="page-title" th:text="${pageTitle}">Page Title</h2>
     </div>

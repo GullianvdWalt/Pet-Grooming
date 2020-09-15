@@ -112,17 +112,6 @@
 .date-time-heading {
   margin-bottom: 3rem;
 }
-.date-time-heading img,
-.customer-details-header img {
-  width: 60px;
-  height: 60px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  margin-top: 10px;
-}
-.date-time-heading h3,
-.customer-details-header h3 {
-  margin-left: 20px;
-}
 /* Date Container - Input Elements */
 .date-container,
 .time-container {
@@ -153,13 +142,6 @@
   width: 50%;
   display: flex;
   justify-content: space-between;
-}
-/* Style Input Boxes When User Click To Type*/
-#date-input:focus,
-#time-input-start:focus,
-.time-input-end:focus {
-  background-color: rgb(255, 105, 180, 0.8);
-  font-weight: bold;
 }
 
 .time-container input {
@@ -223,25 +205,29 @@ table {
 }
 table tr {
   margin-top: 0.5rem;
+  text-align: center;
 }
 /* Heading of Table */
 
 /* Text */
-.service-table-heading {
+.service-header-container {
+  width: 100%;
   padding: 0.5rem;
+  text-align: center;
+  background-color: #505050;
+  margin-bottom: 3rem;
+}
+.services-header {
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
 }
 th div {
   margin-bottom: 0.5rem;
 }
-/* Icons */
-.service-table-heading img {
-  max-width: 55px;
-  max-height: 55px;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
-}
-
+/* .icon {
+  margin: 0 1rem;
+} */
 /*  Checkbox */
 .checkbox {
   position: relative;
@@ -278,45 +264,5 @@ th div {
   width: 80%;
   margin: 5rem 10%;
 }
-.cancel-button {
-  width: 170px;
-  height: 70px;
-  padding: 0.5rem;
-  display: inline-block;
-  background-color: #505050;
-  margin-left: 8rem;
 
-  border-radius: 25px;
-  text-align: center;
-}
-.save-button {
-  width: 170px;
-  height: 70px;
-  padding: 0.5rem;
-  display: inline-block;
-  background-color: #505050;
-  margin-right: 15rem;
-  border-radius: 25px;
-  text-align: center;
-}
-.cancel-button a,
-.save-button a {
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: white;
-}
-.save-buttona a:hover,
-.cancel-button a:hover {
-  cursor: pointer;
-  color: #ff69b4;
-}
-.save-button img,
-.cancel-button img {
-  width: 55px;
-  height: 55px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
 /* Button Container Styles Ends */

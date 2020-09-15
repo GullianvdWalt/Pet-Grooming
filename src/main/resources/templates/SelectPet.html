@@ -44,28 +44,31 @@
           </div>
         </div>
 
-        <!-- Select Customers Details Container Start -->
-        <div class="select-customer-details-container">
+        <form class="pet-col" th:action="@{/newAppointments/getPet}" th:object="${pet}" method="get">
 
-          <form class="pet-col">
-
-            <!-- Pet Table -->
-            <div class="select-pet-form-details">
-              <table class="customer-select-table-pet">
-                <thead>
-                  <tr>
-                    <th colspan="4">Pet</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <div th:if="!${#lists.isEmpty(petList)}">
+          <!-- Pet Table -->
+          <div class="select-pet-form-details">
+            <table class="customer-select-table-pet">
+              <thead>
+                <tr>
+                  <th colspan="4">
+                    <img th:src="@{/Icons/petPaw.png}" alt="Pet Owner" class="icon">
+                    Pet
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <div th:if="!${#lists.isEmpty(petList)}">
                     <!--  -->
                     <tr th:each="pet : ${petList}">
-                      <td class="checkbox-column"><input type="checkbox" class="customer-select-checkbox"
-                          th:value="${pet.id}"></td>
+                      <td class="checkbox-column">
+                          <input type="checkbox" class="customer-select-checkbox"
+                          th:value="${pet.id}" th:name="petId">
+                      </td>
                       <td th:text="${pet.id}"></td>
                       <td th:text="${pet.pet_name}"></td>
                       <td th:text="${pet.pet_breed}"></td>
+                      <td th:value="${pet.pet_owner_id}"th:name="petOwnerId"></td>
                     </tr>
                   </div>
                   <tr th:if="${#lists.isEmpty(petList)}">
@@ -75,12 +78,9 @@
               </table>
             </div>
             <div class="next-button-container">
-              <input class="next-button" type="submit" value="Next">
+              <button class="buttons" type="submit">Next</button>
             </div>
           </form>
-
-        </div>
-        <!-- Select Customers Details Container End -->
 
       </div>
       <!--  Select Customer Container Starts    -->

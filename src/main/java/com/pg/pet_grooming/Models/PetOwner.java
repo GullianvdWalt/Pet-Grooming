@@ -61,7 +61,6 @@ public class PetOwner extends Auditable<String>{
 //    @Email
 //    private String pet__owner_email;
     
-    
     @OneToMany(mappedBy = "petOwner",fetch = FetchType.LAZY, orphanRemoval = true,cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Pet> pets;
