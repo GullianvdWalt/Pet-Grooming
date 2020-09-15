@@ -44,42 +44,37 @@
           </div>
         </div>
 
-        <!-- Select Customers Details Container Start -->
-        <div class="select-customer-details-container">
+        <div class="customers-col">
 
-          <div class="customers-col">
-
-            <div class="customer-select-search-container">
-              <input type="text" placeholder="search owner...." class="search-input">
-            </div>
-            <!-- Customers Table -->
-            <div>
-              <table class="customer-select-table-customer">
-                <thead>
-                  <tr>
-                    <th colspan="4"><img th:src="@{/Icons/petOwner.png}" alt="Pet Owner" class="icon">
-                      Customers
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="petOwner : ${petOwnerList}">
-                    <td class="checkbox-column">
-                      <a th:href="@{/newAppointments/select/petOwner/{petOwnerId}(petOwnerId = ${petOwner.id})}"
-                        id="petOwnerSelect" class="customer-select-checkbox">Select</a>
-                    </td>
-                    <input type="hidden" th:name="petOwnerId" th:value="${petOwner.id}" id="petOwnerId">
-                    <td th:text=${petOwner.pet_owner_full_name}></td>
-                    <td th:text=${petOwner.pet_owner_cell}></td>
-                    <td th:text=${petOwner.pet_owner_address}></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="customer-select-search-container">
+            <input type="text" placeholder="search owner...." class="search-input">
           </div>
-
+          <!-- Customers Table -->
+          <div>
+            <table class="customer-select-table-customer">
+              <thead>
+                <tr>
+                  <th colspan="4">
+                    <img th:src="@{/Icons/petOwner.png}" alt="Pet Owner" class="icon">
+                    Customers
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="petOwner : ${petOwnerList}">
+                  <td class="select-column">
+                    <a th:href="@{/newAppointments/select/petOwner/{petOwnerId}(petOwnerId = ${petOwner.id})}"
+                      id="petOwnerSelect" class="customer-select-checkbox">Select</a>
+                  </td>
+                  <input type="hidden" th:name="petOwnerId" th:value="${petOwner.id}" id="petOwnerId">
+                  <td th:text=${petOwner.pet_owner_full_name}></td>
+                  <td th:text=${petOwner.pet_owner_cell}></td>
+                  <td th:text=${petOwner.pet_owner_address}></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <!-- Select Customers Details Container End -->
 
       </div>
       <!--  Select Customer Container Starts    -->

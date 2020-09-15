@@ -1,5 +1,6 @@
  /*
- * 
+ * Created By Gullian Van Der Walt - 01/08/2020
+   Last Updated - 20/09/07, 04:51
  * This is the Services (Entity/Table)
  * 
  */
@@ -7,6 +8,7 @@
 package com.pg.pet_grooming.Models;
 
 // Imports
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.Column;
@@ -27,7 +29,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Services {
+public class Services extends Auditable<String>{
    
     // Services Attributes
     
@@ -49,8 +51,5 @@ public class Services {
     @Column(name = "service_status",nullable = false)
     private boolean service_status;
     
-    @ManyToOne
-    @JoinColumn(name="app_service_id",insertable = false,updatable = false)
-    private Appointment_Services appointment_services;
-    private Long app_service_id;
+
 }

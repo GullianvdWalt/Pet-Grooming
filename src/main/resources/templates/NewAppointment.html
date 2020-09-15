@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -38,7 +38,7 @@
       <div class="new-appointment-container">
 
         <!-- Appointment Details Section Starts  -->
-        <div class="appointment-details-section">
+        <form class="appointment-details-section" th:action="@{/newAppointments/getPet}" method="post">
           <div class="header">
             <h3 class="new-appointment-heading">Appointment Details</h3>
           </div>
@@ -47,36 +47,37 @@
             <!-- Date & Time Section -->
             <div class="appointment-date-container">
               <div class="date-time-heading">
-                <img src="/icons/time-icon.png" alt="date-time" />
-                <h3>Date & Time</h3>
+                <img src="/Icons/time-icon.png" alt="date-time" class="icon" />
+                <h4>Date & Time</h4>
               </div>
               <div class="date-container">
                 <label for="date-input"> Date </label>
-                <input type="text" id="date-input" />
+                <input type="text" id="date-input" required />
               </div>
               <div class="time-container">
                 <label for="time-input-start">Time</label>
-                <div>
-                  <input type="text" id="time-input-start" />
-                  <label for="time-input-end" class="dash">&ndash;</label>
-                  <input type="text" id="time-input-end" />
-                </div>
+                <input type="text" id="time-input-start" required />
               </div>
             </div>
             <!-- Customer Details Secton -->
             <div class="customer-details-container">
               <div class="customer-details-header">
-                <img src="/icons/petOwner.png" alt="customer" />
-                <h3>Customer</h3>
+                <img src="/Icons/petOwner.png" alt="customer" class="icon" />
+                <h4>Customer</h4>
               </div>
-              <div class="customer-details">
+              <div class=" customer-details" th:each="PetOwner : ${petOwner}">
                 <div>
                   <label for="customer-fullname-input">Full Name</label>
-                  <input type="text" id="customer-fullname-input" />
+                  <input type="text" id="customer-fullname-input" th:value="${PetOwner.pet_owner_full_name}" />
+                  <input type="text" id="petOwnerId" name="id" th:value="${PetOwner.id}" hidden>
                 </div>
                 <div>
                   <label for="cell-input" class="cell-label">Cell</label>
-                  <input type="text" id="cell-input" />
+                  <input type="text" id="cell-input" th:value="${PetOwner.pet_owner_cell}" />
+                </div>
+                <div>
+                  <label for="address-input" class="appointment-label">Address</label>
+                  <input type="text" id="address-input" th:value="${PetOwner.pet_owner_address}" />
                 </div>
               </div>
             </div>
@@ -84,88 +85,28 @@
           <!-- Date and Customer Details Section End -->
           <!-- Services Start -->
           <div class="services-container">
-            <h3 class="services-header">Services</h3>
+            <div class="service-header-container">
+              <h4 class="services-header">Services</h4>
+            </div>
             <table class="services-table">
               <!-- Table Heading  -->
               <thead class="service-table-head">
                 <tr>
                   <th class="service-table-heading">
-                    <div><img src="/icons/petPaw.png" alt="pet" /> Pet</div>
+                    <img th:src="@{/Icons/petPaw.png}" alt="pet" class="icon" /> Pet
                   </th>
-                  <th class="service-table-heading">
-                    <div><img src="/icons/scissors.png" alt="pet" /> Trim</div>
-                  </th>
-                  <th class="service-table-heading">
-                    <div><img src="/icons/clippers.png" alt="pet" /> Nail Cut</div>
-                  </th>
-                  <th class="service-table-heading">
-                    <div><img src="/icons/shave.png" alt="pet" /> Shave</div>
-                  </th>
-                  <th class="service-table-heading">
-                    <div><img src="/icons/bath.png" alt="pet" /> Bath</div>
-                  </th>
-                  <th class="service-table-heading">
-                    <div><img src="/icons/dip.png" alt="pet" /> Dip</div>
+                  <th class="service-table-heading" th:each="Services : ${serviceList}"
+                    th:text="${Services.service_name}">
+                    <div><img th:src="@{/Icons/petPaw.png}" alt="Service Icon" class="icon"></div>
                   </th>
                 </tr>
               </thead>
               <!-- Table Body -->
               <tbody>
-                <tr>
-                  <td>Buddy (Airdale Terrier)</td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="trim" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="nail-cut" class="checkbox" />
-                    </div>
-
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="shave" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="bath" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="dip" class="checkbox" />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Buddy (Airdale Terrier)</td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="trim" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="nailCut" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="shave" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="bath" class="checkbox" />
-                    </div>
-                  </td>
-                  <td class="checkbox-column">
-                    <div class="checkbox-container">
-                      <input type="checkbox" name="dip" class="checkbox" />
-                    </div>
+                <tr th:each="pet : ${petList}">
+                  <td th:text="${pet.pet_name}"></td>
+                  <td class=" checkbox-column" th:each="Services : ${serviceList}">
+                    <input type="checkbox" th:value="${Services.service_id}" class="checkbox" />
                   </td>
                 </tr>
               </tbody>
@@ -175,10 +116,10 @@
           <!-- Services End -->
           <!--    Button Container   -->
           <div class="button-container">
-            <div class="buttons"><a href="/"><img src="/icons/cancelSmall.png" alt="cancel">Cancel</a></div>
-            <div class="buttons"><a href="#"><img src="/icons/save1.png" alt="save">Save</a></div>
+            <a th:href="@{/}" class="buttons"><img src="/icons/cancelSmall.png" alt="Cancel">Cancel</a>
+            <a href="#" class="buttons"><img src="/icons/save1.png" alt="Save">Save</a>
           </div>
-        </div>
+        </form>
       </div>
       <!-- New Appointment Container End -->
     </div>

@@ -30,6 +30,9 @@ public interface PetOwnerRepository extends JpaRepository<PetOwner, Integer>{
         +"e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e")
         List<PetOwnerPet> customerList();
         
+        
+        
+        
 //        @Query(value ="SELECT pet_owner.id, pet_owner.pet_owner_full_name, "
 //                + "GROUP_CONCAT(pet.pet_name) as `Pet_Names`, "
 //                + "GROUP_CONCAT(pet.pet_breed) as `Pet_Breed` FROM pet_owner, pet group by pet_owner.id",nativeQuery=true)

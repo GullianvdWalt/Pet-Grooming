@@ -1,12 +1,16 @@
  /*
- * 
+ * Created By Gullian Van Der Walt - 01/08/2020
+   Last Updated - 2020/09/15, 14:12
+
  * This is the Appointment_Services (Entity/Table)
+   Used to Join Appointments and Services
  * 
  */
 
 
 package com.pg.pet_grooming.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.List;
@@ -43,16 +47,15 @@ public class Appointment_Services {
     
     @ManyToOne // Many Appointment Services to one appointment
     @JoinColumn(name="app_id", insertable=false, updatable=false)
-    private Appointments appointment; //Pet Object
+    private Appointments appointment;
     private Long app_id; // Foreign Key
     
     @ManyToOne // Many services to one pet
     @JoinColumn(name="pet_id", insertable=false, updatable=false)
-    private Pet pet; //Pet Object
-    private Long pet_id; // Foreign Key
+    @JsonBackReference
+    private List<Pet> pets;
     
-    @OneToMany (mappedBy = "appointment_services")
     private List<Services> services;
-    
+
     
 }
