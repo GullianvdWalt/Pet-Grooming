@@ -9,6 +9,7 @@ package com.pg.pet_grooming.Models;
 
 // Imports
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -18,9 +19,14 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
+import lombok.AccessLevel;
 import static javax.persistence.TemporalType.TIMESTAMP;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter(AccessLevel.PROTECTED)
+@Setter(AccessLevel.PROTECTED)
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable<U> { // Other Classes will define variable type.
@@ -28,16 +34,20 @@ public abstract class Auditable<U> { // Other Classes will define variable type.
     // Attributes
     
     @CreatedBy
+    @Column(name = "created_by")
     protected U created_by;
     
     @CreatedDate
+    @Column(name = "created_date")
     protected Date created_date;
     
     @LastModifiedBy
+    @Column(name = "last_modified_by")
     protected U last_modified_by;
     
     @LastModifiedDate
-    @Temporal(TIMESTAMP)
+//    @Temporal(TIMESTAMP)
+    @Column(name = "last_modified_date")
     protected Date last_modified_date;
 
     // Getter and Setter Methods

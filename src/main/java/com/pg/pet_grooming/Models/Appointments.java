@@ -13,8 +13,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,14 +29,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-// Local Imports
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "appointments")
@@ -42,9 +49,8 @@ import lombok.ToString;
 @ToString   //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Appointments extends Auditable<String>{
-    
+//    
     // Appointments Attributes
     // Primary Key
     @Id
@@ -58,11 +64,13 @@ public class Appointments extends Auditable<String>{
     
     @NotNull
     @Column(name = "app_date",nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date app_date;
      
     @NotNull
     @Column(name = "app_time",nullable = false)
-    private int appTime;
+    private int app_time;
     
 //    @NotNull
 //    @Column(name = "end_time",nullable = false)
@@ -74,33 +82,37 @@ public class Appointments extends Auditable<String>{
     @Column(name = "status")
     private String status;
 
-    @NotNull
-    @ManyToOne // One Pet can have many Appointments
-    @JoinColumn(name="pet_id", insertable=false, updatable=false)
-    @JsonBackReference
-    private Pet pet; //Pet Object
-    private int pet_id; // Foreign Key
+    // Appointments
+    // Pet - Appointment_Pets - Appointments
     
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pets",
+    joinColumns = @JoinColumn(name="app_id",referencedColumnName = "app_id"),
+    inverseJoinColumns = @JoinColumn(name="pet_id", referencedColumnName = "id"))
+    private List<Pet> petList;
+
     @NotNull
     @Column(name = "pet_owner_id",nullable = false)
     private int pet_owner_id;
     
-    @NotNull
-    @Column(name="pet_owner_cell",length =15,nullable = false)
-    private String pet_owner_cell;
+    // Services
+    // Appointment - Services - Appointment_Pet_Services - Pet
     
-    @NotNull
-    @Column(name="pet_owner_address")
-    private String pet_owner_address;
-    
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
-    @JoinTable(name="appointment_services",joinColumns = 
-            {@JoinColumn(name="app_id")},
-            inverseJoinColumns = {@JoinColumn(name ="service_id")})
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pet_services",
+    joinColumns = @JoinColumn(name="app_id",referencedColumnName = "app_id"),
+    inverseJoinColumns = @JoinColumn(name="service_id", referencedColumnName = "service_id"))
     private List<Services> services;
+
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pet_services",
+    joinColumns = @JoinColumn(name="app_id",referencedColumnName = "app_id"),
+    inverseJoinColumns = @JoinColumn(name="pet_id", referencedColumnName = "id"))
+    private List<Pet> pet;
     
+
     
     // Constructor handled by Lombok
-    // Getters and Setters handled by Lombok
+    // Getters and Setters handled by lombok
+    
 }

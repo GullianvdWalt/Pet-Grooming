@@ -17,6 +17,10 @@
   <!--    Font Awesome    -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/newAppointment.css" />
+  <!-- Tempus Dominus Date Picker -->
+  <!-- <link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}" />
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " /> -->
+
 </head>
 
 <body>
@@ -38,7 +42,8 @@
       <div class="new-appointment-container">
 
         <!-- Appointment Details Section Starts  -->
-        <form class="appointment-details-section" th:action="@{/newAppointments/getPet}" method="post">
+        <form class="appointment-details-section" th:action="@{/newAppointments/new/save}" th:object="${newAppointment}"
+          method="post">
           <div class="header">
             <h3 class="new-appointment-heading">Appointment Details</h3>
           </div>
@@ -52,11 +57,21 @@
               </div>
               <div class="date-container">
                 <label for="date-input"> Date </label>
-                <input type="text" id="date-input" required />
+                <input type="date" id="date-input" th:field="*{app_date}" required />
               </div>
+              <!-- <div class="form-group">
+                <label for="date">Date:</label>
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="date"
+                    placeholder="Date" />
+                  <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                  </div>
+                </div>
+              </div> -->
               <div class="time-container">
                 <label for="time-input-start">Time</label>
-                <input type="text" id="time-input-start" required />
+                <input type="text" id="time-input-start" th:field="*{app_time}" required />
               </div>
             </div>
             <!-- Customer Details Secton -->
@@ -69,14 +84,14 @@
                 <div>
                   <label for="customer-fullname-input">Full Name</label>
                   <input type="text" id="customer-fullname-input" th:value="${PetOwner.pet_owner_full_name}" />
-                  <input type="text" id="petOwnerId" name="id" th:value="${PetOwner.id}" hidden>
+                  <input type=" text" id="petOwnerId" name="pet_owner_id" th:value="${PetOwner.id}" hidden>
                 </div>
                 <div>
                   <label for="cell-input" class="cell-label">Cell</label>
                   <input type="text" id="cell-input" th:value="${PetOwner.pet_owner_cell}" />
                 </div>
                 <div>
-                  <label for="address-input" class="appointment-label">Address</label>
+                  <label for=" address-input" class="appointment-label">Address</label>
                   <input type="text" id="address-input" th:value="${PetOwner.pet_owner_address}" />
                 </div>
               </div>
@@ -84,7 +99,7 @@
           </div>
           <!-- Date and Customer Details Section End -->
           <!-- Services Start -->
-          <div class="services-container">
+          <div class=" services-container">
             <div class="service-header-container">
               <h4 class="services-header">Services</h4>
             </div>
@@ -97,16 +112,17 @@
                   </th>
                   <th class="service-table-heading" th:each="Services : ${serviceList}"
                     th:text="${Services.service_name}">
-                    <div><img th:src="@{/Icons/petPaw.png}" alt="Service Icon" class="icon"></div>
+                    <img th:src="@{/Icons/petPaw.png}" alt="Service Icon" class="icon">
                   </th>
                 </tr>
               </thead>
               <!-- Table Body -->
               <tbody>
                 <tr th:each="pet : ${petList}">
+                  <input type="hidden" name="pet_id" id="pet_id" th:value="${pet.id}">
                   <td th:text="${pet.pet_name}"></td>
                   <td class=" checkbox-column" th:each="Services : ${serviceList}">
-                    <input type="checkbox" th:value="${Services.service_id}" class="checkbox" />
+                    <input type="checkbox" th:value="${Services.service_id}" name="service_id" class="checkbox" />
                   </td>
                 </tr>
               </tbody>
@@ -117,7 +133,7 @@
           <!--    Button Container   -->
           <div class="button-container">
             <a th:href="@{/}" class="buttons"><img src="/icons/cancelSmall.png" alt="Cancel">Cancel</a>
-            <a href="#" class="buttons"><img src="/icons/save1.png" alt="Save">Save</a>
+            <button type="submit" class="buttons"><img src="/icons/save1.png" alt="Save">Save</button>
           </div>
         </form>
       </div>
@@ -132,9 +148,30 @@
   </footer>
 
   <!--   Scripts     -->
+  <!-- <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js}"></script> -->
+
   <script th:src="@{/js/sidenav.js}"></script>
-  <!-- <script src="/js/newCustomer.js"></script>
-  <script src="/js/newPet.js"></script> -->
+  <!-- <script>
+    $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+      icons: {
+        time: 'far fa-clock',
+        date: 'far fa-calendar',
+        up: 'fas fa-arrow-up',
+        down: 'fas fa-arrow-down',
+        previous: 'fas fa-chevron-left',
+        next: 'fas fa-chevron-right',
+        today: 'far fa-calendar-check-o',
+        clear: 'far fa-trash',
+        close: 'far fa-times'
+      }
+    });
+
+    $('#datetimepicker1').datetimepicker({
+      format: 'DD/MM/YYYY h:mm A'
+    });
+  </script> -->
 </body>
 
 </html>
