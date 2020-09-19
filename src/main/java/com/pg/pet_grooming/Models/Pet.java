@@ -11,6 +11,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,12 +29,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "pet")        
+@Table(name = "pet") 
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Pet extends Auditable<String>{
     
@@ -62,100 +75,33 @@ public class Pet extends Auditable<String>{
     @Column(name = "pet_size", length = 15,nullable = false)
     private String pet_size;
     
-    
     @Column(name = "pet_notes")
     private String pet_notes;
-
-    // No Args Constructor
-    public Pet() {
-    }
-    // All Args Constructor
-    public Pet(Integer id, PetOwner petOwner, Integer pet_owner_id, 
-            String pet_name, String pet_gender, String pet_breed, 
-            String pet_size, String pet_notes) {
-        this.id = id;
-        this.petOwner = petOwner;
-        this.pet_owner_id = pet_owner_id;
-        this.pet_name = pet_name;
-        this.pet_gender = pet_gender;
-        this.pet_breed = pet_breed;
-        this.pet_size = pet_size;
-        this.pet_notes = pet_notes;
-    }
-    // Getter And Setter Methods
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public PetOwner getPetOwner() {
-        return petOwner;
-    }
-
-    public void setPetOwner(PetOwner petOwner) {
-        this.petOwner = petOwner;
-    }
-
-    public Integer getPet_owner_id() {
-        return pet_owner_id;
-    }
-
-    public void setPet_owner_id(Integer pet_owner_id) {
-        this.pet_owner_id = pet_owner_id;
-    }
-
-    public String getPet_name() {
-        return pet_name;
-    }
-
-    public void setPet_name(String pet_name) {
-        this.pet_name = pet_name;
-    }
-
-    public String getPet_gender() {
-        return pet_gender;
-    }
-
-    public void setPet_gender(String pet_gender) {
-        this.pet_gender = pet_gender;
-    }
-
-    public String getPet_breed() {
-        return pet_breed;
-    }
-
-    public void setPet_breed(String pet_breed) {
-        this.pet_breed = pet_breed;
-    }
-
-    public String getPet_size() {
-        return pet_size;
-    }
-
-    public void setPet_size(String pet_size) {
-        this.pet_size = pet_size;
-    }
-
-    public String getPet_notes() {
-        return pet_notes;
-    }
-
-    public void setPet_notes(String pet_notes) {
-        this.pet_notes = pet_notes;
-    }
-
-    // To String
     
-        @Override
-    public String toString() {
-        return "Pet{" + "id=" + id + ", petOwner=" + petOwner + 
-                ", pet_owner_id=" + pet_owner_id + ", pet_name=" + pet_name +
-                ", pet_gender=" + pet_gender + ", pet_breed=" + pet_breed +
-                ", pet_size=" + pet_size + ", pet_notes=" + pet_notes + '}';
-    }
+    // Appointments
+    // Pet - Appointment_Pets - Appointments
+    
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pets",
+    joinColumns = @JoinColumn(name="pet_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
+    private List<Appointments> appointments;
+    
+    // Services
+    // Appointment - Services - Appointment_Pet_Services - Pet
+    
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pet_services",
+    joinColumns = @JoinColumn(name="pet_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name="service_id", referencedColumnName = "service_id"))
+    private List<Services> services;
+
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pet_services",
+    joinColumns = @JoinColumn(name="pet_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
+    private List<Appointments> appointment;
+    
     // Override Methods
     @Override
     public boolean equals(Object obj){
@@ -178,6 +124,7 @@ public class Pet extends Auditable<String>{
         }
         return true;
     }
+ 
     
     
 }

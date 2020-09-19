@@ -1,8 +1,8 @@
  /*
  * Created By Gullian Van Der Walt - 01/08/2020
-   Last Updated - 2020/09/15, 14:12
+   Last Updated - 2020/09/18, 15:16
 
- * This is the Appointment_Services (Entity/Table)
+ * This is the Appointments_Pet_Services (Entity/Table)
    Used to Join Appointments and Services
  * 
  */
@@ -27,35 +27,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name = "appointment_services")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
-@NoArgsConstructor //Lombok, Adds The Default Constructor
-@AllArgsConstructor         //JsonIdentityInfo 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Appointment_Services {
-   
-    // Appointments Services Attributes
-    
+@Table(name = "appointments_pet_services")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor 
+@AllArgsConstructor 
+public class Appointments_Pet_Services extends Auditable<String> {
+       
     // Primary Key
     @Id
-    @Column(name = "app_service_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer app_service_id;
-    
-    @ManyToOne // Many Appointment Services to one appointment
-    @JoinColumn(name="app_id", insertable=false, updatable=false)
+    private Integer id;
+        
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name="app_id", referencedColumnName = "app_id")
     private Appointments appointment;
-    private Long app_id; // Foreign Key
     
-    @ManyToOne // Many services to one pet
-    @JoinColumn(name="pet_id", insertable=false, updatable=false)
-    @JsonBackReference
-    private List<Pet> pets;
-    
-    private List<Services> services;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinColumn(name="service_id")
+    private Services service;
 
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name="pet_id", referencedColumnName = "id")
+    private Pet pet;
+    
     
 }

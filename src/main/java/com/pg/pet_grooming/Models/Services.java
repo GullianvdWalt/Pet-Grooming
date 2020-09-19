@@ -1,6 +1,6 @@
  /*
  * Created By Gullian Van Der Walt - 01/08/2020
-   Last Updated - 20/09/07, 04:51
+   Last Updated - 2020/09/18, 10:19
  * This is the Services (Entity/Table)
  * 
  */
@@ -11,24 +11,36 @@ package com.pg.pet_grooming.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "services")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Services extends Auditable<String>{
    
     // Services Attributes
@@ -51,5 +63,19 @@ public class Services extends Auditable<String>{
     @Column(name = "service_status",nullable = false)
     private boolean service_status;
     
+    // Services
+    // Appointment - Services - Appointment_Pet_Services - Pet
+    
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pet_services",
+    joinColumns = @JoinColumn(name="service_id",referencedColumnName = "service_id"),
+    inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
+    private List<Appointments> appointment;
 
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="appointments_pet_services",
+    joinColumns = @JoinColumn(name="service_id",referencedColumnName = "service_id"),
+    inverseJoinColumns = @JoinColumn(name="pet_id", referencedColumnName = "id"))
+    private List<Pet> pet;
+    
 }
