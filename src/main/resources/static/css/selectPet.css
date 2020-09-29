@@ -1,15 +1,16 @@
+/* Created By Gullian Van Der Walt - 24/08/2020 */
+/* Last Updated - 15/09/2020 */
 .content-container {
   padding: 1rem;
 }
-.select-customers-container {
+.select-pets-container {
   display: flex;
   flex-direction: column;
   min-height: 700px;
-  margin-top: 50px;
   border: 3px solid #dcdcdc;
+  margin-top: 50px;
 }
-.select-customers-header-container {
-  height: 20%;
+.select-pet-header-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -20,42 +21,34 @@
   width: 50%;
   text-align: center;
 }
-.select-customer-heading-container h3 {
-  font-size: 1.4rem;
+.select-pet-heading-container h3 {
+  font-size: 1.6rem;
   color: #ff69b4;
   font-family: 'Roboto', sans-serif;
 }
-.next-button-container {
-  width: 70%;
-  margin: 4rem 15%;
-  text-align: center;
-  padding: 1rem;
-}
-.next-button {
-  background-color: #505050;
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  padding: 1rem 2rem 1rem 2rem;
-  border-radius: 15px;
-}
-.next-button:hover {
-  color: #ff69b4;
-}
-.pet-col {
+.pet-select-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   min-height: 500px;
 }
-.customer-select-table-pet {
+.customer-select-search-container {
+  width: 80%;
+  margin: 2rem 10%;
+  text-align: center;
+}
+.search-input {
+  width: 60%;
+  margin: 1rem 20%;
+  padding: 1rem;
+  border: 2px solid #c4c4c4;
+  font-size: 1.2rem;
+  color: #ff69b4;
+  font-weight: 600;
+  outline: none;
+}
+.pet-select-table-pet {
   width: 100%;
   padding: 1rem;
   border-collapse: collapse;
@@ -68,40 +61,23 @@ th {
   color: #ffffff;
   font-size: 1.2rem;
 }
-td {
-  padding: 1rem;
-}
 tr {
   padding: 1rem;
 }
-/* Checkbox Styles Start */
-.checkbox-column {
-  background-color: #ffffff;
-  text-align: left;
+.icon {
+  vertical-align: middle;
+  margin: 0 1rem;
 }
-/*  Checkbox */
-.customer-select-checkbox {
-  width: 45px;
-  height: 45px;
-  -webkit-appearance: none;
-  outline: none;
-  transition: 0.5s;
-  padding-left: 5px;
-  cursor: pointer;
+td {
+  padding: 2rem;
 }
-.customer-select-checkbox:before {
-  content: '';
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  border: 4px solid #ff69b4;
-  box-sizing: border-box;
-  transition: 0.5s;
+.select-column a {
+  text-decoration: none;
+  color: #ff69b4;
+  border: 1px solid #ff69b4;
+  padding: 1rem;
 }
-.customer-select-checkbox:checked:before {
-  border-left: none;
-  border-top: none;
-  width: 20px;
-  border-color: #ff69b4;
-  transform: rotate(45deg);
+.select-column a:hover {
+  color: #ffffff;
+  background-color: #ff69b4;
 }

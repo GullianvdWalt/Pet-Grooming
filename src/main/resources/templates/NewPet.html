@@ -75,7 +75,11 @@
                     <textarea type="text" id="customer-address-input" class="customer-address-input"
                       name="pet_owner_address" th:value="${petOwner.pet_owner_address}"
                       th:text="${petOwner.pet_owner_address}" readonly></textarea>
-
+                  </div>
+                  <div class="form-row">
+                    <label for="customer-city-input" class="customer-label">Address</label><br>
+                    <input type="text" id="customer-city-input" class="customer-input" name="pet_owner_address"
+                      th:value="${petOwner.pet_owner_city}" th:text="${petOwner.pet_owner_city}" readonly></input>
                   </div>
                 </div>
 

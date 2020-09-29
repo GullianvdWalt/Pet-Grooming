@@ -78,29 +78,6 @@ public class Pet extends Auditable<String>{
     @Column(name = "pet_notes")
     private String pet_notes;
     
-    // Appointments
-    // Pet - Appointment_Pets - Appointments
-    
-    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinTable(name="appointments_pets",
-    joinColumns = @JoinColumn(name="pet_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
-    private List<Appointments> appointments;
-    
-    // Services
-    // Appointment - Services - Appointment_Pet_Services - Pet
-    
-    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinTable(name="appointments_pet_services",
-    joinColumns = @JoinColumn(name="pet_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name="service_id", referencedColumnName = "service_id"))
-    private List<Services> services;
-
-    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinTable(name="appointments_pet_services",
-    joinColumns = @JoinColumn(name="pet_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
-    private List<Appointments> appointment;
     
     // Override Methods
     @Override

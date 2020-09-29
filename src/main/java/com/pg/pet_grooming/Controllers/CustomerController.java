@@ -1,6 +1,6 @@
 /*
    Created By Gullian Van Der Walt 01/08/2020
-   Last Update: 10/09/2020
+   Last Update: 2020/09/29, 08:33
 
  * This is the Customer Controller Class
  * This Controller will be responsible for the routing of the customer pages
@@ -38,9 +38,10 @@ public class CustomerController{
        
 //      // Get Pets
       List<Pet> petList = petService.getPets();
-      // Get Pet Owners
-      List<PetOwnerPet> customerList= petOwnerRepository.customerList();
-//      List<PetOwner> customerList= petOwnerRepository.customerList();
+      
+      // Customers (PetOwner + Pets)
+      List<PetOwner> customerList = petOwnerRepository.findAll();
+      
       model.addAttribute("pet", pet);
       
       model.addAttribute("customerList", customerList);
@@ -83,15 +84,4 @@ public class CustomerController{
         return "CustomerDetails";
     }       
     
-//    // Edit Customer
-//    @RequestMapping("/editCustomer")
-//    public String EditCustomer(Model model){
-//         // Set Page Title
-//        String pageTitle = "Customers";
-//        model.addAttribute("pageTitle", pageTitle);
-//        // Set Page Title Icon
-//        String iconUrl = "dog.jpg";
-//        model.addAttribute("iconUrl", iconUrl);
-//        return "EditCustomer";
-//    }
 }

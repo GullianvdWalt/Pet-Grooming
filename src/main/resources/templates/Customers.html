@@ -60,24 +60,26 @@
                 <th>Cell</th>
                 <th>Address</th>
                 <th>Pet Name</th>
-                <th>Pet Breed</th>
-                <th colspan="2">Actions</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <div th:if="!${#lists.isEmpty(customerList)}">
-                <tr th:each="PetOwnerPet : ${customerList}">
+                <tr th:each="pet_owner : ${customerList}">
 
-                  <td th:text="${PetOwnerPet.id}"></td>
+                  <td th:text="${pet_owner.id}"></td>
 
-                  <td th:text="${PetOwnerPet.pet_owner_full_name}"></td>
+                  <td th:text="${pet_owner.pet_owner_full_name}"></td>
 
-                  <td th:text="${PetOwnerPet.pet_owner_address}">145 Breed Street Sasolburg</td>
-                  <td th:text="${PetOwnerPet.pet_owner_cell}"></td>
-                  <td th:text="${PetOwnerPet.pet_name}"></td>
-                  <td th:text="${PetOwnerPet.pet_breed}"></td>
+                  <td th:text="${pet_owner.pet_owner_address}">145 Breed Street Sasolburg</td>
+                  <td th:text="${pet_owner.pet_owner_cell}"></td>
                   <td>
-                    <a th:href="@{/customerDetails/{ownerId}(ownerId = ${PetOwnerPet.id})}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
+                    <span th:each="pet,iterStat : ${pet_owner.pets}">
+                      <span th:text="${pet.pet_name}"/><th:block th:if="${!iterStat.last}">,</th:block>
+                    </span>
+                  </td>
+                  <td>
+                    <a th:href="@{/customerDetails/{ownerId}(ownerId = ${pet_owner.id})}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
                         class="edit-icon" title="Edit Customer" /></a>
                   </td>
                 </tr>

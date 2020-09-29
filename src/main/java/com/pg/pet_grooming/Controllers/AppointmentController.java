@@ -5,6 +5,7 @@
 package com.pg.pet_grooming.Controllers;
 
 //Imports
+import com.pg.pet_grooming.DTO.Pet_PetOwner;
 import java.util.*;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +31,17 @@ import com.pg.pet_grooming.Services.AppointmentsService;
 import com.pg.pet_grooming.Services.PetService;
 import com.pg.pet_grooming.Services.ServicesService;
 import com.pg.pet_grooming.Models.Appointments;
-import com.pg.pet_grooming.Models.Appointments_Pets;
 import com.pg.pet_grooming.Repositories.AppointmentRepository;
 import com.pg.pet_grooming.Repositories.Appointments_Pet_Services_Repo;
-import com.pg.pet_grooming.Services.AppointmentsPetsService;
 import com.pg.pet_grooming.Services.Appointments_Pet_Services_Service;
 import com.pg.pet_grooming.Models.Appointments_Pet_Services;
 import com.pg.pet_grooming.Repositories.ServicesRepository;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -51,123 +56,73 @@ public class AppointmentController {
     @Autowired private PetOwnerRepository petOwnerRepository;
     @Autowired private AppointmentsService appointmentService;
     @Autowired private AppointmentRepository appointmentRepository;
-    @Autowired private AppointmentsPetsService appointmentsPetsService;
     @Autowired private Appointments_Pet_Services_Service appPetServicesService;
     @Autowired private Appointments_Pet_Services_Repo appPetServicesRepo;
     @Autowired private ServicesRepository servicesRepository;
     
-    // New Appointment Page - Select Customer
+    // New Appointment Page - Select Pet
     @RequestMapping("/newAppointments/select")
-    public String newAppointmentSelect(Model model,PetOwner petOwner){
+    public String newAppointmentSelect(Model model,Pet_PetOwner pet_petOwner){
       // Set Page Title
       String pageTitle = "New Appointment";
       model.addAttribute("pageTitle", pageTitle);
       // Set Page Title Icon
       String iconUrl = "newAppointment.png";
       model.addAttribute("iconUrl", iconUrl);
-      // Get Pet Owners and populate table in Select Customers
-      List<PetOwner> petOwnerList = petOwnerService.getPetOwners();
-      model.addAttribute("petOwnerList", petOwnerList);
-      return "SelectCustomer";
+      
+      List<Pet_PetOwner> selectPetList = petRepository.SelectPetList();
+      model.addAttribute("selectPet", selectPetList);
+      
+      return "SelectPet";
     }
     
-    // Return Pets by selected owner
-    @GetMapping("/newAppointments/select/petOwner/{petOwnerId}")
-    public String getPetOwerId(Model model, 
-        @PathVariable("petOwnerId") int petOwnerId,@Valid @ModelAttribute("petOwner")PetOwner petOwner)
-        throws ResourceNotFoundException{
-        Optional<PetOwner> petOwnerList = petOwnerService.findById(petOwnerId);
-        model.addAttribute("petOwnerList", petOwnerList);
-       // Set Page Title
-        String pageTitle = "New Appointment";
-        model.addAttribute("pageTitle", pageTitle);
-      // Set Page Title Icon
-        String iconUrl = "newAppointment.png";
-        model.addAttribute("iconUrl", iconUrl);
-        return "redirect:/newAppointments/selectPet/"+petOwnerId;
-    }
+   @RequestMapping(value="/newAppointments/new/{pet_Id}", method={RequestMethod.POST,RequestMethod.GET})
+    public String getPet(Model model,@PathVariable("pet_Id") int petId, Appointments newAppointment){
     
-    @RequestMapping(value="/newAppointments/selectPet/{petOwnerId}",  method={RequestMethod.POST,RequestMethod.GET})
-    public String selectPet(Model model,@PathVariable(value="petOwnerId")int petOwnerId){
-       List<Pet> petList = (List<Pet>) petService.findPetByPetOwnerId(petOwnerId);
-       // Set Page Title
-       String pageTitle = "New Appointment";
-       model.addAttribute("pageTitle", pageTitle);
-        // Set Page Title Icon
-       String iconUrl = "newAppointment.png";
-       model.addAttribute("iconUrl", iconUrl);
-       model.addAttribute("petList", petList);
-       model.addAttribute("petownerId", petOwnerId);
-        return "SelectPet";
-     }
-    
-    @RequestMapping(value="/newAppointments/getPet", method={RequestMethod.POST,RequestMethod.GET})
-    public String getPet(Model model,@RequestParam("petId") List<Integer> selectedPets,
-           RedirectAttributes redirectAttributes){
-//        System.out.println(petOwnerId);
-        if(selectedPets!= null){
-            List<Pet> petList = petRepository.findAllById(selectedPets);
-            redirectAttributes.addFlashAttribute("petList", petList);
-        }
-        
-       // Set Page Title
-       String pageTitle = "New Appointment";
-       model.addAttribute("pageTitle", pageTitle);
-        // Set Page Title Icon
-       String iconUrl = "newAppointment.png";
-       model.addAttribute("iconUrl", iconUrl);
+            if (petId > 0) {
+             Pet pet = petRepository.getOne(petId);
+             model.addAttribute("pet", pet);
+            try {
+                PetOwner petOwner = petOwnerService.findPetOwnerById(pet.getPet_owner_id());
+                model.addAttribute("petOwner", petOwner);
+            } catch (Exception e) {
+                    e.printStackTrace();
+            }
+//             Optional<Pet> petList = petService.findPetById(petId);
+            }
 
-       List<Services> serviceList = servicesService.getServices();
-       model.addAttribute("serviceList", serviceList);
-        
-        return "redirect:/newAppointments/new";
-    }
+            // Set Page Title
+            String pageTitle = "New Appointment";
+            model.addAttribute("pageTitle", pageTitle);
+             // Set Page Title Icon
+            String iconUrl = "newAppointment.png";
+            model.addAttribute("iconUrl", iconUrl);
 
-    @RequestMapping("/newAppointments/new")
-    public String newAppointment(Model model,
-        @ModelAttribute("petList") List<Pet> petList, Appointments appointment){
-       Pet pet = new Pet();
-       pet = petList.get(0);
-       int petOwnerId = pet.getPet_owner_id();
-        try {
-            PetOwner petOwner = petOwnerService.findPetOwnerById(petOwnerId);
-            model.addAttribute("petOwner", petOwner);
-        } catch (ResourceNotFoundException e) {
-            e.printStackTrace();
-            // add messages
-        }
-       
-       // Set Page Title
-       String pageTitle = "New Appointment";
-       model.addAttribute("pageTitle", pageTitle);
-        // Set Page Title Icon
-       String iconUrl = "newAppointment.png";
-       model.addAttribute("iconUrl", iconUrl);
-       // Get Services
-       List<Services> serviceList = servicesService.getServices();
-       model.addAttribute("serviceList", serviceList);
-       
-       model.addAttribute("newAppointment", new Appointments());
-       
+            List<Services> serviceList = servicesService.getServices();
+            model.addAttribute("serviceList", serviceList);
+        
+            model.addAttribute("newAppointment", newAppointment);
+        
         return "NewAppointment";
     }
     
-    @RequestMapping(value="/newAppointments/new/save", method=RequestMethod.POST)
+        @RequestMapping(value="/newAppointments/new/save", method={RequestMethod.POST,RequestMethod.GET})
     public String saveAppointment(Model model,
             @Valid @ModelAttribute("newAppointment") Appointments newAppointment,
-            @RequestParam("pet_id") List<Integer> petIds,
-            @RequestParam("service_id") List<Integer> serviceIds
-            ,BindingResult result){
-        
-        // Pet - Appointment Join Table object
-        Appointments_Pets appointmentsPets = new Appointments_Pets();
-        
+            @RequestParam("pet_id") int petId,
+            @RequestParam("service_id") List<Integer> serviceIds,
+            @RequestParam("app_date_time") String date_time
+            ,BindingResult result) throws ParseException{
+               
         // Services - Pet - Appointment Join Table object
         Appointments_Pet_Services appPetServices = new Appointments_Pet_Services();
         
+
+//        newAppointment.setApp_date_time(date_time);
+     
+        
         // Pet Object
-        Pet pet = new Pet();
-        Pet pet2 = new Pet();
+        Pet pet = new Pet();;
         
         // Services Object
         Services services = new Services();
@@ -177,115 +132,127 @@ public class AppointmentController {
              // Add messages 
              System.out.println(result);
          }else{
-             
-             // Array List of Pets
-             List<Pet> petList = new ArrayList<>();
-             List<Pet> petList2 = new ArrayList<>();
-             
+                          
              
              // Array List of Services
              List<Services> serviceList = new ArrayList<>();
              // Array List of appointments
              List<Appointments> appointmentList = new ArrayList<>();
              
-             if(petIds.size() > 1){
-                 
-               // Loop for total of pet Ids
-               for (int i = 0; i < petIds.size(); i++) {
+             // get pet
+             pet = petRepository.getOne(petId);
+             newAppointment.setPet(pet);
+             
+//             newAppointment.setApp_date_time(app_date_time);
 
-                   // Save each pet id
-                   int petId = petIds.get(i);
+            DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ROOT);
+            Date date = (Date)dateTimeFormat.parse(date_time);
+            newAppointment.setApp_date_time(date);
 
-                   // get pet
-                   pet = petRepository.getOne(petId);
-                                     
+             // save appointment
+             appointmentService.saveAppointment(newAppointment);
                    
-                   // add pet to array list
-                   petList.add(pet);
-                      
-                    pet2 = petRepository.getOne(petId);
-                        
-                     petList2.add(pet2);
-
-//                    appPetServices.setPet(pet2);
-
-                        
-                    // add pet array list to newAppointment
-                    newAppointment.setPetList(petList);
-                   
-                    // add new appointment to joint table
-                    appointmentsPets.setAppointment(newAppointment);
-
-                    appointmentList.add(newAppointment);
-
-                      // save joint table Appointments_Pets
-                    appointmentsPetsService.createRealationship(appointmentsPets); 
-                    
-//                    services.setPet(petList);
-
-               }
-                   for (int j = 0; j < serviceIds.size(); j++) {
-                       int serviceId = serviceIds.get(j);
-                       
-                       services = servicesRepository.getOne(serviceId);
-                       
-                       serviceList.add(services);
-                       
-                       
-                       for (int i = 0; i < petIds.size(); i++) {
-                           int petId = petIds.get(i);
-//                           pet2 = petRepository.getOne(petId);
-//                           petList2.add(pet2);
-//                         services.setPet(petList2);
-//                           services.setAppointment(appointmentList);
-                           newAppointment.setServices(serviceList);
-                           appPetServices.setAppointment(newAppointment);
-                           appPetServicesService.createRelationship(appPetServices);                     
-
-                       }
-
-
-  
-                       
-                   }
-
-               // Only one Pet Appointment
-             }else{
-                   int petId = petIds.get(0);
-                    // get pet
-                   pet = petRepository.getOne(petId);
-                   // add pet to array list
-                   petList.add(pet);
-                   // add pet array list to newAppointment
-//                   newAppointment.setPetList(petList);
-                   // add new appointment to joint table
-                   appointmentsPets.setPet(pet);
-                   appointmentsPets.setAppointment(newAppointment);
-                   // save appointment
-                   appointmentService.saveAppointment(newAppointment);
-                   // save joint table
-                   appointmentsPetsService.createRealationship(appointmentsPets);
-             }
-
+//                   for (int j = 0; j < serviceIds.size(); j++) {
+//                       int serviceId = serviceIds.get(j);
+//                       services = servicesRepository.getOne(serviceId);
+//                       serviceList.add(services);
+//                       
+//
+//                    }
+                       serviceList = servicesRepository.findAllById(serviceIds);
+                       newAppointment.setServices(serviceList);
+//                       appPetServices.setAppointment(newAppointment);
+                       appPetServicesService.createRelationship(appPetServices);
             
          }      
 
         return "redirect:/";
 
     }
-
-
+    
     
     // Appointment Complete
     @RequestMapping(value="/appointmentComplete", method=RequestMethod.POST)
     public String appointmentComplete(Model model){
+        
+
+      
+      
+        
       // Set Page Title
       String pageTitle = "Appointment Complete";
       model.addAttribute("pageTitle", pageTitle);
       // Set Page Title Icon
       String iconUrl = "servicesSmall.png";
       model.addAttribute("iconUrl", iconUrl);
+      
+      
+      
         return "AppointmentComplete";
     }
 
+    
+    
+//    // Return Pets by selected owner
+//    @GetMapping("/newAppointments/select/petOwner/{petOwnerId}")
+//    public String getPetOwerId(Model model, 
+//        @PathVariable("petOwnerId") int petOwnerId,@Valid @ModelAttribute("petOwner")PetOwner petOwner)
+//        throws ResourceNotFoundException{
+//        Optional<PetOwner> petOwnerList = petOwnerService.findById(petOwnerId);
+//        model.addAttribute("petOwnerList", petOwnerList);
+//       // Set Page Title
+//        String pageTitle = "New Appointment";
+//        model.addAttribute("pageTitle", pageTitle);
+//      // Set Page Title Icon
+//        String iconUrl = "newAppointment.png";
+//        model.addAttribute("iconUrl", iconUrl);
+//        return "redirect:/newAppointments/selectPet/"+petOwnerId;
+//    }
+//    
+//    @RequestMapping(value="/newAppointments/selectPet/{petOwnerId}",  method={RequestMethod.POST,RequestMethod.GET})
+//    public String selectPet(Model model,@PathVariable(value="petOwnerId")int petOwnerId){
+//       List<Pet> petList = (List<Pet>) petService.findPetByPetOwnerId(petOwnerId);
+//       // Set Page Title
+//       String pageTitle = "New Appointment";
+//       model.addAttribute("pageTitle", pageTitle);
+//        // Set Page Title Icon
+//       String iconUrl = "newAppointment.png";
+//       model.addAttribute("iconUrl", iconUrl);
+//       model.addAttribute("petList", petList);
+//       model.addAttribute("petownerId", petOwnerId);
+//        return "SelectPet";
+//     }
+    
+
+
+//    @RequestMapping("/newAppointments/new")
+//    public String newAppointment(Model model,
+//        @ModelAttribute("petList") List<Pet> petList, Appointments appointment){
+//       Pet pet = new Pet();
+//       pet = petList.get(0);
+//       int petOwnerId = pet.getPet_owner_id();
+//        try {
+//            PetOwner petOwner = petOwnerService.findPetOwnerById(petOwnerId);
+//            model.addAttribute("petOwner", petOwner);
+//        } catch (ResourceNotFoundException e) {
+//            e.printStackTrace();
+//            // add messages
+//        }
+//       
+//       // Set Page Title
+//       String pageTitle = "New Appointment";
+//       model.addAttribute("pageTitle", pageTitle);
+//        // Set Page Title Icon
+//       String iconUrl = "newAppointment.png";
+//       model.addAttribute("iconUrl", iconUrl);
+//       // Get Services
+//       List<Services> serviceList = servicesService.getServices();
+//       model.addAttribute("serviceList", serviceList);
+//       
+//       model.addAttribute("newAppointment", new Appointments());
+//       
+//        return "NewAppointment";
+//    }
+    
+    
 }
