@@ -36,51 +36,47 @@
     <div class="content-container" id="contentContainer">
 
       <!--  Select Customer Container Starts    -->
-      <div class="select-customers-container">
+      <div class="select-pets-container">
 
-        <div class="select-customers-header-container">
-          <div class="select-customer-heading-container">
+        <div class="select-pet-header-container">
+          <div class="select-pet-heading-container">
             <h3>Select Pet</h3>
           </div>
         </div>
 
-        <form class="pet-col" th:action="@{/newAppointments/getPet}" th:object="${pet}" method="get">
+        <div class="pet-select-container">
 
-          <!-- Pet Table -->
-          <div class="select-pet-form-details">
-            <table class="customer-select-table-pet">
+          <div class="customer-select-search-container">
+            <input type="text" placeholder="Search...." class="search-input">
+          </div>
+          <!-- Customers Table -->
+          <div>
+            <table class="pet-select-table-pet">
               <thead>
                 <tr>
-                  <th colspan="4">
+                  <th colspan="6">
                     <img th:src="@{/Icons/petPaw.png}" alt="Pet Owner" class="icon">
-                    Pet
+                    Pets - Customers
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <div th:if="!${#lists.isEmpty(petList)}">
-                    <!--  -->
-                    <tr th:each="pet : ${petList}">
-                      <td class="checkbox-column">
-                          <input type="checkbox" class="customer-select-checkbox"
-                          th:value="${pet.id}" th:name="petId">
-                      </td>
-                      <td th:text="${pet.id}"></td>
-                      <td th:text="${pet.pet_name}"></td>
-                      <td th:text="${pet.pet_breed}"></td>
-                      <td th:value="${pet.pet_owner_id}"th:name="petOwnerId"></td>
-                    </tr>
-                  </div>
-                  <tr th:if="${#lists.isEmpty(petList)}">
-                      <td colspan="8" class="pet-owner-not-selected"> Select Pet</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="next-button-container">
-              <button class="buttons" type="submit">Next</button>
-            </div>
-          </form>
+              <tbody th:if="!${#lists.isEmpty(selectPet)}">
+                <tr th:each="Pet_PetOwner : ${selectPet}">
+                  <td class="select-column">
+
+                    <a th:href="@{/newAppointments/new/{pet_Id}(pet_Id = ${Pet_PetOwner.pet_id})}" id="petSelect" class="pet-select">Select</a>
+
+                  <input type="hidden" th:name="petOwnerId" th:value="${Pet_PetOwner.pet_owner_id}" id="petOwnerId">
+                  <td th:text=${Pet_PetOwner.pet_name}></td>
+                  <td th:text=${Pet_PetOwner.pet_breed}></td>
+                  <td th:text=${Pet_PetOwner.pet_owner_full_name}></td>
+                  <td th:text=${Pet_PetOwner.pet_owner_cell}></td>
+                  <td th:text=${Pet_PetOwner.pet_owner_address}></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
       </div>
       <!--  Select Customer Container Starts    -->

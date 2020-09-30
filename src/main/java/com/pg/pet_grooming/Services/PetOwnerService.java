@@ -15,13 +15,14 @@ import org.springframework.stereotype.Service;
 // Local Imports
 import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Models.PetOwner;
+import org.springframework.data.jpa.repository.query.JpaQueryMethodFactory;
 
 @Service
 public class PetOwnerService {
     
     //Inject PetRepository
-    @Autowired
-    private PetOwnerRepository petOwnerRepository;
+    @Autowired private PetOwnerRepository petOwnerRepository;
+
     
     //Method To Return A List of PetOwners FROM MySQL Database, PetOwner Table
     public List<PetOwner> getPetOwners(){

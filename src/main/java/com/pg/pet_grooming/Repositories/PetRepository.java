@@ -8,6 +8,7 @@
 package com.pg.pet_grooming.Repositories;
 
 // Imports
+import com.pg.pet_grooming.DTO.Pet_PetOwner;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -42,4 +43,14 @@ public interface PetRepository extends JpaRepository<Pet, Integer>{
         
         @Query(value="SELECT p.pet_owner_id FROM pet p WHERE p.id =:petId",nativeQuery = true)
         public Integer getPetOwnerId(int petId);
+         
+//        SELECT pet_owner.id AS pet_owner_id, pet.id AS pet_id FROM pet_owner INNER JOIN pet ON pet_owner.id =pet.pet_owner_id;
+        // JPA Query
+        @Query("SELECT new com.pg.pet_grooming.DTO.Pet_PetOwner(p.id AS pet_owner_id,p.pet_owner_full_name,p.pet_owner_cell,p.pet_owner_address,"
+        +"e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.pet_owner_full_name")
+        List<Pet_PetOwner> SelectPetList();
+        
+        
+        
+        
 }

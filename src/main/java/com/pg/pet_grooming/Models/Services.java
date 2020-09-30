@@ -71,11 +71,5 @@ public class Services extends Auditable<String>{
     joinColumns = @JoinColumn(name="service_id",referencedColumnName = "service_id"),
     inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
     private List<Appointments> appointment;
-
-    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinTable(name="appointments_pet_services",
-    joinColumns = @JoinColumn(name="service_id",referencedColumnName = "service_id"),
-    inverseJoinColumns = @JoinColumn(name="pet_id", referencedColumnName = "id"))
-    private List<Pet> pet;
     
 }

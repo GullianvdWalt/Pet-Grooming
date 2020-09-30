@@ -9,6 +9,7 @@ function viewMenu() {
     y.style.display = "flex";
   }
 }
+
 //Date Picker
 // Constants
 const date_picker_element = document.querySelector('.date-picker');

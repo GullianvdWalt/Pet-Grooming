@@ -109,49 +109,31 @@
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
+
 .date-time-heading {
   margin-bottom: 3rem;
 }
-/* Date Container - Input Elements */
-.date-container,
-.time-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-/* Style Date & Time Labels */
-.date-container label,
-.time-container label {
-  margin-left: 1.5rem;
+.date-time-heading .icon {
   margin-right: 2rem;
-  font-size: 18px;
 }
-/* Style Date & Time Inputs */
-.date-container input {
-  width: 50%;
-  margin-bottom: 1.5rem;
+/* Style Inputs */
+input {
+  color: #ff69b4;
+  font-weight: 600;
 }
-.date-container input,
-.time-container input {
-  height: 30px;
+.date-time-input-container {
+  padding: 1rem;
+  text-align: center;
+}
+.date-time-input-container input {
+  width: 80%;
+  margin: 0 10%;
+  padding: 1rem;
+  font-size: 1.1em;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
-  font-size: 1.3rem;
-}
-.time-container div {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
 }
 
-.time-container input {
-  width: 120px;
-  margin-bottom: 2rem;
-}
-/* Dash Inbetween Time Input Boxes */
-.dash {
-  margin-left: 0;
-}
 /* Style Customer Details Container */
 .customer-details {
   width: 100%;
@@ -180,11 +162,10 @@
   border: 2px solid #c4c4c4;
   border-radius: 5px;
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  font-size: 1.1em;
 }
-.customer-details input:focus {
-  background-color: rgb(255, 105, 180, 0.8);
-  font-weight: bold;
-}
+
 /* Style Services Table Container */
 .services-container {
   width: 99%;
@@ -207,6 +188,12 @@ table tr {
   margin-top: 0.5rem;
   text-align: center;
 }
+th {
+  padding: 1rem;
+}
+td {
+  padding: 2rem;
+}
 /* Heading of Table */
 
 /* Text */
@@ -219,7 +206,7 @@ table tr {
 }
 .services-header {
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   letter-spacing: 3px;
 }
 th div {
@@ -265,5 +252,3 @@ th div {
   width: 80%;
   margin: 5rem 10%;
 }
-
-/* Button Container Styles Ends */

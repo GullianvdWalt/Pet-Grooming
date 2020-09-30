@@ -10,23 +10,15 @@
 
 package com.pg.pet_grooming.Models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,7 +31,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor 
 @AllArgsConstructor 
-public class Appointments_Pet_Services extends Auditable<String> {
+public class Appointments_Pet_Services {
        
     // Primary Key
     @Id
@@ -54,9 +46,6 @@ public class Appointments_Pet_Services extends Auditable<String> {
     @JoinColumn(name="service_id")
     private Services service;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name="pet_id", referencedColumnName = "id")
-    private Pet pet;
     
     
 }
