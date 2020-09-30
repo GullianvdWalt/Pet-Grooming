@@ -39,12 +39,14 @@ public class Appointments_Pet_Services {
     private Integer id;
         
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name="app_id", referencedColumnName = "app_id")
+    @JoinColumn(name="app_id", referencedColumnName = "app_id",insertable = false, updatable = false)
     private Appointments appointment;
+    private Integer app_id;
     
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    @JoinColumn(name="service_id")
+    @JoinColumn(name="service_id",insertable = false, updatable = false)
     private Services service;
+    private Integer service_id;
 
     
     

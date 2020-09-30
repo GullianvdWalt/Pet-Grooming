@@ -36,7 +36,7 @@
           <img src="/icons/schedule.jpg" alt="schedule" class="schedule-icon" />
           <h2 class="schedule-head">Schedule</h2>
         </div>
-        <div class="calender-pick-container">
+        <!-- <div class="calender-pick-container">
           <h3 class="time-picker-heading">Date</h3>
           <div class="date-picker">
             <div class="selected-date"></div>
@@ -51,54 +51,33 @@
               <div class="days"></div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Schedule Container Table -->
-        <div class="schedule-table-container">
-          <table>
+        <div class="schedule-table-container" th:if="!${#lists.isEmpty(appointmentList)}">
+          <table >
             <thead>
               <tr>
-                <th colspan="4">Monday</th>
+                <th colspan="8">Appointments</th>
               </tr>
             </thead>
-
+<!-- th:each="Appointments_Customers_DTO : ${appCustList}" -->
             <tbody>
-              <tr class="schedule-row">
-                <td class="time">09:00 - 10:15</td>
-                <td class="schedule-details">
-                  Sonja Van Der Merwe <br />
-                  084 5076 275 <br />
-                  7 Bunteberg Str Sasolburg <br />
-                  Rocky (Jack Russel Terrier) Wash & Dip <br />
+              <tr class="schedule-row" th:each="appointments: ${appointmentList}">
+                <td class="time" th:text="${#dates.format(appointments.app_date_time,'dd-MM-yyyy HH-mm')}"></td>
+                <td class="schedule-details" th:text=${appointments.pet_owner_full_name}>
                 </td>
-                <td class="checkbox-column">
-                  <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" id="schedule-checkbox"
-                      onclick="appComplete()" />
-                  </div>
+                <td class="schedule-details" th:text=${appointments.pet_owner_cell}>
                 </td>
-              </tr>
-              <tr class="schedule-row">
-                <td class="time">09:00 - 10:15</td>
-                <td class="schedule-details">
-                  <div>Sonja Van Der Merwe</div>
-                  <div>084 5076 275</div>
-                  <div>7 Bunteberg Str Sasolburg </div>
-                  <div>Rocky (Jack Russel Terrier) Wash & Dip</div>
+                <td class="schedule-details" th:text=${appointments.pet_owner_address}>
                 </td>
-                <td class="checkbox-column">
-                  <div class="checkbox-container">
-                    <input type="checkbox" name="schedule-checkbox" class="schedule-checkbox" id="schedule-checkbox"
-                      onclick="appComplete()" />
-                  </div>
+                <td class="schedule-details" th:text=${appointments.pet_name}>
                 </td>
-              </tr>
-              <tr class="schedule-row">
-                <td class="time">09:00 - 10:15</td>
-                <td class="schedule-details">
-                  Sonja Van Der Merwe <br />
-                  084 5076 275 <br />
-                  7 Bunteberg Str Sasolburg <br />
-                  Rocky (Jack Russel Terrier) Wash & Dip <br />
+                <td class="schedule-details" th:text=${appointments.pet_breed}>
+                </td>
+                <td class="schedule-details" th:each="services,iterStat : ${appointments.services}" th:text="${services.service_name}">
+                    <!-- <span  th:text="${services.service_name}"/><th:block th:if="${!iterStat.last}">
+                      <span >,</th:block> -->
+
                 </td>
                 <td class="checkbox-column">
                   <div class="checkbox-container">
@@ -110,6 +89,9 @@
             </tbody>
           </table>
         </div>
+              <div th:if="${#lists.isEmpty(appCustList)}">
+                <span colspan="8" class="empty-appointments-table-text"> <h3>There are currently no appointments.</h3></span>
+              </div>
       </div>
       <!-- Schedule Container End -->
 

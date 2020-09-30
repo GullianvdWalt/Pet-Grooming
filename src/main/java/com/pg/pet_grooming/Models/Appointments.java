@@ -64,6 +64,19 @@ public class Appointments extends Auditable<String>{
     @Column(name = "pet_owner_id",nullable = false)
     private int pet_owner_id;
     
+    @NotNull
+    @Column(name="pet_owner_full_name",nullable = false)
+    private String pet_owner_full_name;
+    
+    @NotNull
+    @Column(name="pet_owner_cell",nullable = false)
+    private String pet_owner_cell;
+    
+    @NotNull
+    @Column(name="pet_owner_address",nullable = false)
+    private String pet_owner_address;
+    
+    
     // Services
     // Appointment - Services - Appointment_Pet_Services - Pet
     
@@ -72,12 +85,20 @@ public class Appointments extends Auditable<String>{
     joinColumns = @JoinColumn(name="app_id",referencedColumnName = "app_id"),
     inverseJoinColumns = @JoinColumn(name="service_id", referencedColumnName = "service_id"))
     private List<Services> services;
+    private Integer service_id;
 
     @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name="pet_id", referencedColumnName = "id")
+    @JoinColumn(name="pet_id", referencedColumnName = "id",insertable = false, updatable = false)
     private Pet pet;
-    
+    private Integer pet_id;
 
+    @NotNull
+    @Column(name="pet_name",nullable = false)
+    private String pet_name;         
+    
+    @NotNull
+    @Column(name="pet_breed",nullable = false)
+    private String pet_breed;  
     
     // Constructor handled by Lombok
     // Getters and Setters handled by lombok
