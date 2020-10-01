@@ -100,17 +100,16 @@
               </div>
               <!--    Buttons     -->
               <div class="button-container">
-                <a class="customer-details-buttons" th:href="@{/customers}">
-                  <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" />
+                <a th:href="@{/customers}" class="buttons">
+                  <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" class="icon" />
                   Cancel
                 </a>
-                <a class=" customer-details-buttons" id="deletePetOwner"
-                  th:href="@{/customers/delete/petOwner/(id=${petOwner.id})}">
+                <a id="deletePetOwner" class="buttons" th:href="@{/customers/delete/petOwner/(id=${petOwner.id})}">
                   <img th:src="@{/Icons/trash.png}" alt="Delete Pet Owner">
                   Delete
                 </a>
-                <button class="customer-details-buttons" type="submit">
-                  <img src="/Icons/save.png" alt="back" title="Back To Customers" />
+                <button type="submit" class="buttons">
+                  <img src="/Icons/save.png" alt="back" title="Back To Customers" class="icon" />
                   Save
                 </button>
               </div>
@@ -234,12 +233,12 @@
               </div>
               <!--    Buttons     -->
               <div class="button-container">
-                <button class="customer-details-buttons" id="closePetEdit">
-                  <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" />
+                <button class="buttons" id="closePetEdit">
+                  <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" class="icon" />
                   Close
                 </button>
-                <button class="customer-details-buttons" type="submit">
-                  <img src="/Icons/save.png" alt="back" title="Back To Customers" />
+                <button class="buttons" type="submit">
+                  <img src="/Icons/save.png" alt="back" title="Back To Customers" class="icon" />
                   Save
                 </button>
               </div>
@@ -263,7 +262,7 @@
               </div>
             </div>
           </div>
-          <!-- Delete Pet Modal Ends -->
+          <!-- Delete Pet Owner Modal Ends -->
 
           <!-- Delete Pet Modal Starts -->
           <div class="delete-modal" id="petDeleteModal">

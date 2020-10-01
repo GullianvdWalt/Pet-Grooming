@@ -1,3 +1,39 @@
+/* Created By Gullian Van Der Walt  */
+
+/*      Styles For Customers      */
+
+/*
+    Fonts
+
+    Import Fonts:
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+/*
+    For Applying Fonts:
+                            font-family: 'Montserrat', sans-serif;
+                            font-family: 'Roboto', sans-serif;
+                            font-family: 'Lato', sans-serif;
+                            font-family: 'Open Sans', sans-serif;
+    colors:
+            Body Background: #ffffff
+            Background nav: #505050
+            Pink: #FF69B4
+
+    Shadow Effects:
+                        Text  - standard -  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+
+                              - hard shadow - text-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+
+                              - heavy shadow - text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                                                            0px 8px 13px rgba(0,0,0,0.1),
+                                                            0px 18px 23px rgba(0,0,0,0.1);
+
+                        Box Shadow :    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+                        Icons:
+                                -
+
+*/
 .employees-container {
   display: flex;
   flex-direction: column;
@@ -26,6 +62,10 @@
   border: 2px solid #c4c4c4;
   width: 50%;
   margin-left: 20px;
+  padding: 1rem;
+  font-size: 1.3em;
+  color: #ff69b4;
+  border-radius: 5px;
 }
 .employee-search-container-right a {
   float: right;
@@ -46,19 +86,24 @@ th {
   color: #ffffff;
   text-align: left;
   padding: 1rem;
-}
-tbody tr {
+  text-align: center;
 }
 td {
   padding: 1rem;
+  text-align: center;
 }
 table tr:nth-child(even) {
   background-color: rgb(80, 80, 80, 0.8);
   color: #fff;
 }
+.empty-employees-table-text {
+  padding: 1rem;
+  font-size: 1.3em;
+  color: #ff69b4;
+}
 /* Action Buttons */
-.edit-icon,
-.delete-icon {
+#edit-icon,
+#delete-icon {
   width: 50px;
   height: 50px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
@@ -78,4 +123,44 @@ table tr:nth-child(even) {
 .delete-icon:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+/* Messages */
+.success-messages {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.success-messages h1 {
+  color: green;
+  font-size: 1.4em;
+}
+.delete-modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.delete-modal-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 2rem 25%;
+}
+.delete-modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.delete-modal-footer a {
+  padding-top: 1.2rem;
 }

@@ -133,7 +133,9 @@ input {
   border: 2px solid #c4c4c4;
   border-radius: 5px;
 }
-
+.daterangepicker {
+  width: 30%;
+}
 /* Style Customer Details Container */
 .customer-details {
   width: 100%;

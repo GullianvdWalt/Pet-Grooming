@@ -26,6 +26,7 @@ public interface PetOwnerRepository extends JpaRepository<PetOwner, Integer>{
                 + "OR p.pet_owner_address LIKE %:keyword% OR p.pet_owner_cell LIKE %:keyword% ", nativeQuery=true)
 	List<PetOwner> findByKeyword(@Param("keyword") String keyword);
         
+        // Get PetOwner By Id
         @Query(value = "SELECT * FROM pet_owner WHERE id LIKE %:id%", nativeQuery=true)
         List<PetOwner>findPetOwnerById(Integer id);
     

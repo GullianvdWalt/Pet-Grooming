@@ -18,19 +18,17 @@
 }
 .employee-from {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 2rem;
   border: 3px solid #dcdcdc;
   justify-content: space-between;
 }
-.new-employee-button-container {
+.edit-employee-button-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  text-align: center;
-  width: 90%;
-  margin: 10px 5%;
-  height: 10%;
+  width: 60%;
+  margin: 2rem 20%;
 }
 .employee-form-col {
   padding: 1rem;
@@ -41,9 +39,11 @@
 }
 .employee-form-row {
   display: flex;
-  width: 90%;
+  flex-direction: column;
+  width: 60%;
   margin-bottom: 50px;
-  flex-direction: row;
+  margin: 1rem 20%;
+  text-align: left;
   justify-content: space-between;
 }
 .employee-label {

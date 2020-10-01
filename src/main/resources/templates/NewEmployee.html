@@ -41,75 +41,46 @@
         <div class="employee-details-section">
 
           <!-- Employee Details Form Start -->
-          <form class="employee-from" method="POST">
-            <div class="employee-form-col">
-              <div class="employee-form-row">
-                <label for="employee-id-input" class="employee-label" id="employee-id-label">Employee
-                  ID</label><br>
-                <input type="text" id="employee-id-input" class="employee-input" name="employee_id" required autofocus>
-              </div>
-              <div class="employee-form-row">
-                <label for="employee-sa-id" class="employee-label" id="employee-sa-id-label">Employee
-                  SA ID
-                  Number</label><br>
-                <input type="text" id="employee-sa-id" class="employee-input" name="emp_sa_id">
-              </div>
-              <!-- JPA Auditing -->
-              <div class="employee-form-row">
-                <label for="createdByDetails" class="employee-label" hidden>Created By:</label><br>
-                <input type="text" id="createdByDetails" class="auditable-input" name="created_by" readonly
-                  placeholder="handled by system" hidden />
-              </div>
-              <div class="employee-form-row">
-                <label for="createdDateDetails" class="employee-label" hidden>Created Date:</label><br>
-                <input type="text" id="createdDateDetails" class="auditable-input" name="created_date"
-                  placeholder="handled by system" readonly hidden />
-              </div>
-            </div>
-            <div class="employee-form-col">
-              <div class="employee-form-row">
-                <label for="employee-name-input" class="employee-label" id="employee-name-label">Name</label><br>
-                <input type="text" id="employee-name-input" class="employee-input" name="employee_full_name" required>
-              </div>
-              <div class="employee-form-row">
-                <label for="employee-occupation-input" class="employee-label" id="employee-occupation-label">Employee
-                  Occupation</label><br>
-                <input type="text" id="employee-occupation-input" class="employee-input" name="occupation" required>
-              </div>
-              <!-- JPA Auditing -->
-              <div class="employee-form-row">
-                <label for="lastUpdateDetails" class="employee-label" hidden>Last Updated By</label><br>
-                <input type="text" id="lastUpdateDetails" class="auditable-input" name="last_modified_by" readonly
-                  placeholder="handled by system" hidden />
-              </div>
-              <div class="employee-form-row">
-                <label for="lastUpdateDateDetails" class="employee-label" hidden>Last Updated On</label><br>
-                <input type="text" id="lastUpdateDateDetails" class="auditable-input" name="last_modified_date"
-                  placeholder="handled by system" readonly hidden />
-              </div>
-            </div>
+          <form class="employee-from" th:action="@{/employees/add}" th:object="${employee}" method="POST">
 
+            <div class="employee-form-row">
+              <label for="employee-id-input" class="employee-label">Employee SA ID</label><br>
+              <input type="text" id="employee-id-input" class="employee-input" th:name="emp_sa_id" required autofocus>
+            </div><br>
+            <div class="employee-form-row">
+              <label for="employeeDateHired" class="employee-label">Date Hired</label><br>
+              <input type="date" id="employeeDateHired" class="employee-input" placeholder="YYYY-MM-dd"
+                th:name="date_hired">
+            </div><br>
+            <div class="employee-form-row">
+              <label for="employee-name-input" class="employee-label">Name</label><br>
+              <input type="text" id="employee-name-input" class="employee-input" name="employee_full_name" required>
+            </div><br>
+            <div class="employee-form-row">
+              <label for="employee-occupation-input" class="employee-label">Employee Occupation</label><br>
+              <input type="text" id="employee-occupation-input" class="employee-input" name="occupation" required>
+            </div><br>
+            <div class="employee-form-row">
+              <label for="employee-cell-input" class="employee-label">Employee
+                Cell</label><br>
+              <input type="text" id="employee-cell-input" class="employee-input" name="cell" required>
+            </div><br>
+            <!-- Button section start-->
+            <div class="new-employee-button-container">
+              <a th:href="@{/employees}" class="buttons">
+                <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" /> Cancel
+              </a>
+              <button class="buttons" id="saveButton" type="submit">
+                <img src="/icons/save.png" alt="back" title="Back To Customers" /> Save
+              </button>
+            </div>
+            <!--Button Section end-->
           </form>
           <!-- Employee Details Form End -->
         </div>
         <!-- Employee Details Section Ends -->
 
-        <!-- Button section start-->
-        <div class="new-employee-button-container">
 
-          <div class="buttons">
-            <a th:href="@{/employees}" id="cancelButton">
-              <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" /> Cancel
-            </a>
-          </div>
-          <div class="buttons">
-            <a type="submit" th:href="@{/newEmployee}" id="saveButton">
-              <img src="/icons/save.png" alt="back" title="Back To Customers" /> Save
-            </a>
-          </div>
-
-        </div>
-        <!--Button Section end-->
 
       </div>
       <!-- New Employee Container Ends -->

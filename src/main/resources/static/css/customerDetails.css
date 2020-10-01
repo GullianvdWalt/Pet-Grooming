@@ -112,24 +112,19 @@ table tr:nth-child(even) {
 }
 
 /* Style Buttons */
-.customer-details-buttons {
-  background: #505050;
-  padding: 10px;
-  border-radius: 15px;
-  height: 70px;
-  width: 12rem;
-  text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   text-align: center;
-  color: #ffffff;
-  text-transform: uppercase;
-  font-size: 18px;
-  font: 600;
-  outline: none;
+  width: 100%;
+  height: 10%;
+  margin: 10px 0;
+  padding: 1rem;
 }
-.customer-details-buttons:hover {
-  color: #ff69b4;
+
+.buttons {
+  width: 200px;
 }
 .customer-details-container {
   display: flex;
@@ -308,16 +303,6 @@ table tr:nth-child(even) {
   color: #ff69b4;
 }
 
-.button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  width: 90%;
-  height: 10%;
-  margin: 10px 5%;
-}
-
 /* Label Styles */
 .pet-label {
   font-family: 'Lato', sans-serif;
@@ -334,6 +319,7 @@ table tr:nth-child(even) {
   border: 2px solid #505050;
   font-family: 'Lato', sans-serif;
   font-weight: 800;
+  padding: 1rem;
 }
 .pet-select {
   width: 50%;

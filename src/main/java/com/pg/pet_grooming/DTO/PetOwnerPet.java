@@ -17,24 +17,6 @@ public class PetOwnerPet implements java.io.Serializable{
     private String pet_owner_address;
     private String pet_name;
     private String pet_breed;
-//    private String pet_names;
-//    private String pet_breeds;
-
-//    public String getPet_names() {
-//        return pet_names;
-//    }
-//
-//    public void setPet_names(String pet_names) {
-//        this.pet_names = pet_names;
-//    }
-//
-//    public String getPet_breeds() {
-//        return pet_breeds;
-//    }
-//
-//    public void setPet_breeds(String pet_breeds) {
-//        this.pet_breeds = pet_breeds;
-//    }
             
     public Integer getId() {
         return id;

@@ -92,12 +92,6 @@ public class PetController {
             }).orElseThrow(()-> new ResourceNotFoundException("Pet owner not found"));
         }
            
-//    // Create Pet or Update Pet
-//    @RequestMapping(path="/editPet", method={RequestMethod.PUT,RequestMethod.GET})
-//    public String createOrUpdatePet(Pet pet){        
-//        petService.createOrUpdatePet(pet);
-//        return "redirect:/customers";
-//    }
     
         // Create Pet or Update Pet
     @RequestMapping(value="/pet/update", method={RequestMethod.PUT,RequestMethod.GET})
@@ -118,19 +112,5 @@ public class PetController {
         return "redirect:/customers";
     }
     
-    
-//        // JS Ajax Controller for setting pet fields on select
-//    @RequestMapping(value="/loadPetDetails", method={RequestMethod.GET,RequestMethod.POST})
-//    public Pet setPetFields(@RequestParam(value="ID")int pId, Model model){
-//        
-//        Pet petEntity = null;
-//        Optional<Pet> optionalPet = petService.findPetById(pId);
-//        
-//        if(optionalPet.isPresent()){
-//            petEntity = optionalPet.get();     
-//        }
-//        model.addAttribute("pets",petEntity);
-//        return petEntity;
-//    }
     
 }
