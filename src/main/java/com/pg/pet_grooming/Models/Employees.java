@@ -6,19 +6,22 @@
 package com.pg.pet_grooming.Models;
 
 import com.sun.istack.NotNull;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "employee")
@@ -31,12 +34,13 @@ public class Employees extends Auditable<String>{
     
     // Attributes
     @Id
-    @Column(columnDefinition="VARCHAR(15)",name = "employee_id", length = 15,nullable = false)
-    private String employee_id;
+    @Column(name = "id",nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     
     @NotNull
     @Column(name = "emp_sa_id",nullable = false)
-    private int emp_sa_id;
+    private Long emp_sa_id;
     
     @NotNull
     @Column(name = "employee_full_name", length = 255,nullable = false)
@@ -48,6 +52,8 @@ public class Employees extends Auditable<String>{
     
     @NotNull
     @Column(name = "date_hired",nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_hired;
     
     @NotNull

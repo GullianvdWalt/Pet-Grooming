@@ -31,12 +31,14 @@ public class EmployeeService {
     }
     
     // Get Employee By ID
-    public Optional<Employees> findEmployeeById(String id){
-        return employeeRepository.findById(id);
+    public List<Employees> findEmployeeById(Integer id){
+        return employeeRepository.findEmployeeById(id);
     }
     
+    
+    
     // Delete Employee
-    public void deleteEmployee(String id){
+    public void deleteEmployee(Integer id){
         employeeRepository.deleteById(id);
     }
     

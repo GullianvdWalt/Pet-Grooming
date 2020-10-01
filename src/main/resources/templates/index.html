@@ -64,20 +64,14 @@
             <tbody>
               <tr class="schedule-row" th:each="appointments: ${appointmentList}">
                 <td class="time" th:text="${#dates.format(appointments.app_date_time,'dd-MM-yyyy HH-mm')}"></td>
-                <td class="schedule-details" th:text=${appointments.pet_owner_full_name}>
+                <td class="schedule-details" th:text="|${appointments.pet_owner_full_name} - ${appointments.pet_owner_cell} - ${appointments.pet_owner_address}|">
                 </td>
-                <td class="schedule-details" th:text=${appointments.pet_owner_cell}>
+                <td class="schedule-details" th:text="|${appointments.pet_name} - ${appointments.pet_breed}|">
                 </td>
-                <td class="schedule-details" th:text=${appointments.pet_owner_address}>
-                </td>
-                <td class="schedule-details" th:text=${appointments.pet_name}>
-                </td>
-                <td class="schedule-details" th:text=${appointments.pet_breed}>
-                </td>
-                <td class="schedule-details" th:each="services,iterStat : ${appointments.services}" th:text="${services.service_name}">
-                    <!-- <span  th:text="${services.service_name}"/><th:block th:if="${!iterStat.last}">
-                      <span >,</th:block> -->
-
+                <td class="schedule-details" >
+                  <span th:each="services,iterStat : ${appointments.services}">
+                    <span th:text="${services.service_name}"/><th:block th:if="${!iterStat.last}">,</th:block>
+                  </span>
                 </td>
                 <td class="checkbox-column">
                   <div class="checkbox-container">
@@ -89,7 +83,7 @@
             </tbody>
           </table>
         </div>
-              <div th:if="${#lists.isEmpty(appCustList)}">
+              <div th:if="${#lists.isEmpty(appointmentList)}">
                 <span colspan="8" class="empty-appointments-table-text"> <h3>There are currently no appointments.</h3></span>
               </div>
       </div>
