@@ -6,6 +6,7 @@
 package com.pg.pet_grooming.Models;
 
 import com.sun.istack.NotNull;
+import java.time.Duration;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,11 +14,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /*
  * 
@@ -43,23 +47,31 @@ public class BusinessDetails extends Auditable<String>{
     
     @NotNull
     @Column(name = "work_hours_start",nullable = false)
-    private int work_hours_start;
+    @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
+    private Date work_hours_start;
     
     @NotNull
     @Column(name = "work_hours_end",nullable = false)
-    private int work_hours_end;
+    @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
+    private Date work_hours_end;
     
+        
     @NotNull
     @Column(name = "total_work_hours",nullable = false)
-    private int total_work_hours = work_hours_end - work_hours_start;
+    private int total_work_hours;
+    
     
     @NotNull
     @Column(name = "appointment_length",nullable = false)
     private int appointment_length;
     
-    // rates - services
-    // rates - employees
-    // rates - bonus
+    @NotNull
+    @Column(name = "business_name",nullable = false)
+    private String business_name;
     
-    
+    @NotNull
+    @Column(name = "logo",nullable = false)
+    private String logo;
 }

@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -39,6 +40,7 @@ public class Employees extends Auditable<String>{
     private Integer id;
     
     @NotNull
+    @Size(min = 13, max = 13)
     @Column(name = "emp_sa_id",nullable = false)
     private Long emp_sa_id;
     

@@ -1,7 +1,6 @@
 /*
- * This is the ExpensesService Class
- * This Class implements the ExpensesReposistory 
- * The controller sends request to this class
+    Created By Gullian Van Der Walt
+    Last Updated - 2020/10/01, 13:30
  */
 package com.pg.pet_grooming.Services;
 

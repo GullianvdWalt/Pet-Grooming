@@ -44,7 +44,7 @@
           <h3 class="new-customer-heading">Customer Details</h3>
         </div>
         <!-- Customer Form Container Start -->
-        <form class="pet-owner-form-container" th:action="@{/newCustomer/petOwner/new}" th:object=" ${petOwner}"
+        <form class="pet-owner-form-container" th:action="@{/newCustomer/petOwner/new}" th:object="${petOwner}"
           method="post">
 
           <div class="customer-details-form">
@@ -79,10 +79,10 @@
           </div>
           <!--    Buttons     -->
           <div class="button-container">
-            <button class="buttons" th:href="@{/customers}">
+            <a class="buttons" th:href="@{/customers}">
               <img src="/icons/cancelSmall.png" alt="back" title="Back To Customers" />
               Cancel
-            </button>
+            </a>
             <button class="buttons" type="submit">
               <img src="/icons/save.png" alt="back" title="Back To Customers" />
               Save
