@@ -8,31 +8,27 @@ package com.pg.pet_grooming.Controllers;
 
 //Imports
 import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.DateFormat;
+import java.util.Locale;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 // Local Imports
 import com.pg.pet_grooming.Services.EmployeeService;
 import com.pg.pet_grooming.Models.Employees;
 import com.pg.pet_grooming.Repositories.EmployeeRepository;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Locale;
-import javax.validation.Valid;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
@@ -63,7 +59,7 @@ public class EmployeeController {
     // Employee Details (Edit)
     @RequestMapping("/employees/details/{id}")
     public String getEmployees(@PathVariable("id") Integer id, 
-    @Valid Employees employee,BindingResult result,Model model)
+    @Valid @ModelAttribute("employee") Employees employee,BindingResult result,Model model)
     throws ResourceNotFoundException{
              
          // Set Page Title
@@ -125,11 +121,7 @@ public class EmployeeController {
         Date date = (Date)dateTimeFormat.parse(dateHired);
         employee.setDate_hired(date);
         
-        // Conver SA ID String to int
-        
-//        Integer saIdConverted = Integer.parseInt(saId);
-//        employee.setEmp_sa_id(saIdConverted);
-        
+       
         if(result.hasErrors()){
         
         }else{

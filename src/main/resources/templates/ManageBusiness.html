@@ -1,40 +1,245 @@
-<!-- 
-    Created By Thabang Makhubo  
+<!--
+    Created By Thabang Makhubo
     Created on the 13th Sept 2020
     View for the job card
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Grooming | Manage Business</title>
 
-    <!-- Window Icon -->
-    <link rel="icon" href="/icons/icon.ico">
-  
-    <!--    Styles     -->
-    <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-    <link rel="stylesheet" th:href="@{/css/index.css}" />
-    <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <!-- For Colapsing Menu -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Grooming | Manage Business</title>
+
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/manage-business.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- For Colapsing Menu -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
+
 <body>
-    <!-- Header Included With Fragments -->
-    <header th:insert="fragments/header :: header"></header>
-    <!-- Content Section Start -->
-    <div class="content-section">
-          <!-- Navigation Included With Fragments -->
-        <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-        </nav>
+  <!-- Header Included With Fragments -->
+  <header th:insert="fragments/header :: header"></header>
+  <!-- Content Section Start -->
+  <div class="content-section">
+    <!-- Navigation Included With Fragments -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+    </nav>
+
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
+
+      <!-- Manage Business Container Starts -->
+      <div class="manage-business-container">
+
+        <!-- Success Messages -->
+        <div class="success-messages">
+          <h1 th:text="${success}" th:if="${success}"></h1>
+        </div>
+        <!-- Error Messages -->
+        <div class="error-messages">
+          <h1 th:text="${error}" th:if="${error}"></h1>
+        </div>
+
+        <!-- Business Details -->
+        <div class="business-details-container" th:each="business_details : ${businessDetails}">
+          <div class="heading-container">
+            <img th:src="@{/Icons/business.png}" alt="Business" class="icon">
+            <h2 class="heading">Business Details</h2>
+          </div>
+          <div class="row">
+            <h4>Business Name: <span th:text="${business_details.business_name}"></span></h4>
+          </div>
+          <div class="row">
+            <h4>
+              Business Hours:
+              <span th:text="|${business_details.work_hours_start} - ${business_details.work_hours_end}|"></span> <span
+                th:value="${business_details.total_work_hours}"></span>
+            </h4>
+          </div>
+          <div class="row">
+            <h4>Logo: <span><img th:src="@{Icon/business_details.logo}" alt="Logo" class="icon"></span></h4>
+          </div>
+          <div class="button-container">
+            <a class="buttons" id="businessEditBtn"
+              th:src="@{/updateBusinessDetails/{id}(id = ${business_details.id})}">Edit</a>
+          </div>
+        </div>
+
+        <!-- Service Details -->
+        <div class="service-details-container">
+          <div class="heading-container">
+            <img th:src="@{/Icons/servicesSmall.png}" alt="Business" class="icon">
+            <h2 class="heading">Service Details</h2>
+          </div>
+          <div class="row">
+            <div th:each="services : ${servicesList}" class="service-row">
+              <img src="" alt="">
+              <h4 th:text="|${services.service_name} : ${services.service_price}|"></h4>
+              <a href="#" title="Edit Service" id="serviceEditBtn"><img th:src="@{/Icons/editSmall.png}"
+                  alt="Edit Service" class="icon"></a>
+            </div>
+
+          </div>
+          <div class="button-container">
+            <button class="buttons">Add Service</button>
+          </div>
+        </div>
+
+        <!-- Salary Details Start -->
+        <div class="salary-details-container" th:each="salary_details : ${salaryDetails}">
+          <div class="heading-container">
+            <img th:src="@{/Icons/payroll.png}" alt="Business" class="icon">
+            <h2 class="heading">Salary Details</h2>
+          </div>
+          <div class="row">
+            <h4>Basic Wage: R<span th:text="${salary_details.wage}"></span> Per Hour</h4>
+          </div>
+          <div class="row">
+            <h4>Bonus Per Large Dog: R<span th:text="${salary_details.bonus_large}"></span></h4>
+          </div>
+          <div class="row">
+            <h4>Bonus Per Medium Dog: R<span th:text="${salary_details.bonus_medium}"></span> </h4>
+          </div>
+          <div class="row">
+            <h4>Bonus Per Small Dog: R<span th:text="${salary_details.bonus_small}"></span> </h4>
+          </div>
+          <div class="row">
+            <h4>Overtime: R<span th:text="${salary_details.overtime}"></span> Per Hour</h4>
+          </div>
+          <div class="button-container">
+            <a class="buttons" id="salaryEditBtn" th:src="@{}">Edit</a>
+          </div>
+        </div>
+        <!-- Salary Details Ends-->
+
+        <!-- Business Details Edit Modal Start -->
+        <div class="edit-business-details-modal" id="businessDetailsEditModal">
+          <form action="" th:action=" @{/updateBusinessDetails/{id}}" class="edit-business-details-form" method="POST">
+            <div class="form-row">
+              <label for="business_name">Business Name</label>
+              <input type="hidden" name="id" id="business_details_id">
+              <input type="text" name="business_name" id="business_name">
+            </div>
+            <div class="form-row">
+              <label for="appointment_length">Appointment Length</label>
+              <input type="number" name="appointment_length" id="appointment_length">
+            </div>
+            <div class="form-row">
+              <label for="total_work_hours">Total Work Hours</label>
+              <input type="number" name="total_work_hours" id="total_work_hours">
+            </div>
+            <div class="form-row">
+              <label for="work_hours_start">Work Hour Start</label>
+              <input type="text" name="work_hours_start" id="work_hours_start"
+                placeholder="Enter 24 Hour format e.g. 08:00">
+            </div>
+            <div class="form-row">
+              <label for="work_hours_end">Work Hour End</label>
+              <input type="text" name="work_hours_end" id="work_hours_end"
+                placeholder="Enter 24 Hour format e.g. 17:00">
+            </div>
+            <div class="form-row">
+              <label for="logo">Logo</label>
+              <input type="file" name="logo" id="logo" accept="image/png, image/jpeg">
+            </div>
+            <div class="form-button-row">
+              <button class="buttons" id="serviceEditCancel">Cancel</button>
+              <button class="buttons" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- Business Details Edit Modal Ends -->
+
+        <!-- Service Add Modal Start -->
+        <div class="add-service-modal" id="serviceAddModal">
+          <form action="#" th:action="@{/addService}" th:object="${service}" class="edit-service-details-form"
+            enctype="multipart/form-data" method="POST">
+            <div class="form-row">
+              <input type="hidden" name="service_id">
+              <label for="serviceName">Service Name</label><br>
+              <input type="text" name="service_name" id="serviceName">
+            </div><br>
+            <div class="form-row">
+              <label for="servicePrice">Service Price</label>
+              <input type="number" name="service_price" id="servicePrice">
+            </div><br>
+            <div class="form-row">
+              <label for="serviceIcon">Service Icon</label>
+              <input type="file" name="service_icon" id="serviceIcon" accept="image/png, image/jpeg">
+            </div><br>
+            <div class="form-row">
+              <label for="serviceStatus">Service Status (active/not-active)</label>
+              <input type="checkbox" name="service_status" id="serviceStatus">
+            </div>
+            <div class="form-button-row">
+              <button class="buttons" id="serviceAddCancel">Cancel</button>
+              <button class="buttons" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- Service Add Modal Ends -->
+
+        <!-- Service Details Edit Modal Start -->
+        <div class="edit-service-modal" id="serviceEditModal">
+          <form action="#" th:action="@{/editService/{id}}" th:object="${service}" class="add-service-form"
+            enctype="multipart/form-data" method="POST">
+            <div class="form-row">
+              <input type="hidden" th:name="service_id">
+              <label for="serviceName">Service Name</label><br>
+              <input type="text" th:name="service_name" id="serviceName">
+            </div><br>
+            <div class="form-row">
+              <label for="servicePrice">Service Price</label>
+              <input type="number" th:name="service_price" id="servicePrice">
+            </div><br>
+            <div class="form-row">
+              <label for="serviceIcon">Service Icon</label>
+              <input type="file" th:name="service_icon" id="serviceIcon" accept="image/png, image/jpeg">
+            </div><br>
+            <div class="form-row">
+              <label for="serviceStatus">Service Status (active/not-active)</label>
+              <input type="checkbox" th:name="service_status" id="serviceStatus">
+            </div>
+            <div class="form-button-row">
+              <button class="buttons" id="serviceEditCancel">Cancel</button>
+              <button class="buttons" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- Service Details Edit Modal Start -->
+
+        <!-- Salary Details Edit Modal Start -->
+        <div class="edit-salary-details-modal" id="salaryEditModal">
+          <form action="#" th:action="@{}" class="edit-salary-details-form" enctype="multipart/form-data" method="POST">
+
+            <div class="form-button-row">
+              <button class="buttons" id="salaryEditCancel">Cancel</button>
+              <button class="buttons" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- Salary Details Edit Modal Ends -->
+
+      </div>
+      <!-- Manage Business Container Starts -->
+
     </div>
-    <!-- Footer Included With Fragments -->
-    <footer th:insert="fragments/footer :: footer"></footer>
-    <!-- Scripts  -->
-    <script th:src="@{/js/index.js}"></script>
-    <script th:src="@{/js/sidenav.js}"></script>
+    <!-- Content-Container-End -->
+
+  </div>
+  <!-- Footer Included With Fragments -->
+  <footer th:insert="fragments/footer :: footer"></footer>
+  <!-- Scripts  -->
+  <script th:src="@{/js/manageBusiness.js}"></script>
+  <script th:src="@{/js/sidenav.js}"></script>
 </body>
+
 </html>

@@ -1,0 +1,105 @@
+/* Created By Gullian Van Der Walt */
+/*
+    Fonts
+
+    Import Fonts:
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,500&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+/*
+    For Applying Fonts:
+                            font-family: 'Montserrat', sans-serif;
+                            font-family: 'Roboto', sans-serif;
+                            font-family: 'Lato', sans-serif;
+                            font-family: 'Open Sans', sans-serif;
+    colors:
+            Body Background: #ffffff
+            Background nav: #505050
+            Pink: #FF69B4
+
+    Shadow Effects:
+                        Text  - standard -  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+
+                              - hard shadow - text-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+
+                              - heavy shadow - text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                                                            0px 8px 13px rgba(0,0,0,0.1),
+                                                            0px 18px 23px rgba(0,0,0,0.1);
+
+                        Box Shadow :    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+                        Icons:
+                                -
+
+*/
+
+/* Expense Table View */
+.expenses-table-container {
+  width: 60%;
+  min-height: 100%;
+  border: 2px solid #dcdcdc;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Invoice Column Rows */
+.expense-form-row {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 70%;
+  padding: 0.5rem;
+  margin: 2rem 15%;
+}
+
+/* Invoice Labels */
+.expense-label,
+.expense-data,
+#expense-types {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+}
+.expense-input {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+.expense-input-textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+/* Style Buttons */
+/* Main Buttn Container (Back Button)*/
+.button-container {
+  display: flex;
+  flex-direction: row;
+  height: 5%;
+  width: 60%;
+  margin: 4rem 35% 0 5%;
+}
+/* Button Containers */
+.add-button-main-container {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.add-button-container {
+  max-width: 150px;
+  min-height: 75px;
+  margin: 1rem 35%;
+  background: #505050;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
+}
+/* Messages */
+.success-messages {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.success-messages h1 {
+  color: green;
+  font-size: 1.4em;
+}

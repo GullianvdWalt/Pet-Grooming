@@ -8,12 +8,7 @@
 package com.pg.pet_grooming.Models;
 
 // Imports
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,11 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -71,5 +63,11 @@ public class Services extends Auditable<String>{
     joinColumns = @JoinColumn(name="service_id",referencedColumnName = "service_id"),
     inverseJoinColumns = @JoinColumn(name="app_id", referencedColumnName = "app_id"))
     private List<Appointments> appointment;
+    
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinTable(name="past_appointments_pet_services",
+    joinColumns = @JoinColumn(name="service_id",referencedColumnName = "service_id"),
+    inverseJoinColumns = @JoinColumn(name="p_app_id", referencedColumnName = "id"))
+    private List<PastAppointments> pastAppointments;
     
 }
