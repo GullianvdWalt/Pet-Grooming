@@ -20,7 +20,10 @@ import com.pg.pet_grooming.Models.BusinessDetails;
 import com.pg.pet_grooming.Repositories.BusinessDetailsRepository;
 import com.pg.pet_grooming.Services.BusinessDetailsService;
 import com.pg.pet_grooming.Utilities.FileUploadUtil;
+import java.util.Optional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -30,11 +33,19 @@ public class BusinessDetailsController {
     @Autowired BusinessDetailsService businessDetailsService;
     @Autowired BusinessDetailsRepository businessDetailsRepo;
     
-    // Update
-    @RequestMapping("/updateBusinessDetails/{id}")
-    public String updateBusinessDetails(Model model,
-            @PathVariable("id") Integer id,@RequestParam("logo") MultipartFile multipartFile,
-            RedirectAttributes redirAttrs,BindingResult result)throws IOException{
+    // Get By Id
+    @RequestMapping("/find/businessDetails/{id}")
+    @ResponseBody
+    public Optional<BusinessDetails>GetEditBusinessById(@PathVariable("id")Integer id, Model model){
+        return businessDetailsService.getById(id);
+    }
+    
+    
+    // Update Business Details
+    @RequestMapping(value="/updateBusinessDetails",method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT})
+    public String updateBusinessDetails(Model model,BusinessDetails businessDetails,BindingResult result,RedirectAttributes redirAttrs,
+            @RequestParam("id") Integer id,
+            @RequestParam("image") MultipartFile multipartFile)throws IOException{
         
         if(result.hasErrors()){
             redirAttrs.addAttribute("error", "There was an error..");
@@ -43,20 +54,25 @@ public class BusinessDetailsController {
         if(id < 0){
            redirAttrs.addAttribute("error", "Business Details not found!");
        }
-                 
-       BusinessDetails businessDetails = new BusinessDetails();
-       businessDetails = businessDetailsRepo.getOne(id);
+       
+       
+       //businessDetails = businessDetailsRepo.getOne(id);
+       
+       if(multipartFile.isEmpty()){
+        String imagePath = businessDetails.getLogo();
+        businessDetails.setLogo(imagePath);
+       }   
+       
        model.addAttribute("businessDetails", businessDetails);
        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
        businessDetails.setLogo(fileName);
        
        businessDetailsService.saveBusinessDetails(businessDetails);
-       
-       String uploadDir = "Icon/" + businessDetails.getId();
+
+       String uploadDir = "/Icon/" + businessDetails.getId();
        // Use Utility class to save file to directory
        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-       
-       redirAttrs.addAttribute("success", "Business Details Updated!");
+       redirAttrs.addFlashAttribute("success", "Business Details Updated!");
        return "redirect:/manageBusiness";
     }
 

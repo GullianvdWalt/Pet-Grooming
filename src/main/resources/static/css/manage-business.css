@@ -41,13 +41,27 @@
   display: block;
   margin-top: 10px;
 }
+.edit-icon,
+.delete-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+}
+/*  For Grow Effect */
+.edit-icon:hover,
+.delete-icon:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .button-container {
   text-align: center;
   margin: 2rem 0;
 }
 .buttons {
   width: 200px;
+  padding: 1.5rem;
 }
+
 .service-row {
   display: flex;
   justify-content: space-between;
@@ -63,6 +77,7 @@
   display: none;
   position: fixed;
   overflow: auto;
+  text-align: center;
   width: 100%;
   height: 100%;
   left: 0;
@@ -70,24 +85,48 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 /* Modal Forms */
 .edit-business-details-form,
 .edit-service-details-form,
 .add-service-form,
 .edit-salary-details-form {
-  width: 100%;
-  height: 90%;
+  width: 70%;
+  margin: 0 15%;
+  border-radius: 8px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
+  background-color: #fff;
+}
+h2 {
+  color: #ff69b4;
+  font-size: 1.6em;
 }
 .form-row {
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 80%;
-  margin: 1rem 10%;
+  width: 50%;
+  margin: 1rem 25%;
+}
+.form-row input {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.form-button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 1rem 25%;
+}
+#logo {
+  background-color: lightslategray;
+}
+.logo {
+  justify-content: center;
+  display: flex;
 }
 /* Messages */
 .success-messages {
@@ -107,4 +146,35 @@
 .error-messages h1 {
   font-size: 1.4em;
   color: red;
+}
+/* Delete Modal */
+.delete-modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.delete-modal-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 2rem 25%;
+}
+.delete-modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.delete-modal-footer a {
+  padding-top: 1.2rem;
 }

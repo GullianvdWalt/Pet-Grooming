@@ -71,16 +71,9 @@ public class PetController {
     @RequestMapping("/pet/findPetById/{ID}")
     @ResponseBody
     public Optional<Pet>GetEditPetById(@PathVariable("ID")int id){
-        System.out.println(id);
         return petRepository.findById(id);
     }
     
-//    // Get Pet by PetOwnerId
-//    @GetMapping("/petOwner/{petOwnerId}/pets")
-//    public List<Pet> getPetsByPetOwnerId(@PathVariable(value="ID")Integer petOwnerId){
-//         
-//        return petService.getPetbyId(petOwnerId);
-//    }
     
     // Save Pet 
     @PostMapping("petOwners/{petOwnerId}/pets")

@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -54,6 +55,13 @@ public class Services extends Auditable<String>{
     
     @Column(name = "service_status",nullable = false)
     private boolean service_status;
+    
+    @Transient
+    public String getImagePath(){
+        if(service_id == null || service_id == null) return null;
+        
+        return "/Icon/" + service_id + "/" + service_icon;
+    }
     
     // Services
     // Appointment - Services - Appointment_Pet_Services - Pet

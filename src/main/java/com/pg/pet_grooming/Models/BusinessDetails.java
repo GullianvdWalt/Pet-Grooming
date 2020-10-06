@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -71,7 +72,14 @@ public class BusinessDetails extends Auditable<String>{
     @Column(name = "business_name",nullable = false)
     private String business_name;
     
-    @NotNull
-    @Column(name = "logo",nullable = false)
+  
+    @Column(name = "logo",nullable = true)
     private String logo;
+    
+    @Transient
+    public String getImagePath(){
+        if(logo == null || id == null) return null;
+        
+        return "/Icon/" + id + "/" + logo;
+    }
 }
