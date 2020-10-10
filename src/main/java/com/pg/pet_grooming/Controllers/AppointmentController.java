@@ -86,7 +86,6 @@ public class AppointmentController {
             } catch (Exception e) {
                     e.printStackTrace();
             }
-//             Optional<Pet> petList = petService.findPetById(petId);
             }
 
             // Set Page Title

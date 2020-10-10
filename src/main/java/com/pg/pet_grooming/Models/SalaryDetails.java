@@ -56,4 +56,8 @@ public class SalaryDetails extends Auditable<String>{
    @Column(name = "bonus_small",nullable = false)
    private Integer bonus_small;
    
+   @NotNull
+   @Column(name = "transport_amount",nullable = false)
+   private Integer transport_amount;
+   
 }

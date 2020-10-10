@@ -65,7 +65,7 @@
                   <td class="select-column">
 
                     <a th:href="@{/newAppointments/new/{pet_Id}(pet_Id = ${Pet_PetOwner.pet_id})}" id="petSelect" class="pet-select">Select</a>
-
+                  </td>
                   <input type="hidden" th:name="petOwnerId" th:value="${Pet_PetOwner.pet_owner_id}" id="petOwnerId">
                   <td th:text=${Pet_PetOwner.pet_name}></td>
                   <td th:text=${Pet_PetOwner.pet_breed}></td>

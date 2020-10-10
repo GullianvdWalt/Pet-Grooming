@@ -9,11 +9,11 @@
   <link rel="icon" href="/icons/icon.ico">
   <!-- JQuery -->
   <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
-  <!--    Styles     -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!--    Styles     -->
   <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
   <link rel="stylesheet" th:href="@{/css/newAppointment.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
@@ -97,10 +97,12 @@
                   <th class="service-table-heading">
                     <img th:src="@{/Icons/petPaw.png}" alt="pet" class="icon" /> Pet
                   </th>
-                  <th class="service-table-heading" th:each="Services : ${serviceList}"
-                    th:text="${Services.service_name}">
-                    <img th:src="@{/Icons/petPaw.png}" alt="Service Icon" class="icon">
+                  <th class="service-table-heading" th:each="Services : ${serviceList}">
+                    <span><img th:src="@{${Services.ImagePath}}" alt="Service Icon" class="icon" /></span>
+                    <span th:text="${Services.service_name}"></span>
+
                   </th>
+                  <!--  -->
                 </tr>
               </thead>
               <!-- Table Body -->

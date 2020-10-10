@@ -31,7 +31,7 @@ function toggleSideNav() {
     document.getElementById("navLinkManageBusiness").style.display = "none";
     // Set Content Width
     document.getElementById("contentContainer").style.width = "90%";
-    document.getElementById("nav-list").style.marginLeft = "0";
+    document.getElementById("nav-list").style.marginLeft = "30px";
     document.getElementById("dashboardLink").style.textAlign = "center";
     document.getElementById("customersLink").style.textAlign = "center";
     document.getElementById("newAppLink").style.textAlign = "center";

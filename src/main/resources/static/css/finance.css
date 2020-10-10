@@ -42,3 +42,22 @@
   margin-bottom: 20px;
   margin-right: 10px;
 }
+/* Messages */
+.success-messages {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.success-messages h1 {
+  color: green;
+  font-size: 1.4em;
+}
+.error-messages {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.error-messages h1 {
+  font-size: 1.4em;
+  color: red;
+}

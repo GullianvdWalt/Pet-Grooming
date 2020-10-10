@@ -39,6 +39,15 @@
       <!-- Finance Container Starts -->
       <div class="finance-container">
 
+        <!-- Messages -->
+        <div class="success-messages">
+          <h1 th:text="${success}" th:if="${success}"></h1>
+        </div>
+        <!-- Messages -->
+        <div class="error-messages">
+          <h1 th:text="${error}" th:if="${error}"></h1>
+        </div>
+
         <!-- Finance Button Container Starts -->
         <div class="finance-button-container">
 

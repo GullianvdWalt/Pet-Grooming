@@ -8,79 +8,22 @@ package com.pg.pet_grooming.Models;
 
 // Imports 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.sun.istack.NotNull;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
-@Entity
-@Table(name = "Salary_Calculate")
-@AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Salary_Calculate {
     
-    // Attributes
-    @Id
-    @Column(name = "id",nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     
-    @NotNull
-    @Column(name = "wage",nullable = false)
+
     private Double wage;
-    
-    @NotNull
-    @Column(name = "num_days",nullable = false)
     private Double numm_days;
-    
-    @NotNull
-    @Column(name = "overtime_amount",nullable = false)
     private Double overtime_amount;
-    
-    @NotNull
-    @Column(name = "overtime_hours",nullable = false)
-    private Integer overtime_hours;
-    
-    @NotNull
-    @Column(name = "deduction_total",nullable = false)
+    private int overtime_hours;
     private Double deduction_total;
-    
-    @NotNull
-    @Column(name = "bonus_total",nullable = false)
     private Double bonus_total;
-    
-    @NotNull
-    @Column(name = "subtotal",nullable = false)
     private Double subtotal;
-    
-    @NotNull
-    @Column(name = "total_incl_bonus",nullable = false)
     private Double total_incl_bonus;
-    
-    @NotNull
-    @Column(name = "grand_total",nullable = false)
     private Double grand_total;
 
     // Default Constructor
     public Salary_Calculate() {
-    }
-    
-    // Getter and Setter Methods
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Double getWage() {

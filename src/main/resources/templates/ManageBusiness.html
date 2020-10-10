@@ -69,13 +69,14 @@
               th:href="@{/find/businessDetails/{id}(id = ${business_details.id})}">Edit</a>
           </div>
         </div>
-
+      <div th:if="${#lists.isEmpty(businessDetails)}">
+        <h4 class="empty-business-details-text"> There are currently no business details set!</h4>
+      </div>
         <!-- Service Details -->
         <div class="service-details-container">
           <div class="heading-container">
             <img th:src="@{/Icons/servicesSmall.png}" alt="Business" class="icon">
             <h2 class="heading">Service Details</h2>
-
           </div>
           <div class="row">
             <div th:each="services : ${servicesList}" class="service-row" id="serviceRow">
@@ -87,6 +88,9 @@
                 <a th:href="@{/service/delete/{id}(id=${services.service_id})}" id="deleteButton" class="delete-button" title="Delete Service"><img src="/icons/trash.png" alt="delete"
                         class="delete-icon" title="Delete Icon" /></a>
             </div>
+              <div th:if="${#lists.isEmpty(servicesList)}">
+                <h4 class="empty-services-text"> There are currently no services set!</h4>
+              </div>
           </div>
           <div class="button-container">
             <a  th:href="@{/service/new}" class="buttons">Add Service</a>
@@ -118,6 +122,9 @@
             <a class="buttons" id="salaryEditBtn"
               th:href="@{/find/salaryDetails/{id}(id=${salary_details.id})}">Edit</a>
           </div>
+        </div>
+       <div th:if="${#lists.isEmpty(salaryDetails)}">
+          <h4 class="empty-salary-details-text"> There are currently no salary details set!</h4>
         </div>
         <!-- Salary Details Ends-->
 
@@ -176,7 +183,7 @@
               </div>
               <div class="delete-modal-footer">
                 <a class="buttons" id="confirmServiceDelete">Yes, delete</a>
-                <a class="buttons" id="serviceCancel" class="service-cancel">Cancel</a>
+                <a id="serviceCancel" class="service-cancel">Cancel</a>
               </div>
             </div>
           </div>

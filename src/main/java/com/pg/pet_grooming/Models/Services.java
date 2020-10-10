@@ -58,7 +58,7 @@ public class Services extends Auditable<String>{
     
     @Transient
     public String getImagePath(){
-        if(service_id == null || service_id == null) return null;
+        if(service_icon == null || service_id == null) return null;
         
         return "/Icon/" + service_id + "/" + service_icon;
     }

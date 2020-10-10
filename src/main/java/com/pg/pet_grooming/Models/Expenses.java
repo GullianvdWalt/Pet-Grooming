@@ -8,7 +8,6 @@ package com.pg.pet_grooming.Models;
 // Imports
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.sun.istack.NotNull;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;

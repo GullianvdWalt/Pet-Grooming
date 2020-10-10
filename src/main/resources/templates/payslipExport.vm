@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+  <title>Export PDF | Payslip</title>
+  <style>
+    #payslip-container {
+      width: 80%;
+      margin: 15px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      border: 2px solid #dcdcdc;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+    }
+
+    .payslip-details-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payslip-details-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .payslip-details-table {
+      width: 100%;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    table tr th {
+      border: 1px solid black;
+      padding: 20px;
+      text-align: left;
+    }
+
+    table tr td {
+      border: 1px solid black;
+      padding: 20px;
+    }
+
+    .signature-line,
+    .signature-date-line {
+      border-bottom: 2px solid black;
+      padding-right: 150px;
+    }
+  </style>
+
+
+</HEAD>
+
+<BODY>
+  <!-- Payslip Container Start -->
+  <div id="payslip-container">
+    <h1>PAYSLIP</h1>
+    <h2>Date Issued: <span>$date</span></h2><br />
+    <div class="payslip-details-container">
+      <div class="payslip-details-row">
+        <h4><b>Name of Employer:</b>&nbsp; &nbsp;<span> $businessName</span>
+        </h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4><b>Address</b>&nbsp; &nbsp;<span>$businessAddress</span> </h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4><b>Name of Employee:</b>&nbsp; &nbsp;<span>$employeeName</span></h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4><b>I.D. Number:</b>&nbsp; &nbsp;<span>$saID</span></h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4><b>Occupation</b>&nbsp; &nbsp;<span>$occupation</span></h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4>Pay Period:&nbsp; &nbsp;<span>$startDate</span>-<span>$endDate</span></h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4>Basic Wage:&nbsp; &nbsp;R<span>$wage</span> per Day Working</h4>
+      </div>
+      <div class="payslip-details-row">
+        <h4>Payment Method:&nbsp; &nbsp;<span>$paymethod</span> </h4>
+      </div>
+    </div>
+    <!-- Payslip Table Start -->
+    <table class="payslip-details-table">
+      <tr>
+        <th style="background-color: lightgray;">Description</th>
+        <th style="background-color: lightgray;">Amount In Rand</th>
+      </tr>
+      <tr>
+        <th>Standard Pay <span>9</span>x R<span>>$wage</span></th>
+        <td>$subTotal</td>
+      </tr>
+      <tr>
+        <th>Overtime Worked <span>$overtimeHours</span> @ R<span>$overtime</span>
+        </th>
+        <td>$overtimeTotal</td>
+      </tr>
+      <tr>
+        <th>Total Incl. Overtime</th>
+        <td>$totalInclOvertime</td>
+      </tr>
+      <tr>
+        <th style="background-color: lightgray;" colspan="2">Deductions</th>
+      </tr>
+      <tr>
+        <th style="background-color: lightgray;">Description</th>
+        <th style="background-color: lightgray;">Amount</th>
+      </tr>
+      <tr>
+        <td>$deduction_description</td>
+        <td>$deduction_total</td>
+      </tr>
+      <tr>
+        <th>Total after deductions:</th>
+        <td>$total_aftr_deduct</td>
+      </tr>
+      <tr>
+        <th style="background-color: lightgray;" colspan="2">Petrol Money</th>
+      </tr>
+      <tr>
+        <th><b>R<span>$transport_amount</span> per day only when use of Taxi</b> </th>
+        <td>$transport_total</td>
+      </tr>
+      <tr>
+        <th style="background-color: lightgray;" colspan="2">Bonus</th>
+      </tr>
+      <tr>
+        <th colspan="2">Bonus Per Dog Washed</th>
+      </tr>
+      <tr>
+        <th>Small Dog <span>$numSDog</span> @ R<span>$bonus_small</span> each</th>
+        <td>$amountSDog</td>
+      </tr>
+      <tr>
+        <th>Medium Dog <span>$numMDog</span> @ R<span>$bonus_medium</span> each</th>
+        <td>$amountMDog</td>
+      </tr>
+      <tr>
+        <th>Large Dog <span>$numLDog</span> @ R<span>$bonus_large</span> each</th>
+        <td>$amountLDog</td>
+      </tr>
+      <tr>
+        <th>Bonus Total:</th>
+        <td>$bonus_total</td>
+      </tr>
+      <br />
+      <tr>
+        <th>Salary Total Incl. Bonus</th>
+        <td>$salary_total_w_bonus</td>
+      </tr><br />
+      <tr>
+        <th colspan="2">Date Given:</th>
+      </tr>
+      <tr>
+        <th>Signature: <span class="signature-line">x</span></th>
+        <th>Date: <span class="signature-date-line">.</span></th>
+      </tr>
+      <tr></tr>
+    </table>
+    <!-- Payslip Table End -->
+  </div>
+  <!-- Payslip Container Ends  -->
+</body>
+
+</html>

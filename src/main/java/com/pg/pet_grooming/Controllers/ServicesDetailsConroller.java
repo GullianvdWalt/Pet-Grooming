@@ -69,7 +69,7 @@ public class ServicesDetailsConroller {
        
        servicesService.saveService(service);
        
-       String uploadDir = "Icon/" + service.getService_id();
+       String uploadDir = "/Icon/" + service.getService_id();
        // Use Utility class to save file to directory
        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
        
@@ -113,7 +113,7 @@ public class ServicesDetailsConroller {
         
        servicesService.saveService(service);
        
-       String uploadDir = "Icon/" + service.getService_id();
+       String uploadDir = "/Icon/" + service.getService_id();
        // Use Utility class to save file to directory
        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
        

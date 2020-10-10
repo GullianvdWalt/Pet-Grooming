@@ -71,8 +71,11 @@ public class BusinessDetails extends Auditable<String>{
     @NotNull
     @Column(name = "business_name",nullable = false)
     private String business_name;
-    
-  
+   
+    @NotNull
+    @Column(name = "business_address",nullable = false)
+    private String business_address;
+   
     @Column(name = "logo",nullable = true)
     private String logo;
     

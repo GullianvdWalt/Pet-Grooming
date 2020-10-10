@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Grooming | Employees</title>
+  <title>Pet Grooming | Select Employee</title>
   <!-- Window Icon -->
   <link rel="icon" href="/icons/icon.ico">
   <!-- JQuery -->
@@ -15,7 +15,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <!--    Styles      -->
   <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-  <link rel="stylesheet" th:href="@{/css/employees.css}" />
+  <link rel="stylesheet" th:href="@{/css/selectEmployee.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -60,10 +60,6 @@
         <div class="success-messages">
           <h1 th:text="${success}" th:if="${success}"></h1>
         </div>
-        <!-- Messages -->
-        <div class="error-messages">
-          <h1 th:text="${error}" th:if="${error}"></h1>
-        </div>
         <!-- Employee Table Container Start -->
         <div class="employee-table-container">
           <table class="employees-table">
@@ -74,7 +70,7 @@
                 <th>Occupation</th>
                 <th>Cell No.</th>
                 <th>Date Hired</th>
-                <th colspan="2">Actions</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -85,13 +81,8 @@
                   <td th:text="${employee.occupation}"></td>
                   <td th:text="${employee.cell}"></td>
                   <td th:text="${employee.date_hired}"></td>
-                  <td>
-                    <a th:href="@{/employees/details/{id}(id = ${employee.id})}" id="edit-button" title="Edit Employee"><img src="/icons/editSmall.png" alt="edit"
-                        class="icon" title="Edit Employee" /></a>
-                  </td>
-                  <td>
-                    <a th:href="@{/employee/delete/(id=${employee.id})}" id="deleteButton" title="Delete Employee"><img src="/icons/trash.png" alt="delete"
-                        class="icon" title="Delete Employee" /></a>
+                  <td class="select-column">
+                    <a th:href="@{/select/employee/{id}(id = ${employee.id})}" id="employeeSelect" class="employee-select">Select</a>
                   </td>
                 </tr>
               </div>

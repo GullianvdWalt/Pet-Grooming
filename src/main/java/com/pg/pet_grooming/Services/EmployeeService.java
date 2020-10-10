@@ -35,7 +35,9 @@ public class EmployeeService {
         return employeeRepository.findEmployeeById(id);
     }
     
-    
+    public Employees getEmployeeById(Integer id){
+        return employeeRepository.getOne(id);
+    }
     
     // Delete Employee
     public void deleteEmployee(Integer id){

@@ -177,23 +177,23 @@ input {
   border: 2px solid #c4c4c4;
 }
 /* Style The Services Table */
-table {
+.services-table {
   overflow: hidden;
 }
-table {
+.services-table {
   width: 100%;
   text-align: left;
   margin-left: 1rem;
   margin-bottom: 0.5rem;
 }
-table tr {
+.services-table tr {
   margin-top: 0.5rem;
   text-align: center;
 }
-th {
+.services-table thead tr th {
   padding: 1rem;
 }
-td {
+.services-table tbody tr td {
   padding: 2rem;
 }
 /* Heading of Table */
@@ -211,7 +211,7 @@ td {
   font-size: 1.5rem;
   letter-spacing: 3px;
 }
-th div {
+.services-table thead tr th div {
   margin-bottom: 0.5rem;
 }
 

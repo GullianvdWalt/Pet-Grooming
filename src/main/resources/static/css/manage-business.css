@@ -57,7 +57,8 @@
   text-align: center;
   margin: 2rem 0;
 }
-.buttons {
+.buttons,
+.service-cancel {
   width: 200px;
   padding: 1.5rem;
 }
