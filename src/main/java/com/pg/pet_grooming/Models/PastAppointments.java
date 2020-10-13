@@ -1,4 +1,4 @@
-/*
+ /*
  * Created By Gullian Van Der Walt - 2020/10/04, 12:25
  * Last Updated - 2020/10/04, 12:25
  * 
@@ -44,16 +44,13 @@ public class PastAppointments extends Auditable<String>{
     
     @NotNull
     @Column(name = "app_date_time",nullable = false)
-    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date app_date_time;
      
    
     @Column(name = "notes")
     private String notes;
-    
-    @Column(name = "status")
-    private String status;
-    
+        
     @NotNull
     @Column(name = "pet_owner_id",nullable = false)
     private int pet_owner_id;
@@ -101,4 +98,9 @@ public class PastAppointments extends Auditable<String>{
     @Column(name="pet_breed",nullable = false)
     private String pet_breed;  
     
+    @NotNull
+    @Column(name="employee_id",nullable = false)
+    private Integer employee_id;  
+    
+       
 }

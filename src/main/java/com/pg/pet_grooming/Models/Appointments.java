@@ -57,9 +57,6 @@ public class Appointments extends Auditable<String>{
     @Column(name = "notes")
     private String notes;
     
-    @Column(name = "status")
-    private String status;
-
     @NotNull
     @Column(name = "pet_owner_id",nullable = false)
     private int pet_owner_id;

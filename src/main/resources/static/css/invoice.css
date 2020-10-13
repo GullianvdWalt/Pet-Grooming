@@ -1,8 +1,9 @@
 /* Style Main Section Start*/
-.invoice-container {
-  width: 100%;
+.invoice-form {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 /* Invoice Container */
 .invoice-details-container {
@@ -11,6 +12,99 @@
   width: 100%;
   height: auto;
 }
+/* Style Containers */
+.appointment-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border: 2px solid #c4c4c4;
+  margin: 2rem 0;
+}
+.header-row {
+  text-align: center;
+  background-color: #505050;
+}
+h3 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffffff;
+  font-size: 1.5em;
+}
+.customer-details-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4c4c4;
+  margin: 2rem 0;
+}
+.customer-details-container-body {
+  display: flex;
+}
+.services-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border: 2px solid #c4c4c4;
+  margin: 2rem 0;
+}
+
+.appointment-details-row {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 2rem 25%;
+}
+.customer-details-container-col {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.customer-details-container-row {
+  display: flex;
+  width: 80%;
+  padding: 1rem;
+  justify-content: space-between;
+  margin: 1rem 10%;
+}
+.services-row {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 1rem 25%;
+}
+.customer-label,
+.appointment-details-label {
+  font-size: 1.3em;
+}
+.services-row h4 {
+  font-size: 1.2em;
+}
+/* Style Date & Time Labels */
+.date-container label,
+.time-container label {
+  margin-left: 1.5rem;
+  margin-right: 2rem;
+  font-size: 18px;
+}
+/* Style Date & Time Inputs */
+.appointment-input,
+.customer-input,
+select,
+textarea,
+option {
+  padding: 0.5rem;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  text-align: center;
+  width: 50%;
+}
+
+/* Styles Services Table Container */
+.services-container {
+  width: 100%;
+  height: 50%;
+}
+
 /* Invoice Two Columns */
 .invoice-container-col {
   display: flex;
@@ -99,41 +193,11 @@
   min-width: 70%;
   margin: 1.4rem 15%;
 }
-/* Button Containers */
-.cancel-button-container,
-.save-button-container {
-  width: 245px;
-  height: 81px;
-  background: #505050;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  text-align: center;
+
+.buttons {
+  padding-top: 10px;
 }
-/* Button Links (a) */
-.cancel-button,
-.save-button {
-  text-decoration: none;
-  color: #ffffff;
-  font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 27px;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: inline-block;
-  margin-top: 10px;
-}
-.cancel-button:hover,
-.save-button:hover {
-  color: #ff69b4;
-}
-.cancel-button img,
-.save-button img {
-  vertical-align: middle;
-  margin-right: 5px;
-}
+
 /* Style Total Row */
 .invoice-row-total {
   display: flex;

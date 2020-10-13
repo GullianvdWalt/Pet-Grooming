@@ -77,20 +77,21 @@ body {
 }
 /* Style for All Buttons */
 .buttons {
-  background: #505050;
-  padding: 10px;
-  border-radius: 15px;
-  height: 70px;
-  width: 240px;
   text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
   color: #ffffff;
+  font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
-  font-size: 18px;
-  font: 600;
-  outline: none;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  width: 245px;
+  height: 70px;
+  background: #505050;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  text-align: center;
 }
 .buttons a {
   color: #ffffff;

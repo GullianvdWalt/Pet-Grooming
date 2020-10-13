@@ -18,26 +18,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 // Local Imports
 import com.pg.pet_grooming.Models.PetOwner;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Models.Pet;
 import com.pg.pet_grooming.Models.Services;
-import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Repositories.PetRepository;
 import com.pg.pet_grooming.Services.AppointmentsService;
-import com.pg.pet_grooming.Services.PetService;
 import com.pg.pet_grooming.Services.ServicesService;
 import com.pg.pet_grooming.Models.Appointments;
 import com.pg.pet_grooming.Repositories.AppointmentRepository;
-import com.pg.pet_grooming.Repositories.Appointments_Pet_Services_Repo;
 import com.pg.pet_grooming.Services.Appointments_Pet_Services_Service;
 import com.pg.pet_grooming.Models.Appointments_Pet_Services;
+import com.pg.pet_grooming.Models.Employees;
+import com.pg.pet_grooming.Repositories.PastAppointmentRepo;
 import com.pg.pet_grooming.Repositories.ServicesRepository;
+import com.pg.pet_grooming.Services.EmployeeService;
+
 
 
 
@@ -48,15 +48,13 @@ public class AppointmentController {
     
     // Inject Services and Repos
     @Autowired private PetOwnerService petOwnerService;
-    @Autowired private PetService petService;
     @Autowired private ServicesService servicesService;
     @Autowired private PetRepository petRepository;
-    @Autowired private PetOwnerRepository petOwnerRepository;
     @Autowired private AppointmentsService appointmentService;
     @Autowired private AppointmentRepository appointmentRepository;
     @Autowired private Appointments_Pet_Services_Service appPetServicesService;
-    @Autowired private Appointments_Pet_Services_Repo appPetServicesRepo;
     @Autowired private ServicesRepository servicesRepository;
+    @Autowired private EmployeeService employeeService;
     
     // New Appointment Page - Select Pet
     @RequestMapping("/newAppointments/select")
@@ -103,7 +101,7 @@ public class AppointmentController {
         return "NewAppointment";
     }
     
-        @RequestMapping(value="/newAppointments/new/save", method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value="/newAppointments/new/save", method={RequestMethod.POST,RequestMethod.GET})
     public String saveAppointment(Model model,
             @Valid @ModelAttribute("newAppointment") Appointments newAppointment,
             @RequestParam("pet_id") int petId,
@@ -114,10 +112,6 @@ public class AppointmentController {
         // Services - Pet - Appointment Join Table object
         Appointments_Pet_Services appPetServices = new Appointments_Pet_Services();
         
-
-//        newAppointment.setApp_date_time(date_time);
-     
-        
         // Pet Object
         Pet pet = new Pet();;
         
@@ -127,7 +121,7 @@ public class AppointmentController {
         
          if(result.hasErrors()){
              // Add messages 
-             System.out.println(result);
+             System.out.println(result); 
          }else{
                           
              
@@ -139,8 +133,6 @@ public class AppointmentController {
              // get pet
              pet = petRepository.getOne(petId);
              newAppointment.setPet(pet);
-             
-//             newAppointment.setApp_date_time(app_date_time);
 
             DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ROOT);
             Date date = (Date)dateTimeFormat.parse(date_time);
@@ -148,35 +140,61 @@ public class AppointmentController {
 
              // save appointment
              appointmentService.saveAppointment(newAppointment);
-                   
+             // Find Services      
              serviceList = servicesRepository.findAllById(serviceIds);
+             
              newAppointment.setServices(serviceList);
              appPetServicesService.createRelationship(appPetServices);
-            
          }      
-
         return "redirect:/";
-
     }
     
+    // Delete Appointment
+    @RequestMapping(value = "/delete/appointment/{id}", method={RequestMethod.GET,RequestMethod.DELETE})
+    public String deleteAppointment(Model model,
+            @PathVariable("id")Integer id,RedirectAttributes redirAttrs){
+    
+        appointmentService.deleteAppointment(id);
+        
+        redirAttrs.addFlashAttribute("success", "Appointment has been deleted!");
+        return "redirect:/";
+    }
     
     // Appointment Complete
-    @RequestMapping(value="/appointmentComplete", method=RequestMethod.POST)
-    public String appointmentComplete(Model model){
-             
-        
+    @RequestMapping(value="/appointmentComplete/{id}", method={RequestMethod.GET,RequestMethod.POST})
+    public String appointmentComplete(Model model,@PathVariable("id")Integer id) throws ResourceNotFoundException{
+      // Get Appointment by Id from Path variable
+      Appointments appointment = appointmentRepository.getOne(id);
+      // Add to view
+      model.addAttribute("appointment", appointment);
+      
+      // Get list of services
+      List<Services> listServices = appointment.getServices();
+      // Add to view
+      model.addAttribute("listServices", listServices);
+      
+      // Get List of Employees(Groomers)
+      List<Employees> employeeList = employeeService.getEmployees();
+      // Add to view
+      model.addAttribute("employeeList", employeeList);
+      
+      // Get PetOwner
+      PetOwner petOwner = petOwnerService.findPetOwnerById(appointment.getPet_owner_id());
+      // Add To View
+      model.addAttribute("petOwner", petOwner);   
+      
+      // Get Pet
+      Pet pet = petRepository.getOne(appointment.getPet_id());
+      // Add to view
+      model.addAttribute("pet", pet);
+      
       // Set Page Title
       String pageTitle = "Appointment Complete";
       model.addAttribute("pageTitle", pageTitle);
       // Set Page Title Icon
       String iconUrl = "servicesSmall.png";
       model.addAttribute("iconUrl", iconUrl);
-      
-      
-      
-        return "AppointmentComplete";
+      return "AppointmentComplete";
     }
-
-       
-    
+ 
 }

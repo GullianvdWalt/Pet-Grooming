@@ -34,60 +34,79 @@
 */
 
 /* Appointment Complete Details Section Style Starts */
-.appointment-complete-container {
+.appointment-complete-form {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
   margin-top: 50px;
 }
-/* Appointment Complete Details Section Header Styles */
-.appointment-details-header {
-  text-align: center;
-  width: 100%;
-  height: 20%;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.6rem;
-}
-.appointment-details-section {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
-/*Appointment Details Section Container Styles Starts*/
-.appointment-details-section-container {
-  width: 80%;
+/* Style Containers */
+.appointment-details-container {
   display: flex;
   flex-direction: column;
   justify-content: end;
   border: 2px solid #c4c4c4;
-  margin: 2rem 10%;
+  margin: 2rem 0;
 }
-/* Style Appointment Details Section Container (Date, Time, Customer Name, Cell, Services */
-.appointment-details-container {
-  height: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 1rem;
-  margin-top: 10px;
+.header-row {
+  text-align: center;
+  background-color: #505050;
 }
-/* Date-Time & Customer Details Containers */
-.date-time-container,
+h3 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffffff;
+  font-size: 1.5em;
+}
 .customer-details-container {
-  width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  border: 2px solid #c4c4c4;
+  margin: 2rem 0;
 }
-/* Date Container - Input Elements */
-.date-container,
-.time-container {
+.customer-details-container-body {
   display: flex;
-  flex-direction: row;
+}
+.services-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border: 2px solid #c4c4c4;
+  margin: 2rem 0;
+}
+
+.appointment-details-row {
+  display: flex;
+  justify-content: space-between;
   width: 50%;
+  margin: 2rem 25%;
+}
+.customer-details-container-col {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.customer-details-container-row {
+  display: flex;
+  width: 80%;
+  padding: 1rem;
+  justify-content: space-between;
+  margin: 1rem 10%;
+}
+.services-row {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 1rem 25%;
+}
+
+.customer-label,
+.appointment-details-label {
+  font-size: 1.3em;
+}
+.services-row h4 {
+  font-size: 1.2em;
 }
 /* Style Date & Time Labels */
 .date-container label,
@@ -97,49 +116,17 @@
   font-size: 18px;
 }
 /* Style Date & Time Inputs */
-.date-container input,
-.time-container input {
-  height: 30px;
+.appointment-input,
+.customer-input,
+select,
+textarea,
+option {
+  padding: 0.5rem;
   border: 2px solid #c4c4c4;
   border-radius: 5px;
   font-size: 1.3rem;
-}
-.date-container input {
+  text-align: center;
   width: 50%;
-  margin-bottom: 1.5rem;
-  min-width: 150px;
-}
-.time-container div {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-}
-.time-container input {
-  min-width: 60px;
-  margin-bottom: 2rem;
-}
-/* Dash Inbetween Time Input Boxes */
-.dash {
-  margin-left: 0;
-}
-.customer-name-container,
-.customer-cell-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-/* Style Customer Details Input Labels */
-.customer-details-container label {
-  font-size: 18px;
-}
-
-/* Style Customer Details Container - Input Boxes */
-.customer-details-container input {
-  width: 300px;
-  height: 30px;
-  border: 2px solid #c4c4c4;
-  border-radius: 5px;
-  margin-bottom: 1.5rem;
 }
 
 /* Styles Services Table Container */
@@ -147,69 +134,11 @@
   width: 100%;
   height: 50%;
 }
-/* Style Services Table  */
-table {
-  width: 70%;
-  min-height: 400px;
-  border: 2px solid #c4c4c4;
-  margin: 2rem 15%;
-  padding: 2rem;
-  font-size: 1.3rem;
-}
-tr {
-  padding: 1rem;
-}
-tr {
-  font-size: 18px;
-}
+
 /* Button Container */
 .button-container {
   width: 80%;
-  height: auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   margin: 4rem 10%;
 }
-/* Style Buttons */
-/* Button Containers */
-.cancel-button,
-.edit-button,
-.invoice-button {
-  width: 170px;
-  height: 70px;
-  padding: 0.5rem;
-  display: inline-block;
-  background-color: #505050;
-  margin-left: 2rem;
-  border-radius: 25px;
-  text-align: center;
-}
-/* Button Links */
-.cancel-button a,
-.edit-button a,
-.invoice-button a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-/* Button Link Hovers */
-.cancel-button a:hover,
-.edit-button a:hover,
-.invoice-button a:hover {
-  cursor: pointer;
-  color: #ff69b4;
-}
-/* Button Icons */
-.cancel-button img,
-.edit-button img,
-.invoice-button img {
-  width: 55px;
-  height: 55px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
-/* Appointment Complete Details Section Style Ends */

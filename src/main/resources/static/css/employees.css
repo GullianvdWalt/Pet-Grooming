@@ -130,6 +130,10 @@ td {
   color: green;
   font-size: 1.4em;
 }
+.error-messages h1 {
+  color: red;
+  font-size: 1.4em;
+}
 .delete-modal {
   display: none;
   position: fixed;
