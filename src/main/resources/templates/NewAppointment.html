@@ -41,6 +41,14 @@
       <!-- New Appointment Container Starts -->
       <div class="new-appointment-container">
 
+        <!-- Success Messages -->
+        <div class="success-messages">
+          <h1 th:text="${success}" th:if="${success}"></h1>
+        </div>
+        <!-- Error Messages -->
+        <div class="error-messages">
+          <h1 th:text="${error}" th:if="${error}"></h1>
+        </div>
         <!-- Appointment Details Section Starts  -->
         <form class="appointment-details-section" th:action="@{/newAppointments/new/save}" th:object="${newAppointment}"
           method="post">

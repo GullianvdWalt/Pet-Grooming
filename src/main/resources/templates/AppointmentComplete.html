@@ -36,16 +36,18 @@
     <div class="content-container">
 
       <!-- Appointment from Container Starts -->
-      <form class="appointment-complete-form" th:action="@{/appointmentComplete/save/delete}" method="POST">
+      <form class="appointment-complete-form" th:action="@{/appointmentComplete/save/delete}"
+        th:object="${pastAppointment}" method="POST">
 
         <div class="appointment-details-container">
           <div class="header-row">
             <h3> Appointment Details</h3>
           </div>
           <div class="appointment-details-row">
-            <input type="hidden" th:name="app_id" th:value="${appointment.app_id}">
+            <input type="hidden" th:name="app_id" class="appointment-input" th:value="${appointment.app_id}" readonly
+              required>
             <label for="date-input" class="appointment-details-label"> Date </label>
-            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.app_date_time,'dd/MM/yyyy HH:mm')}" required/>
+            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.app_date_time,'YYYY/MM/dd HH:mm')}" readonly required/>
           </div><br><br>
           <div class="appointment-details-row">
             <label for="groomerSelect" class="appointment-details-label">Groomer</label>
@@ -58,7 +60,7 @@
           </div>
           <div class="appointment-details-row">
             <label for="appointmentNotes" class="appointment-details-label">Notes</label>
-            <textarea name="notes" id="appointmentNotes"  th:text="appointment.notes" cols="10" rows="5"></textarea>
+            <textarea name="notes" id="appointmentNotes"  th:value="appointment.notes" cols="10" rows="5"></textarea>
           </div>
         </div>
 
@@ -105,7 +107,7 @@
             <h3 > Services</h3>
           </div>
           <div class="services-row" th:each="services : ${listServices}">
-            <input type="hidden"  name="service_id" th:value="${services.service_id}">
+            <input type="hidden"  th:name="service_id" th:value="${services.service_id}">
             <h4 th:text="${services.service_name}"></h4>
             <h4 th:text="${services.service_price}"></h4>
           </div>

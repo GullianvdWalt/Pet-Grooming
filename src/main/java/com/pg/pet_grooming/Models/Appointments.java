@@ -77,14 +77,13 @@ public class Appointments extends Auditable<String>{
     // Services
     // Appointment - Services - Appointment_Pet_Services - Pet
     
-    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name="appointments_pet_services",
     joinColumns = @JoinColumn(name="app_id",referencedColumnName = "app_id"),
     inverseJoinColumns = @JoinColumn(name="service_id", referencedColumnName = "service_id"))
     private List<Services> services;
-    private Integer service_id;
 
-    @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="pet_id", referencedColumnName = "id",insertable = false, updatable = false)
     private Pet pet;
     private Integer pet_id;

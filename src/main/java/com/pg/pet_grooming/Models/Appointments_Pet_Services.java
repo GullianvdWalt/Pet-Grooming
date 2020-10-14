@@ -35,6 +35,7 @@ public class Appointments_Pet_Services {
        
     // Primary Key
     @Id
+    @Column(name = "id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     // Appointments    

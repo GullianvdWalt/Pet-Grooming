@@ -46,7 +46,7 @@ public class InvoiceController {
           // Get Appointment by Id from Path variable
       PastAppointments pastApp = pastAppRepo.getOne(id);
       // Add to view
-      model.addAttribute("appointment",pastApp);
+      model.addAttribute("pastApp",pastApp);
       
       // Get list of services
       List<Services> listServices = pastApp.getServices();

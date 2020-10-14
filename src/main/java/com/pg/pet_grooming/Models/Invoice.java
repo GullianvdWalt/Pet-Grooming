@@ -40,7 +40,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Invoice  extends Auditable<String>{
+public class Invoice extends Auditable<String>{
     
     // Attributes
     @Id

@@ -77,9 +77,9 @@
             <h3> Appointment Details</h3>
           </div>
           <div class="appointment-details-row">
-            <input type="hidden" th:name="app_id" th:value="${appointment.app_id}">
+            <input type="hidden" th:name="id" th:value="${pastApp.id}">
             <label for="date-input" class="appointment-details-label"> Date </label>
-            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.app_date_time,'dd/MM/yyyy HH:mm')}" required/>
+            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(pastApp.app_date_time,'dd/MM/yyyy HH:mm')}" required/>
           </div><br><br>
           <div class="appointment-details-row">
             <label for="groomerSelect" class="appointment-details-label">Groomer</label>

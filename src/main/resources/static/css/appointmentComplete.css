@@ -142,3 +142,6 @@ option {
   justify-content: center;
   margin: 4rem 10%;
 }
+.buttons {
+  padding-top: 0;
+}

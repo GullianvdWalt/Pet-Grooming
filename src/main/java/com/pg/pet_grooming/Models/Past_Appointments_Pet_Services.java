@@ -25,7 +25,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "appointments_pet_services")
+@Table(name = "past_appointments_pet_services")
 @Getter
 @Setter
 @ToString
@@ -35,6 +35,7 @@ public class Past_Appointments_Pet_Services {
        
     // Primary Key
     @Id
+    @Column(name = "id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
@@ -44,11 +45,7 @@ public class Past_Appointments_Pet_Services {
     private PastAppointments pastAppointments;
     private Integer p_app_id;
     
-    // Appointments    
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name="app_id", referencedColumnName = "app_id",insertable = false, updatable = false)
-    private Appointments appointment;
-    private Integer app_id;
+
     // Services
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name="service_id",insertable = false, updatable = false)
