@@ -2,87 +2,134 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Pet Grooming | New Appointment</title>
-  <!-- Window Icon -->
-  <link rel="icon" href="/icons/icon.ico">
-  <!-- JQuery -->
-  <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-  <!--    Styles     -->
-  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-  <link rel="stylesheet" th:href="@{/css/newAppointment.css}" />
-  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-  <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Pet Grooming | New Appointment</title>
+        <!-- Window Icon -->
+        <link rel="icon" href="/icons/icon.ico">
+        <!-- JQuery -->
+        <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <!--    Styles     -->
+        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+        <link rel="stylesheet" th:href="@{/css/newAppointment.css}" />
+        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+        <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
 
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-  <header th:insert="fragments/header :: header">
-    <!-- Header Included With Fragments -->
-  </header>
+        <header th:insert="fragments/header :: header">
+            <!-- Header Included With Fragments -->
+        </header>
 
-  <!-- Main Content Section Start    -->
-  <div class="content-section">
-    <!-- Navbar Starts -->
-    <nav th:insert="fragments/navbar :: navbar">
-      <!-- Navigation Included With Fragments -->
-    </nav>
-    <!-- Content Containe Start -->
-    <div class="content-container">
+        <!-- Main Content Section Start    -->
+        <div class="content-section">
+            <!-- Navbar Starts -->
+            <nav th:insert="fragments/navbar :: navbar">
+                <!-- Navigation Included With Fragments -->
+            </nav>
+            <!-- Content Containe Start -->
+            <div class="content-container">
 
-      <!-- New Appointment Container Starts -->
-      <div class="new-appointment-container">
+                <!-- New Appointment Container Starts -->
+                <div class="new-appointment-container">
 
-        <!-- Appointment Details Section Starts  -->
-        <form class="appointment-details-section" th:action="@{/newAppointments/new/save}" th:object="${newAppointment}"
-          method="post">
-          <div class="header">
-            <h3 class="new-appointment-heading">Appointment Details</h3>
-          </div>
-          <!-- Date and Customer Details Section Start -->
-          <div class="appointment-details-section-container">
-            <!-- Date & Time Section -->
-            <div class="appointment-date-container">
-              <div class="date-time-heading">
-                <img src="/Icons/time-icon.png" alt="date-time" class="icon" />
-                <h4>Date & Time</h4>
-              </div>
-              <div class="date-time-input-container">
-                <input type="text" th:name="app_date_time" />
-              </div>
-            </div>
-            <!-- Customer Details Secton -->
-            <div class="customer-details-container">
-              <div class="customer-details-header">
-                <img src="/Icons/petOwner.png" alt="customer" class="icon" />
-                <h4>Customer</h4>
-              </div>
-              <div class=" customer-details" th:each="PetOwner : ${petOwner}">
-                <div>
-                  <label for="customer-fullname-input">Full Name</label>
-                  <input type="text" id="customer-fullname-input" name="pet_owner_full_name"
-                    th:value="${PetOwner.pet_owner_full_name}" />
-                  <input type=" text" id="petOwnerId" name="pet_owner_id" th:value="${PetOwner.id}" hidden>
+                    <!-- Appointment Details Section Starts  -->
+                    <form class="appointment-details-section" th:action="@{/newAppointments/new/save}" th:object="${newAppointment}"
+                          method="post">
+                        <div class="header">
+                            <h3 class="new-appointment-heading">Appointment Details</h3>
+                        </div>
+                        <!-- Date and Customer Details Section Start -->
+                        <div class="appointment-details-section-container">
+                            <!-- Date & Time Section -->
+                            <div class="appointment-date-container">
+                                <div class="date-time-heading">
+                                    <img src="/Icons/time-icon.png" alt="date-time" class="icon" />
+                                    <h4>Date & Time</h4>
+                                </div>
+                                <div class="date-time-input-container">
+                                    <input type="text" th:name="app_date_time" />
+                                </div>
+                            </div>
+                            <!-- Customer Details Secton -->
+                            <div class="customer-details-container">
+                                <div class="customer-details-header">
+                                    <img src="/Icons/petOwner.png" alt="customer" class="icon" />
+                                    <h4>Customer</h4>
+                                </div>
+                                <div class=" customer-details" th:each="PetOwner : ${petOwner}">
+                                    <div>
+                                        <label for="customer-fullname-input">Full Name</label>
+                                        <input type="text" id="customer-fullname-input" name="pet_owner_full_name"
+                                               th:value="${PetOwner.pet_owner_full_name}" />
+                                        <input type=" text" id="petOwnerId" name="pet_owner_id" th:value="${PetOwner.id}" hidden>
+                                    </div>
+                                    <div>
+                                        <label for="cell-input" class="cell-label">Cell</label>
+                                        <input type="text" id="cell-input" name="pet_owner_cell" th:value="${PetOwner.pet_owner_cell}"
+                                               required />
+                                    </div>
+                                    <div>
+                                        <label for=" address-input" class="appointment-label">Address</label>
+                                        <input type="text" id="address-input" name="pet_owner_address"
+                                               th:value="${PetOwner.pet_owner_address}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Date and Customer Details Section End -->
+                        <!-- Services Start -->
+                        <div class=" services-container">
+                            <div class="service-header-container">
+                                <h4 class="services-header">Services</h4>
+                            </div>
+                            <table class="services-table">
+                                <!-- Table Heading  -->
+                                <thead class="service-table-head">
+                                    <tr>
+                                        <th class="service-table-heading">
+                                            <img th:src="@{/Icons/petPaw.png}" alt="pet" class="icon" /> Pet
+                                        </th>
+                                        <th class="service-table-heading" th:each="Services : ${serviceList}">
+                                            <span><img th:src="@{${Services.ImagePath}}" alt="Service Icon" class="icon" /></span>
+                                            <span th:text="${Services.service_name}"></span>
+
+                                        </th>
+                                        <!--  -->
+                                    </tr>
+                                </thead>
+                                <!-- Table Body -->
+                                <tbody>
+                                    <tr th:each="pet : ${pet}">
+                                <input type="hidden" name="pet_id" id="pet_id" th:value="${pet.id}">
+                                <input type="hidden" id="pet_breed" name="pet_breed" th:value="${pet.pet_breed}">
+                                <input type="hidden" id="pet_name" name="pet_name" th:value="${pet.pet_name}">
+                                <td th:text="${pet.pet_name}"></td>
+                                <td class=" checkbox-column" th:each="Services : ${serviceList}">
+                                    <input type="checkbox" th:value="${Services.service_id}" name="service_id" class="checkbox" />
+                                </td>
+                                </tr>
+                                </tbody>
+                                <!-- Table Body  End -->
+                            </table>
+                        </div>
+                        <!-- Services End -->
+                        <!--    Button Container   -->
+                        <div class="button-container">
+                            <a th:href="@{/}" class="buttons"><img src="/icons/cancelSmall.png" alt="Cancel">Cancel</a>
+                            <button type="submit" class="buttons"><img src="/icons/save1.png" alt="Save">Save</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                  <label for="cell-input" class="cell-label">Cell</label>
-                  <input type="text" id="cell-input" name="pet_owner_cell" th:value="${PetOwner.pet_owner_cell}"
-                    required />
-                </div>
-                <div>
-                  <label for=" address-input" class="appointment-label">Address</label>
-                  <input type="text" id="address-input" name="pet_owner_address"
-                    th:value="${PetOwner.pet_owner_address}" />
-                </div>
-              </div>
+                <!-- New Appointment Container End -->
             </div>
           </div>
           <!-- Date and Customer Details Section End -->
@@ -163,3 +210,4 @@
 </body>
 
 </html>
+
