@@ -13,15 +13,14 @@ import org.hibernate.boot.spi.MetadataBuilderContributor;
 import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.type.StandardBasicTypes;
 
-public class SqlFunctionsMetadataBuilderContributor 
-        implements MetadataBuilderContributor{
+public class SqlFunctionsMetadataBuilderContributor
+        implements MetadataBuilderContributor {
 
     @Override
     public void contribute(MetadataBuilder mb) {
-       mb.applySqlFunction("group_concat", 
-            new StandardSQLFunction("group_concat", StandardBasicTypes.STRING));
+        mb.applySqlFunction("group_concat",
+                new StandardSQLFunction("group_concat", StandardBasicTypes.STRING));
     }
-    
-    
-    
+
 }
+

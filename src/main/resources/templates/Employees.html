@@ -1,141 +1,144 @@
 <!-- Created By Gullian Van Der Walt -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- Created By Thabang Makhubo  -->
-<!-- Updated By Gullian Van Der Walt 01/09/2020 -->
+    <!-- Created By Thabang Makhubo  -->
+    <!-- Updated By Gullian Van Der Walt 01/09/2020 -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Grooming | Employees</title>
-  <!-- Window Icon -->
-  <link rel="icon" href="/icons/icon.ico">
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <!--    Styles      -->
-  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-  <link rel="stylesheet" th:href="@{/css/employees.css}" />
-  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pet Grooming | Employees</title>
+        <!-- Window Icon -->
+        <link rel="icon" href="/icons/icon.ico">
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <!--    Styles      -->
+        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+        <link rel="stylesheet" th:href="@{/css/employees.css}" />
+        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    </head>
 
-<body>
+    <body>
 
-  <header th:insert="fragments/header :: header">
-    <!-- Header Included With Fragments -->
-  </header>
+        <header th:insert="fragments/header :: header">
+            <!-- Header Included With Fragments -->
+        </header>
 
-  <!--  Content Section Starts  -->
-  <div class="content-section">
+        <!--  Content Section Starts  -->
+        <div class="content-section">
 
-    <!-- Navbar Starts -->
-    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-      <!-- Navigation Included With Fragments -->
-    </nav>
+            <!-- Navbar Starts -->
+            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+                <!-- Navigation Included With Fragments -->
+            </nav>
 
-    <!--  Content Container Starts -->
-    <div class="content-container" id="contentContainer">
+            <!--  Content Container Starts -->
+            <div class="content-container" id="contentContainer">
 
-      <div class="employees-container">
+                <div class="employees-container">
 
-        <!-- Employee Search Container Start -->
-        <div class="employee-search-container">
-          <div class="employee-search-container-left">
-            <img th:src="@{/Icons/filter.png}" alt="Filter" class="icon">
-            <input type="text" placeholder="Search Employee" class="search-employee" id="search-employee">
-          </div>
-          <div class="employee-search-container-right">
+                    <!-- Employee Search Container Start -->
+                    <div class="employee-search-container">
+                        <form th:action="@{/employees}" method="get" class="employee-search-container-left">
+                            <img th:src="@{/Icons/filter.png}" alt="Filter" class="icon">
+                            <input type="text" name="keyword" placeholder="Search Employee" class="search-employee" id="search-employee">
+                        </form>
+                        <div class="employee-search-container-right">
 
-            <a th:href="@{/employees/new}" class="buttons">
-              <img th:src="@{/Icons/plusCircleFill.jpg}" alt="New Employee" class="icon">
-              New Employee
-            </a>
+                            <a th:href="@{/employees/new}" class="buttons">
+                                <img th:src="@{/Icons/plusCircleFill.jpg}" alt="New Employee" class="icon">
+                                New Employee
+                            </a>
 
-          </div>
-        </div>
-        <!-- Employee Search Container End -->
-        <!-- Messages -->
-        <div class="success-messages">
-          <h1 th:text="${success}" th:if="${success}"></h1>
-        </div>
-        <!-- Messages -->
-        <div class="error-messages">
-          <h1 th:text="${error}" th:if="${error}"></h1>
-        </div>
-        <!-- Employee Table Container Start -->
-        <div class="employee-table-container">
-          <table class="employees-table">
-            <thead>
-              <tr>
-                <th>SA ID</th>
-                <th>Name & Surname</th>
-                <th>Occupation</th>
-                <th>Cell No.</th>
-                <th>Date Hired</th>
-                <th colspan="2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <div th:if="!${#lists.isEmpty(employeeList)}">
-                <tr th:each="employee : ${employeeList}">
-                  <td th:text="${employee.emp_sa_id}"></td>
-                  <td th:text="${employee.employee_full_name}"></td>
-                  <td th:text="${employee.occupation}"></td>
-                  <td th:text="${employee.cell}"></td>
-                  <td th:text="${employee.date_hired}"></td>
-                  <td>
-                    <a th:href="@{/employees/details/{id}(id = ${employee.id})}" id="edit-button" title="Edit Employee"><img src="/icons/editSmall.png" alt="edit"
-                        class="icon" title="Edit Employee" /></a>
-                  </td>
-                  <td>
-                    <a th:href="@{/employee/delete/(id=${employee.id})}" id="deleteButton" title="Delete Employee"><img src="/icons/trash.png" alt="delete"
-                        class="icon" title="Delete Employee" /></a>
-                  </td>
-                </tr>
-              </div>
-              <tr th:if="${#lists.isEmpty(employeeList)}">
-                <td colspan="8" class="empty-employees-table-text"> There are currently no employees.</td>
-              </tr>
-            </tbody>
-          </table>
+                        </div>
+                    </div>
+                    <!-- Employee Search Container End -->
+                    <!-- Messages -->
+                    <div class="success-messages">
+                        <h1 th:text="${success}" th:if="${success}"></h1>
+                    </div>
+                    <!-- Messages -->
+                    <div class="error-messages">
+                        <h1 th:text="${error}" th:if="${error}"></h1>
+                    </div>
+                    <!-- Employee Table Container Start -->
+                    <div class="employee-table-container">
+                        <table class="employees-table">
+                            <thead>
+                                <tr>
+                                    <th>SA ID</th>
+                                    <th>Name & Surname</th>
+                                    <th>Occupation</th>
+                                    <th>Cell No.</th>
+                                    <th>Date Hired</th>
+                                    <th colspan="2">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <div th:if="!${#lists.isEmpty(employeeList)}">
+                                <tr th:each="employee : ${employeeList}">
+                                    <td th:text="${employee.emp_sa_id}"></td>
+                                    <td th:text="${employee.employee_full_name}"></td>
+                                    <td th:text="${employee.occupation}"></td>
+                                    <td th:text="${employee.cell}"></td>
+                                    <td th:text="${employee.date_hired}"></td>
+                                    <td>
+                                        <a th:href="@{/employees/details/{id}(id = ${employee.id})}" id="edit-button" title="Edit Employee"><img src="/icons/editSmall.png" alt="edit"
+                                                                                                                                                 class="icon" title="Edit Employee" /></a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/employee/delete/(id=${employee.id})}" id="deleteButton" title="Delete Employee"><img src="/icons/trash.png" alt="delete"
+                                                                                                                                            class="icon" title="Delete Employee" /></a>
+                                    </td>
+                                </tr>
+                            </div>
+                            <tr th:if="${#lists.isEmpty(employeeList)}">
+                                <td colspan="8" class="empty-employees-table-text"> There are currently no employees.</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-          <!-- Delete Employee Modal Starts -->
-          <div class="delete-modal" id="employeeDeleteModal">
-            <div class="delete-modal-container">
-              <div class="delete-modal-header">
-                <h3>Confirm Delete</h3>
-              </div>
-              <div class="delete-modal-body">
-                <h4>Are you sure you want to delete this employee?</h4>
-              </div>
-              <div class="delete-modal-footer">
-                <a class="buttons" id="confirmEmployeeDelete">Yes, delete</a>
-                <a class="buttons" id="employeeCancel">Cancel</a>
-              </div>
+                        <!-- Delete Employee Modal Starts -->
+                        <div class="delete-modal" id="employeeDeleteModal">
+                            <div class="delete-modal-container">
+                                <div class="delete-modal-header">
+                                    <h3>Confirm Delete</h3>
+                                </div>
+                                <div class="delete-modal-body">
+                                    <h4>Are you sure you want to delete this employee?</h4>
+                                </div>
+                                <div class="delete-modal-footer">
+                                    <a class="buttons" id="confirmEmployeeDelete">Yes, delete</a>
+                                    <a class="buttons" id="employeeCancel">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Delete Employee Modal Ends -->
+
+                    </div>
+                    <!-- Employee Table Container End -->
+
+                </div>
+
             </div>
-          </div>
-          <!-- Delete Employee Modal Ends -->
+            <!--  Content Container Starts -->
 
         </div>
-        <!-- Employee Table Container End -->
+        <!--  Content Section Ends -->
 
-      </div>
+        <footer th:insert="fragments/footer :: footer">
+            <!-- Footer Included With Fragments -->
+        </footer>
 
-    </div>
-    <!--  Content Container Starts -->
-
-  </div>
-  <!--  Content Section Ends -->
-
-  <footer th:insert="fragments/footer :: footer">
-    <!-- Footer Included With Fragments -->
-  </footer>
-
-  <!-- Scripts -->
-  <script th:src="@{/js/sidenav.js}"></script>
-  <script th:src="@{/js/employees.js}"></script>
-</body>
+        <!-- Scripts -->
+        <script th:src="@{/js/sidenav.js}"></script>
+        <script th:src="@{/js/employees.js}"></script>
+    </body>
 
 </html>
+
+
+

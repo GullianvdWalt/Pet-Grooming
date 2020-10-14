@@ -10,5 +10,5 @@ package com.pg.pet_grooming.Controllers;
  * @author Gullian
  */
 public class ManageBusinessController {
-    
+
 }

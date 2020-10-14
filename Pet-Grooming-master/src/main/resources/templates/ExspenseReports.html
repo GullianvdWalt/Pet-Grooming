@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expenses</title>
-    <!-- Window Icon -->
-    <link rel="icon" href="../Icons/icon.ico">
-    <!--    Styles      -->
-    <link rel="stylesheet" href="../css/styles-all.css" />
-    <link rel="stylesheet" href="../css/exspenseReports.css">
-    <!--    Font Awesome    -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Expenses</title>
+        <!-- Window Icon -->
+        <link rel="icon" href="../Icons/icon.ico">
+        <!--    Styles      -->
+        <link rel="stylesheet" href="../css/styles-all.css" />
+        <link rel="stylesheet" href="../css/exspenseReports.css">
+        <!--    Font Awesome    -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    </head>
 
-<body>
-    <div class="wrapper">
-        <!--    Navbar Start  -->
-        <div class="navbar-container">
-            <div class="logo-container">
-                <a href="index.html"><img src="../Icons/dogHouse.png" alt="home" class="home-icon" /></a>
-                <h1 class="logo">@Home Mobile Pet Grooming</h1>
-            </div>
+    <body>
+        <div class="wrapper">
+            <!--    Navbar Start  -->
+            <div class="navbar-container">
+                <div class="logo-container">
+                    <a href="index.html"><img src="../Icons/dogHouse.png" alt="home" class="home-icon" /></a>
+                    <h1 class="logo">@Home Mobile Pet Grooming</h1>
+                </div>
 
-            <div class="expenses-logo-container">
-                <img src="../Icons/exspense.png" alt="invoice" class="expenses-icon" />
-                <h2 class="expenses-nav-header">Expense Reports</h2>
+                <div class="expenses-logo-container">
+                    <img src="../Icons/exspense.png" alt="invoice" class="expenses-icon" />
+                    <h2 class="expenses-nav-header">Expense Reports</h2>
+                </div>
             </div>
+            <!--    Navbar Ends  -->
+            <!-- Main Section Start -->
+            <div class="main-section-container">
+                <!-- Expense Filter Container Start -->
+                <div class="expense-report-filter-container">
+                    <label for="expense-report-filter-date" class="expense-report-filter-label">Date:</label>
+                    <input type="text" name="filter-date" id="expense-report-filter-date" placeholder="filter by date..">
+                </div>
+                <!-- Expense Filter Container End -->
+                <!-- Expense Report Container Start -->
+                <div class="expense-report-container">
+
+
+                </div>
+                <!-- Expense Report Container End -->
+
+            </div>
+            <!-- Button section start-->
+            <div class="button-container">
+                <div class="back-button-container">
+                    <a href="templates/Finance.html" class="back-button" title="Back to Finance">
+                        <img src="../Icons/back.png" alt="cancel" id="back-button-icon">
+                    </a>
+                </div>
+            </div>
+            <!--Button Section end-->
+            <!-- Footer -->
+            <div class="footer">Pet Grooming &copy; 2020</div>
         </div>
-        <!--    Navbar Ends  -->
-        <!-- Main Section Start -->
-        <div class="main-section-container">
-            <!-- Expense Filter Container Start -->
-            <div class="expense-report-filter-container">
-                <label for="expense-report-filter-date" class="expense-report-filter-label">Date:</label>
-                <input type="text" name="filter-date" id="expense-report-filter-date" placeholder="filter by date..">
-            </div>
-            <!-- Expense Filter Container End -->
-            <!-- Expense Report Container Start -->
-            <div class="expense-report-container">
-
-
-            </div>
-            <!-- Expense Report Container End -->
-
-        </div>
-        <!-- Button section start-->
-        <div class="button-container">
-            <div class="back-button-container">
-                <a href="templates/Finance.html" class="back-button" title="Back to Finance">
-                    <img src="../Icons/back.png" alt="cancel" id="back-button-icon">
-                </a>
-            </div>
-        </div>
-        <!--Button Section end-->
-        <!-- Footer -->
-        <div class="footer">Pet Grooming &copy; 2020</div>
-    </div>
-    <!-- Main Wrapper Ends -->
-</body>
+        <!-- Main Wrapper Ends -->
+    </body>
 
 </html>

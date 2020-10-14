@@ -2,11 +2,10 @@
 *  Created By Gullian Van Der Walt - 2020/09/14, 11:22
    Last Updated - 2020/09/14, 11:22s
 *
-*/
+ */
 package com.pg.pet_grooming.Models;
 
 import com.sun.istack.NotNull;
-import java.time.Duration;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +28,6 @@ import org.springframework.format.annotation.DateTimeFormat;
  * This is the BusinessDetails Model (Entity/Table)
  * 
  */
-
 @Entity
 @Table(name = "business_details")
 @Getter
@@ -37,52 +35,52 @@ import org.springframework.format.annotation.DateTimeFormat;
 @ToString   //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
-public class BusinessDetails extends Auditable<String>{
-    
+public class BusinessDetails extends Auditable<String> {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-       
+
     // 24 Format time will be implemented
-    
     @NotNull
-    @Column(name = "work_hours_start",nullable = false)
+    @Column(name = "work_hours_start", nullable = false)
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
     private Date work_hours_start;
-    
+
     @NotNull
-    @Column(name = "work_hours_end",nullable = false)
+    @Column(name = "work_hours_end", nullable = false)
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
     private Date work_hours_end;
-    
-        
+
     @NotNull
-    @Column(name = "total_work_hours",nullable = false)
+    @Column(name = "total_work_hours", nullable = false)
     private int total_work_hours;
-    
-    
+
     @NotNull
-    @Column(name = "appointment_length",nullable = false)
+    @Column(name = "appointment_length", nullable = false)
     private int appointment_length;
-    
+
     @NotNull
-    @Column(name = "business_name",nullable = false)
+    @Column(name = "business_name", nullable = false)
     private String business_name;
-   
+
     @NotNull
-    @Column(name = "business_address",nullable = false)
+    @Column(name = "business_address", nullable = false)
     private String business_address;
-   
-    @Column(name = "logo",nullable = true)
+
+    @Column(name = "logo", nullable = true)
     private String logo;
-    
+
     @Transient
-    public String getImagePath(){
-        if(logo == null || id == null) return null;
-        
+    public String getImagePath() {
+        if (logo == null || id == null) {
+            return null;
+        }
+
         return "/Icon/" + id + "/" + logo;
     }
 }
+

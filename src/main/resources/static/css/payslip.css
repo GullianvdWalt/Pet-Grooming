@@ -1,52 +1,53 @@
 .payslip-container {
-  width: 80%;
-  margin: 1rem 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
-  border: 2px solid #dcdcdc;
+    width: 80%;
+    margin: 1rem 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border: 2px solid #dcdcdc;
 }
 h1,
 h3 {
-  text-align: center;
+    text-align: center;
 }
 
 .payslip-details-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .payslip-details-row {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 h4 {
-  text-align: left;
+    text-align: left;
 }
 .payslip-details-table {
-  width: 100%;
+    width: 100%;
 }
 tr {
 }
 th,
 td {
-  border: 1px solid black;
-  padding: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
 }
 th {
-  text-align: left;
+    text-align: left;
 }
 .signature-line,
 .signature-date-line {
-  border-bottom: 2px solid black;
-  padding-right: 150px;
+    border-bottom: 2px solid black;
+    padding-right: 150px;
 }
 .payslip-button-row {
-  width: 100%;
-  text-align: center;
-  margin: 2rem 0;
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
 }
 .buttons {
-  padding-top: 1.2em;
+    padding-top: 1.2em;
 }
+

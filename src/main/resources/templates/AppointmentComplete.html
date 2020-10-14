@@ -1,124 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appointment Complete</title>
-  <!-- Window Icon -->
-  <link rel="icon" href="/Icons/icon.ico">
-  <!--    Styles      -->
-  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-  <link rel="stylesheet" th:href="@{/css/appointmentComplete.css}" />
-  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Appointment Complete</title>
+        <!-- Window Icon -->
+        <link rel="icon" href="/Icons/icon.ico">
+        <!--    Styles      -->
+        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+        <link rel="stylesheet" th:href="@{/css/appointmentComplete.css}" />
+        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    </head>
 
-<body>
+    <body>
 
-  <header th:insert="fragments/header :: header">
-    <!-- Header Included With Fragments -->
-  </header>
+        <header th:insert="fragments/header :: header">
+            <!-- Header Included With Fragments -->
+        </header>
 
-  <!--  Content Section Starts    -->
-  <div class="content-section">
+        <!--  Content Section Starts    -->
+        <div class="content-section">
 
-    <!-- Navbar Starts -->
-    <nav th:insert="fragments/navbar :: navbar">
-      <!-- Navigation Included With Fragments -->
-    </nav>
+            <!-- Navbar Starts -->
+            <nav th:insert="fragments/navbar :: navbar">
+                <!-- Navigation Included With Fragments -->
+            </nav>
 
-    <!--  Content Container Starts    -->
-    <div class="content-container">
+            <!--  Content Container Starts    -->
+            <div class="content-container">
 
-      <!-- Appointment Container Starts -->
-      <div class="appointment-complete-container">
+                <!-- Appointment Container Starts -->
+                <div class="appointment-complete-container">
 
-        <div class="appointment-details-header">
-          <h3 class="appointment-details-heading"> Appointment Details</h3>
-        </div>
+                    <div class="appointment-details-header">
+                        <h3 class="appointment-details-heading"> Appointment Details</h3>
+                    </div>
 
-        <!-- Appointment Details Section Starts -->
-        <div class="appointment-details-section">
+                    <!-- Appointment Details Section Starts -->
+                    <div class="appointment-details-section">
 
-          <!-- Appointment Details Section Container Starts -->
-          <div class="appointment-details-section-container">
-            <div class="appointment-details-container">
-              <div class="date-time-container">
-                <div class="date-container">
-                  <label for="date-input"> Date </label>
-                  <input type="text" id="date-input" />
-                </div><br><br>
-                <div class="time-container">
-                  <label for="time-input-start">Time</label>
-                  <div>
-                    <input type="text" id="time-input-start" />
-                    <label for="time-input-end" class="dash">&ndash;</label>
-                    <input type="text" id="time-input-end" />
-                  </div>
+                        <!-- Appointment Details Section Container Starts -->
+                        <div class="appointment-details-section-container">
+                            <div class="appointment-details-container">
+                                <div class="date-time-container">
+                                    <div class="date-container">
+                                        <label for="date-input"> Date </label>
+                                        <input type="text" id="date-input" />
+                                    </div><br><br>
+                                    <div class="time-container">
+                                        <label for="time-input-start">Time</label>
+                                        <div>
+                                            <input type="text" id="time-input-start" />
+                                            <label for="time-input-end" class="dash">&ndash;</label>
+                                            <input type="text" id="time-input-end" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="customer-details-container">
+                                    <div class="customer-name-container">
+                                        <label for="customer-fullname-input">Customer Name</label>
+                                        <input type="text" id="customer-fullname-input" />
+                                    </div><br>
+                                    <div class="customer-cell-container">
+                                        <label for="cell-input" class="cell-label">Cell</label>
+                                        <input type="text" id="cell-input" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="services-container">
+                                <table class="services-table">
+                                    <tr>
+                                        <td>Buddy (Airdale Terrier)</td>
+                                        <td>Nail Cut, Bath & Dip</td>
+                                        <td>R170</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Buddy (Airdale Terrier)</td>
+                                        <td>Nail Cut, Bath & Dip</td>
+                                        <td>R170</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Buddy (Airdale Terrier)</td>
+                                        <td>Nail Cut, Bath & Dip</td>
+                                        <td>R170</td>
+                                    </tr><br>
+                                </table>
+
+                            </div>
+                        </div>
+                        <!-- Appointment Details Section Container Ends -->
+                    </div>
+                    <!-- Appointment Details Section Ends -->
+                    <!-- Button Container Starts-->
+                    <div class="button-container">
+                        <div class="cancel-button"><a href="#"><img th:src="@{/Icons/cancelSmall.png}" alt="cancel"> Cancel</a>
+                        </div>
+                        <div class="edit-button"><a href="#"><img th:src="@{/Icons/editSmall.png}" alt="edit"> Edit </a></div>
+                        <div class="invoice-button"><a href="#"><img th:src="@{/Icons/invoice2.png}" alt="invoice"> Invoice</a>
+                        </div>
+                    </div>
+                    <!-- Button Container Ends -->
                 </div>
-              </div>
-              <div class="customer-details-container">
-                <div class="customer-name-container">
-                  <label for="customer-fullname-input">Customer Name</label>
-                  <input type="text" id="customer-fullname-input" />
-                </div><br>
-                <div class="customer-cell-container">
-                  <label for="cell-input" class="cell-label">Cell</label>
-                  <input type="text" id="cell-input" />
-                </div>
-              </div>
-            </div>
-            <div class="services-container">
-              <table class="services-table">
-                <tr>
-                  <td>Buddy (Airdale Terrier)</td>
-                  <td>Nail Cut, Bath & Dip</td>
-                  <td>R170</td>
-                </tr>
-                <tr>
-                  <td>Buddy (Airdale Terrier)</td>
-                  <td>Nail Cut, Bath & Dip</td>
-                  <td>R170</td>
-                </tr>
-                <tr>
-                  <td>Buddy (Airdale Terrier)</td>
-                  <td>Nail Cut, Bath & Dip</td>
-                  <td>R170</td>
-                </tr><br>
-              </table>
+                <!-- Appointment Container End -->
 
             </div>
-          </div>
-          <!-- Appointment Details Section Container Ends -->
+            <!--  Content Container Ends    -->
+
         </div>
-        <!-- Appointment Details Section Ends -->
-        <!-- Button Container Starts-->
-        <div class="button-container">
-          <div class="cancel-button"><a href="#"><img th:src="@{/Icons/cancelSmall.png}" alt="cancel"> Cancel</a>
-          </div>
-          <div class="edit-button"><a href="#"><img th:src="@{/Icons/editSmall.png}" alt="edit"> Edit </a></div>
-          <div class="invoice-button"><a href="#"><img th:src="@{/Icons/invoice2.png}" alt="invoice"> Invoice</a>
-          </div>
-        </div>
-        <!-- Button Container Ends -->
-      </div>
-      <!-- Appointment Container End -->
-
-    </div>
-    <!--  Content Container Ends    -->
-
-  </div>
-  <!--  Content Section Ends    -->
+        <!--  Content Section Ends    -->
 
 
-  <footer th:insert="fragments/footer :: footer">
-    <!-- Footer Included With Fragments -->
-  </footer>
+        <footer th:insert="fragments/footer :: footer">
+            <!-- Footer Included With Fragments -->
+        </footer>
 
-  <!-- Scirpts -->
-  <script th:src="@{/js/sidenav.js}"></script>
-</body>
+        <!-- Scirpts -->
+        <script th:src="@{/js/sidenav.js}"></script>
+    </body>
 
 </html>
+

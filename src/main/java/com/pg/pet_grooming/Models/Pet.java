@@ -11,11 +11,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,83 +20,74 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "pet") 
+@Table(name = "pet")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Pet extends Auditable<String>{
-    
+public class Pet extends Auditable<String> {
+
     // Attributes
     @Id
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
 
     @ManyToOne
-    @JoinColumn(name="pet_owner_id",insertable=false, updatable=false)
+    @JoinColumn(name = "pet_owner_id", insertable = false, updatable = false)
     @JsonBackReference
     private PetOwner petOwner; //Pet Owner Object
     private Integer pet_owner_id;
-    
+
     @NotNull
-    @Column(name = "pet_name", length = 255,nullable = false)
+    @Column(name = "pet_name", length = 255, nullable = false)
     private String pet_name;
-    
+
     @NotNull
     @Column(name = "pet_gender", length = 1)
     private String pet_gender;
-                 
+
     @NotNull
-    @Column(name = "pet_breed", length = 255,nullable = false)
+    @Column(name = "pet_breed", length = 255, nullable = false)
     private String pet_breed;
-    
+
     @NotNull
-    @Column(name = "pet_size", length = 15,nullable = false)
+    @Column(name = "pet_size", length = 15, nullable = false)
     private String pet_size;
-    
+
     @Column(name = "pet_notes")
     private String pet_notes;
-    
-    
+
     // Override Methods
     @Override
-    public boolean equals(Object obj){
-        if(this == obj){
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if(obj == null){
+        if (obj == null) {
             return false;
         }
-        if(getClass() != obj.getClass()){
+        if (getClass() != obj.getClass()) {
             return false;
         }
         Pet other = (Pet) obj;
-        if(id == null){
-            if(other.id != null){
+        if (id == null) {
+            if (other.id != null) {
                 return false;
-            }   
-        }else if(!id.equals(other.id)){
+            }
+        } else if (!id.equals(other.id)) {
             return false;
         }
         return true;
     }
- 
-    
-    
+
 }
+

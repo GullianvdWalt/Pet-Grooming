@@ -29,25 +29,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 @AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Expenses {
-    
+
     // Attributes
     @Id
-    @Column(name = "expense_id",nullable = false)
+    @Column(name = "expense_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer expense_id;
-    
-    @Column(name = "expense_date",nullable = false)
+
+    @Column(name = "expense_date", nullable = false)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expense_date;
-    
-    @Column(name = "expense_type",nullable = false)
+
+    @Column(name = "expense_type", nullable = false)
     private String expense_type;
-    
-    @Column(name = "expense_description",nullable = false)
+
+    @Column(name = "expense_description", nullable = false)
     private String expense_description;
-    
-    @Column(name = "expense_amount",nullable = false)
+
+    @Column(name = "expense_amount", nullable = false)
     private Double expense_amount;
-    
+
 }
+

@@ -7,10 +7,7 @@
 package com.pg.pet_grooming.Models;
 
 // Imports 
-
 public class Salary_Calculate {
-    
-    
 
     private Double wage;
     private Double numm_days;
@@ -99,18 +96,20 @@ public class Salary_Calculate {
     }
 
     // Method to calculate deductions total
-    public double calcDeductions(){
-        
+    public double calcDeductions() {
+
         return deduction_total;
     }
+
     // Method to calculate bonus total
-    public double calcBonus(){
-        
+    public double calcBonus() {
+
         return bonus_total;
     }
-   
-    public double calcTotal(){
-        
+
+    public double calcTotal() {
+
         return grand_total;
     }
 }
+

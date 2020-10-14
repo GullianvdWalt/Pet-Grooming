@@ -5,14 +5,13 @@
  */
 package com.pg.pet_grooming.Services;
 
+import com.pg.pet_grooming.Repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pg.pet_grooming.Repositories.EmployeeRepository;
-
 @Service
-public class EmployeeService {  
-    
+public class EmployeeService {
+
     // Inject EmployeeRepository
     @Autowired
     private EmployeeRepository employeeRepository;

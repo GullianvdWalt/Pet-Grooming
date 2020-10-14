@@ -7,13 +7,12 @@
 package com.pg.pet_grooming.Repositories;
 
 //Imports
+import com.pg.pet_grooming.Models.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-//Local Imports
-import com.pg.pet_grooming.Models.Invoice;
-
 @Repository
-public interface InvoiceRepository extends JpaRepository<Invoice, Integer>{
-    
+public interface InvoiceRepository extends JpaRepository<Invoice, Integer> {
+
 }
+
