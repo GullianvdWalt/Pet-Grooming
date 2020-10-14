@@ -114,8 +114,8 @@
         <th style="background-color: lightgray;" colspan="2">Deductions</th>
       </tr>
       <tr>
-        <th style="background-color: lightgray;">Description</th>
-        <th style="background-color: lightgray;">Amount</th>
+        <th>Description</th>
+        <th>Amount</th>
       </tr>
       <tr>
         <td>$deduction_description</td>
@@ -126,14 +126,14 @@
         <td>$total_aftr_deduct</td>
       </tr>
       <tr>
-        <th style="background-color: lightgray;" colspan="2">Petrol Money</th>
+        <thcolspan="2">Petrol Money</thcolspan=>
       </tr>
       <tr>
         <th><b>R<span>$transport_amount</span> per day only when use of Taxi</b> </th>
         <td>$transport_total</td>
       </tr>
       <tr>
-        <th style="background-color: lightgray;" colspan="2">Bonus</th>
+        <th colspan="2">Bonus</th>
       </tr>
       <tr>
         <th colspan="2">Bonus Per Dog Washed</th>

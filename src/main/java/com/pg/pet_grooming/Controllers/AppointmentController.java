@@ -40,27 +40,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AppointmentController {
 
     // Inject Services and Repos
-    @Autowired
-    private PetOwnerService petOwnerService;
-    @Autowired
-    private PetService petService;
-    @Autowired
-    private ServicesService servicesService;
-    @Autowired
-    private PetRepository petRepository;
-    @Autowired
-    private PetOwnerRepository petOwnerRepository;
-    @Autowired
-    private AppointmentsService appointmentService;
-    @Autowired
-    private AppointmentRepository appointmentRepository;
-    @Autowired
-    private Appointments_Pet_Services_Service appPetServicesService;
-    @Autowired
-    private Appointments_Pet_Services_Repo appPetServicesRepo;
-    @Autowired
-    private ServicesRepository servicesRepository;
 
+=======
+    @Autowired private Appointments_Pet_Services_Repo appPetServicesRepo;
+    @Autowired private PetOwnerService petOwnerService;
+    @Autowired private PetOwnerRepository petOwnerRepository;
+    @Autowired private PetService petService;
+    @Autowired private ServicesService servicesService;
+    @Autowired private PetRepository petRepository;
+    @Autowired private AppointmentsService appointmentService;
+    @Autowired private AppointmentRepository appointmentRepository;
+    @Autowired private Appointments_Pet_Services_Service appPetServicesService;
+    @Autowired private ServicesRepository servicesRepository;
+    @Autowired private EmployeeService employeeService;
+    
     // New Appointment Page - Select Pet
     @RequestMapping("/newAppointments/select")
     public String newAppointmentSelect(Model model, Pet_PetOwner pet_petOwner) {
@@ -105,8 +98,8 @@ public class AppointmentController {
 
         return "NewAppointment";
     }
-
-    @RequestMapping(value = "/newAppointments/new/save", method = {RequestMethod.POST, RequestMethod.GET})
+    
+    @RequestMapping(value="/newAppointments/new/save", method={RequestMethod.POST,RequestMethod.GET})
     public String saveAppointment(Model model,
             @Valid @ModelAttribute("newAppointment") Appointments newAppointment,
             @RequestParam("pet_id") int petId,
@@ -116,13 +109,13 @@ public class AppointmentController {
 
         // Services - Pet - Appointment Join Table object
         Appointments_Pet_Services appPetServices = new Appointments_Pet_Services();
-
 //        newAppointment.setApp_date_time(date_time);
         // Pet Object
         Pet pet = new Pet();;
 
         // Services Object
         Services services = new Services();
+       
 
         if (result.hasErrors()) {
             // Add messages 
@@ -143,32 +136,64 @@ public class AppointmentController {
             Date date = (Date) dateTimeFormat.parse(date_time);
             newAppointment.setApp_date_time(date);
 
-            // save appointment
-            appointmentService.saveAppointment(newAppointment);
-
-            serviceList = servicesRepository.findAllById(serviceIds);
-            newAppointment.setServices(serviceList);
-            appPetServicesService.createRelationship(appPetServices);
-
-        }
-
+             // save appointment
+             appointmentService.saveAppointment(newAppointment);
+             // Find Services      
+             serviceList = servicesRepository.findAllById(serviceIds);
+             
+             newAppointment.setServices(serviceList);
+             appPetServicesService.createRelationship(appPetServices);
+         }      
         return "redirect:/";
-
     }
-
+    
+    // Delete Appointment
+    @RequestMapping(value = "/delete/appointment/{id}", method={RequestMethod.GET,RequestMethod.DELETE})
+    public String deleteAppointment(Model model,
+            @PathVariable("id")Integer id,RedirectAttributes redirAttrs){
+    
+        appointmentService.deleteAppointment(id);
+        
+        redirAttrs.addFlashAttribute("success", "Appointment has been deleted!");
+        return "redirect:/";
+    }
+    
     // Appointment Complete
-    @RequestMapping(value = "/appointmentComplete", method = RequestMethod.POST)
-    public String appointmentComplete(Model model) {
-
-        // Set Page Title
-        String pageTitle = "Appointment Complete";
-        model.addAttribute("pageTitle", pageTitle);
-        // Set Page Title Icon
-        String iconUrl = "servicesSmall.png";
-        model.addAttribute("iconUrl", iconUrl);
-
-        return "AppointmentComplete";
+    @RequestMapping(value="/appointmentComplete/{id}", method={RequestMethod.GET,RequestMethod.POST})
+    public String appointmentComplete(Model model,@PathVariable("id")Integer id) throws ResourceNotFoundException{
+      // Get Appointment by Id from Path variable
+      Appointments appointment = appointmentRepository.getOne(id);
+      // Add to view
+      model.addAttribute("appointment", appointment);
+      
+      // Get list of services
+      List<Services> listServices = appointment.getServices();
+      // Add to view
+      model.addAttribute("listServices", listServices);
+      
+      // Get List of Employees(Groomers)
+      List<Employees> employeeList = employeeService.getEmployees();
+      // Add to view
+      model.addAttribute("employeeList", employeeList);
+      
+      // Get PetOwner
+      PetOwner petOwner = petOwnerService.findPetOwnerById(appointment.getPet_owner_id());
+      // Add To View
+      model.addAttribute("petOwner", petOwner);   
+      
+      // Get Pet
+      Pet pet = petRepository.getOne(appointment.getPet_id());
+      // Add to view
+      model.addAttribute("pet", pet);
+      
+      // Set Page Title
+      String pageTitle = "Appointment Complete";
+      model.addAttribute("pageTitle", pageTitle);
+      // Set Page Title Icon
+      String iconUrl = "servicesSmall.png";
+      model.addAttribute("iconUrl", iconUrl);
+      return "AppointmentComplete";
     }
-
+ 
 }
 

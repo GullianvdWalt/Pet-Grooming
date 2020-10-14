@@ -1,5 +1,6 @@
+<!-- Created By Gullian Van Der Walt -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <meta charset="UTF-8" />
@@ -130,39 +131,83 @@
                 </div>
                 <!-- New Appointment Container End -->
             </div>
-            <!-- Content Container End -->
-        </div>
-        <!-- Main Content Section End -->
+          </div>
+          <!-- Date and Customer Details Section End -->
+          <!-- Services Start -->
+          <div class=" services-container">
+            <div class="service-header-container">
+              <h4 class="services-header">Services</h4>
+            </div>
+            <table class="services-table">
+              <!-- Table Heading  -->
+              <thead class="service-table-head">
+                <tr>
+                  <th class="service-table-heading">
+                    <img th:src="@{/Icons/petPaw.png}" alt="pet" class="icon" /> Pet
+                  </th>
+                  <th class="service-table-heading" th:each="Services : ${serviceList}">
+                    <span><img th:src="@{${Services.ImagePath}}" alt="Service Icon" class="icon" /></span>
+                    <span th:text="${Services.service_name}"></span>
 
-        <footer th:insert="fragments/footer :: footer">
-            <!-- Footer Included With Fragments -->
-        </footer>
+                  </th>
+                  <!--  -->
+                </tr>
+              </thead>
+              <!-- Table Body -->
+              <tbody>
+                <tr th:each="pet : ${pet}">
+                  <input type="hidden" name="pet_id" id="pet_id" th:value="${pet.id}">
+                  <input type="hidden" id="pet_breed" name="pet_breed" th:value="${pet.pet_breed}">
+                  <input type="hidden" id="pet_name" name="pet_name" th:value="${pet.pet_name}">
+                  <td th:text="${pet.pet_name}"></td>
+                  <td class=" checkbox-column" th:each="Services : ${serviceList}">
+                    <input type="checkbox" th:value="${Services.service_id}" name="service_id" class="checkbox" />
+                  </td>
+                </tr>
+              </tbody>
+              <!-- Table Body  End -->
+            </table>
+          </div>
+          <!-- Services End -->
+          <!--    Button Container   -->
+          <div class="button-container">
+            <a th:href="@{/}" class="buttons"><img src="/icons/cancelSmall.png" alt="Cancel">Cancel</a>
+            <button type="submit" class="buttons"><img src="/icons/save1.png" alt="Save">Save</button>
+          </div>
+        </form>
+      </div>
+      <!-- New Appointment Container End -->
+    </div>
+    <!-- Content Container End -->
+  </div>
+  <!-- Main Content Section End -->
 
-        <!--   Scripts     -->
-        <script th:src="@{/js/sidenav.js}"></script>
-        <script th:src="@{/js/newAppointment.js}"></script>
-        <script type="text/javascript" th:inline="javascript">
-            $(document).ready(function () {
-                $('input[name="dates"]').daterangepicker();
-            });
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
 
-            $(function () {
-                $('input[name="app_date_time"]').daterangepicker({
-                    timePicker: true,
-                    singleDatePicker: true,
-                    minYear: 2020,
-                    maxYear: parseInt(moment().format('YYYY'), 10),
-                    locale: {
-                        format: 'YYYY/MM/DD hh:mm'
-                    }
-                });
-            });
+  <!--   Scripts     -->
+  <script th:src="@{/js/sidenav.js}"></script>
+  <script th:src="@{/js/newAppointment.js}"></script>
+  <script type="text/javascript" th:inline="javascript">
+    $(document).ready(function () {
+      $('input[name="dates"]').daterangepicker();
+    });
 
+    $(function () {
+      $('input[name="app_date_time"]').daterangepicker({
+        timePicker: true,
+        singleDatePicker: true,
+        minYear: 2020,
+        maxYear: parseInt(moment().format('YYYY'), 10),
+        locale: {
+          format: 'YYYY/MM/DD hh:mm'
+        }
+      });
+    });
+  </script>
 
-
-        </script>
-
-    </body>
+</body>
 
 </html>
 

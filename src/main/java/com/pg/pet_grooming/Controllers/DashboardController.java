@@ -36,7 +36,7 @@ public class DashboardController {
     public String postCustApp(Model model, Appointments appointments, Services services, Pet pet) {
 
         // Appointments
-        List<Appointments> appointmentList = appointmentRepository.findAll();
+        List<Appointments> appointmentList = appointmentRepository.getAppointments();
         // Appointment_Pet_Services
         List<Appointments_Pet_Services> appPetSerList = app_pet_ser_repo.findAll();
 

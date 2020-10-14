@@ -1,6 +1,6 @@
 /*
  * Created By Gullian Van Der Walt - 01/08/2020
-   Last Updated - 20/09/07, 04:51
+   Last Updated - 2020/10/13, 17:23
  * This is the PetOwner Model (Entity/Table)
  * 
  */
@@ -20,8 +20,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 

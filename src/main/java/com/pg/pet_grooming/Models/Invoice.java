@@ -1,5 +1,6 @@
 /*
- * 
+ * Created By Gullian Van Der Walt
+   Last Updated - 2020/10/13, 09:21
  * This is the Invoice Model (Entity/Table)
  * 
  */
@@ -23,14 +24,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// Local Import
+import com.pg.pet_grooming.Models.Appointments;
+import com.sun.istack.NotNull;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "invoice")
 @Data  //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Invoice {
 
+public class Invoice  extends Auditable<String>{
+    
     // Attributes
     @Id
     @Column(name = "invoice_num", nullable = false)
@@ -38,18 +47,28 @@ public class Invoice {
     private Integer invoice_num;
 
     @NotNull
-    @Column(name = "invoice_date", nullable = false)
+    @Column(name = "invoice_date",nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date invoice_date;
-
+    
+    @Column(name = "invoice_note",nullable = true)
+    private String invoice_note;
+    
+    @Column(name = "discount",nullable = true)
+    private Double discount;
+    
     @NotNull
-    @Column(name = "invoice_time", nullable = false)
-    private Time invoice_time;
-
-    // One Invoice for One Appointment
-//    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-//    @JoinColumn(name="appointment_id",nullable = false)
-//    private Appointments appointment;
-    @OneToOne(fetch = FetchType.LAZY)
-    private Appointments appointment;
+    @Column(name = "total",nullable = false)
+    private Double total;
+    
+    @NotNull
+    @Column(name = "payment_method",nullable = false)
+    private String payment_method;
+    
+    @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name="past_app_id", referencedColumnName = "id",insertable = false, updatable = false)
+    private PastAppointments pastAppointment;
+    private Integer past_app_id;
 }
 
