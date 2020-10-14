@@ -10,22 +10,23 @@ import java.nio.file.*;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtil {
-    
+
     public static void saveFile(String uploadDir, String fileName,
-        MultipartFile multipartFile)throws IOException{
+            MultipartFile multipartFile) throws IOException {
         // Get File path
         Path uploadPath = Paths.get(uploadDir);
-        
+
         // Create Directory if it does not exist
-        if(!Files.exists(uploadPath)){
+        if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
-        
-        try(InputStream inputStream = multipartFile.getInputStream()){
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
             Path filePath = uploadPath.resolve(fileName);
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        }catch(IOException ioe){
+        } catch (IOException ioe) {
             throw new IOException("Could not save image file: " + fileName, ioe);
         }
     }
 }
+

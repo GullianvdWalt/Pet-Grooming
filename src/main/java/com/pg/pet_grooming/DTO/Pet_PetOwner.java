@@ -6,9 +6,8 @@
  */
 package com.pg.pet_grooming.DTO;
 
-
 public class Pet_PetOwner {
-        
+
     private Integer pet_owner_id;
     private String pet_owner_full_name;
     private String pet_owner_cell;
@@ -20,10 +19,10 @@ public class Pet_PetOwner {
     public Pet_PetOwner() {
     }
 
-    public Pet_PetOwner(Integer pet_owner_id, String pet_owner_full_name, 
-            String pet_owner_cell, String pet_owner_address, 
+    public Pet_PetOwner(Integer pet_owner_id, String pet_owner_full_name,
+            String pet_owner_cell, String pet_owner_address,
             Integer pet_id, String pet_name, String pet_breed) {
-        
+
         this.pet_owner_id = pet_owner_id;
         this.pet_owner_full_name = pet_owner_full_name;
         this.pet_owner_cell = pet_owner_cell;
@@ -98,6 +97,6 @@ public class Pet_PetOwner {
                 + ", pet_id=" + pet_id + ", pet_name=" + pet_name + ""
                 + ", pet_breed=" + pet_breed + '}';
     }
-    
-    
+
 }
+

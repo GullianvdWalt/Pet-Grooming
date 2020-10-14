@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Gullian
  */
-public interface AppointmentRepository extends JpaRepository<Appointments,Long>{
-    
+public interface AppointmentRepository extends JpaRepository<Appointments, Long> {
+
 }

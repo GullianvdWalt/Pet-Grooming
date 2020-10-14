@@ -5,103 +5,103 @@
 
 /* Customer Details Section Style Start */
 .new-customer-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-  margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 50px;
 }
 .new-customer-header-container {
-  height: 10%;
-  width: 100%;
-  text-align: center;
+    height: 10%;
+    width: 100%;
+    text-align: center;
 }
 .new-customer-heading {
-  font-size: 30px;
-  color: #505050;
-  font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: #505050;
+    font-family: 'Roboto', sans-serif;
 }
 .pet-owner-form-container {
-  width: 80%;
-  margin: 1rem 10%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 20px;
-  border: 2px solid #dcdcdc;
+    width: 80%;
+    margin: 1rem 10%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #dcdcdc;
 }
 .customer-details-form {
-  height: 80%;
-  display: flex;
-  flex-direction: column;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
 }
 .form-row {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 80%;
-  margin: 0 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 80%;
+    margin: 0 10%;
 }
 .form-row-gender {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
-  width: 80%;
-  margin: 20px 10%;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    width: 80%;
+    margin: 20px 10%;
 }
 .form-row-new-pet {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  width: 80%;
-  margin: 40px 10%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+    margin: 40px 10%;
 }
 .customer-label {
-  font-family: 'Lato', sans-serif;
-  font-size: 18px;
-  width: 70%;
-  margin: 0 15%;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    width: 70%;
+    margin: 0 15%;
 }
 #petOwnerIdLbl {
-  color: gray;
+    color: gray;
 }
 .customer-input {
-  font-size: 1.2em;
-  width: 70%;
-  margin: 1rem 15%;
-  padding: 0.5rem;
-  border: 2px solid #c4c4c4;
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
+    font-size: 1.2em;
+    width: 70%;
+    margin: 1rem 15%;
+    padding: 0.5rem;
+    border: 2px solid #c4c4c4;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
 }
 #customer-id {
-  background-color: gray;
+    background-color: gray;
 }
 #customer-id:hover {
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 .customer-address-input {
-  font-size: 1.2em;
-  width: 70%;
-  margin: 1rem 15%;
-  padding: 1rem;
-  font-weight: 200;
-  border: 2px solid #c4c4c4;
-  font-family: 'Lato', sans-serif;
-  font-weight: 800;
-  color: #ff69b4;
+    font-size: 1.2em;
+    width: 70%;
+    margin: 1rem 15%;
+    padding: 1rem;
+    font-weight: 200;
+    border: 2px solid #c4c4c4;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    color: #ff69b4;
 }
 
 .button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  width: 90%;
-  margin: 1rem 5%;
-  height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    width: 90%;
+    margin: 1rem 5%;
+    height: 10%;
 }
 
 /* Responsive */
@@ -125,3 +125,4 @@
 
 @media screen and (max-width: 500px) {
 }
+

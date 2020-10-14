@@ -1,9 +1,10 @@
 .error-container {
-  min-height: 700px;
-  text-align: center;
-  padding: 2rem;
+    min-height: 700px;
+    text-align: center;
+    padding: 2rem;
 }
 
 h1 {
-  color: #ff69b4;
+    color: #ff69b4;
 }
+

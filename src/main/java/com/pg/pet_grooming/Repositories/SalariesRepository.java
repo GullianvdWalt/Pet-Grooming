@@ -9,11 +9,10 @@ package com.pg.pet_grooming.Repositories;
 //Imports
 import com.pg.pet_grooming.Models.Salaries;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-// Local Imports
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SalariesRepository extends JpaRepository<Salaries, Integer>{
-    
+public interface SalariesRepository extends JpaRepository<Salaries, Integer> {
+
 }
+

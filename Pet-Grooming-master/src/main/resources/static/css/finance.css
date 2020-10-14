@@ -47,7 +47,7 @@
     height: 100%;
     background-color: rgb(255, 255, 255, 0.6);
     overflow: hidden;
-    
+
 }
 /*   Inner Container  */
 .customer-details-modal-content{
@@ -97,7 +97,7 @@
     font-weight: 200;
     font-size: 1.5em;
     color: #505050;
-    
+
 }
 
 /*  Inputs  */
@@ -170,5 +170,5 @@ input[type=radio]{
 .button-icon{
     vertical-align: middle;
     margin-right: 8%;
-     filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4));
+    filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.4));
 }

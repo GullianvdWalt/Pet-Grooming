@@ -3,7 +3,6 @@
  * This is the Appointments (Entity/Table)
  * 
  */
-
 package com.pg.pet_grooming.Models;
 
 // Imports
@@ -19,7 +18,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,45 +30,41 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor         //JsonIdentityInfo 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Appointments {
-    
+
     // Appointments Attributes
     // Primary Key
     @Id
-    @Column(name = "app_id",nullable = false)
+    @Column(name = "app_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long app_id;
-    
+
     @NotNull
-    @Column(name = "date_created",nullable = false)
+    @Column(name = "date_created", nullable = false)
     private Date date_created;
-    
+
     @NotNull
-    @Column(name = "app_date",nullable = false)
+    @Column(name = "app_date", nullable = false)
     private Date app_date;
-     
+
     @NotNull
-    @Column(name = "start_time",nullable = false)
+    @Column(name = "start_time", nullable = false)
     private Time start_time;
-    
+
     @NotNull
-    @Column(name = "end_time",nullable = false)
+    @Column(name = "end_time", nullable = false)
     private Time end_time;
-    
+
     @Column(name = "notes")
     private String notes;
-    
+
     @Column(name = "status")
     private String status;
-    
 
     @ManyToOne // One Pet can have many Appointments
-    @JoinColumn(name="pet_id", insertable=false, updatable=false)
+    @JoinColumn(name = "pet_id", insertable = false, updatable = false)
     private Pet pet; //Pet Object
     private Long pet_id; // Foreign Key
-    
 
-    
-    
     // Constructor handled by Lombok
     // Getters and Setters handled by Lombok
 }

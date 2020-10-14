@@ -20,30 +20,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class SalaryDetailsController {
-    
-    @Autowired SalaryDetailsService salaryDetailsService;
-    @Autowired SalaryDetailsRepo salaryDetailsRepo;
-    
+
+    @Autowired
+    SalaryDetailsService salaryDetailsService;
+    @Autowired
+    SalaryDetailsRepo salaryDetailsRepo;
+
     // Get By Id
     @RequestMapping("/find/salaryDetails/{id}")
     @ResponseBody
-    public Optional<SalaryDetails>GetEditSalaryById(@PathVariable("id")Integer id, Model model){
+    public Optional<SalaryDetails> GetEditSalaryById(@PathVariable("id") Integer id, Model model) {
         return salaryDetailsService.getById(id);
     }
-    
+
     // Update
-    @RequestMapping(value="/salaryDetailsUpdate", 
-            method = {RequestMethod.PUT,RequestMethod.GET})
+    @RequestMapping(value = "/salaryDetailsUpdate",
+            method = {RequestMethod.PUT, RequestMethod.GET})
     public String updateSalaryDetails(Model model, SalaryDetails salaryDetails,
-            RedirectAttributes redirAttrs, BindingResult result){
-        
-        
-    if(result.hasErrors()){
+            RedirectAttributes redirAttrs, BindingResult result) {
+
+        if (result.hasErrors()) {
             redirAttrs.addFlashAttribute("error", "There was an error..");
         }
-        
-    salaryDetailsService.saveSalaryDetails(salaryDetails);
-    redirAttrs.addFlashAttribute("success", "Salary Details Updated!");
-    return "redirect:/manageBusiness";
+
+        salaryDetailsService.saveSalaryDetails(salaryDetails);
+        redirAttrs.addFlashAttribute("success", "Salary Details Updated!");
+        return "redirect:/manageBusiness";
     }
 }
+

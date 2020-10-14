@@ -7,10 +7,10 @@
 }
 /* Invoice Container */
 .invoice-details-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
 }
 /* Style Containers */
 .appointment-details-container {
@@ -107,91 +107,91 @@ option {
 
 /* Invoice Two Columns */
 .invoice-container-col {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  min-height: 100%;
-  border: 2px solid #dcdcdc;
-  padding: 1em;
-  margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-height: 100%;
+    border: 2px solid #dcdcdc;
+    padding: 1em;
+    margin: 2rem;
 }
 /* Invoice Column Rows */
 .invoice-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
-  padding: 0.5rem;
-  margin: 1rem 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    padding: 0.5rem;
+    margin: 1rem 10%;
 }
 /* Invoice Note Row */
 .invoice-row-note {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 70%;
-  padding: 1rem;
-  margin: 1rem 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+    padding: 1rem;
+    margin: 1rem 10%;
 }
 /* Invoice Labels */
 .invoice-label,
 .invoice-data {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
 }
 .invoice-data-note {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
-  width: 80%;
-  margin: 1rem 10%;
-  height: 120px;
-  text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    width: 80%;
+    margin: 1rem 10%;
+    height: 120px;
+    text-align: center;
 }
 .discount-input {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 .pay-method {
-  display: inline-flex;
+    display: inline-flex;
 }
 .pay-method label {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
 }
 /*  Invoice Payment Type Checkboxes */
 .checkbox {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  -webkit-appearance: none;
-  outline: none;
-  transition: 0.5s;
-  padding-left: 5px;
-  cursor: pointer;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    -webkit-appearance: none;
+    outline: none;
+    transition: 0.5s;
+    padding-left: 5px;
+    cursor: pointer;
 }
 .checkbox:before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 4px solid #ff69b4;
-  box-sizing: border-box;
-  transition: 0.5s;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #ff69b4;
+    box-sizing: border-box;
+    transition: 0.5s;
 }
 .checkbox:checked:before {
-  border-left: none;
-  border-top: none;
-  width: 20px;
-  border-color: #ff69b4;
-  transform: rotate(45deg);
+    border-left: none;
+    border-top: none;
+    width: 20px;
+    border-color: #ff69b4;
+    transform: rotate(45deg);
 }
 /* Style Buttons */
 .button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  min-height: 20%;
-  min-width: 70%;
-  margin: 1.4rem 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 20%;
+    min-width: 70%;
+    margin: 1.4rem 15%;
 }
 
 .buttons {
@@ -200,176 +200,177 @@ option {
 
 /* Style Total Row */
 .invoice-row-total {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 60%;
-  margin: 1rem 20%;
-  padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    margin: 1rem 20%;
+    padding: 0.5rem;
 }
 .total-line {
-  width: 70%;
-  border: 2px solid #ff69b4;
+    width: 70%;
+    border: 2px solid #ff69b4;
 }
 /* Style Main Section End*/
 
 /* Style Invoice Complete */
 .invoice-complete-details-container {
-  display: flex;
-  flex-direction: row;
-  width: 80%;
-  margin: 2rem 10%;
-  height: auto;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 2rem 10%;
+    height: auto;
 }
 .invoice-complete-container-col {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  min-height: 100%;
-  justify-content: space-between;
-  border: 2px solid #dcdcdc;
-  padding: 1em;
-  margin: 2rem 5%;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    min-height: 100%;
+    justify-content: space-between;
+    border: 2px solid #dcdcdc;
+    padding: 1em;
+    margin: 2rem 5%;
 }
 .invoice-complete-container-col-right {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  min-height: 100%;
-  padding: 1em;
-  margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    min-height: 100%;
+    padding: 1em;
+    margin: 2rem;
 }
 .invoice-complete-row {
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  margin: 1rem 25%;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 1rem 25%;
+    justify-content: space-between;
 }
 .invoice-complete-row-total {
-  display: flex;
-  flex-direction: row;
-  width: 40%;
-  margin: 1rem 30%;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin: 1rem 30%;
+    justify-content: space-between;
 }
 .invoice-complete-row-note {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: 1rem 10%;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 1rem 10%;
+    justify-content: center;
 }
 
 .invoice-complete-label {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
-  margin-right: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    margin-right: 2rem;
 }
 .invoice-note {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 1.3rem;
-  text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
 }
 .invoice-complete-data {
-  text-align: right;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
+    text-align: right;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
 }
 #invoice-services span {
-  color: #ff69b4;
-  font-weight: bold;
+    color: #ff69b4;
+    font-weight: bold;
 }
 .invoice-complete-send-row {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 50%;
-  height: 25%;
-  margin: 37.5% 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 25%;
+    margin: 37.5% 25%;
 }
 
 .cell {
-  font-size: 1.1rem;
-  width: 100%;
-  height: 50px;
-  border: 3px solid #ff69b4;
-  border-radius: 15px;
-  outline: none;
+    font-size: 1.1rem;
+    width: 100%;
+    height: 50px;
+    border: 3px solid #ff69b4;
+    border-radius: 15px;
+    outline: none;
 }
 /* Invoice Complete Buttons */
 .edit-button-container,
 .done-button-container {
-  width: 245px;
-  height: 81px;
-  background: #505050;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  text-align: center;
-  padding: 1rem;
+    width: 245px;
+    height: 81px;
+    background: #505050;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
+    padding: 1rem;
 }
 .invoice-complete-row-line {
-  border: none;
-  border-top: 3px dashed #505050;
+    border: none;
+    border-top: 3px dashed #505050;
 }
 /* Send Button */
 .sened-button-container {
-  width: 70%;
-  height: 30%;
-  max-width: 176px;
-  max-height: 69px;
-  margin: 0.5rem 15%;
-  background: #505050;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  text-align: center;
+    width: 70%;
+    height: 30%;
+    max-width: 176px;
+    max-height: 69px;
+    margin: 0.5rem 15%;
+    background: #505050;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
 }
 .send-button-icon {
-  max-width: 50px;
-  max-height: 50px;
-  vertical-align: middle;
-  margin-right: 10px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width: 50px;
+    max-height: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 /* Invoice Complete Button Text (a) */
 .edit-button,
 .done-button {
-  text-decoration: none;
-  color: #ffffff;
-  font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 27px;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline-block;
 }
 .edit-button-container a:hover,
 .done-button-container a:hover {
-  color: #ff69b4;
+    color: #ff69b4;
 }
 .edit-button-icon,
 .done-button-icon {
-  max-width: 50px;
-  max-height: 50px;
-  vertical-align: middle;
-  margin-right: 10px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width: 50px;
+    max-height: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  /*  For Grow Effect */
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
+    /*  For Grow Effect */
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
 }
 .done-button-icon:hover,
 .edit-button-icon:hover {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
+

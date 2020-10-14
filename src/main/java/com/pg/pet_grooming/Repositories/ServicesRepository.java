@@ -7,13 +7,12 @@
 package com.pg.pet_grooming.Repositories;
 
 // Imports
-import org.springframework.stereotype.Repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-// Local Imports
 import com.pg.pet_grooming.Models.Services;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ServicesRepository extends JpaRepository<Services, Integer>{
-    
+public interface ServicesRepository extends JpaRepository<Services, Integer> {
+
 }
+

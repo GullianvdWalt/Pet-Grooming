@@ -8,16 +8,15 @@
  */
 package com.pg.pet_grooming.DTO;
 
+public class PetOwnerPet implements java.io.Serializable {
 
-public class PetOwnerPet implements java.io.Serializable{
-    
     private Integer id;
     private String pet_owner_full_name;
     private String pet_owner_cell;
     private String pet_owner_address;
     private String pet_name;
     private String pet_breed;
-            
+
     public Integer getId() {
         return id;
     }
@@ -66,11 +65,9 @@ public class PetOwnerPet implements java.io.Serializable{
         this.pet_breed = pet_breed;
     }
 
-     
-    
-    public PetOwnerPet(Integer id, String pet_owner_full_name, 
-            String pet_owner_cell, String pet_owner_address, 
-            String pet_name,String pet_breed) {
+    public PetOwnerPet(Integer id, String pet_owner_full_name,
+            String pet_owner_cell, String pet_owner_address,
+            String pet_name, String pet_breed) {
         this.id = id;
         this.pet_owner_full_name = pet_owner_full_name;
         this.pet_owner_cell = pet_owner_cell;
@@ -85,10 +82,5 @@ public class PetOwnerPet implements java.io.Serializable{
     public PetOwnerPet() {
     }
 
-
-
-
-
-    
-    
 }
+

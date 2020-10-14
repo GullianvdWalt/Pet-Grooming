@@ -106,27 +106,11 @@ public class AppointmentController {
             @Valid @ModelAttribute("newAppointment") Appointments newAppointment,
             @RequestParam("pet_id") int petId,
             @RequestParam("service_id") List<Integer> serviceIds,
-            @RequestParam("app_date_time") String date_time,
-            RedirectAttributes redirAttrs
+            @RequestParam("app_date_time") String date_time
             ,BindingResult result) throws ParseException{
                
         // Services - Pet - Appointment Join Table object
         Appointments_Pet_Services appPetServices = new Appointments_Pet_Services();
-        
-        List<Appointments> appointmentsList = new ArrayList<>();
-        appointmentsList = appointmentRepository.getAppointments();
-        
-       
-        // Handle Appointment Clashes
-        for (int i = 0; i < appointmentsList.size(); i++) {
-            newAppointment = appointmentsList.get(i);
-            if(date_time == newAppointment.getApp_date_time().toString()){
-               redirAttrs.addFlashAttribute("error", "There is already an appointment made for" + date_time);
-            }else{
-            
-            }
-            
-        }
         
         // Pet Object
         Pet pet = new Pet();;
@@ -137,6 +121,7 @@ public class AppointmentController {
         
          if(result.hasErrors()){
              // Add messages 
+             System.out.println(result); 
          }else{
                           
              
@@ -153,18 +138,13 @@ public class AppointmentController {
             Date date = (Date)dateTimeFormat.parse(date_time);
             newAppointment.setApp_date_time(date);
 
-            // Find Services      
-            serviceList = servicesRepository.findAllById(serviceIds);
-                       
-            newAppointment.setServices(serviceList);
-
-            // save appointment
-            appointmentService.saveAppointment(newAppointment);
-
+             // save appointment
+             appointmentService.saveAppointment(newAppointment);
+             // Find Services      
+             serviceList = servicesRepository.findAllById(serviceIds);
              
-            appPetServicesService.createRelationship(appPetServices);
-
-            redirAttrs.addFlashAttribute("success", "Appointment Saved!");
+             newAppointment.setServices(serviceList);
+             appPetServicesService.createRelationship(appPetServices);
          }      
         return "redirect:/";
     }

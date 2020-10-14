@@ -9,8 +9,6 @@ import com.sun.istack.NotNull;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,27 +19,26 @@ import lombok.NoArgsConstructor;
 @Table(name = "employee")
 @Data  //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
-@AllArgsConstructor      
+@AllArgsConstructor
 public class Employees {
-    
+
     // SA ID of Employee is Used to identify
     @Id
-    @Column(name = "employee_id", length = 15,nullable = false)
+    @Column(name = "employee_id", length = 15, nullable = false)
     private Long employee_id;
-    
+
     @NotNull
-    @Column(name = "employee_full_name", length = 255,nullable = false)
+    @Column(name = "employee_full_name", length = 255, nullable = false)
     private String employee_full_name;
-    
+
     @NotNull
-    @Column(name = "occupation", length = 255,nullable = false)
+    @Column(name = "occupation", length = 255, nullable = false)
     private String occupation;
-    
+
     @NotNull
-    @Column(name = "date_hired",nullable = false)
+    @Column(name = "date_hired", nullable = false)
     private Date date_hired;
-    
+
     // Constructor handled by Lombok
     // Getters and Setters handled by Lombok
-    
 }

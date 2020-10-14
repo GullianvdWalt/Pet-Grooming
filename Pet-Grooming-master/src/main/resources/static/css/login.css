@@ -24,110 +24,110 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  background-color: rgba(205, 205, 205, 0.23);
-  min-height: 100vh;
-  font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(205, 205, 205, 0.23);
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
 }
 
 .header {
-  height: 250px;
-  background-color: #ff69b4;
-  text-align: center;
-  color: #fff;
-  display: flex;
-  font-family: "Roboto", sans-serif;
+    height: 250px;
+    background-color: #ff69b4;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    font-family: "Roboto", sans-serif;
 }
 .header-container {
-  flex-direction: row;
-  justify-content: center;
-  width: 70%;
-  margin: 1rem 15%;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+    margin: 1rem 15%;
 }
 .logo {
-  width: 90px;
-  height: 90px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 h1 {
-  font-size: 36px;
-  font-weight: bold;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .login-section {
-  height: 700px;
-  background: url('../images/login_background3.jpg') no-repeat !important;
-  background-position: center;
+    height: 700px;
+    background: url('../images/login_background3.jpg') no-repeat !important;
+    background-position: center;
 }
 .form-container {
-  width: 40%;
-  height: 700px;
-  text-align: center;
+    width: 40%;
+    height: 700px;
+    text-align: center;
 }
 form {
-  height: 60%;
-  text-align: center;
-  padding-top: 10%;
+    height: 60%;
+    text-align: center;
+    padding-top: 10%;
 }
 .form-group {
-  width: 700px;
-  height: 150px;
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
+    width: 700px;
+    height: 150px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 }
 label {
-  font-size: 28px;
-  margin-top: 10px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  font-family: "Open Sans", sans-serif;
-  text-align: center;
+    font-size: 28px;
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
 }
 input {
-  width: 500px;
-  height: 60px;
-  border-radius: 20px;
-  background-color: #ff69b4;
-  border: none;
-  padding: 0.5rem;
-  margin: 1rem 100px 0 100px;
-  color: #fff;
-  font-size: 28px;
-  margin-top: 10px;
-  font-weight: 600;
-  outline: none;
-  text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 500px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #ff69b4;
+    border: none;
+    padding: 0.5rem;
+    margin: 1rem 100px 0 100px;
+    color: #fff;
+    font-size: 28px;
+    margin-top: 10px;
+    font-weight: 600;
+    outline: none;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .login-button {
-  text-transform: uppercase;
-  outline: none;
-  background-color: #848484;
-  border: none;
-  width: 300px;
-  margin: 0 200px;
-  text-align: center;
-  height: 60px;
-  border-radius: 25px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: 28px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    outline: none;
+    background-color: #848484;
+    border: none;
+    width: 300px;
+    margin: 0 200px;
+    text-align: center;
+    height: 60px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 28px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .button-container {
-  width: 700px;
-  margin: 1rem;
+    width: 700px;
+    margin: 1rem;
 }
 .login-button:hover {
-  cursor: pointer;
-  color: #ff69b4;
+    cursor: pointer;
+    color: #ff69b4;
 }

@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PetController {
-   // Inject PetService
+    // Inject PetService
+
     @Autowired
     private PetService petService;
-    
-    
-        // New Customer
+
+    // New Customer
     @RequestMapping("/newPet")
-    public String addNewPet(){
+    public String addNewPet() {
         return "/customers";
     }
-    
+
 }

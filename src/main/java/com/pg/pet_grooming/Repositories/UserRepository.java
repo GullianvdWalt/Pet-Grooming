@@ -9,15 +9,14 @@
 package com.pg.pet_grooming.Repositories;
 
 // Imports
+import com.pg.pet_grooming.Models.UserLogin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-// Local Imports
-import com.pg.pet_grooming.Models.UserLogin;
-
 @Repository
-public interface UserRepository extends JpaRepository<UserLogin, Integer>{
-    
+public interface UserRepository extends JpaRepository<UserLogin, Integer> {
+
     UserLogin findByUsername(String username);
-    
+
 }
+

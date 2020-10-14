@@ -16,13 +16,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,35 +32,35 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo for @ManyToOne relationship (Pet)
-public class PetOwner extends Auditable<String>{
-    
+public class PetOwner extends Auditable<String> {
+
     @Id
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    
     @NotNull
-    @Column(name = "pet_owner_full_name", length = 100,nullable = false)
+    @Column(name = "pet_owner_full_name", length = 100, nullable = false)
     private String pet_owner_full_name;
-      
+
     @NotNull
     @Size
-    @Column(name = "pet_owner_cell", length = 20,nullable = false)
+    @Column(name = "pet_owner_cell", length = 20, nullable = false)
     private String pet_owner_cell;
-    
+
     @NotNull
-    @Column(name = "pet_owner_address", length = 255,nullable = false)
+    @Column(name = "pet_owner_address", length = 255, nullable = false)
     private String pet_owner_address;
-    
+
     @NotNull
-    @Column(name = "pet_owner_city", length = 55,nullable = false)
+    @Column(name = "pet_owner_city", length = 55, nullable = false)
     private String pet_owner_city;
-        
-    @OneToMany(mappedBy = "petOwner",fetch = FetchType.LAZY, orphanRemoval = false,cascade = CascadeType.PERSIST)
+
+    @OneToMany(mappedBy = "petOwner", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.PERSIST)
     @JsonManagedReference
     private List<Pet> pets;
-    
+
     // Constructor handled by Lombok
     // Getters and Setters handled by Lombok
 }
+

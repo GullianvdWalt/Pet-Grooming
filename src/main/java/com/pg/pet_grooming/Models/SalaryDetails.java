@@ -24,40 +24,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class SalaryDetails extends Auditable<String>{
+public class SalaryDetails extends Auditable<String> {
     // Attributes
-    
+
     @Id
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     // Basic wage per hour
-   @NotNull
-   @Column(name = "wage",nullable = false)
-   private Integer wage;
-   
-   @NotNull
-   @Column(name = "overtime",nullable = false)
-   private Integer overtime;
-   
-   // Bonus
-   @NotNull
-   @Column(name = "bonus_large",nullable = false)
-   private Integer bonus_large;
-   
-   // Bonus
-   @NotNull
-   @Column(name = "bonus_medium",nullable = false)
-   private Integer bonus_medium;
-   
-   // Bonus
-   @NotNull
-   @Column(name = "bonus_small",nullable = false)
-   private Integer bonus_small;
-   
-   @NotNull
-   @Column(name = "transport_amount",nullable = false)
-   private Integer transport_amount;
-   
+    @NotNull
+    @Column(name = "wage", nullable = false)
+    private Integer wage;
+
+    @NotNull
+    @Column(name = "overtime", nullable = false)
+    private Integer overtime;
+
+    // Bonus
+    @NotNull
+    @Column(name = "bonus_large", nullable = false)
+    private Integer bonus_large;
+
+    // Bonus
+    @NotNull
+    @Column(name = "bonus_medium", nullable = false)
+    private Integer bonus_medium;
+
+    // Bonus
+    @NotNull
+    @Column(name = "bonus_small", nullable = false)
+    private Integer bonus_small;
+
+    @NotNull
+    @Column(name = "transport_amount", nullable = false)
+    private Integer transport_amount;
+
 }
+

@@ -1,94 +1,95 @@
 .expenses-container {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
 }
 .expenses-form-container {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  height: 100%;
-  border: 2px solid #dcdcdc;
-  margin: 1rem;
-  padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    border: 2px solid #dcdcdc;
+    margin: 1rem;
+    padding: 1rem;
 }
 .expenses-top-container {
-  width: 100%;
-  height: 20%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border: 2px solid #dcdcdc;
-  padding: 1em;
-  text-align: center;
-  -webkit-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
-  -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
-  box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #dcdcdc;
+    padding: 1em;
+    text-align: center;
+    -webkit-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
+    -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
+    box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
 }
 
 /* Expense Table View */
 .expenses-table-container {
-  width: 100%;
-  min-height: 100%;
-  border: 2px solid #dcdcdc;
-  margin: 1rem 0;
-  padding: 1rem;
-  text-align: center;
-  -webkit-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
-  -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
-  box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
+    width: 100%;
+    min-height: 100%;
+    border: 2px solid #dcdcdc;
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+    -webkit-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
+    -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
+    box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
 }
 
 /* Expense Table */
 h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    padding: 1rem;
 }
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 th {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.1rem;
-  padding: 1rem;
-  font-weight: bold;
-  background-color: #ff69b4;
-  color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: #ff69b4;
+    color: #ffffff;
 }
 
 tr {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.1rem;
-  background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    background-color: lightgray;
 }
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 td {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 /* Messages */
 .success-messages {
-  width: 100%;
-  padding: 1rem;
-  text-align: center;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
 }
 .success-messages h1 {
-  color: green;
-  font-size: 1.4em;
+    color: green;
+    font-size: 1.4em;
 }
 .error-messages {
-  width: 100%;
-  padding: 1rem;
-  text-align: center;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
 }
 .error-messages h1 {
-  font-size: 1.4em;
-  color: red;
+    font-size: 1.4em;
+    color: red;
 }
+
