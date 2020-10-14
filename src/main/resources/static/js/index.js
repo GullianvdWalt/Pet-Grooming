@@ -1,5 +1,6 @@
 // Created By Gullian Van Der Walt
 
+
 // Delete Pet Modal
 
 var deleteAppModal = document.getElementById("appDeleteModal");
@@ -21,3 +22,4 @@ $(document).ready(function () {
     deleteAppModal.style.display = "none";
   });
 });
+

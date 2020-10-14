@@ -4,12 +4,12 @@
 package com.pg.pet_grooming.Controllers;
 
 //Imports
-import com.pg.pet_grooming.Models.Appointments;
-import com.pg.pet_grooming.Models.Employees;
+
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 // Local Imports
 import com.pg.pet_grooming.Services.InvoiceService;
@@ -24,8 +24,9 @@ import com.pg.pet_grooming.Repositories.ServicesRepository;
 import com.pg.pet_grooming.Services.EmployeeService;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import com.pg.pet_grooming.Services.ServicesService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.pg.pet_grooming.Models.Appointments;
+import com.pg.pet_grooming.Models.Employees;
+
 
 @Controller
 public class InvoiceController {
@@ -78,28 +79,25 @@ public class InvoiceController {
     }
     // Invoice By Appointment
     @RequestMapping("/finance/viewInvoices")
-    public String viewInvoices (Model model){
-      // Set Page Title
-      String pageTitle = "Invoices";
-      model.addAttribute("pageTitle", pageTitle);
-      // Set Page Title Icon
-      String iconUrl = "invoice2.png";
-      model.addAttribute("iconUrl", iconUrl);
-      return "ViewInvoices";
+    public String viewInvoices(Model model) {
+        // Set Page Title
+        String pageTitle = "Invoices";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "invoice2.png";
+        model.addAttribute("iconUrl", iconUrl);
+        return "ViewInvoices";
     }
-     
-    // Export to PDF
-    
-    
-    
+
     @RequestMapping("/invoiceComplete")
-    public String invoiceComplete (Model model){
-      // Set Page Title
-      String pageTitle = "Invoice Complete";
-      model.addAttribute("pageTitle", pageTitle);
-      // Set Page Title Icon
-      String iconUrl = "Invoice.png";
-      model.addAttribute("iconUrl", iconUrl);
-      return "InvoiceComplete";
+    public String invoiceComplete(Model model) {
+        // Set Page Title
+        String pageTitle = "Invoice Complete";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "Invoice.png";
+        model.addAttribute("iconUrl", iconUrl);
+        return "InvoiceComplete";
     }
 }
+

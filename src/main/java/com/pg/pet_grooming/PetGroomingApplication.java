@@ -1,10 +1,9 @@
- /*
+/*
 *   © Pet Grooming 
 *   Pearson Pretoria ITSP300 - Project 2020
 *   
     This is the main class for the main pet grooming application
-*/
-
+ */
 package com.pg.pet_grooming;
 
 import org.springframework.boot.SpringApplication;
@@ -19,13 +18,14 @@ public class PetGroomingApplication {
 
     // Return username with bean, eliminates constructor
     @Bean
-    public AuditorAware<String> auditorAware(){
+    public AuditorAware<String> auditorAware() {
         return new SpringSecurityAuditorAware();
     }
-    
+
     public static void main(String[] args) {
         System.setProperty("spring.main.lazy.initialization", "true");
         SpringApplication.run(PetGroomingApplication.class, args);
     }
 
 }
+

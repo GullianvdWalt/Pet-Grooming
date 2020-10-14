@@ -8,12 +8,11 @@
  */
 package com.pg.pet_grooming.Repositories;
 
+import com.pg.pet_grooming.Models.Employees;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pg.pet_grooming.Models.Employees;
-
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employees, Long>{
-    
+public interface EmployeeRepository extends JpaRepository<Employees, Long> {
+
 }

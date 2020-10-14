@@ -37,182 +37,182 @@
 
 /* New Appointment Container Style Start  */
 .new-appointment-container {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 50px;
 }
 
 /* Appointment Logo Container */
 .new-appointment-logo-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 35%;
-  margin-top: 2rem;
-  margin-right: 4rem;
-  font-size: 1rem;
-  letter-spacing: 4px;
-  font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 35%;
+    margin-top: 2rem;
+    margin-right: 4rem;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    font-weight: bold;
 }
 /* Appointment Logo Icon */
 .new-appointment-icon {
-  width: 75px;
-  height: 75px;
-  vertical-align: middle;
-  margin-right: 2rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+    width: 75px;
+    height: 75px;
+    vertical-align: middle;
+    margin-right: 2rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
 }
 /* Style Navbar Ends */
 /* Appointment Details Section Style Starts */
 .appointment-details-section {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
 }
 /* Appointment Details Section Header Styles */
 .header {
-  text-align: center;
-  width: 100%;
-  height: 10%;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.6rem;
+    text-align: center;
+    width: 100%;
+    height: 10%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
 }
 /*Appointment Details Section Container Styles Starts*/
 .appointment-details-section-container {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex-direction: row;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
 }
 /* Date-Time & Customer Details Containers */
 .appointment-date-container,
 .customer-details-container {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  border: 2px solid #c4c4c4;
-  margin: 0.6rem;
-  padding: 1rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: 2px solid #c4c4c4;
+    margin: 0.6rem;
+    padding: 1rem;
 }
 /* Date Container */
 /* Date Container - Heaidng */
 .date-time-heading,
 .customer-details-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
 }
 
 .date-time-heading {
-  margin-bottom: 3rem;
+    margin-bottom: 3rem;
 }
 .date-time-heading .icon {
-  margin-right: 2rem;
+    margin-right: 2rem;
 }
 /* Style Inputs */
 input {
-  color: #ff69b4;
-  font-weight: 600;
+    color: #ff69b4;
+    font-weight: 600;
 }
 .date-time-input-container {
-  padding: 1rem;
-  text-align: center;
+    padding: 1rem;
+    text-align: center;
 }
 .date-time-input-container input {
-  width: 80%;
-  margin: 0 10%;
-  padding: 1rem;
-  font-size: 1.1em;
-  border: 2px solid #c4c4c4;
-  border-radius: 5px;
+    width: 80%;
+    margin: 0 10%;
+    padding: 1rem;
+    font-size: 1.1em;
+    border: 2px solid #c4c4c4;
+    border-radius: 5px;
 }
 .daterangepicker {
-  width: 30%;
+    width: 30%;
 }
 /* Style Customer Details Container */
 .customer-details {
-  width: 100%;
-  height: 35%;
-  text-align: left;
+    width: 100%;
+    height: 35%;
+    text-align: left;
 }
 .customer-details div {
-  display: flex;
-  width: 70%;
-  margin: 0 15%;
-  justify-content: space-between;
+    display: flex;
+    width: 70%;
+    margin: 0 15%;
+    justify-content: space-between;
 }
 /* Style Customer Details Input Labels */
 .customer-details label {
-  margin-left: 1.5rem;
-  margin-right: 2rem;
-  font-size: 18px;
+    margin-left: 1.5rem;
+    margin-right: 2rem;
+    font-size: 18px;
 }
 #cell-input {
-  margin-left: 5rem;
+    margin-left: 5rem;
 }
 /* Style Customer Details Container - Input Boxes */
 .customer-details input {
-  width: 300px;
-  height: 30px;
-  border: 2px solid #c4c4c4;
-  border-radius: 5px;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  font-size: 1.1em;
+    width: 300px;
+    height: 30px;
+    border: 2px solid #c4c4c4;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    font-size: 1.1em;
 }
 
 /* Style Services Table Container */
 .services-container {
-  width: 99%;
-  margin: 0.5rem;
+    width: 99%;
+    margin: 0.5rem;
 
-  text-align: center;
-  border: 2px solid #c4c4c4;
+    text-align: center;
+    border: 2px solid #c4c4c4;
 }
 /* Style The Services Table */
 .services-table {
-  overflow: hidden;
+    overflow: hidden;
 }
 .services-table {
-  width: 100%;
-  text-align: left;
-  margin-left: 1rem;
-  margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: left;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
 }
 .services-table tr {
-  margin-top: 0.5rem;
-  text-align: center;
+    margin-top: 0.5rem;
+    text-align: center;
 }
 .services-table thead tr th {
-  padding: 1rem;
+    padding: 1rem;
 }
 .services-table tbody tr td {
-  padding: 2rem;
+    padding: 2rem;
 }
 /* Heading of Table */
 
 /* Text */
 .service-header-container {
-  width: 100%;
-  padding: 0.5rem;
-  text-align: center;
-  background-color: #505050;
-  margin-bottom: 3rem;
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #505050;
+    margin-bottom: 3rem;
 }
 .services-header {
-  color: #fff;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
 }
 .services-table thead tr th div {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* .icon {
@@ -220,37 +220,38 @@ input {
 } */
 /*  Checkbox */
 .checkbox {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  -webkit-appearance: none;
-  outline: none;
-  transition: 0.5s;
-  padding-left: 5px;
-  cursor: pointer;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    -webkit-appearance: none;
+    outline: none;
+    transition: 0.5s;
+    padding-left: 5px;
+    cursor: pointer;
 }
 .checkbox:before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 4px solid #ff69b4;
-  box-sizing: border-box;
-  transition: 0.5s;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #ff69b4;
+    box-sizing: border-box;
+    transition: 0.5s;
 }
 .checkbox:checked:before {
-  border-left: none;
-  border-top: none;
-  width: 20px;
-  border-color: #ff69b4;
-  transform: rotate(45deg);
+    border-left: none;
+    border-top: none;
+    width: 20px;
+    border-color: #ff69b4;
+    transform: rotate(45deg);
 }
 /* Appointment Details Section Style Ends */
 /* Button Container Styles Starts */
 .button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
-  margin: 5rem 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: 5rem 10%;
 }
+

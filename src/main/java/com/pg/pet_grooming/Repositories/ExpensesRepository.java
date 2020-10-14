@@ -6,12 +6,13 @@
  */
 package com.pg.pet_grooming.Repositories;
 // Imports
+
+import com.pg.pet_grooming.Models.Expenses;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-// Local Imports
-import com.pg.pet_grooming.Models.Expenses;
 
 @Repository
-public interface ExpensesRepository extends JpaRepository<Expenses, Integer>{
-    
+public interface ExpensesRepository extends JpaRepository<Expenses, Integer> {
+
 }
+

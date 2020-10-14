@@ -15,25 +15,29 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BusinessDetailsService {
-   
+
 //// Inject Repository 
-@Autowired private BusinessDetailsRepository businessDetailsRepository;  
+    @Autowired
+    private BusinessDetailsRepository businessDetailsRepository;
 
 // Get
-public List<BusinessDetails> getBusinessDetails(){
-    return businessDetailsRepository.findAll();
-}
+    public List<BusinessDetails> getBusinessDetails() {
+        return businessDetailsRepository.findAll();
+    }
 // Save
-public void saveBusinessDetails(BusinessDetails businessDetails){
-    businessDetailsRepository.save(businessDetails);
-}
+
+    public void saveBusinessDetails(BusinessDetails businessDetails) {
+        businessDetailsRepository.save(businessDetails);
+    }
 // Find by Id
-public Optional<BusinessDetails> getById(Integer id){
-    return businessDetailsRepository.findById(id);
-}
+
+    public Optional<BusinessDetails> getById(Integer id) {
+        return businessDetailsRepository.findById(id);
+    }
 
 // Delete
-public void deleteBusinessDetails(BusinessDetails businessDetails){
-    businessDetailsRepository.delete(businessDetails);
+    public void deleteBusinessDetails(BusinessDetails businessDetails) {
+        businessDetailsRepository.delete(businessDetails);
+    }
 }
-}
+

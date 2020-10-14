@@ -9,114 +9,114 @@
 /* Style Header Start */
 /* ######################################## */
 header {
-  width: 100%;
-  height: 10%;
-  background-color: #666666;
+    width: 100%;
+    height: 10%;
+    background-color: #666666;
 }
 .header-container {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
 }
 /* Logo Left */
 .logo-container {
-  display: flex;
-  flex-direction: row;
-  width: 35%;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    padding: 1rem;
 }
 .logo {
-  font-family: 'Roboto Bold', sans-serif;
-  font-size: 32px;
-  color: #ff69b4;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  margin-left: 20px;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
-    0px 18px 23px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+    font-family: 'Roboto Bold', sans-serif;
+    font-size: 32px;
+    color: #ff69b4;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+        0px 18px 23px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
 }
 .logo-container a {
-  font-size: 30px;
-  color: #ff69b4;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  margin-right: 20px;
-  padding: 1rem;
+    font-size: 30px;
+    color: #ff69b4;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-right: 20px;
+    padding: 1rem;
 }
 .logo-container a:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 /* Page Title Middle*/
 .title-container {
-  width: 35%;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  padding: 1rem;
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    padding: 1rem;
 }
 .page-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  letter-spacing: 3px;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  padding: 1rem;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    padding: 1rem;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
 }
 .page-title-icon {
-  width: 50px;
-  height: 50px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  margin: 0;
-  padding: 0;
-  margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
 }
 /* Header Content Right */
 .content-right-container {
-  width: 30%;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: space-between;
-  margin: 0;
-  padding: 2rem;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 2rem;
 }
 .username {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  letter-spacing: 3px;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  padding: 1rem;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    padding: 1rem;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
 }
 .logout-button {
-  font-family: Montserrat;
-  font-size: 30px;
-  line-height: 37px;
-  text-align: center;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
-  padding: 1rem;
-  text-decoration: none;
+    font-family: Montserrat;
+    font-size: 30px;
+    line-height: 37px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    text-decoration: none;
 }
 .logout-button:hover {
-  cursor: pointer;
-  color: #ff69b4;
-  transition: 0.5s;
+    cursor: pointer;
+    color: #ff69b4;
+    transition: 0.5s;
 }
 /* ######################################### */
 /* Style Header Ends */
@@ -124,50 +124,50 @@ header {
 /*  Style Navbar Starts  */
 /* ######################################### */
 nav {
-  width: 20%;
-  background-color: #505050;
+    width: 20%;
+    background-color: #505050;
 }
 .navigation-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0;
-  list-style: none;
-  padding: 0;
-  margin-left: 25px;
-  margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    margin-left: 25px;
+    margin-top: 50px;
 }
 .navigation-list li {
-  text-align: left;
-  min-height: 160px;
-  min-width: 150px;
+    text-align: left;
+    min-height: 160px;
+    min-width: 150px;
 }
 .navigation-list li a {
-  text-decoration: none;
-  display: flex;
-  justify-content: left;
-  color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.4em;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
-    0px 18px 23px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    display: flex;
+    justify-content: left;
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4em;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+        0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 .nav-link-list-item {
-  justify-content: center;
+    justify-content: center;
 }
 
 .navigation-list li a span {
-  padding: 1rem;
+    padding: 1rem;
 }
 .navigation-list li a:hover {
-  color: #ff69b4;
-  transition: 0.5s;
+    color: #ff69b4;
+    transition: 0.5s;
 }
 /*  Icons - Nav*/
 .navigation-list li a .icon {
-  margin-right: 20px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
-  vertical-align: middle;
+    margin-right: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+    vertical-align: middle;
 }
 /* ######################################### */
 /*  Style Navbar Ends  */
@@ -175,14 +175,15 @@ nav {
 /* Style Footer Start*/
 /* ######################################### */
 footer {
-  width: 100%;
-  height: 10%;
-  text-align: center;
-  padding: 1rem;
-  color: #ffffff;
-  background-color: #ff69b4;
-  font-size: 22px;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding: 1rem;
+    color: #ffffff;
+    background-color: #ff69b4;
+    font-size: 22px;
 }
 
 /* ######################################### */
 /* Style Footer Ends */
+

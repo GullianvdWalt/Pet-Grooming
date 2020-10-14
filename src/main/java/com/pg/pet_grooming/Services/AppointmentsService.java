@@ -6,38 +6,39 @@
 package com.pg.pet_grooming.Services;
 
 // Imports
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-// Local Imports
-import com.pg.pet_grooming.Repositories.AppointmentRepository;
 import com.pg.pet_grooming.Models.Appointments;
+import com.pg.pet_grooming.Repositories.AppointmentRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AppointmentsService {
 
 // Inject Repository    
-@Autowired private AppointmentRepository appointmentRepo;
+    @Autowired
+    private AppointmentRepository appointmentRepo;
 
     // Return Appointments
-    public List<Appointments> getAppointments(){
-        
+    public List<Appointments> getAppointments() {
+
         return appointmentRepo.findAll();
     }
-    
+
     // Save New Appointment
-    public void saveAppointment(Appointments appointment){
+    public void saveAppointment(Appointments appointment) {
         appointmentRepo.save(appointment);
     }
-    
+
     // Get Appointment by ID
-    public Optional<Appointments>findAppById(int id){
+    public Optional<Appointments> findAppById(int id) {
         return appointmentRepo.findById(id);
     }
-    
+
     // Delete Appointment
-    public void deleteAppointment(Integer id){
+    public void deleteAppointment(Integer id) {
         appointmentRepo.deleteById(id);
     }
 }
+

@@ -5,36 +5,36 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Grooming | Job Card</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pet Grooming | Job Card</title>
 
-    <!-- Window Icon -->
-    <link rel="icon" href="/icons/icon.ico">
-  
-    <!--    Styles     -->
-    <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-    <link rel="stylesheet" th:href="@{/css/index.css}" />
-    <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <!-- For Colapsing Menu -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-</head>
-<body>
-    <!-- Header Included With Fragments -->
-    <header th:insert="fragments/header :: header"></header>
-    <!-- Content Section Start -->
-    <div class="content-section">
-          <!-- Navigation Included With Fragments -->
-        <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-        </nav>
-    </div>
-    <!-- Footer Included With Fragments -->
-    <footer th:insert="fragments/footer :: footer"></footer>
-    <!-- Scripts  -->
-    <script th:src="@{/js/index.js}"></script>
-    <script th:src="@{/js/sidenav.js}"></script>
-</body>
+        <!-- Window Icon -->
+        <link rel="icon" href="/icons/icon.ico">
+
+        <!--    Styles     -->
+        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+        <link rel="stylesheet" th:href="@{/css/index.css}" />
+        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <!-- For Colapsing Menu -->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Header Included With Fragments -->
+        <header th:insert="fragments/header :: header"></header>
+        <!-- Content Section Start -->
+        <div class="content-section">
+            <!-- Navigation Included With Fragments -->
+            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+            </nav>
+        </div>
+        <!-- Footer Included With Fragments -->
+        <footer th:insert="fragments/footer :: footer"></footer>
+        <!-- Scripts  -->
+        <script th:src="@{/js/index.js}"></script>
+        <script th:src="@{/js/sidenav.js}"></script>
+    </body>
 </html>

@@ -7,13 +7,13 @@
 package com.pg.pet_grooming.Repositories;
 
 // Imports
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.pg.pet_grooming.Models.UserLogin;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserLoginRepository extends JpaRepository<UserLogin, Integer>{
-    
+public interface UserLoginRepository extends JpaRepository<UserLogin, Integer> {
+
     UserLogin findByUsername(String username);
-    
+
 }

@@ -1,39 +1,40 @@
 /* Created By Gullian Van Der Walt */
 
 .new-service-container {
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-  margin: 1rem 0;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem 0;
 }
 .new-service-form {
-  width: 70%;
-  margin: 0 15%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 20px;
-  border: 2px solid #c4c4c4;
+    width: 70%;
+    margin: 0 15%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #c4c4c4;
 }
 .form-row {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 50%;
-  margin: 1rem 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+    margin: 1rem 25%;
 }
 .form-row input {
-  padding: 1rem;
-  margin: 1rem 0;
+    padding: 1rem;
+    margin: 1rem 0;
 }
 .form-button-row {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 1rem 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 1rem 10%;
 }
 #serviceNewCancel {
-  padding: 1.5rem;
+    padding: 1.5rem;
 }
+

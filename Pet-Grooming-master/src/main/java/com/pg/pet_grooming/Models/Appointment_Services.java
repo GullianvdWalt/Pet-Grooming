@@ -3,8 +3,6 @@
  * This the Appointment_Services (Entity/Table)
  * 
  */
-
-
 package com.pg.pet_grooming.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -28,25 +26,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor         //JsonIdentityInfo 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Appointment_Services {
-   
+
     // Appointments Services Attributes
-    
     // Primary Key
     @Id
     @Column(name = "app_service_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long app_service_id;
-    
+
     @ManyToOne // Many Appointment Services to one appointment
-    @JoinColumn(name="app_id", insertable=false, updatable=false)
+    @JoinColumn(name = "app_id", insertable = false, updatable = false)
     private Appointments appointment; //Pet Object
     private Long app_id; // Foreign Key
-    
+
     @ManyToOne // Many services to one pet
-    @JoinColumn(name="pet_id", insertable=false, updatable=false)
+    @JoinColumn(name = "pet_id", insertable = false, updatable = false)
     private Pet pet; //Pet Object
     private Long pet_id; // Foreign Key
-    
+
     @Column(name = "trim")
     private Boolean trim;
     @Column(name = "nail_cut")
@@ -57,6 +54,5 @@ public class Appointment_Services {
     private Boolean bath;
     @Column(name = "dip")
     private Boolean dip;
-    
-    
+
 }

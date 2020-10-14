@@ -14,36 +14,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ManageBusinessController {
-    
-        // Inject Services
-    @Autowired ServicesService servicesService;
-    @Autowired BusinessDetailsService businessDetailsService;
-    @Autowired SalaryDetailsService salaryDetailsService;
-    
-    
-    
-    
-     @RequestMapping("/manageBusiness")   
- public String manageBusiness(Model model){
-     
-     // Get Details
-     List<BusinessDetails> businessDetails = businessDetailsService.getBusinessDetails();
-     List<Services> servicesList = servicesService.getServices();
-     List<SalaryDetails> salaryDetails = salaryDetailsService.getSalaryDetails();
-     
-     // Set Page Title
-     String pageTitle = "Manage Business";
-     model.addAttribute("pageTitle", pageTitle);
-     String iconUrl = "manage.png";
-     model.addAttribute("iconUrl", iconUrl);
-     model.addAttribute("servicesList", servicesList);
-     model.addAttribute("businessDetails", businessDetails);
-     model.addAttribute("salaryDetails", salaryDetails);
-     return "ManageBusiness";
- }
-    
+
+    // Inject Services
+    @Autowired
+    ServicesService servicesService;
+    @Autowired
+    BusinessDetailsService businessDetailsService;
+    @Autowired
+    SalaryDetailsService salaryDetailsService;
+
+    @RequestMapping("/manageBusiness")
+    public String manageBusiness(Model model) {
+
+        // Get Details
+        List<BusinessDetails> businessDetails = businessDetailsService.getBusinessDetails();
+        List<Services> servicesList = servicesService.getServices();
+        List<SalaryDetails> salaryDetails = salaryDetailsService.getSalaryDetails();
+
+        // Set Page Title
+        String pageTitle = "Manage Business";
+        model.addAttribute("pageTitle", pageTitle);
+        String iconUrl = "manage.png";
+        model.addAttribute("iconUrl", iconUrl);
+        model.addAttribute("servicesList", servicesList);
+        model.addAttribute("businessDetails", businessDetails);
+        model.addAttribute("salaryDetails", salaryDetails);
+        return "ManageBusiness";
+    }
+
 }
+

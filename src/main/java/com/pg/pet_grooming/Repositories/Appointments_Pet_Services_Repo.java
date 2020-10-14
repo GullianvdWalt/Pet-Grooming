@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Appointments_Pet_Services_Repo extends JpaRepository<Appointments_Pet_Services, Integer>{
-    
+public interface Appointments_Pet_Services_Repo extends JpaRepository<Appointments_Pet_Services, Integer> {
+
 }
+

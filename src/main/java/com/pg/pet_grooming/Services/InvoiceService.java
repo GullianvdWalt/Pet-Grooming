@@ -6,34 +6,34 @@
 package com.pg.pet_grooming.Services;
 
 // Imports
+import com.pg.pet_grooming.Models.Invoice;
+import com.pg.pet_grooming.Repositories.InvoiceRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-// Local Imports
-import com.pg.pet_grooming.Models.Invoice;
-import com.pg.pet_grooming.Repositories.InvoiceRepository;
 
 @Service
 public class InvoiceService {
-    
-// Inject Repository 
-@Autowired private InvoiceRepository invoiceRepository;    
 
-    public List<Invoice> getInvoices(){
+// Inject Repository 
+    @Autowired
+    private InvoiceRepository invoiceRepository;
+
+    public List<Invoice> getInvoices() {
         return invoiceRepository.findAll();
     }
 
-    public void save(Invoice invoice){
+    public void save(Invoice invoice) {
         invoiceRepository.save(invoice);
     }
 
-    public Optional<Invoice> findById(Integer id){
+    public Optional<Invoice> findById(Integer id) {
         return invoiceRepository.findById(id);
     }
-    
-      
+
     public void delete(Integer id) {
         invoiceRepository.deleteById(id);
     }
 }
+

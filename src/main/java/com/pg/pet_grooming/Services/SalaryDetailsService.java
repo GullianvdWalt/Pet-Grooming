@@ -12,23 +12,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SalaryDetailsService {
-    
-@Autowired SalaryDetailsRepo salaryDetailsRepo;
-    
-   // Get SalaryDetails
-   public List<SalaryDetails> getSalaryDetails(){
-       return salaryDetailsRepo.findAll();
-   }
-   // save
-   public void saveSalaryDetails(SalaryDetails salaryDetails){
-       salaryDetailsRepo.save(salaryDetails);
-   }
-   // Find by id
-   public Optional<SalaryDetails> getById(Integer id){
-       return salaryDetailsRepo.findById(id);
-   }
-   // Delete 
-   public void deleteSalaryDetails(SalaryDetails salaryDetails){
-       salaryDetailsRepo.delete(salaryDetails);
-   }
+
+    @Autowired
+    SalaryDetailsRepo salaryDetailsRepo;
+
+    // Get SalaryDetails
+    public List<SalaryDetails> getSalaryDetails() {
+        return salaryDetailsRepo.findAll();
+    }
+    // save
+
+    public void saveSalaryDetails(SalaryDetails salaryDetails) {
+        salaryDetailsRepo.save(salaryDetails);
+    }
+    // Find by id
+
+    public Optional<SalaryDetails> getById(Integer id) {
+        return salaryDetailsRepo.findById(id);
+    }
+    // Delete 
+
+    public void deleteSalaryDetails(SalaryDetails salaryDetails) {
+        salaryDetailsRepo.delete(salaryDetails);
+    }
 }
+

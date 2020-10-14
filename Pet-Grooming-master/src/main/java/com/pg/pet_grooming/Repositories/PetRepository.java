@@ -7,11 +7,11 @@
  */
 package com.pg.pet_grooming.Repositories;
 
+import com.pg.pet_grooming.Models.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.pg.pet_grooming.Models.Pet;
 
 @Repository
-public interface PetRepository extends JpaRepository<Pet, Long>{
-    
+public interface PetRepository extends JpaRepository<Pet, Long> {
+
 }
