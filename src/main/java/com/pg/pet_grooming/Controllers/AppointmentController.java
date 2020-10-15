@@ -159,7 +159,7 @@ public class AppointmentController {
          }    
         }catch(DataIntegrityViolationException ex){
             
-            redirAttrs.addFlashAttribute("error", "This appointment time has already been booked!");
+            redirAttrs.addFlashAttribute("error", "The selected appointment time has already been taken!");
             return "redirect:/";
         }
             

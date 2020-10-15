@@ -46,8 +46,8 @@
           <div class="appointment-details-row">
             <input type="hidden" th:name="app_id" class="appointment-input" th:value="${appointment.app_id}" readonly
               required>
-            <label for="date-input" class="appointment-details-label"> Date </label>
-            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.app_date_time,'YYYY/MM/dd HH:mm')}" readonly required/>
+            <label for="date-input" class="appointment-details-label"> Appointment Date </label>
+            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.app_date_time,'yyyy/MM/dd HH:mm')}" required/>
           </div><br><br>
           <div class="appointment-details-row">
             <label for="groomerSelect" class="appointment-details-label">Groomer</label>

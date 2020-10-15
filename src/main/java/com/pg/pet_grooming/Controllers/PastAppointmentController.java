@@ -56,6 +56,7 @@ public class PastAppointmentController {
             @RequestParam("app_date_time") String date_time,
             PastAppointments pastAppointment) throws ParseException{
         
+
          // Services - Pet - Appointment Join Table object
         Past_Appointments_Pet_Services pastAppPetServices = new Past_Appointments_Pet_Services();       
         
@@ -75,10 +76,10 @@ public class PastAppointmentController {
         pet = petRepository.getOne(petId);
         pastAppointment.setPet(pet);
         // Convert String To Date
-        DateFormat dateTimeFormat = new SimpleDateFormat("YYYY/MM/dd HH:mm", Locale.ROOT);
-        Date date = (Date)dateTimeFormat.parse(date_time);
-
-        pastAppointment.setApp_date_time(date);    
+       DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ROOT);
+       Date date = (Date)dateTimeFormat.parse(date_time);
+       System.out.println(date);
+       pastAppointment.setApp_date_time(date);    
         
         pastAppService.savePastAppointment(pastAppointment);
         // Find Services      
@@ -89,7 +90,7 @@ public class PastAppointmentController {
 
         appService.deleteAppointment(app_id);
         // Save
-       //pastAppPetServicesService.createRelationship(pastAppPetServices); 
+       pastAppPetServicesService.createRelationship(pastAppPetServices); 
 
         
         return "redirect:/invoice/new/"+pastAppointment.getId();
