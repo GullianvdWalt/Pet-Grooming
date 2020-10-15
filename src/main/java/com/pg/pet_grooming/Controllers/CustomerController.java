@@ -25,18 +25,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CustomerController {
 
-    @Autowired
-    private PetOwnerService petOwnerService;
-    @Autowired
-    private PetService petService;
-    @Autowired
-    private PetRepository petRepository;
-    @Autowired
-    private PetOwnerRepository petOwnerRepository;
+    @Autowired private PetOwnerService petOwnerService;
+    @Autowired private PetService petService;
+    @Autowired private PetRepository petRepository;
+    @Autowired private PetOwnerRepository petOwnerRepository;
 
     // Main Customer Dashboard
     @RequestMapping("/customers")
-    public String Customer(Model model, Pet pet, PetOwner petOwner, PetOwnerPet petOwnerPet) {
+    public String Customer(Model model, Pet pet, PetOwner petOwner) {
 
 //      // Get Pets
         List<Pet> petList = petService.getPets();

@@ -23,6 +23,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.Constraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,7 +49,7 @@ public class Appointments extends Auditable<String> {
     private Integer app_id;
 
     @NotNull
-    @Column(name = "app_date_time", nullable = false)
+    @Column(unique = true,name = "app_date_time",nullable = false)
     @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
     private Date app_date_time;
 
