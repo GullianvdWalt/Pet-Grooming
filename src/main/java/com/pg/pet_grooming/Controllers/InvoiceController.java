@@ -4,6 +4,10 @@
 package com.pg.pet_grooming.Controllers;
 
 //Imports
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
 import java.io.IOException;
 import java.text.ParseException;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,6 +40,19 @@ import com.pg.pet_grooming.Models.Income;
 import com.pg.pet_grooming.Repositories.BusinessDetailsRepository;
 import com.pg.pet_grooming.Repositories.InvoiceRepository;
 import com.pg.pet_grooming.Services.IncomeService;
+import java.io.ByteArrayOutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.time.LocalDateTime;
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 
@@ -162,7 +179,7 @@ public class InvoiceController {
     
     // Template of invoice to export
     @RequestMapping("/invoices/template/{id}")
-    public String exportToPdf(@PathVariable("id") Integer id, Model model){
+    public String exportInvoiceToPdf(@PathVariable("id") Integer id, Model model){
      
         // Get Business Details
         BusinessDetails businessDetails = new BusinessDetails();
@@ -202,9 +219,128 @@ public class InvoiceController {
         return "InvoiceTemplate";
     }
     
+        // Method to Create PDF with Velocity(HTML to PDF)
+        @GetMapping("/genInvoicePdf/{fileName}/{id}")
+        HttpEntity<byte[]> createPdf(@PathVariable("fileName") String fileName,
+            @PathVariable("id") Integer id) throws IOException {
     
+            
+                // Get Business Details
+        BusinessDetails businessDetails = new BusinessDetails();
+        businessDetails = businessDetailsRepo.getOne(1);  
+        
+        // Get Invoice 
+        Invoice invoice = new Invoice();
+        invoice = invoiceRepository.getOne(id);
+        
+        // Get Past Appointment
+        PastAppointments pastApp = invoice.getPastAppointment();
+        // Get Services
+        List<Services> services = pastApp.getServices();
+        
+        // Get Employee (Groomer)
+        Employees employee = new Employees();
+        employee = employeeService.getEmployeeById(pastApp.getEmployee_id());
+        
+        //Get Pet Size
+        Pet pet = new Pet();
+        pet = petRepository.getOne(pastApp.getPet_id());    
+            
+            
+            // Get and Initialize Velocity Engine
+        VelocityEngine ve = new VelocityEngine();
+
+        // Get template
+        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+        ve.setProperty("classpath.resource.loader.class",
+                ClasspathResourceLoader.class.getName());
+        ve.init();
+        // Set Template to HTML file
+        Template template = ve.getTemplate("templates/invoiceExport.vm");
+        // Create Context and add data
+        VelocityContext context = new VelocityContext();
+            System.out.println(businessDetails.getImagePath());
+        // Add Data
+        context.put("logo",businessDetails.getImagePath());
+        context.put("invoiceNum", invoice.getInvoice_num());
+        context.put("invoiceDate",invoice.getInvoice_date());
+        context.put("paymentMethod",invoice.getPayment_method());
+        context.put("businessName", businessDetails.getBusiness_name());
+        context.put("businessCell", businessDetails.getBusiness_cell());
+        context.put("businessEmail", businessDetails.getBusiness_email());
+        context.put("businessAddress", businessDetails.getBusiness_address());
+        context.put("petOwnerName",pastApp.getPet_owner_full_name());
+        context.put("petOwnerCell",pastApp.getPet_owner_cell());
+        context.put("petOwnerAddress",pastApp.getPet_owner_address());
+        context.put("petName",pastApp.getPet_name());
+        context.put("petBreed",pastApp.getPet_breed() );
+        context.put("petSize", pet.getPet_size());
+        context.put("employeeName",employee.getEmployee_full_name());
+        context.put("services", services);
+        context.put("discount", invoice.getDiscount());
+        context.put("total", invoice.getTotal());
+        
+                // Render Template Into Stringwriter
+        StringWriter writer = new StringWriter();
+        template.merge(context, writer);
+
+        System.out.println(writer.toString());
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        baos = generatePdf(writer.toString());
+        fileName = "Invoice_" + pastApp.getPet_owner_full_name() + "_" + invoice.getInvoice_date();
+        // Create Header
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(MediaType.APPLICATION_PDF);
+        header.set(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; fileName=" + fileName.replace(" ", "_"));
+        header.setContentLength(baos.toByteArray().length);
+
+        return new HttpEntity<byte[]>(baos.toByteArray(), header);
+        }
     
-    
+        // Generate PDF
+        private ByteArrayOutputStream generatePdf(String html) {
+        String pdfFilePath = "";
+        PdfWriter pdfWriter = null;
+
+        // Create New Document
+        Document document = new Document();
+
+        try {
+            document = new Document();
+            // Document Header Attributes
+            document.addAuthor("Gullian Van Der Walt");
+            document.addCreationDate();
+            document.addProducer();
+            document.addCreator("Gullian Van Der Walt");
+            document.addTitle("PAYSLIP");
+            document.setPageSize(PageSize.A4);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            PdfWriter.getInstance(document, baos);
+
+            // Open Document
+            document.open();
+
+            XMLWorkerHelper xmlWorkerHelper = XMLWorkerHelper.getInstance();
+            xmlWorkerHelper.getDefaultCssResolver(true);
+            xmlWorkerHelper.getDefaultCSS();
+            // Convert HTML
+            xmlWorkerHelper.parseXHtml(pdfWriter, document, new StringReader(html));
+
+            // Close The Document
+            document.close();
+            System.out.println("PDF generated Successfully");
+
+            return baos;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+        return null;
+    }
     
     // View Invoices
     @RequestMapping("/finance/viewInvoices")

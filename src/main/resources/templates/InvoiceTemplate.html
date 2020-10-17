@@ -56,11 +56,11 @@
                 <table>
                   <tr>
                     <td class="title">
-                      <img th:src="@{${businessDetails.ImagePath}}" class="icon">
+                      <img th:src="@{${businessDetails.ImagePath}}" class="icon" style="width:70px; height:70px;">
                     </td>
                     <td>
-                      Invoice #: <span th:text="${invoice.invoice_num}"></span><br>
-                      Created: <span th:text="${invoice.invoice_date}"></span><br>
+                      Invoice #: <span th:text="${invoice.invoice_num}"></span><br />
+                      Created: <span th:text="${invoice.invoice_date}"></span><br />
                     </td>
                   </tr>
                 </table>
@@ -71,12 +71,12 @@
                 <table>
                   <tr>
                     <td>
-                      <span th:text="${businessDetails.business_name}"></span><br>
+                      <span th:text="${businessDetails.business_name}"></span><br />
                       Business Address:
                       <span th:text="${businessDetails.business_address}"></span>
                     </td>
                     <td>
-                      <span th:text="${businessDetails.business_cell}"></span><br>
+                      <span th:text="${businessDetails.business_cell}"></span><br />
                       <span th:text="${businessDetails.business_email}"></span>
                     </td>
                   </tr>
@@ -190,7 +190,7 @@
       </div>
       <!-- Invoice Container Ends -->
       <div class="button-container">
-        <a href="#" class="buttons">Export Invoice</a>
+        <a th:href="@{/genInvoicePdf/{fileName}/{id}(id = ${invoice.invoice_num})}" class="buttons">Export Invoice</a>
       </div>
     </div>
     <!-- Content-Container-Ends -->
