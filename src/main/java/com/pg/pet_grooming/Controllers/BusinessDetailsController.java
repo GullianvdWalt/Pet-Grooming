@@ -1,6 +1,11 @@
 /*
- * Created By Gullian Van Der Walt - 2020/10/04, 15:09
- * Last Updated - 2020/10/04, 15:09
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*
+
+    This is the main class for the main pet grooming application
+    This Is The Main Application Controller Class
  */
 package com.pg.pet_grooming.Controllers;
 

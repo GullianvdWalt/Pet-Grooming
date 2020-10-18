@@ -1,8 +1,11 @@
 /*
-   Created By Gullian Van Der Walt
-   Last Updated - 2020/10/07, 11:58
- * This is the SalaryController Class
- * This class will handle the CRUD operations and Thymeleaf.
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*
+
+    This is the main class for the main pet grooming application
+    This Is The Main Application Controller Class
  */
 package com.pg.pet_grooming.Controllers;
 

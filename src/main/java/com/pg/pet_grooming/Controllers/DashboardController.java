@@ -1,9 +1,8 @@
 /*
- * Created By Gullian Van Der Walt - 2020/09/30, 10:06
-   Last Updated: 2020/09/30, 10:06
-
-   Controller For Managing Main Dashboard
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Controllers;
 
 // Imports

@@ -1,10 +1,8 @@
 /*
-   Created By Gullian Van Der Walt 01/08/2020
-   Last Update: 2020/09/29, 08:33
-
- * This is the Customer Controller Class
- * This Controller will be responsible for the routing of the customer pages
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Controllers;
 // Imports
 

@@ -1,6 +1,8 @@
 /*
-    Created By Gullian Van Der Walt
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Controllers;
 
 //Imports
@@ -43,7 +45,7 @@ import com.pg.pet_grooming.Services.IncomeService;
 import java.io.ByteArrayOutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -346,7 +348,22 @@ public class InvoiceController {
     @RequestMapping("/finance/viewInvoices")
     public String viewInvoices(Model model) {
         
-        //List<Invoice> invoices = 
+        List<Invoice> invoiceList = invoiceService.getInvoices();
+        Invoice invoice = new Invoice();
+        List<PastAppointments> pastAppList = new ArrayList<>();
+        PastAppointments pastApp = new PastAppointments();
+        
+        for (int i = 0; i < invoiceList.size(); i++) {
+            // Get Invoice objects
+            invoice = invoiceList.get(i);
+            // Get Past Appointments
+            pastApp = pastAppRepo.getOne(invoice.getPast_app_id());
+            // Add to PastApp List
+            pastAppList.add(pastApp);
+        }
+        // Add List of objects to view
+        model.addAttribute("invoiceList", invoiceList);
+        model.addAttribute("pastAppList", pastAppList);
         
         // Set Page Title
         String pageTitle = "Invoices";
