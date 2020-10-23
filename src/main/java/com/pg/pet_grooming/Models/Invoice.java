@@ -51,7 +51,7 @@ public class Invoice extends Auditable<String>{
     @NotNull
     @Column(name = "invoice_date",nullable = false)
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date invoice_date;
     
     @Column(name = "invoice_note",nullable = true)
@@ -72,4 +72,7 @@ public class Invoice extends Auditable<String>{
     @JoinColumn(name="past_app_id", referencedColumnName = "id",insertable = false, updatable = false)
     private PastAppointments pastAppointment;
     private Integer past_app_id;
+    
+    @OneToOne(mappedBy="invoice")
+    private Income income;
 }

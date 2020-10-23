@@ -45,9 +45,8 @@ public class PetOwnerService {
         } else {
             throw new ResourceNotFoundException("No Pet Owner was found by for given id");
         }
-
     }
-
+    
     // Delete PetOwner By ID
     public void delete(Integer id) {
         petOwnerRepository.deleteById(id);

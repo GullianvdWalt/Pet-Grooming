@@ -66,7 +66,15 @@ public class BusinessDetails extends Auditable<String> {
     @NotNull
     @Column(name = "business_name", nullable = false)
     private String business_name;
+    
+    @NotNull
+    @Column(name = "business_cell", nullable = false)
+    private String business_cell;
 
+    @NotNull
+    @Column(name = "business_email", nullable = false)
+    private String business_email;
+    
     @NotNull
     @Column(name = "business_address", nullable = false)
     private String business_address;
@@ -82,5 +90,14 @@ public class BusinessDetails extends Auditable<String> {
 
         return "/Icon/" + id + "/" + logo;
     }
+    
+    @NotNull
+    @Column(name = "discount_num_app", nullable = false)
+    private int discount_num_app;
+    
+    @NotNull
+    @Column(name = "discount_rate", nullable = false)
+    private int discount_rate;
+
 }
 

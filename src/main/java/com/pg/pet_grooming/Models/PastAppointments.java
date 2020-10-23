@@ -44,8 +44,8 @@ public class PastAppointments extends Auditable<String> {
     private Integer id;
 
     @NotNull
-    @Column(name = "app_date_time",nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+    @Column(unique = true,name = "app_date_time",nullable = false)
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
     private Date app_date_time;
 
     @Column(name = "notes")
@@ -76,12 +76,12 @@ public class PastAppointments extends Auditable<String> {
     private List<Services> services;
     private Integer service_id;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "past_appointments_pet_services",
-            joinColumns = @JoinColumn(name = "p_app_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "app_id", referencedColumnName = "app_id"))
-    private List<Appointments> appointments;
-    private Integer app_id;
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "past_appointments_pet_services",
+//            joinColumns = @JoinColumn(name = "p_app_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "app_id", referencedColumnName = "app_id"))
+//    private List<Appointments> appointments;
+//    private Integer app_id;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "pet_id", referencedColumnName = "id", insertable = false, updatable = false)

@@ -24,7 +24,7 @@ public interface PetRepository extends JpaRepository<Pet, Integer> {
     @Query(value = "SELECT * FROM pet p where p.pet_name LIKE %:keyword% "
             + "OR p.pet_breed LIKE %:keyword% OR p.pet_gender LIKE %:keyword% "
             + "OR p.pet_size LIKE %:keyword%", nativeQuery = true)
-    List<Pet> findByKeyword(@Param("keyword") String keyword);
+   Pet findByKeyword(@Param("keyword") String keyword);
 
     List<Pet> findByPetOwnerId(int pet_owner_id);
 
@@ -47,5 +47,12 @@ public interface PetRepository extends JpaRepository<Pet, Integer> {
             + "e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.pet_owner_full_name")
     List<Pet_PetOwner> SelectPetList();
 
+    
+    // Search Query
+    
+    // Concatenate each field with a whitespace to avoid undesired results from the string concatenation
+    
+    @Query("SELECT p FROM Pet p WHERE CONCAT(p.pet_name) LIKE %?1%")
+    public List<Pet> search(String keyword);
 }
 

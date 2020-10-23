@@ -10,6 +10,9 @@
 package com.pg.pet_grooming;
 
 // Imports
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +41,13 @@ public class ApplicationController {
     // Method To Login
     @GetMapping("/login")
     public String login() {
-        return "Login";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        
+        if(authentication == null || authentication instanceof AnonymousAuthenticationToken){
+              return "Login";
+        }
+        
+        return "redirect:/";
     }
 
     // Method To Logout
@@ -47,10 +56,12 @@ public class ApplicationController {
         return "Login";
     }
 
-    // Method To Logout
+    // Method To Register
     @GetMapping("/register")
     public String register() {
         return "Register";
     }
+
+    
 }
 

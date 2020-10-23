@@ -1,6 +1,11 @@
 /*
-   Created By Gullian Van Der Walt 01/08/2020
- * Last Update - 2020/09/18, 10:27
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*
+
+    This is the main class for the main pet grooming application
+    This Is The Main Application Controller Class
  */
 package com.pg.pet_grooming.Controllers;
 
@@ -37,6 +42,7 @@ import com.pg.pet_grooming.Models.Employees;
 import com.pg.pet_grooming.Repositories.PastAppointmentRepo;
 import com.pg.pet_grooming.Repositories.ServicesRepository;
 import com.pg.pet_grooming.Services.EmployeeService;
+import org.springframework.dao.DataIntegrityViolationException;
 
 
 
@@ -109,25 +115,17 @@ public class AppointmentController {
             @RequestParam("app_date_time") String date_time,
             RedirectAttributes redirAttrs
             ,BindingResult result) throws ParseException{
-               
-        // Services - Pet - Appointment Join Table object
+           
+        try{
+                // Services - Pet - Appointment Join Table object
         Appointments_Pet_Services appPetServices = new Appointments_Pet_Services();
         
         List<Appointments> appointmentsList = new ArrayList<>();
         appointmentsList = appointmentRepository.getAppointments();
-        
+        DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ROOT);
+        Date date = (Date)dateTimeFormat.parse(date_time);
        
-        // Handle Appointment Clashes
-        for (int i = 0; i < appointmentsList.size(); i++) {
-            newAppointment = appointmentsList.get(i);
-            if(date_time == newAppointment.getApp_date_time().toString()){
-               redirAttrs.addFlashAttribute("error", "There is already an appointment made for" + date_time);
-            }else{
-            
-            }
-            
-        }
-        
+          
         // Pet Object
         Pet pet = new Pet();;
         
@@ -149,8 +147,6 @@ public class AppointmentController {
              pet = petRepository.getOne(petId);
              newAppointment.setPet(pet);
 
-            DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ROOT);
-            Date date = (Date)dateTimeFormat.parse(date_time);
             newAppointment.setApp_date_time(date);
 
             // Find Services      
@@ -165,7 +161,13 @@ public class AppointmentController {
             appPetServicesService.createRelationship(appPetServices);
 
             redirAttrs.addFlashAttribute("success", "Appointment Saved!");
-         }      
+         }    
+        }catch(DataIntegrityViolationException ex){
+            
+            redirAttrs.addFlashAttribute("error", "The selected appointment time has already been taken!");
+            return "redirect:/";
+        }
+            
         return "redirect:/";
     }
     

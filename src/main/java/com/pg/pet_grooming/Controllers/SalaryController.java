@@ -1,8 +1,11 @@
 /*
-   Created By Gullian Van Der Walt
-   Last Updated - 2020/10/07, 11:58
- * This is the SalaryController Class
- * This class will handle the CRUD operations and Thymeleaf.
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*
+
+    This is the main class for the main pet grooming application
+    This Is The Main Application Controller Class
  */
 package com.pg.pet_grooming.Controllers;
 
@@ -11,16 +14,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
-import com.pg.pet_grooming.Models.BusinessDetails;
-import com.pg.pet_grooming.Models.Employees;
-import com.pg.pet_grooming.Models.Salaries;
-import com.pg.pet_grooming.Models.SalaryDetails;
-import com.pg.pet_grooming.Repositories.BusinessDetailsRepository;
-import com.pg.pet_grooming.Repositories.EmployeeRepository;
-import com.pg.pet_grooming.Repositories.SalariesRepository;
-import com.pg.pet_grooming.Repositories.SalaryDetailsRepo;
-import com.pg.pet_grooming.Services.EmployeeService;
-import com.pg.pet_grooming.Services.SalariesService;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
@@ -50,6 +43,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+// Local Imports
+import com.pg.pet_grooming.Models.BusinessDetails;
+import com.pg.pet_grooming.Models.Employees;
+import com.pg.pet_grooming.Models.Salaries;
+import com.pg.pet_grooming.Models.SalaryDetails;
+import com.pg.pet_grooming.Repositories.BusinessDetailsRepository;
+import com.pg.pet_grooming.Repositories.EmployeeRepository;
+import com.pg.pet_grooming.Repositories.SalariesRepository;
+import com.pg.pet_grooming.Repositories.SalaryDetailsRepo;
+import com.pg.pet_grooming.Services.EmployeeService;
+import com.pg.pet_grooming.Services.SalariesService;
 
 @Controller
 public class SalaryController {

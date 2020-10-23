@@ -126,7 +126,7 @@
         <td>$total_aftr_deduct</td>
       </tr>
       <tr>
-        <thcolspan="2">Petrol Money</thcolspan=>
+        <th colspan="2">Petrol Money</th>
       </tr>
       <tr>
         <th><b>R<span>$transport_amount</span> per day only when use of Taxi</b> </th>

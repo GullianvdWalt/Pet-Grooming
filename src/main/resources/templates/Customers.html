@@ -3,118 +3,118 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Customers</title>
-        <!-- Window Icon -->
-        <link rel="icon" href="/icons/icon.ico">
-        <!--    Styles      -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/customers.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-        <!--    Font Awesome    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customers</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!--    Styles      -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/customers.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <body>
+<body>
 
-        <header th:insert="fragments/header :: header">
-            <!-- Header Included With Fragments -->
-        </header>
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
 
-        <!--    Customer Section Starts    -->
-        <div class="content-section">
-            <!-- Navbar Starts -->
-            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-                <!-- Navigation Included With Fragments -->
-            </nav>
+  <!--    Customer Section Starts    -->
+  <div class="content-section">
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
 
-            <!-- Content-Container-Start -->
-            <div class="content-container" id="contentContainer">
-                <!-- Customers Container Start -->
-                <div class="customers-container">
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
+      <!-- Customers Container Start -->
+      <div class="customers-container">
 
-                    <!-- Search Section Starts   -->
-                    <div class="search-section">
-                        <div class="search-input-container">
-                            <form th:action="@{/customers}" method="get">
-                                <input type="text" name="searchCustomers" id="SearchCustomers" class="search-customers-input"
-                                       placeholder="Search..." />
-                                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                        <div class="new-customer-button-container">
-                            <a class="buttons" th:href="@{/newCustomer/petOwner}">
-                                <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
-                                New Customer
-                            </a>
-                        </div>
-                    </div>
-                    <!--    Search Section Ends     -->
-
-                    <!--    Customer Table Section Starts   -->
-                    <div class="customer-table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Cell</th>
-                                    <th>Address</th>
-                                    <th>Pet Name</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <div th:if="!${#lists.isEmpty(customerList)}">
-                                <tr th:each="pet_owner : ${customerList}">
-
-                                    <td th:text="${pet_owner.id}"></td>
-
-                                    <td th:text="${pet_owner.pet_owner_full_name}"></td>
-
-                                    <td th:text="${pet_owner.pet_owner_address}"></td>
-                                    <td th:text="${pet_owner.pet_owner_cell}"></td>
-                                    <td>
-                                        <span th:each="pet,iterStat : ${pet_owner.pets}">
-                                            <span th:text="${pet.pet_name}"/><th:block th:if="${!iterStat.last}">,</th:block>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <a th:href="@{/customerDetails/{ownerId}(ownerId = ${pet_owner.id})}" id="edit-button"><img src="/icons/editSmall.png" alt="edit"
-                                                                                                                                    class="edit-icon" title="Edit Customer" /></a>
-                                    </td>
-                                </tr>
-                            </div>
-                            <tr th:if="${#lists.isEmpty(customerList)}">
-                                <td colspan="8" class="empty-customers-table-text"> There are currently no customers.</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
+        <!-- Search Section Starts   -->
+        <div class="search-container">
+          <div class="search-input-container">
+            <form th:action="@{/customers}">
+              <input type="text" name="keyword" id="searchInput" th:value="${keyword}" class="search-input"
+                placeholder="Search..." autocomplete="off" required />
+              <button type="submit" class="search-button" title="Search"><i class="fa fa-search"></i></button>
+              <a th:href="@{/customers}" class="search-button" title="Clear Search" onclick="clearSearch()"><i
+                  class="fa fa-times"></i></a>
+            </form>
+          </div>
+          <div class="add-new-button-container">
+            <a class="buttons" th:href="@{/newCustomer/petOwner}">
+              <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
+              New Customer
+            </a>
+          </div>
         </div>
+        <!--    Search Section Ends     -->
 
+        <!--    Customer Table Section Starts   -->
+        <div class="customer-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Cell</th>
+                <th>Pet Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div th:if="!${#lists.isEmpty(customerList)}" >
+                <tr th:each="pet_owner : ${customerList}">
 
+                  <td th:text="${pet_owner.id}"></td>
+
+                  <td th:text="${pet_owner.pet_owner_full_name}"></td>
+
+                  <td th:text="${pet_owner.pet_owner_address}"></td>
+                  <td th:text="${pet_owner.pet_owner_cell}"></td>
+                  <td>
+                    <span th:each="pet,iterStat : ${pet_owner.pets}">
+                      <span th:text="${pet.pet_name}" />
+                      <th:block th:if="${!iterStat.last}">,</th:block>
+                    </span>
+                  </td>
+                  <td>
+                    <a th:href="@{/customerDetails/{ownerId}(ownerId = ${pet_owner.id})}" id="edit-button"><img
+                        src="/icons/editSmall.png" alt="edit" class="edit-icon" title="Edit Customer" /></a>
+                  </td>
+                </tr>
+              </div>
+              <tr th:if="${customerList.empty}">
+                <td colspan="8" class="empty-customers-table-text"> There are currently no customers.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <footer th:insert="fragments/footer :: footer">
-        <!-- Footer Included With Fragments -->
-    </footer>
 
-    <!--   Scripts     -->
-    <!-- <script src="/js/customer.js"></script> -->
-    <script th:src="@{/js/sidenav.js}"></script>
+
+
+
+
+
+  </div>
+
+
+  </div>
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
+
+  <!--   Scripts     -->
+  <!-- <script src="/js/customer.js"></script> -->
+  <script th:src="@{/js/sidenav.js}"></script>
 </body>
 
 </html>
-
-
-
