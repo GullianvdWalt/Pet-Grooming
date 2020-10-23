@@ -22,6 +22,6 @@ public interface AppointmentRepository extends JpaRepository<Appointments,Intege
 //SELECT * FROM appointments ORDER BY YEAR(app_date_time),MONTH(app_date_time),day(app_date_time), TIME(app_date_time);
     @Query(value="SELECT * FROM appointments ORDER BY YEAR(app_date_time),MONTH(app_date_time),day(app_date_time), TIME(app_date_time)",nativeQuery = true)
     List<Appointments> getAppointments();
-    
+        
 }
 

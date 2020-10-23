@@ -16,14 +16,16 @@ import org.springframework.stereotype.Repository;
 public interface PetOwnerRepository extends JpaRepository<PetOwner, Integer> {
 
     //EntityManagerSupplier
-    // SQL Query
+    // SQL Search Query
     @Query(value = "SELECT * FROM pet_owner p WHERE p.pet_owner_full_name LIKE %:keyword% "
             + "OR p.pet_owner_address LIKE %:keyword% OR p.pet_owner_cell LIKE %:keyword% ", nativeQuery = true)
     List<PetOwner> findByKeyword(@Param("keyword") String keyword);
 
+  
     // Get PetOwner By Id
     @Query(value = "SELECT * FROM pet_owner WHERE id LIKE %:id%", nativeQuery = true)
     List<PetOwner> findPetOwnerById(Integer id);
+
 
 }
 

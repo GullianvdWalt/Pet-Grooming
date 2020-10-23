@@ -12,6 +12,7 @@ import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import com.pg.pet_grooming.Services.PetOwnerService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,8 @@ public class PetOwnerController {
 
     // Get Pet Owners
     @GetMapping("/getPetOwners")
-    public List<PetOwner> getPetOwners(BindingResult bindingResult) {
+    public List<PetOwner> getPetOwners(BindingResult bindingResult, Model model) {
+        
         return petOwnerService.getPetOwners();
     }
 
