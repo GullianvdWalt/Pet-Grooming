@@ -1,69 +1,68 @@
 <!-- Created By Gullian Van Der Walt 01/09/2020 -->
 <!-- Last Updated 07/09/2020 -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pet Grooming | Register</title>
-        <link rel="icon" href="/icons/icon.ico">
-        <!-- Styles -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/registration.css}" />
-        <style th:inline="text">
-            .login-section {
-                height: 700px;
-                background: url('../images/login_background3.jpg') no-repeat !important;
-                background-position: center;
-            }
-        </style>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Grooming | Register</title>
+  <link rel="icon" href="/icons/icon.ico">
+  <!-- Styles -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/registration.css}" />
+  <style th:inline="text">
+    .register-section {
+      height: 700px;
+      background: url('../images/login_background3.jpg') no-repeat !important;
+      background-position: center;
+    }
+  </style>
+</head>
 
-    <body>
-        <div class="login-header">
-            <div class="login-header-container">
-                <img src="/icons/paw-white.png" alt="logo" class="login-logo">
-                <h1 class="login-heading">Pet Grooming - Register</h1>
-            </div>
+<body>
+  <div class="register-header">
+    <div class="register-header-container">
+      <img src="/icons/paw-white.png" alt="logo" class="register-logo">
+      <h1 class="register-heading">Pet Grooming - Register</h1>
+    </div>
+  </div>
+  <div class="register-section">
+    <div class="form-container">
+      <form class="register-form" th:action="@{/users/addNew}" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" class="register-input" required autofocus>
         </div>
-        <div class="login-section">
-            <div class="form-container">
-                <form class="login-form" th:action="@{/users/addNew}" method="POST">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" class="login-input" required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="login-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Confirm Password</label>
-                        <input type="password" id="confirmPassword" class="login-input" required>
-                    </div>
-                    &nbsp;
-                    <div class="login-button-container">
-                        <button type="submit" class="login-button">Submit</button>
-                    </div>
-                </form>
-
-            </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="register-input" required>
         </div>
+        <div class="form-group">
+          <label for="password">Confirm Password</label>
+          <input type="password" id="confirmPassword" class="register-input" required>
+        </div>
+        &nbsp;
+        <div class="register-button-container">
+          <button type="submit" class="register-button">Submit</button>
+        </div>
+      </form>
 
-        <footer>
-            <div>
-                <h3 class="footer-text">Pet Grooming &copy; 2020 </h3>
-            </div>
-        </footer>
+    </div>
+  </div>
 
-        <!-- JQUERY -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-                crossorigin="anonymous">
-        </script>
-        <!-- JS -->
-        <script th:src="@{/js/registration.js}"></script>
-    </body>
+  <footer>
+    <div>
+      <h3 class="footer-text">Pet Grooming &copy; 2020 </h3>
+    </div>
+  </footer>
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+    </script>
+  <!-- JS -->
+  <script th:src="@{/js/registration.js}"></script>
+</body>
 
 </html>
-

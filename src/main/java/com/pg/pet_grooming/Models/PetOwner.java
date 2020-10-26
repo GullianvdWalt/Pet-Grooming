@@ -41,20 +41,20 @@ public class PetOwner extends Auditable<String> {
 
     @NotNull
     @Column(name = "pet_owner_full_name", length = 100, nullable = false)
-    private String pet_owner_full_name;
+    private String petOwnerFullName;
 
     @NotNull
     @Size
     @Column(name = "pet_owner_cell", length = 20, nullable = false)
-    private String pet_owner_cell;
+    private String petOwnerCell;
 
     @NotNull
     @Column(name = "pet_owner_address", length = 255, nullable = false)
-    private String pet_owner_address;
+    private String petOwnerAddress;
 
     @NotNull
     @Column(name = "pet_owner_city", length = 55, nullable = false)
-    private String pet_owner_city;
+    private String petOwnerCity;
 
     @OneToMany(mappedBy = "petOwner", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.PERSIST)
     @JsonManagedReference

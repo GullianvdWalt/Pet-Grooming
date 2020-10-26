@@ -12,21 +12,24 @@ public class Pet_PetOwner {
     private String pet_owner_full_name;
     private String pet_owner_cell;
     private String pet_owner_address;
+    private String pet_owner_city;
     private Integer pet_id;
     private String pet_name;
     private String pet_breed;
+    
 
     public Pet_PetOwner() {
     }
 
-    public Pet_PetOwner(Integer pet_owner_id, String pet_owner_full_name,
-            String pet_owner_cell, String pet_owner_address,
+    public Pet_PetOwner(Integer id, String petOwnerFullName,
+            String petOwnerCell, String petOwnerAddress,String petOwnerCity,
             Integer pet_id, String pet_name, String pet_breed) {
 
-        this.pet_owner_id = pet_owner_id;
-        this.pet_owner_full_name = pet_owner_full_name;
-        this.pet_owner_cell = pet_owner_cell;
-        this.pet_owner_address = pet_owner_address;
+        this.pet_owner_id = id;
+        this.pet_owner_full_name = petOwnerFullName;
+        this.pet_owner_cell = petOwnerCell;
+        this.pet_owner_address = petOwnerAddress;
+        this.pet_owner_city = petOwnerCity;
         this.pet_id = pet_id;
         this.pet_name = pet_name;
         this.pet_breed = pet_breed;
@@ -88,6 +91,14 @@ public class Pet_PetOwner {
         this.pet_breed = pet_breed;
     }
 
+    public String getPet_owner_city() {
+        return pet_owner_city;
+    }
+
+    public void setPet_owner_city(String pet_owner_city) {
+        this.pet_owner_city = pet_owner_city;
+    }
+
     @Override
     public String toString() {
         return "Pet_PetOwner{" + "pet_owner_id=" + pet_owner_id + ""
@@ -99,4 +110,3 @@ public class Pet_PetOwner {
     }
 
 }
-

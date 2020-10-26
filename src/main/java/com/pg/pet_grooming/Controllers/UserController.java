@@ -24,10 +24,12 @@ public class UserController {
     // Register a new user
     @PostMapping(value = "users/addNew")
     public RedirectView addNew(UserLogin user, RedirectAttributes redirect) {
+        user.setFailed_attempt(0);
+        user.setAccount_non_locked(true);
         userService.saveUser(user);
         // Redirect back to login
         RedirectView redirectView = new RedirectView("/login", true);
-        redirect.addFlashAttribute("message", "Registration successfull!, you can now login");
+        redirect.addFlashAttribute("message", "Registration successfull, You can now login!");
         return redirectView;
     }
 }

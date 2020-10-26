@@ -44,7 +44,7 @@ public class UserLoginPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return userLogin.isAccount_non_locked();
     }
 
     @Override
@@ -57,5 +57,9 @@ public class UserLoginPrincipal implements UserDetails {
         return true;
     }
 
+    public UserLogin getUser(){
+        return this.userLogin;
+    }
+    
 }
 

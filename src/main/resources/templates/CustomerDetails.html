@@ -3,305 +3,309 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pet Grooming | Customer Details</title>
-        <!-- Window Icon -->
-        <link rel="icon" href="/icons/icon.ico">
-        <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <!--    Styles     -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/customerDetails.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-        <!--    Font Awesome    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Grooming | Customer Details</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/customerDetails.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <body>
+<body>
 
-        <header th:insert="fragments/header :: header">
-            <!-- Header Included With Fragments -->
-        </header>
-        <!--    Customer Section Starts    -->
-        <div class="content-section">
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+  <!--    Customer Section Starts    -->
+  <div class="content-section">
 
-            <!-- Navbar Starts -->
-            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-                <!-- Navigation Included With Fragments -->
-            </nav>
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
 
-            <!-- Content-Container-Start -->
-            <div class="content-container" id="contentContainer">
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
+      <!-- Success Messages -->
+      <div class="success-messages">
+        <h1 th:text="${success}" th:if="${success}"></h1>
+      </div>
+      <!-- Error Messages -->
+      <div class="error-messages">
+        <h1 th:text="${error}" th:if="${error}"></h1>
+      </div>
 
+      <!-- Customer Update Section Start -->
+      <div class="customers-update-section">
 
-                <!-- Customer Update Section Start -->
-                <div class="customers-update-section">
-
-                    <div class="edit-customer-header-container">
-                        <div class="edit-customer-heading-container">
-                            <h3 class="edit-customer-heading">Customer Details</h3>
-                        </div>
-                        <div class="form-row-new-pet">
-                            <a class="buttons" th:href="@{/newCustomer/pet/{id}(id = ${petOwner.id})}">
-                                <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
-                                Add Pet
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Customer Update Container Start -->
-                    <div class="customers-update-container">
-
-                        <form class="update-pet-owner-form" th:action="@{/createNewPetOwner}" th:object="${petOwner}" method="post">
-
-                            <!-- Customer Form Container Start -->
-                            <div class="customer-details" id="customer-details-section">
-
-                                <!--    Customer Details Heading    -->
-                                <div class="form-heading-container">
-                                    <img src="/icons/petOwner.png" alt="petOwner" class="icon" />
-                                    <h3 class="form-details-heading">Owner Details</h3>
-                                </div>
-
-                                <div class="customer-details-form-container">
-                                    <div class="customer-details-form">
-                                        <div class="form-row-new-pet">
-
-                                        </div>
-                                        <!--    Customer Details Content    -->
-                                        <div class="form-row">
-                                            <label for="pet_owner_id" class="customer-label" id="petOwnerIdLbl">Pet Owner Id</label><br>
-                                            <input type="text" id="pet_owner_id" class="customer-input" th:field="*{id}" name="id" readonly />
-                                        </div>
-                                        <div class="form-row">
-                                            <label for="pet_owner_name_input" class="customer-label">Name & Surname</label><br>
-                                            <input type="text" id="pet_owner_name_input" class="customer-input" name="pet_owner_full_name"
-                                                   required th:field="*{pet_owner_full_name}" />
-                                        </div>
-                                        <div class="form-row">
-                                            <label for="customer-cell-input" class="customer-label">Cell</label><br>
-                                            <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell" required
-                                                   th:field="*{pet_owner_cell}" />
-                                        </div>
-                                        <div class="form-row">
-                                            <label for="customer-address-input" class="customer-label">Address</label><br>
-                                            <input type="text" id="customer-address-input" class="customer-address-input"
-                                                   name="pet_owner_address" th:field="*{pet_owner_address}" />
-                                        </div>
-                                        <div class="form-row">
-                                            <label for="customer-city-input" class="customer-label">City</label><br>
-                                            <input type="text" id="customer-city-input" class="customer-input" name="pet_owner_city"
-                                                   th:field="*{pet_owner_city}" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--    Buttons     -->
-                                <div class="button-container">
-                                    <a th:href="@{/customers}" class="buttons">
-                                        <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" class="icon" />
-                                        Cancel
-                                    </a>
-                                    <a id="deletePetOwner" class="buttons" th:href="@{/customers/delete/petOwner/(id=${petOwner.id})}">
-                                        <img th:src="@{/Icons/trash.png}" alt="Delete Pet Owner">
-                                        Delete
-                                    </a>
-                                    <button type="submit" class="buttons">
-                                        <img src="/Icons/save.png" alt="back" title="Back To Customers" class="icon" />
-                                        Save
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- Update Pet Owner Form Ends -->
-
-                        <!-- Pet Table Container Startss -->
-                        <div class="pet-table-container">
-
-                            <div class="pet-table-heading-container">
-                                <img th:src="@{/Icons/petPaw.png}" alt="Pet Details" class="icon">
-                                <h3 class="pet-details-heading">Pet Details</h3>
-                            </div>
-
-                            <!-- Pets Table Starts -->
-                            <table class="pets-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Breed</th>
-                                        <th>Gender</th>
-                                        <th>Size</th>
-                                        <th>Notes</th>
-                                        <th colspan="2">
-                                            Actions
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="pet : ${petList}">
-                                        <td th:text="${pet.id}"></td>
-                                        <td th:text="${pet.pet_name}"></td>
-                                        <td th:text="${pet.pet_breed}"></td>
-                                        <td th:text="${pet.pet_gender}"></td>
-                                        <td th:text="${pet.pet_size}"></td>
-                                        <td th:text="${pet.pet_notes}"></td>
-                                        <td>
-                                            <a th:href="@{/pet/findPetById/{ID}(ID = ${pet.id})}" id="editPet">
-                                                <img th:src="@{/Icons/editSmall.png}" alt="Edit Pet" class="icon">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a th:href="@{/pet/delete/(id=${pet.id})}" id="deletePet">
-                                                <img th:src="@{/Icons/trash.png}" alt="Delete Pet" class="icon">
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- Pets Table Ends -->
-                        </div>
-                        <!-- Pet Table Container Ends -->
-
-                        <!-- Pet Update Modal Start -->
-                        <div class="pet-edit-modal" id="petEditModal">
-
-                            <!-- Update/Add Pet Form Model Starts -->
-                            <form class="update-pet-form-container" th:action="@{/pet/update/}" method="put">
-
-                                <!--    Pet Form Container Start    -->
-                                <div class="pet-details-container">
-
-                                    <div class="form-heading-container">
-                                        <img src="/Icons/petPaw.png" alt="Pet Details" class="icon" />
-                                        <h3 class="form-details-heading">Pet Details</h3>
-                                    </div>
-
-                                    <div class="pet-details-form-container">
-
-                                        <div class="pet-details-form" id="pet-details-form">
-                                            <div class="pet-form-col">
-                                                <div class="form-row">
-                                                    <label for="petId" class="pet-label">Pet Id</label>
-                                                    <input type="text" id="petId" class="pet-input" name="id" readonly />
-                                                </div>
-                                                <div class="form-row">
-                                                    <label for="petOwnerId" class="pet-label">Pet Owner Id</label>
-                                                    <input type="text" id="petOwnerId" class="pet-input" name="pet_owner_id" required />
-                                                </div>
-                                                <!-- th:field=" *{id}" th:value="${pet.id} -->
-                                                <div class=" form-row">
-                                                    <div id="textBox"></div>
-                                                    <label for="petName" class="pet-label">Name</label>
-                                                    <!-- <span class="form-error" th:if="${#fields.hasErrors('pet_name')}" th:errors="*{pet_name}">There was an error</span> -->
-                                                    <input type="text" id="petName" class="pet-input" name="pet_name" autocomplete="off" />
-                                                    <!-- th:field="*{pet_name}" -->
-                                                </div>
-                                                <!-- <input type=" text" id="pet_owner_sid" class="customer-input" th:field="*{pet_owner_id}" name="id"
-                                              hidden /> -->
-                                            </div>
-                                            <div class="pet-form-col">
-                                                <div class="form-row">
-                                                    <label for="petBreed" class="pet-label">Breed</label>
-                                                    <span></span>
-                                                    <input type="text" id="petBreed" class="pet-input" name="pet_breed" />
-                                                    <!-- th:field="*{pet_breed}" -->
-                                                </div><br>
-                                                <div class="form-row">
-                                                    <label for="petGender" class="pet-label" id="gender-label">Gender</label>
-                                                    <span></span>
-                                                    <input type="text" id="petGender" class="pet-input" name="pet_gender" />
-                                                    <!-- th:field="*{pet_gender}"  -->
-                                                </div>
-                                                <div class="form-row">
-                                                    <label for="petSize" class="pet-label">Size</label>
-                                                    <span></span>
-                                                    <input type="text" id="petSize" class="pet-input" name="pet_size" />
-                                                    <!-- th:field="*{pet_size}" -->
-                                                </div><br>
-                                                <div class="form-row">
-                                                    <label for="petNotes" class="pet-label">Notes</label>
-                                                    <input type="text" id="petNotes" class="pet-input" autocomplete="off" name="pet_notes"
-                                                           placeholder="None" />
-                                                    <!-- th:field="*{pet_notes}" -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--    Buttons     -->
-                                <div class="button-container">
-                                    <button class="buttons" id="closePetEdit">
-                                        <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" class="icon" />
-                                        Close
-                                    </button>
-                                    <button class="buttons" type="submit">
-                                        <img src="/Icons/save.png" alt="back" title="Back To Customers" class="icon" />
-                                        Save
-                                    </button>
-                                </div>
-                            </form>
-                            <!-- Update/Add Pet Form Model Ends -->
-                        </div>
-
-
-                        <!-- Delete Pet Owner Modal Starts -->
-                        <div class="delete-modal" id="petOwnerDeleteModal">
-                            <div class="delete-modal-container">
-                                <div class="delete-modal-header">
-                                    <h3>Confirm Delete</h3>
-                                </div>
-                                <div class="delete-modal-body">
-                                    <h4>Are you sure you want to delete this owner?</h4>
-                                </div>
-                                <div class="delete-modal-footer">
-                                    <a href="#" class="customer-details-buttons" id="confirmPetOwnerDelete">Yes, delete</a>
-                                    <a href="#" class="customer-details-buttons" id="petOwnerCancel">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Delete Pet Owner Modal Ends -->
-
-                        <!-- Delete Pet Modal Starts -->
-                        <div class="delete-modal" id="petDeleteModal">
-                            <div class="delete-modal-container">
-                                <div class="delete-modal-header">
-                                    <h3>Confirm Delete</h3>
-                                </div>
-                                <div class="delete-modal-body">
-                                    <h4>Are you sure you want to delete this pet?</h4>
-                                </div>
-                                <div class="delete-modal-footer">
-                                    <a href="#" class="customer-details-buttons" id="confirmPetDelete">Yes, delete</a>
-                                    <a href="#" class="customer-details-buttons" id="petCancel">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Delete Pet Modal Ends -->
-
-                    </div>
-                    <!-- Customer Update Container Ends -->
-
-                </div>
-                <!-- Customer Details Container End -->
-            </div>
-            <!-- Content-Container-End -->
+        <div class="edit-customer-header-container">
+          <h3 class="edit-customer-heading">Customer Details</h3>
         </div>
-        <!-- Content Section End -->
 
-        <footer th:insert=" fragments/footer :: footer">
-            <!-- Footer Included With Fragments -->
-        </footer>
+        <!-- Customer Update Container Start -->
+        <div class="customers-update-container">
+          <form class="update-pet-owner-form" th:action="@{/createNewPetOwner}" th:object="${petOwner}" method="post">
+
+            <!-- Customer Form Container Start -->
+            <div class="customer-details" id="customer-details-section">
+
+              <!--    Customer Details Heading    -->
+              <div class="form-heading-container">
+                <img src="/icons/petOwner.png" alt="petOwner" class="icon" />
+                <h3 class="form-details-heading">Owner Details</h3>
+              </div>
+
+              <div class="customer-details-form-container">
+                <div class="customer-details-form">
+                  <div class="form-row-new-pet">
+
+                  </div>
+                  <!--    Customer Details Content    -->
+                  <div class="form-row">
+                    <label for="pet_owner_id" class="customer-label" id="petOwnerIdLbl">Pet Owner Id</label><br>
+                    <input type="text" id="pet_owner_id" class="customer-input" th:field="*{id}" name="id" readonly />
+                  </div>
+                  <div class="form-row">
+                    <label for="pet_owner_name_input" class="customer-label">Name & Surname</label><br>
+                    <input type="text" id="pet_owner_name_input" class="customer-input" name="petOwnerFullName" required
+                      th:field="*{petOwnerFullName}" />
+                  </div>
+                  <div class="form-row">
+                    <label for="customer-cell-input" class="customer-label">Cell</label><br>
+                    <input type="text" id="customer-cell-input" class="customer-input" name="petOwnerCell" required
+                      th:field="*{petOwnerCell}" />
+                  </div>
+                  <div class="form-row">
+                    <label for="customer-address-input" class="customer-label">Address</label><br>
+                    <input type="text" id="customer-address-input" class="customer-address-input" name="petOwnerAddress"
+                      th:field="*{petOwnerAdress}" />
+                  </div>
+                  <div class="form-row">
+                    <label for="customer-city-input" class="customer-label">City</label><br>
+                    <input type="text" id="customer-city-input" class="customer-input" name="petOwnerCity"
+                      th:field="*{petOwnerCity}" />
+                  </div>
+                </div>
+              </div>
+              <!--    Buttons     -->
+              <div class="button-container">
+                <a th:href="@{/customers}" class="buttons" id="cancelBtn">
+                  <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" class="icon" />
+                  Cancel
+                </a>
+                <a id="deletePetOwner" class="buttons" th:href="@{/customers/delete/petOwner/(id=${petOwner.id})}">
+                  <img th:src="@{/Icons/trash.png}" alt="Delete Pet Owner">
+                  Delete
+                </a>
+                <button type="submit" class="buttons">
+                  <img src="/Icons/save.png" alt="back" title="Back To Customers" class="icon" />
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+          <!-- Update Pet Owner Form Ends -->
+
+          <!-- Pet Table Container Startss -->
+          <div class="pet-table-container">
+            <div>
+              <div class="pet-table-heading-container">
+                <img th:src="@{/Icons/petPaw.png}" alt="Pet Details" class="icon">
+                <h3 class="pet-details-heading">Pet Details</h3>
+              </div>
+
+              <!-- Pets Table Starts -->
+              <table class="pets-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Breed</th>
+                    <th>Gender</th>
+                    <th>Size</th>
+                    <th>Notes</th>
+                    <th colspan="2">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="pet : ${petList}">
+                    <td th:text="${pet.id}"></td>
+                    <td th:text="${pet.pet_name}"></td>
+                    <td th:text="${pet.pet_breed}"></td>
+                    <td th:text="${pet.pet_gender}"></td>
+                    <td th:text="${pet.pet_size}"></td>
+                    <td th:text="${pet.pet_notes}"></td>
+                    <td>
+                      <a th:href="@{/pet/findPetById/{ID}(ID = ${pet.id})}" id="editPet" title="Edit Pet">
+                        <img th:src="@{/Icons/editSmall.png}" alt="Edit Pet" class="icon">
+                      </a>
+                    </td>
+                    <td>
+                      <a th:href="@{/pet/delete/(id=${pet.id})}" id="deletePet" title="Delete Pet">
+                        <img th:src="@{/Icons/trash.png}" alt="Delete Pet" class="icon">
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pets Table Ends -->
+
+            <div class="add-pet-button-container">
+              <a class="buttons" th:href="@{/newCustomer/pet/{id}(id = ${petOwner.id})}">
+                <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
+                Add Pet
+              </a>
+            </div>
+
+          </div>
+          <!-- Pet Table Container Ends -->
+
+          <!-- Pet Update Modal Start -->
+          <div class="pet-edit-modal" id="petEditModal">
+
+            <!-- Update/Add Pet Form Model Starts -->
+            <form class="update-pet-form-container" th:action="@{/pet/update/}" method="put">
+
+              <!--    Pet Form Container Start    -->
+              <div class="pet-details-container">
+
+                <div class="form-heading-container">
+                  <img src="/Icons/petPaw.png" alt="Pet Details" class="icon" />
+                  <h3 class="form-details-heading">Pet Details</h3>
+                </div>
+
+                <div class="pet-details-form-container">
+                  <div class="pet-details-form" id="pet-details-form">
+                    <div class="pet-form-col">
+                      <div class="form-row">
+                        <label for="petId" class="pet-label">Pet Id</label>
+                        <input type="text" id="petId" class="pet-input" name="id" readonly />
+                      </div>
+                      <div class="form-row">
+                        <label for="petOwnerId" class="pet-label">Pet Owner Id</label>
+                        <input type="text" id="petOwnerId" class="pet-input" name="pet_owner_id" readonly />
+                      </div>
+                      <!-- th:field=" *{id}" th:value="${pet.id} -->
+                      <div class=" form-row">
+                        <div id="textBox"></div>
+                        <label for="petName" class="pet-label">Pet Name</label>
+                        <!-- <span class="form-error" th:if="${#fields.hasErrors('pet_name')}" th:errors="*{pet_name}">There was an error</span> -->
+                        <input type="text" id="petName" class="pet-input" name="pet_name" autocomplete="off" required />
+
+                      </div>
+                    </div>
+                    <div class="pet-form-col">
+                      <div class="form-row">
+                        <label for="petBreed" class="pet-label">Breed</label>
+                        <input type="text" id="petBreed" class="pet-input" name="pet_breed" required />
+                      </div><br>
+                      <div class="form-row">
+                        <label for="petGender" class="pet-label" id="gender-label">Gender</label>
+                        <Select class="pet-input" name="pet_gender" th:value="${pet_gender}" required>
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
+                        </Select>
+                      </div>
+                      <div class="form-row">
+                        <label for="petSize" class="pet-label">Size</label>
+                        <Select class="pet-input" name="pet_size" th:value="${pet_size}" required>
+                          <option value="S">Small</option>
+                          <option value="M">Medium</option>
+                          <option value="L">Large</option>
+                        </Select>
+                      </div><br>
+                      <div class="form-row">
+                        <label for="petNotes" class="pet-label">Notes</label>
+                        <input type="text" id="petNotes" class="pet-input" autocomplete="off" name="pet_notes"
+                          placeholder="None" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--    Buttons     -->
+              <div class="button-container">
+                <button class="buttons" id="closePetEdit">
+                  <img src="/Icons/cancelSmall.png" alt="back" title="Back To Customers" class="icon" />
+                  Close
+                </button>
+                <button class="buttons" type="submit">
+                  <img src="/Icons/save.png" alt="back" title="Back To Customers" class="icon" />
+                  Save
+                </button>
+              </div>
+            </form>
+            <!-- Update/Add Pet Form Model Ends -->
+          </div>
+
+
+          <!-- Delete Pet Owner Modal Starts -->
+          <div class="delete-modal" id="petOwnerDeleteModal">
+            <div class="delete-modal-container">
+              <div class="delete-modal-header">
+                <h3>Confirm Delete</h3>
+              </div>
+              <div class="delete-modal-body">
+                <h4>Are you sure you want to delete this owner?</h4>
+              </div>
+              <div class="delete-modal-footer">
+                <a href="#" class="customer-details-buttons" id="confirmPetOwnerDelete">Yes, delete</a>
+                <a href="#" class="customer-details-buttons" id="petOwnerCancel">Cancel</a>
+              </div>
+            </div>
+          </div>
+          <!-- Delete Pet Owner Modal Ends -->
+
+          <!-- Delete Pet Modal Starts -->
+          <div class="delete-modal" id="petDeleteModal">
+            <div class="delete-modal-container">
+              <div class="delete-modal-header">
+                <h3>Confirm Delete</h3>
+              </div>
+              <div class="delete-modal-body">
+                <h4>Are you sure you want to delete this pet?</h4>
+              </div>
+              <div class="delete-modal-footer">
+                <a href="#" class="customer-details-buttons" id="confirmPetDelete">Yes, delete</a>
+                <a href="#" class="customer-details-buttons" id="petCancel">Cancel</a>
+              </div>
+            </div>
+          </div>
+          <!-- Delete Pet Modal Ends -->
+
+        </div>
+        <!-- Customer Update Container Ends -->
+
+      </div>
+      <!-- Customer Details Container End -->
+    </div>
+    <!-- Content-Container-End -->
+  </div>
+  <!-- Content Section End -->
+
+  <footer th:insert=" fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
 
 
 
 
-        <!-- Scirpts -->
-        <script th:src="@{/js/sidenav.js}"></script>
-        <script th:src="@{/js/customerDetails.js}"></script>
-    </body>
+  <!-- Scirpts -->
+  <script th:src="@{/js/sidenav.js}"></script>
+  <script th:src="@{/js/customerDetails.js}"></script>
+</body>
 
 </html>
-

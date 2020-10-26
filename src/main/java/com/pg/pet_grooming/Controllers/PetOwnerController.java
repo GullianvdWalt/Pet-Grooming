@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PetOwnerController {
@@ -34,12 +35,13 @@ public class PetOwnerController {
     @Autowired
     private PetOwnerRepository petOwnerRepository;
 
+    
     // Get Pet Owners
-    @GetMapping("/getPetOwners")
-    public List<PetOwner> getPetOwners(BindingResult bindingResult, Model model) {
-        
-        return petOwnerService.getPetOwners();
-    }
+//    @GetMapping("/getPetOwners")
+//    public List<PetOwner> getPetOwners(BindingResult bindingResult, Model model) {
+//        
+//        return petOwnerService.getPetOwners();
+//    }
 
     // Get New Customer = New Pet Owner Page
     @RequestMapping("/newCustomer/petOwner")
@@ -59,11 +61,11 @@ public class PetOwnerController {
 
     // Add New PetOwner(Customer)
     @PostMapping("/newCustomer/petOwner/new")
-    public String addPetOwner(PetOwner petOwner) {
+    public String addPetOwner(PetOwner petOwner,RedirectAttributes redirAttrs,Model model) {
         petOwnerRepository.save(petOwner);
         // Set PathVariable In PetController to New Pet Owner Id
         int id = petOwner.getId();
-
+        redirAttrs.addFlashAttribute("success", "Pet Owner Saved!");
         // Direct to New Pet and pass Pet Owner Id
         return "redirect:/newCustomer/pet/" + id;
     }

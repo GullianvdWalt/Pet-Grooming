@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PetController {
@@ -58,7 +59,8 @@ public class PetController {
     // Add New Pet
 
     @PostMapping("/newCustomer/pet/new")
-    public String addPet(@Valid @ModelAttribute("pet") Pet pet, BindingResult bindingResult, Model model) {
+    public String addPet(@Valid @ModelAttribute("pet") Pet pet, BindingResult bindingResult,
+            RedirectAttributes redirAttrs,Model model) {
 //       bindingResult.addError(new FieldError("pet", "id", ""));
 //       int petId = pet.getId();
         int ownerId = pet.getPet_owner_id();
@@ -66,6 +68,7 @@ public class PetController {
             return "newPetForm";
         }
         petService.save(pet);
+        redirAttrs.addFlashAttribute("success", "Pet Saved!");
         // Direct to New Pet and pass Pet Owner Id
         return "redirect:/customerDetails/" + ownerId;
     }
@@ -89,11 +92,12 @@ public class PetController {
 
     // Create Pet or Update Pet
     @RequestMapping(value = "/pet/update", method = {RequestMethod.PUT, RequestMethod.GET})
-    public String UpdatePet(Pet pet, @RequestParam("pet_owner_id") int petOwnerId) {
+    public String UpdatePet(Pet pet,  RedirectAttributes redirAttrs,@RequestParam("pet_owner_id") int petOwnerId) {
         petOwnerId = pet.getPet_owner_id();
         petService.save(pet);
 
         if (petOwnerId >= 1) {
+            redirAttrs.addFlashAttribute("success", "Pet Updated!");
             return "redirect:/customerDetails/" + petOwnerId;
         }
         return "redirect:/customers";

@@ -60,9 +60,32 @@
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
+                <th>
+                  <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${sortDir}}"
+                    title="Sort By ID">
+                    <i class="fa fa-sort" aria-hidden="true"> </i> ID
+                  </a>
+                </th>
+                <th>
+                  <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=petOwnerFullName&sortDir=' + ${sortDir}}"
+                    title="Sort By Customer Name">
+                    <i class="fa fa-sort" aria-hidden="true"></i> Customer Name
+                  </a>
+                </th>
+                <th>
+                  <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=petOwnerAddress&sortDir=' + ${sortDir}}"
+                    title="Sort By Address">
+                    <i class="fa fa-sort" aria-hidden="true"></i> Address
+                  </a>
+
+                </th>
+                <th>
+
+                  <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=petOwnerCity&sortDir=' + ${sortDir}}"
+                    title="Sort By City">
+                    <i class="fa fa-sort" aria-hidden="true"> </i> City
+                  </a>
+                </th>
                 <th>Cell</th>
                 <th>Pet Name</th>
                 <th>Actions</th>
@@ -74,10 +97,11 @@
 
                   <td th:text="${pet_owner.id}"></td>
 
-                  <td th:text="${pet_owner.pet_owner_full_name}"></td>
+                  <td th:text="${pet_owner.petOwnerFullName}"></td>
 
-                  <td th:text="${pet_owner.pet_owner_address}"></td>
-                  <td th:text="${pet_owner.pet_owner_cell}"></td>
+                  <td th:text="${pet_owner.petOwnerAddress}"></td>
+                  <td th:text="${pet_owner.petOwnerCity}"></td>
+                  <td th:text="${pet_owner.petOwnerCell}"></td>
                   <td>
                     <span th:each="pet,iterStat : ${pet_owner.pets}">
                       <span th:text="${pet.pet_name}" />
@@ -96,16 +120,42 @@
             </tbody>
           </table>
         </div>
+      <!-- Pagin Starts -->
+        <div class="pagin-container">
+            <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+            <div>&nbsp;</div>
+            <div th:if="${totalPages > 1}" class="pages">
+              Total Customers: [[${totalItems}]]
+              &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+
+              <a th:if="${currentPage > 1}" th:href="@{'/customers/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+              <span th:unless="${currentPage > 1}">First</span>
+              &nbsp;&nbsp;
+
+              <a th:if="${currentPage > 1}" th:href="@{'/customers/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+              <span th:unless="${currentPage > 1}">Previous</span>
+
+              &nbsp;&nbsp;
+
+              <span th:each="i: ${#numbers.sequence(2, totalPages)}">
+			        <a th:if="${currentPage != i}" th:href="@{'/customers/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                <span th:unless="${currentPage != i}">[[${i}]]</span>
+                &nbsp;
+              </span>
+
+              <a th:if="${currentPage < totalPages}" th:href="@{'/customers/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+              <span th:unless="${currentPage < totalPages}">Next</span>
+              &nbsp;&nbsp;
+
+              <a th:if="${currentPage < totalPages}" th:href="@{'/customers/page/'' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+              <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+          </div>
+        <!-- Pagin Ens -->
+
       </div>
+
     </div>
-
-
-
-
-
-
-  </div>
-
 
   </div>
   <footer th:insert="fragments/footer :: footer">
