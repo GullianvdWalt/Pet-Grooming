@@ -6,6 +6,7 @@
 package com.pg.pet_grooming.Models;
 
 //Imports
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "User")
 @Getter
 @Setter
 //Lombok, Adds Getters, Setters and ToString Methods
@@ -32,8 +33,17 @@ public class UserLogin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "username", nullable = false)
     private String username;
+    @Column(name = "password", nullable = false)
     private String password;
-
+   
+    @Column(name = "failed_attempt", nullable = true,columnDefinition = "TINYINT",length = 4)
+    private int failed_attempt;
+    @Column(name = "account_non_locked",nullable = true,columnDefinition = "TINYINT",length = 4)
+    private boolean account_non_locked;
+    @Column(name = "lock_time", nullable = true)
+    private Date lock_time;
+    
 }
 

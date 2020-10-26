@@ -30,6 +30,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
+                .failureHandler(loginFailureHandler)
+                .successHandler(loginSuccessHandler)
                 .and()
                 .logout().invalidateHttpSession(true) // set invalidation state when logout
                 .clearAuthentication(true)
@@ -63,5 +65,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return provider;
     }
+    
+    @Autowired private CustomLoginFailureHandler loginFailureHandler;
+    
+    @Autowired private CustomLoginSuccessHandler loginSuccessHandler;
+    
 }
 

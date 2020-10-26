@@ -13,7 +13,11 @@ import com.pg.pet_grooming.Repositories.PetOwnerRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class PetOwnerService {
@@ -23,8 +27,14 @@ public class PetOwnerService {
     private PetOwnerRepository petOwnerRepository;
 
     //Method To Return A List of PetOwners FROM MySQL Database, PetOwner Table
-    public List<PetOwner> getPetOwners() {
-        return petOwnerRepository.findAll();
+    public Page<PetOwner> getPetOwners(int pageNum, String sortField, String sortDir) {
+        Pageable pageable = PageRequest.of(pageNum - 1, 5, 
+                    sortDir.equals("asc") ? Sort.by(sortField).ascending()
+			: Sort.by(sortField).descending()
+	);
+		
+        
+        return petOwnerRepository.findAll(pageable);
     }
 
     //Save New Pet Owner From NewCustomer Form
@@ -68,10 +78,9 @@ public class PetOwnerService {
             Optional<PetOwner> petOwnerEntity = petOwnerRepository.findById(petOwner.getId());
             if (petOwnerEntity.isPresent()) {
                 PetOwner newPetOwner = petOwnerEntity.get();
-                newPetOwner.setPet_owner_full_name(petOwner.getPet_owner_full_name());
-                newPetOwner.setPet_owner_cell(petOwner.getPet_owner_cell());
-                newPetOwner.setPet_owner_address(petOwner.getPet_owner_address());
-
+                newPetOwner.setPetOwnerFullName((petOwner.getPetOwnerFullName()));
+                newPetOwner.setPetOwnerCell(petOwner.getPetOwnerCell());
+                newPetOwner.setPetOwnerAddress(petOwner.getPetOwnerAddress());
                 newPetOwner = petOwnerRepository.save(newPetOwner);
 
                 return newPetOwner;

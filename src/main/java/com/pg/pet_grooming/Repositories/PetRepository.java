@@ -43,16 +43,13 @@ public interface PetRepository extends JpaRepository<Pet, Integer> {
 
 //        SELECT pet_owner.id AS pet_owner_id, pet.id AS pet_id FROM pet_owner INNER JOIN pet ON pet_owner.id =pet.pet_owner_id;
     // JPA Query
-    @Query("SELECT new com.pg.pet_grooming.DTO.Pet_PetOwner(p.id AS pet_owner_id,p.pet_owner_full_name,p.pet_owner_cell,p.pet_owner_address,"
-            + "e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.pet_owner_full_name")
+    @Query("SELECT new com.pg.pet_grooming.DTO.Pet_PetOwner(p.id AS pet_owner_id,p.petOwnerFullName,p.petOwnerCell,p.petOwnerAddress,p.petOwnerCity,"
+            + "e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.petOwnerFullName")
     List<Pet_PetOwner> SelectPetList();
 
+    @Query("SELECT new com.pg.pet_grooming.DTO.Pet_PetOwner(p.id AS pet_owner_id,p.petOwnerFullName,p.petOwnerCell,p.petOwnerAddress,p.petOwnerCity,"
+            + "e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.petOwnerFullName")
+    List<Pet_PetOwner> searchPetOwnerPet(@Param("keyword") String keyword);
     
-    // Search Query
-    
-    // Concatenate each field with a whitespace to avoid undesired results from the string concatenation
-    
-    @Query("SELECT p FROM Pet p WHERE CONCAT(p.pet_name) LIKE %?1%")
-    public List<Pet> search(String keyword);
 }
 
