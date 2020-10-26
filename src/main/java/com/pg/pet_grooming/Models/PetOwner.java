@@ -61,6 +61,6 @@ public class PetOwner extends Auditable<String> {
     private List<Pet> pets;
 
     // Constructor handled by Lombok
-    // Getters and Setters handled by Lombok
+    // Getters and Setters provided by Lombok
 }
 
