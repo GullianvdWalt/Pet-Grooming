@@ -51,7 +51,7 @@ public class Appointments extends Auditable<String> {
     @NotNull
     @Column(unique = true,name = "app_date_time",nullable = false)
     @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
-    private Date app_date_time;
+    private Date appDateTime;
 
     @Column(name = "notes")
     private String notes;

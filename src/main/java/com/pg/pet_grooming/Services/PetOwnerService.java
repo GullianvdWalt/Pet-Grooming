@@ -23,7 +23,7 @@ public class PetOwnerService {
 
     //Method To Return A List of PetOwners FROM MySQL Database, PetOwner Table
     public Page<PetOwner> getPetOwners(int pageNum, String sortField, String sortDir) {
-        Pageable pageable = PageRequest.of(pageNum - 1, 5, 
+        Pageable pageable = PageRequest.of(pageNum - 1, 6, 
                     sortDir.equals("asc") ? Sort.by(sortField).ascending()
 			: Sort.by(sortField).descending()
 	);

@@ -91,14 +91,8 @@ public class AppointmentController {
         
         if(keyword == null || keyword == ""){
 
-
-         //List<Pet_PetOwner> selectPetList = petRepository.SelectPetList();
-         
-//         Page<Pet_PetOwner> page = petPetOwnerService.getPetOwners(pageNum, sortField, sortDir);
-//         List<Pet_PetOwner> selectPetList = page.getContent();
-            Page<PetOwner> page = petOwnerService.getPetPetOwners( pageNum, sortField, sortDir);
+            Page<PetOwner> page = petOwnerService.getPetPetOwners(pageNum, sortField, sortDir);
             List<PetOwner> customerList = page.getContent();
-            PetOwner petOwner = new PetOwner();
            
             model.addAttribute("customerList", customerList);
            
@@ -237,7 +231,7 @@ public class AppointmentController {
              pet = petRepository.getOne(petId);
              newAppointment.setPet(pet);
 
-            newAppointment.setApp_date_time(date);
+            newAppointment.setAppDateTime(date);
 
             // Find Services      
             serviceList = servicesRepository.findAllById(serviceIds);
