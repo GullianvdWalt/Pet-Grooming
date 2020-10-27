@@ -6,7 +6,7 @@
 package com.pg.pet_grooming.Controllers;
 // Imports
 
-import com.pg.pet_grooming.DTO.PetOwnerPet;
+
 import com.pg.pet_grooming.Models.Pet;
 import com.pg.pet_grooming.Models.PetOwner;
 import com.pg.pet_grooming.Repositories.PetOwnerRepository;
@@ -32,7 +32,6 @@ public class CustomerController {
     @Autowired private PetOwnerService petOwnerService;
     @Autowired private PetService petService;
     @Autowired private PetRepository petRepository;
-    @Autowired private PetOwnerRepository petOwnerRepository;
     
     // Main Customers Page
     @RequestMapping("/customers")
@@ -57,8 +56,6 @@ public class CustomerController {
             model.addAttribute("iconUrl", iconUrl);
         
         
-
-        
         if(keyword == null || keyword == ""){
             
                 // Get PetOwners and then pet list can be retrieved and combined for customers view
@@ -76,9 +73,7 @@ public class CustomerController {
             model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
             
             
-        }
-        else
-        {
+        }else{
             // Search has been made via pet name
             if(searchPet(keyword) == true){
               // Get pet matching keyword with SQL query 

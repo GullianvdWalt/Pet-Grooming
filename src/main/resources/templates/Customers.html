@@ -1,7 +1,7 @@
 <!-- Created By Gullian Van Der Walt 01/08/2020 -->
 <!-- Last Updated 07/09/2020 -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -38,7 +38,7 @@
         <!-- Search Section Starts   -->
         <div class="search-container">
           <div class="search-input-container">
-            <form th:action="@{/customers}">
+            <form th:action="@{/customers/page/1}">
               <input type="text" name="keyword" id="searchInput" th:value="${keyword}" class="search-input"
                 placeholder="Search..." autocomplete="off" required />
               <button type="submit" class="search-button" title="Search"><i class="fa fa-search"></i></button>
@@ -61,7 +61,7 @@
             <thead>
               <tr>
                 <th>
-                  <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${sortDir}}"
+                  <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}"
                     title="Sort By ID">
                     <i class="fa fa-sort" aria-hidden="true"> </i> ID
                   </a>
@@ -147,7 +147,7 @@
               <span th:unless="${currentPage < totalPages}">Next</span>
               &nbsp;&nbsp;
 
-              <a th:if="${currentPage < totalPages}" th:href="@{'/customers/page/'' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+              <a th:if="${currentPage < totalPages}" th:href="@{'/customers/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
               <span th:unless="${currentPage < totalPages}">Last</span>
             </div>
           </div>

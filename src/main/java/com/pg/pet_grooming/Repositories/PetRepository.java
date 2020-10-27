@@ -8,7 +8,6 @@
 package com.pg.pet_grooming.Repositories;
 
 // Imports
-import com.pg.pet_grooming.DTO.Pet_PetOwner;
 import com.pg.pet_grooming.Models.Pet;
 import java.util.List;
 import java.util.Optional;
@@ -41,15 +40,5 @@ public interface PetRepository extends JpaRepository<Pet, Integer> {
     @Query(value = "SELECT p.pet_owner_id FROM pet p WHERE p.id =:petId", nativeQuery = true)
     public Integer getPetOwnerId(int petId);
 
-//        SELECT pet_owner.id AS pet_owner_id, pet.id AS pet_id FROM pet_owner INNER JOIN pet ON pet_owner.id =pet.pet_owner_id;
-    // JPA Query
-    @Query("SELECT new com.pg.pet_grooming.DTO.Pet_PetOwner(p.id AS pet_owner_id,p.petOwnerFullName,p.petOwnerCell,p.petOwnerAddress,p.petOwnerCity,"
-            + "e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.petOwnerFullName")
-    List<Pet_PetOwner> SelectPetList();
-
-    @Query("SELECT new com.pg.pet_grooming.DTO.Pet_PetOwner(p.id AS pet_owner_id,p.petOwnerFullName,p.petOwnerCell,p.petOwnerAddress,p.petOwnerCity,"
-            + "e.id AS pet_id,e.pet_name,e.pet_breed) FROM PetOwner p JOIN p.pets e ORDER BY p.petOwnerFullName")
-    List<Pet_PetOwner> searchPetOwnerPet(@Param("keyword") String keyword);
-    
 }
 
