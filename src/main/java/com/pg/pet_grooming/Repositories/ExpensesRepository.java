@@ -42,5 +42,7 @@ public interface ExpensesRepository extends JpaRepository<Expenses, Integer> {
               + "EXTRACT(MONTH FROM e.expenseDate) AS mn, EXTRACT(YEAR FROM e.expenseDate) AS yr,"
            + "SUM(e.expense_amount) AS total) FROM Expenses e GROUP BY wk, mn,yr ORDER BY wk,mn, yr")
     List<ExpensesByWeek> getByWeek();
+    
+    
 }
 

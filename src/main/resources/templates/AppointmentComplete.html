@@ -47,7 +47,7 @@
             <input type="hidden" th:name="app_id" class="appointment-input" th:value="${appointment.app_id}" readonly
               required>
             <label for="date-input" class="appointment-details-label"> Appointment Date </label>
-            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.app_date_time,'yyyy/MM/dd HH:mm')}" required/>
+            <input type="text" id="dateInput" th:name="app_date_time" class="appointment-input" th:value="${#dates.format(appointment.appDateTime,'yyyy/MM/dd HH:mm')}" required/>
           </div><br><br>
           <div class="appointment-details-row">
             <label for="groomerSelect" class="appointment-details-label">Groomer</label>
@@ -73,15 +73,19 @@
               <div class="customer-details-container-row">
                 <input type="hidden" name="pet_owner_id" th:value="${petOwner.id}">
                 <label for="customerFullnameInput" class="customer-label">Customer Name</label>
-                <input type="text" class="customer-input" id="customerFullnameInput" name="pet_owner_full_name" th:value="${petOwner.pet_owner_full_name}" required/>
+                <input type="text" class="customer-input" id="customerFullnameInput" name="pet_owner_full_name" th:value="${petOwner.petOwnerFullName}" required/>
               </div>
               <div class="customer-details-container-row">
                 <label for="cellInput" class="customer-label">Cell</label>
-                <input type="text" class="customer-input" id="cellInput" name="pet_owner_cell" th:value="${petOwner.pet_owner_cell}" required/>
+                <input type="text" class="customer-input" id="cellInput" name="pet_owner_cell" th:value="${petOwner.petOwnerCell}" required/>
               </div>
               <div class="customer-details-container-row">
                 <label for="customerAddress" class="customer-label">Address</label>
-                <input type="text" class="customer-input" name="pet_owner_address" th:value="${petOwner.pet_owner_address}" required>
+                <input type="text" class="customer-input" name="pet_owner_address" th:value="${petOwner.petOwnerAddress}" required>
+              </div>
+              <div class="customer-details-container-row">
+                <label for="customerCity" class="customer-label">City</label>
+                <input type="text" class="customer-input" name="pet_owner_city" th:value="${petOwner.petOwnerCity}" required>
               </div>
             </div>
             <div class="customer-details-container-col">
@@ -109,7 +113,7 @@
           <div class="services-row" th:each="services : ${listServices}">
             <input type="hidden"  th:name="service_id" th:value="${services.service_id}">
             <h4 th:text="${services.service_name}"></h4>
-            <h4 th:text="${services.service_price}"></h4>
+            <h4>R <span th:text="${services.service_price}"></span></h4>
           </div>
         </div>
 

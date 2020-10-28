@@ -66,6 +66,10 @@ public class PastAppointments extends Auditable<String> {
     @NotNull
     @Column(name = "pet_owner_address", nullable = false)
     private String pet_owner_address;
+    
+    @NotNull
+    @Column(name = "pet_owner_city", nullable = false)
+    private String pet_owner_city;
 
     // Services
     // Appointment - Services - Appointment_Pet_Services - Pet

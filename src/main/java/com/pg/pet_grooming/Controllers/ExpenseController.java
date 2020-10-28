@@ -2,8 +2,6 @@
 *   © Pet Grooming
     © Gullian Van Der Walt
 *   Pearson Pretoria ITSP300 - Project 2020
-*
-
  */
 package com.pg.pet_grooming.Controllers;
 
@@ -40,13 +38,13 @@ public class ExpenseController {
     @Autowired ExpensesService expenseService;
     @Autowired ExpensesRepository expensesRepository;
     
-    // Main Expense View
+    // Main Expense View return paging defaults
     @RequestMapping("/finance/expenses")
     public String getExpenses(Model model) {
         return viewPage(model, "", 1, "expenseDate", "desc");
     }
     
-    // Main Expense View
+    // Main Expense View with paging
     @RequestMapping("/finance/expenses/page/{pageNum}")
     public String viewPage(Model model,
             @Param("keyword") String keyword,
@@ -180,19 +178,7 @@ public class ExpenseController {
         model.addAttribute("iconUrl", iconUrl);
 
         return "Expenses";
-    }
-    
-    
-    @RequestMapping("/finance/expenseReports")
-    public String getExpenseReports(Model model) {
-        // Set Page Title
-        String pageTitle = "Expense Reports";
-        model.addAttribute("pageTitle", pageTitle);
-        // Set Page Title Icon
-        String iconUrl = "exspense.png";
-        model.addAttribute("iconUrl", iconUrl);
-        return "ExpenseReports";
-    }
+    }    
 
 }
 

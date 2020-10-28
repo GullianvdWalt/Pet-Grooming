@@ -2,10 +2,6 @@
 *   © Pet Grooming
     © Gullian Van Der Walt
 *   Pearson Pretoria ITSP300 - Project 2020
-*
-
-    This is the main class for the main pet grooming application
-    This Is The Main Application Controller Class
  */
 package com.pg.pet_grooming.Controllers;
 
@@ -14,6 +10,9 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
+import com.pg.pet_grooming.DAO.SalariesByMonth;
+import com.pg.pet_grooming.DAO.SalariesByWeek;
+import com.pg.pet_grooming.DAO.SalariesByYear;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
@@ -54,30 +53,64 @@ import com.pg.pet_grooming.Repositories.SalariesRepository;
 import com.pg.pet_grooming.Repositories.SalaryDetailsRepo;
 import com.pg.pet_grooming.Services.EmployeeService;
 import com.pg.pet_grooming.Services.SalariesService;
+import javax.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 
 @Controller
 public class SalaryController {
 
     // Inject Services and Repos
-    @Autowired
-    SalariesService salaryService;
-    @Autowired
-    EmployeeService employeeService;
-    @Autowired
-    SalaryDetailsRepo salaryDetailsRepo;
-    @Autowired
-    SalariesRepository salariesRepository;
-    @Autowired
-    EmployeeRepository employeeRepository;
-    @Autowired
-    BusinessDetailsRepository businessDetailsRepository;
+    @Autowired SalariesService salaryService;
+    @Autowired EmployeeService employeeService;
+    @Autowired SalaryDetailsRepo salaryDetailsRepo;
+    @Autowired SalariesRepository salariesRepository;
+    @Autowired EmployeeRepository employeeRepository;
+    @Autowired BusinessDetailsRepository businessDetailsRepository;
 
-    // Method to view all salaies
+    
+    // Salaries with default paging details
     @RequestMapping("/finance/salaries")
     public String getSalaries(Model model) {
-        List<Salaries> listSalaries = new ArrayList<>();
-        listSalaries = salaryService.getSalaries();
+        return viewPage(model, "", 1, "date", "desc");
+    }
+    
+    // Method to view all salaies
+    @RequestMapping("/finance/salaries/page/{pageNum}")
+    public String viewPage(Model model,
+            @Param("keyword") String keyword,
+            @Valid @PathVariable(name = "pageNum") int pageNum,
+            @Valid @Param("sortField") String sortField,
+            @Valid @Param("sortDir")String sortDir) {
+
+        // User does not search salaries
+        if(keyword == null || keyword == ""){
+        
+        // List of salaries with paging
+        Page<Salaries> page = salaryService.getSalaries(pageNum, sortField, sortDir);
+        List<Salaries> listSalaries = page.getContent();    
+            
+        // Add list to view
         model.addAttribute("listSalaries", listSalaries);
+        // Add Paging Details
+        model.addAttribute("currentPage", pageNum);		
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        // Add Sorting Details
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        // Sort from asc order to desc
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+        
+        }else{ // User made search
+            
+            List<Salaries> listSalaries = salariesRepository.findByKeyword(keyword);
+            // Add list to view
+            model.addAttribute("listSalaries", listSalaries);
+        }
+        
+        
+
         // Set Page Title
         String pageTitle = "Salaries";
         model.addAttribute("pageTitle", pageTitle);
@@ -87,6 +120,58 @@ public class SalaryController {
         return "Salaries";
     }
 
+        //Get Salaries By Year
+    @RequestMapping("/finance/salaries/year")
+    public String getSalariesByYear(Model model){
+        // Get all expenses By Year
+        List<SalariesByYear> salariesByYear = salariesRepository.getByYear();
+        // Add List To View
+        model.addAttribute("salariesByYear", salariesByYear);
+        // Set Page Title
+        String pageTitle = "Salaries By Year";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "payroll.png";
+        model.addAttribute("iconUrl", iconUrl);
+           
+        return "Salaries";
+    }
+    
+    // Get Salaries By Month
+    @RequestMapping("/finance/salaries/month")
+    public String getSalariesByMonth(Model model){
+        // Get all salaries By Month
+        List<SalariesByMonth> salariesByMonth = salariesRepository.getByMonth();
+        // Add List To View
+        model.addAttribute("salariesByMonth", salariesByMonth);
+        // Set Page Title
+        String pageTitle = "Expenses By Month";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "payroll.png";
+        model.addAttribute("iconUrl", iconUrl);
+           
+        return "Salaries";
+    }
+    
+    // Get Expenses By Week
+    @RequestMapping("/finance/salaries/week")
+    public String getSalariesByWeek(Model model){
+        // Get all salaries By Week
+        List<SalariesByWeek> salariesByWeek = salariesRepository.getByWeek();
+        // Add List To View
+        model.addAttribute("salariesByWeek", salariesByWeek);
+        // Set Page Title
+        String pageTitle = "Expenses By Week";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "exspense.png";
+        model.addAttribute("iconUrl", iconUrl);
+
+        return "Salaries";
+    }
+    
+    
     // Method to retrieve Employees to and return SelectEmployee View
     @RequestMapping("/selectEmployee")
     public String selectEmployee(Model model) {
@@ -131,6 +216,7 @@ public class SalaryController {
         model.addAttribute("bonusL", salaryDetails.getBonus_large());
         model.addAttribute("bonusM", salaryDetails.getBonus_medium());
         model.addAttribute("bonusS", salaryDetails.getBonus_small());
+        model.addAttribute("transportAmount", salaryDetails.getTransport_amount());
 
         return "AddSalary";
     }
@@ -170,7 +256,7 @@ public class SalaryController {
 
         salaryService.saveSalary(salary);
         redirAttrs.addFlashAttribute("success", "Salary Saved!");
-        return "redirect:/salaries/payslip/" + salary.getSalary_id();
+        return "redirect:/salaries/payslip/" + salary.getSalaryId();
     }
 
     // Method to hanlde exporting of PDF Payslips
@@ -223,7 +309,7 @@ public class SalaryController {
         context.put("date", salaries.getDate().toString());
         context.put("businessName", businessDetails.getBusiness_name());
         context.put("businessAddress", businessDetails.getBusiness_address().toString());
-        context.put("employeeName", salaries.getEmployee_full_name());
+        context.put("employeeName", salaries.getEmployeeFullName());
         context.put("saID", employee.getEmp_sa_id().toString());
         context.put("occupation", employee.getOccupation());
         context.put("startDate", salaries.getPay_period_start().toString());
@@ -234,12 +320,18 @@ public class SalaryController {
         context.put("overtimeHours", salaries.getOvertime_hours().toString());
         context.put("subTotal", salaries.getSalary_subtotal().toString());
         context.put("overtime", salaryDetails.getOvertime().toString());
-        context.put("overtimeTotal", salaries.getOvertime_total().toString());
+        context.put("overtimeTotal", salaries.getOvertimeTotal().toString());
 
-        Double totalInclOvertime = salaries.getSalary_subtotal() + salaries.getOvertime_total();
+        Double totalInclOvertime = salaries.getSalary_subtotal() + salaries.getOvertimeTotal();
 
         context.put("totalInclOvertime", totalInclOvertime.toString());
         context.put("deduction_description", salaries.getDeduction_description());
+        
+        double deductionTotal = salaries.getDeduction_total();
+        if(deductionTotal <= 0){
+            deductionTotal = 0;           
+        }
+        
         context.put("deduction_total", salaries.getDeduction_total().toString());
         context.put("total_aftr_deduct", salaries.getSalary_total_aftr_deduct().toString());
         context.put("transport_amount", salaryDetails.getTransport_amount().toString());
@@ -253,7 +345,7 @@ public class SalaryController {
         context.put("amountSDog", salaries.getAmountSDog().toString());
         context.put("amountMDog", salaries.getAmountMDog().toString());
         context.put("amountLDog", salaries.getAmountLDog().toString());
-        context.put("bonus_total", salaries.getBonus_total().toString());
+        context.put("bonus_total", salaries.getBonusTotal().toString());
         context.put("salary_total_w_bonus", salaries.getSalary_total_w_bonus().toString());
 
         // Render Template Into Stringwriter
@@ -264,7 +356,7 @@ public class SalaryController {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         baos = generatePdf(writer.toString());
-        fileName = "Payslip_" + salaries.getEmployee_full_name() + "_" + salaries.getDate();
+        fileName = "Payslip_" + salaries.getEmployeeFullName() + "_" + salaries.getDate();
         // Create Header
         HttpHeaders header = new HttpHeaders();
         header.setContentType(MediaType.APPLICATION_PDF);

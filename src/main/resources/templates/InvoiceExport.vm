@@ -169,6 +169,12 @@
                 $petOwnerAddress
               </td>
             </tr>
+          <tr class="details">
+              <td>City</td>
+              <td>
+                $petOwnerCity
+              </td>
+            </tr>
             <tr class="heading">
               <td colspan="2">
                 Pet

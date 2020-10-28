@@ -52,7 +52,7 @@ public class Invoice extends Auditable<String>{
     @Column(name = "invoice_date",nullable = false)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date invoice_date;
+    private Date invoiceDate;
     
     @Column(name = "invoice_note",nullable = true)
     private String invoice_note;
@@ -67,6 +67,9 @@ public class Invoice extends Auditable<String>{
     @NotNull
     @Column(name = "payment_method",nullable = false)
     private String payment_method;
+    
+    @Column(name = "pet_owner_full_name",nullable = true)
+    private String petOwnerFullName;
     
     @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name="past_app_id", referencedColumnName = "id",insertable = false, updatable = false)

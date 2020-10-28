@@ -122,101 +122,101 @@
           </table>
           <!-- Expenses Table Ends -->
 
-          <!-- Expenses By Year -->
-          <div th:if="!${#lists.isEmpty(expensesByYear)}">
-            <table>
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Total (R)</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr th:each="ExpensesByYear : ${expensesByYear}">
-                  <td th:text="${ExpensesByYear.yr}"></td>
-                  <td th:text="${ExpensesByYear.total}"></td>
-                </tr>
-            </tbody>
-            </table>
-          </div>
-          <!-- Expenses By Month -->
-          <div th:if="!${#lists.isEmpty(expensesByMonth)}">
-            <table>
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Month</th>
-                <th>Total (R)</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr th:each="ExpensesByMonth : ${expensesByMonth}">
-                  <td th:text="${ExpensesByMonth.mn}"></td>
-                  <td th:text="${ExpensesByMonth.yr}"></td>
-                  <td th:text="${ExpensesByMonth.total}"></td>
-                </tr>
-            </tbody>
-            </table>
-          </div>
+                <!-- Expenses By Year -->
+                <div th:if="!${#lists.isEmpty(expensesByYear)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="ExpensesByYear : ${expensesByYear}">
+                        <td th:text="${ExpensesByYear.yr}"></td>
+                        <td th:text="${ExpensesByYear.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
+                <!-- Expenses By Month -->
+                <div th:if="!${#lists.isEmpty(expensesByMonth)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Month</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="ExpensesByMonth : ${expensesByMonth}">
+                        <td th:text="${ExpensesByMonth.mn}"></td>
+                        <td th:text="${ExpensesByMonth.yr}"></td>
+                        <td th:text="${ExpensesByMonth.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
 
-          <!-- Expenses By Week -->
-          <div th:if="!${#lists.isEmpty(expensesByWeek)}">
-            <table>
-            <thead>
-              <tr>
-                <th>Week Start Date</th>
-                <th>Week Number</th>
-                <th>Month</th>
-                <th>Year</th>
-                <th>Total (R)</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr th:each="ExpensesByWeek : ${expensesByWeek}">
-                  <td th:text="${ExpensesByWeek.startDate}"></td>
-                  <td th:text="${ExpensesByWeek.wk}"></td>
-                  <td th:text="${ExpensesByWeek.mn}"></td>
-                  <td th:text="${ExpensesByWeek.yr}"></td>
-                  <td th:text="${ExpensesByWeek.total}"></td>
-                </tr>
-            </tbody>
-            </table>
-          </div>
+                <!-- Expenses By Week -->
+                <div th:if="!${#lists.isEmpty(expensesByWeek)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Week Start Date</th>
+                      <th>Week Number</th>
+                      <th>Month</th>
+                      <th>Year</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="ExpensesByWeek : ${expensesByWeek}">
+                        <td th:text="${ExpensesByWeek.startDate}"></td>
+                        <td th:text="${ExpensesByWeek.wk}"></td>
+                        <td th:text="${ExpensesByWeek.mn}"></td>
+                        <td th:text="${ExpensesByWeek.yr}"></td>
+                        <td th:text="${ExpensesByWeek.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
                     </div>
                     <!-- Expenses Table Container Ends -->
 
-        <!-- Paging Starts -->
-          <div class="paging-container">
-              <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
-              <div>&nbsp;</div>
-              <div th:if="${totalPages > 1}" class="pages">
-                Total Expenses: [[${totalItems}]]
-                &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+          <!-- Paging Starts -->
+            <div class="paging-container">
+                <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+                <div>&nbsp;</div>
+                <div th:if="${totalPages > 1}" class="pages">
+                  Total Expenses: [[${totalItems}]]
+                  &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
-                <a th:if="${currentPage > 1}" th:href="@{'/finance/expenses/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
-                <span th:unless="${currentPage > 1}">First</span>
-                &nbsp;&nbsp;
+                  <a th:if="${currentPage > 1}" th:href="@{'/finance/expenses/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+                  <span th:unless="${currentPage > 1}">First</span>
+                  &nbsp;&nbsp;
 
-                <a th:if="${currentPage > 1}" th:href="@{'/finance/expenses/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
-                <span th:unless="${currentPage > 1}">Previous</span>
+                  <a th:if="${currentPage > 1}" th:href="@{'/finance/expenses/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+                  <span th:unless="${currentPage > 1}">Previous</span>
 
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
 
-                <span th:each="i: ${#numbers.sequence(2, totalPages)}">
-                <a th:if="${currentPage != i}" th:href="@{'/finance/expenses/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-                  <span th:unless="${currentPage != i}">[[${i}]]</span>
-                  &nbsp;
-                </span>
+                  <span th:each="i: ${#numbers.sequence(2, totalPages)}">
+                  <a th:if="${currentPage != i}" th:href="@{'/finance/expenses/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span>
+                    &nbsp;
+                  </span>
 
-                <a th:if="${currentPage < totalPages}" th:href="@{'/finance/expenses/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-                <span th:unless="${currentPage < totalPages}">Next</span>
-                &nbsp;&nbsp;
+                  <a th:if="${currentPage < totalPages}" th:href="@{'/finance/expenses/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                  <span th:unless="${currentPage < totalPages}">Next</span>
+                  &nbsp;&nbsp;
 
-                <a th:if="${currentPage < totalPages}" th:href="@{'/finance/expenses/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-                <span th:unless="${currentPage < totalPages}">Last</span>
+                  <a th:if="${currentPage < totalPages}" th:href="@{'/finance/expenses/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                  <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
               </div>
-            </div>
-          <!-- Paging Ends -->
+            <!-- Paging Ends -->
 
                 </div>
                 <!-- Expenses Container Ends -->

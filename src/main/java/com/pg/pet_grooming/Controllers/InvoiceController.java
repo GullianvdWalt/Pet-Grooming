@@ -42,15 +42,19 @@ import com.pg.pet_grooming.Models.Income;
 import com.pg.pet_grooming.Repositories.BusinessDetailsRepository;
 import com.pg.pet_grooming.Repositories.InvoiceRepository;
 import com.pg.pet_grooming.Services.IncomeService;
+import com.pg.pet_grooming.Services.PastAppointmentService;
 import java.io.ByteArrayOutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import javax.validation.Valid;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -72,6 +76,7 @@ public class InvoiceController {
     @Autowired private BusinessDetailsRepository businessDetailsRepo;
     @Autowired private IncomeService incomeService;
     @Autowired private InvoiceRepository invoiceRepository;
+    @Autowired private PastAppointmentService pastAppService;
 
     
     // New Invoice with Past Appointment Id
@@ -154,6 +159,7 @@ public class InvoiceController {
     // Save Invoice and go To Invoice Temaplate
     @RequestMapping(value = "/invoice/save", method = {RequestMethod.POST, RequestMethod.GET})
     public String saveInvoice(Model model,Invoice invoice,
+            @RequestParam("pet_owner_full_name") String petOwnerName,
             @RequestParam("total")Double total,
             @RequestParam("invoice_date") String invoice_date,
             RedirectAttributes redirAttrs)throws ParseException, IOException {
@@ -162,8 +168,8 @@ public class InvoiceController {
         // DateFormatter
         DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ROOT);
         Date invoiceDate = (Date) dateTimeFormat.parse(invoice_date);
-        invoice.setInvoice_date(invoiceDate);
-        
+        invoice.setInvoiceDate(invoiceDate);
+        invoice.setPetOwnerFullName(petOwnerName);
         // Save Invoice
         invoiceService.save(invoice);
         // Save to income
@@ -265,7 +271,7 @@ public class InvoiceController {
         // Add Data
         context.put("logo",businessDetails.getImagePath());
         context.put("invoiceNum", invoice.getInvoice_num());
-        context.put("invoiceDate",invoice.getInvoice_date());
+        context.put("invoiceDate",invoice.getInvoiceDate());
         context.put("paymentMethod",invoice.getPayment_method());
         context.put("businessName", businessDetails.getBusiness_name());
         context.put("businessCell", businessDetails.getBusiness_cell());
@@ -274,6 +280,7 @@ public class InvoiceController {
         context.put("petOwnerName",pastApp.getPet_owner_full_name());
         context.put("petOwnerCell",pastApp.getPet_owner_cell());
         context.put("petOwnerAddress",pastApp.getPet_owner_address());
+        context.put("petOwnerCity",pastApp.getPet_owner_city());
         context.put("petName",pastApp.getPet_name());
         context.put("petBreed",pastApp.getPet_breed() );
         context.put("petSize", pet.getPet_size());
@@ -290,7 +297,7 @@ public class InvoiceController {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         baos = generatePdf(writer.toString());
-        fileName = "Invoice_" + pastApp.getPet_owner_full_name() + "_" + invoice.getInvoice_date();
+        fileName = "Invoice_" + pastApp.getPet_owner_full_name() + "_" + invoice.getInvoiceDate();
         // Create Header
         HttpHeaders header = new HttpHeaders();
         header.setContentType(MediaType.APPLICATION_PDF);
@@ -344,27 +351,45 @@ public class InvoiceController {
         return null;
     }
     
-    // View Invoices
-    @RequestMapping("/finance/viewInvoices")
-    public String viewInvoices(Model model) {
+     // Get View Invoices Main Page, default paging variables
+     @RequestMapping("finance/viewInvoices")
+     public String viewInvoices(Model model) {
+        return viewPage(model, "", 1, "invoiceDate", "desc");
+     }
         
-        List<Invoice> invoiceList = invoiceService.getInvoices();
-        Invoice invoice = new Invoice();
-        List<PastAppointments> pastAppList = new ArrayList<>();
-        PastAppointments pastApp = new PastAppointments();
+    // View Invoices By Page
+    @RequestMapping("/finance/viewInvoices/page/{pageNum}")
+    public String viewPage(Model model,
+            @Param("keyword") String keyword,
+            @Valid @PathVariable(name = "pageNum") int pageNum,
+            @Valid @Param("sortField") String sortField,
+            @Valid @Param("sortDir")String sortDir){
         
-        for (int i = 0; i < invoiceList.size(); i++) {
-            // Get Invoice objects
-            invoice = invoiceList.get(i);
-            // Get Past Appointments
-            pastApp = pastAppRepo.getOne(invoice.getPast_app_id());
-            // Add to PastApp List
-            pastAppList.add(pastApp);
+        
+        if(keyword == null || keyword == ""){
+            
+            Page<Invoice> page = invoiceService.getInvoices(pageNum, sortField, sortDir);
+            List<Invoice> invoiceList = page.getContent();
+        
+             // Add List of to view
+            model.addAttribute("invoiceList", invoiceList);
+             // Add Paging Details
+            model.addAttribute("currentPage", pageNum);		
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("totalItems", page.getTotalElements());
+            // Add Sorting Details
+            model.addAttribute("sortField", sortField);
+            model.addAttribute("sortDir", sortDir);
+            // Sort from asc order to desc
+            model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+        }else{
+            // User has searched
+            List<Invoice> invoiceList = invoiceRepository.findByKeyword(keyword);
+            
+            // Add List of to view
+            model.addAttribute("invoiceList", invoiceList);
         }
-        // Add List of objects to view
-        model.addAttribute("invoiceList", invoiceList);
-        model.addAttribute("pastAppList", pastAppList);
-        
+       
         // Set Page Title
         String pageTitle = "Invoices";
         model.addAttribute("pageTitle", pageTitle);

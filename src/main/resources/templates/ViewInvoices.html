@@ -39,11 +39,14 @@
       <div class="view-invoice-container">
 
         <div class="invoice-top-container">
-          <div class="invoice-search-container">
-
-            <input type="text" class="search-invoice-input" name="searchinvoice" id="searchinvoice"
-              placeholder="Search Invoice">
-            <button type="submit"><i class="fa fa-search"></i></button>
+          <div class="search-input-container">
+            <form th:action="@{/finance/viewInvoices/page/1}">
+              <input type="text" th:name="keyword" id="searchInput" th:value="${keyword}" class="search-input"
+                placeholder="Search..." autocomplete="off" required />
+              <button type="submit" class="search-button" title="Search"><i class="fa fa-search"></i></button>
+              <a th:href="@{/finance/viewInvoices}" class="search-button" title="Clear Search"
+                onclick="clearSearch()"><i class="fa fa-times"></i></a>
+            </form>
           </div>
         </div>
 
@@ -52,40 +55,73 @@
           <div class="invoice-table-container">
 
             <!-- Invoice Table Start -->
-            <table>
+            <table th:if="!${#lists.isEmpty(invoiceList)}">
               <thead>
-
                 <tr>
-                  <th># Invoice Num</th>
+                  <th>#Invoice Num</th>
                   <th>Invoice Date</th>
                   <th>Customer</th>
-                  <th>Total(R)</th>
+                  <th>Total</th>
+                  <th>Payment Method</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <div th:if="!${#lists.isEmpty(invoiceList) or #lists.isEmpty(pastAppList)}">
-                                <tr th:each="invoice,iterStat : ${invoiceList}">
-                                    <td th:text="${invoice.invoice_num}"></td>
-                                    <td th:text="${invoice.invoice_date}"></td>
-                                    <td th:text="${pastAppList[__iterStat.index__].pet_owner_full_name}"></td>
-                                    <td th:text="${invoice.total}"></td>
-                                    <td class="view-column">
-                                        <a th:href="@{/invoices/template/{id}(id = ${invoice.invoice_num})}" id="invoiceView" class="invoice-view">Select</a>
-                                    </td>
-                                </tr>
-                            </div>
-                            <tr th:if="${#lists.isEmpty(invoiceList) or #lists.isEmpty(pastAppList)}">
-                                <td colspan="8" class="empty-customers-table-text"> There are currently no invoices.</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- Invoice Table Ends -->
-                    </div>
-                    <!-- Invoice Table Container Ends -->
+                <div>
+                        <tr th:each="invoice : ${invoiceList}">
+                            <td th:text="${invoice.invoice_num}"></td>
+                            <td th:text="${invoice.invoiceDate}"></td>
+                            <td th:text="${invoice.petOwnerFullName}"></td>
+                            <td>R <span th:text="${invoice.total}"></span></td>
+                            <td th:text="${invoice.payment_method}"></td>
+                            <td class="view-column">
+                                <a th:href="@{/invoices/template/{id}(id = ${invoice.invoice_num})}" id="invoiceView" class="invoice-view">Select</a>
+                            </td>
+                        </tr>
+                </div>
+                    <tr th:if="${#lists.isEmpty(invoiceList)}">
+                        <td colspan="8" class="empty-customers-table-text"> There are currently no invoices.</td>
+                    </tr>
+                    </tbody>
+              </table>
+              <!-- Invoice Table Ends -->
+            </div>
+            <!-- Invoice Table Container Ends -->
 
+          <!-- Paging Starts -->
+            <div class="paging-container">
+                <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+                <div>&nbsp;</div>
+                <div th:if="${totalPages > 1}" class="pages">
+                  Total Invoices: [[${totalItems}]]
+                  &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
-                    </div>
+                  <a th:if="${currentPage > 1}" th:href="@{'/finance/viewInvoices/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+                  <span th:unless="${currentPage > 1}">First</span>
+                  &nbsp;&nbsp;
+
+                  <a th:if="${currentPage > 1}" th:href="@{'/finance/viewInvoices/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+                  <span th:unless="${currentPage > 1}">Previous</span>
+
+                  &nbsp;&nbsp;
+
+                  <span th:each="i: ${#numbers.sequence(2, totalPages)}">
+                  <a th:if="${currentPage != i}" th:href="@{'/finance/viewInvoices/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span>
+                    &nbsp;
+                  </span>
+
+                  <a th:if="${currentPage < totalPages}" th:href="@{'/finance/viewInvoices/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                  <span th:unless="${currentPage < totalPages}">Next</span>
+                  &nbsp;&nbsp;
+
+                  <a th:if="${currentPage < totalPages}" th:href="@{'/finance/viewInvoices/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                  <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
+              </div>
+            <!-- Paging Ends -->
+
+        </div>
 
                 </div>
                 <!-- View Invoices Container Ends-->

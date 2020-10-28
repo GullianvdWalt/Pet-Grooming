@@ -1,6 +1,7 @@
 /*
-    Gullian Van Der Walt
-    Data Transger Object Class to help with sorting of expenses by Week
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
  */
 package com.pg.pet_grooming.DAO;
 

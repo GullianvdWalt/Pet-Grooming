@@ -106,8 +106,6 @@ public class AppointmentController {
             model.addAttribute("sortDir", sortDir);
             // Sort from asc order to desc
             model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-         
-            //model.addAttribute("selectPet", selectPetList);
            
         }else{
             // Search has been made via pet name

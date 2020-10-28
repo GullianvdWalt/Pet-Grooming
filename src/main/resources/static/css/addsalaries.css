@@ -78,6 +78,9 @@ textarea {
   width: 60%;
   font-size: 1.2em;
 }
+textarea {
+  width: 80%;
+}
 .salary-container-col-middle {
   display: flex;
   flex-direction: column;
@@ -141,7 +144,6 @@ h3 {
 .deductions-row-row-row input {
   padding: 0.5rem;
   font-size: 1.2em;
-  color: #ff69b4;
 }
 .overtime-row-row-col,
 .deductions-row-row {
@@ -157,7 +159,6 @@ h3 {
   width: 60%;
   padding: 0.5rem;
   font-size: 1.2em;
-  color: #ff69b4;
 }
 .overtime-button-row {
   width: 70%;
@@ -184,7 +185,6 @@ h3 {
 .transport-money-row-row-col-row input {
   padding: 0.5rem;
   font-size: 1.2em;
-  color: #ff69b4;
 }
 
 .transport-money-row-row-col-col {
@@ -196,7 +196,6 @@ h3 {
   width: 50%;
   margin: 1rem 25%;
   font-size: 1.2em;
-  color: #ff69b4;
 }
 .transport-money-row-row-col-col label {
   margin-bottom: 10px;
@@ -228,7 +227,6 @@ h3 {
 .bonus-row-row-col input {
   padding: 0.5rem;
   font-size: 1.2em;
-  color: #ff69b4;
 }
 .salary-total-row {
   display: flex;
@@ -250,7 +248,6 @@ h3 {
 .salary-total-col input {
   padding: 0.5rem;
   font-size: 1.2em;
-  color: #ff69b4;
 }
 .salary-total-button-row {
   width: 70%;
@@ -266,9 +263,13 @@ h3 {
 }
 .button-container {
   height: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  text-align: center;
   padding: 1rem;
   margin: 1rem;
+}
+
+/* Date Picker */
+.daterangepicker .calendar-table th,
+.daterangepicker .calendar-table td {
+  min-width: 35px;
 }
