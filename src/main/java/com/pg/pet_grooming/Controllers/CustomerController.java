@@ -58,9 +58,10 @@ public class CustomerController {
         
         if(keyword == null || keyword == ""){
             
-                // Get PetOwners and then pet list can be retrieved and combined for customers view
+            // Get PetOwners and then pet list can be retrieved and combined for customers view
             Page<PetOwner> page = petOwnerService.getPetOwners(pageNum, sortField, sortDir);
             List<PetOwner> customerList = page.getContent();
+            // Add List to view
             model.addAttribute("customerList", customerList);
             // Add Paging Details
             model.addAttribute("currentPage", pageNum);		

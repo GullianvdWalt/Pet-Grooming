@@ -49,6 +49,7 @@
         <div class="error-messages">
           <h1 th:text="${error}" th:if="${error}"></h1>
         </div>
+
         <!-- Appointment Details Section Starts  -->
         <form class="appointment-details-section" th:action="@{/newAppointments/new/save}" th:object="${newAppointment}"
           method="post">

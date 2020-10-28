@@ -3,81 +3,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Pet Grooming | Salaries</title>
-        <!-- Window Icon -->
-        <link rel="icon" href="/icons/icon.ico">
-        <!--    Styles     -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/salaries.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
-        <!--    Font Awesome    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Grooming | Salaries</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/salaries.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <body>
+<body>
 
 
-        <header th:insert="fragments/header :: header">
-            <!-- Header Included With Fragments -->
-        </header>
-        <!--    Main Section Starts    -->
-        <div class="content-section">
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+  <!--    Main Section Starts    -->
+  <div class="content-section">
 
-            <!-- Navbar Starts -->
-            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-                <!-- Navigation Included With Fragments -->
-            </nav>
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
 
-            <!-- Content-Container-Start -->
-            <div class="content-container" id="contentContainer">
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
 
-                <!-- Success Messages -->
-                <div class="success-messages">
-                    <h1 th:text="${success}" th:if="${success}"></h1>
-                </div>
-                <!-- Error Messages -->
-                <div class="error-messages">
-                    <h1 th:text="${error}" th:if="${error}"></h1>
-                </div>
+      <!-- Success Messages -->
+      <div class="success-messages">
+        <h1 th:text="${success}" th:if="${success}"></h1>
+      </div>
+      <!-- Error Messages -->
+      <div class="error-messages">
+        <h1 th:text="${error}" th:if="${error}"></h1>
+      </div>
 
-                <!-- Salaries Container Start -->
-                <div class="salaries-container">
+      <!-- Salaries Container Start -->
+      <div class="salaries-container">
 
-                    <div class="salaries-top-container">
-                        <div class="salaries-search-container">
+        <div class="salaries-top-container">
+          <div class="search-input-container">
+            <form th:action="@{/finance/expenses/page/1}">
+              <input type="text" name="keyword" id="searchInput" th:value="${keyword}" class="search-input"
+                placeholder="Search..." autocomplete="off" required />
+              <button type="submit" class="search-button" title="Search"><i class="fa fa-search"></i></button>
+              <a th:href="@{/finance/expenses}" class="search-button" title="Clear Search" onclick="clearSearch()"><i
+                  class="fa fa-times"></i></a>
+            </form>
+          </div>
+          <div class="salaries-add-button-container">
+            <a th:href="@{/selectEmployee}" class="buttons">
+              <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">Add Salary
+            </a>
 
-                            <input type="text" class="search-salaries-input" name="searchSalaries" id="searchSalaries"
-                                   placeholder="Search Salaries">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                        <div class="salaries-add-button-container">
-                            <a th:href="@{/selectEmployee}" class="buttons">
-                                <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">Add Salary
-                            </a>
+          </div>
+        </div>
 
-                        </div>
-                    </div>
-
-                    <!-- Salaries Table Container Start -->
-                    <div class="salaries-table-container">
-                        <!-- Salaries Table Start -->
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Employee Full Name</th>
-                                    <th>Grand Total</th>
-                                    <th>Bonus Total</th>
-                                    <th>Overtime Total</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <div th:if="!${#lists.isEmpty(listSalaries)}">
+        <!-- Salaries Table Container Start -->
+        <div class="salaries-table-container">
+          <!-- Salaries Table Start -->
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Employee Full Name</th>
+                <th>Grand Total</th>
+                <th>Bonus Total</th>
+                <th>Overtime Total</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div th:if="!${#lists.isEmpty(listSalaries)}">
                                 <tr th:each="salaries : ${listSalaries}">
                                     <td th:text="${salaries.date}"></td>
                                     <td th:text="${salaries.employee_full_name}"></td>
@@ -117,4 +120,3 @@
     </body>
 
 </html>
-

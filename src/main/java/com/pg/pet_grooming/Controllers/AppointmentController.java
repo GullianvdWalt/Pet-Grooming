@@ -172,10 +172,11 @@ public class AppointmentController {
                 PetOwner petOwner = petOwnerService.findPetOwnerById(pet.getPet_owner_id());
                 model.addAttribute("petOwner", petOwner);
             } catch (Exception e) {
+                model.addAttribute("error","No pet selected!");
                     e.printStackTrace();
             }
             }
-
+            
             // Set Page Title
             String pageTitle = "New Appointment";
             model.addAttribute("pageTitle", pageTitle);
@@ -184,6 +185,11 @@ public class AppointmentController {
             model.addAttribute("iconUrl", iconUrl);
 
             List<Services> serviceList = servicesService.getServices();
+            
+            if(serviceList.equals(null)){
+                model.addAttribute("error", "There are currently no services!");
+            }
+            
             model.addAttribute("serviceList", serviceList);
         
             model.addAttribute("newAppointment", newAppointment);

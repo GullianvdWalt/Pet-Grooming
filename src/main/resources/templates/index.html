@@ -57,7 +57,7 @@
 
         <div class="appointment-row" th:each="appointments: ${appointmentList}">
           <div class="date-row">
-              <span class="app-date-col" th:text="${#dates.format(appointments.appDateTime,'HH-mm')}"></span>
+              <span class="app-date-col" th:text="${#dates.format(appointments.appDateTime, 'HH-mm')}"></span>
               <span class="app-date-col" th:text="${#dates.dayOfWeekName(appointments.appDateTime)}"></span>
               <span class="app-date-col" th:text="${#dates.format(appointments.appDateTime,'dd-MM-yyyy HH-mm')}"></span>
 

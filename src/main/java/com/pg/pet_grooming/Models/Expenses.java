@@ -17,14 +17,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "expenses")
-@Data  //Lombok, Adds Getters, Setters and ToString Methods
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo for @OneToMany relationship (PetOwner)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -39,7 +45,7 @@ public class Expenses {
     @Column(name = "expense_date", nullable = false)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date expense_date;
+    private Date expenseDate;
 
     @Column(name = "expense_type", nullable = false)
     private String expense_type;
@@ -49,6 +55,14 @@ public class Expenses {
 
     @Column(name = "expense_amount", nullable = false)
     private Double expense_amount;
-
+    
+    @Transient
+    private String yr;
+    
+    @Transient 
+    private String mn;
+    
+    @Transient 
+    private double total;
 }
 

@@ -1,94 +1,94 @@
+<!-- Created By Gullian Van Der Walt -->
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title> New Appointment</title>
-        <!-- Window Icon -->
-        <link rel="icon" href="/icons/icon.ico">
-        <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <!--    Styles     -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/income.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-        <!--    Font Awesome    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="css/newAppointment.css" />
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> New Appointment</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/income.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/newAppointment.css" />
+</head>
 
-    <body>
+<body>
 
-        <header th:insert="fragments/header :: header">
-            <!-- Header Included With Fragments -->
-        </header>
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
 
-        <!-- Main Content Section Start    -->
-        <div class="content-section">
-            <!-- Navbar Starts -->
-            <nav th:insert="fragments/navbar :: navbar">
-                <!-- Navigation Included With Fragments -->
-            </nav>
-            <!-- Content Containe Start -->
-            <div class="content-container">
+  <!-- Main Content Section Start    -->
+  <div class="content-section">
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar">
+      <!-- Navigation Included With Fragments -->
+    </nav>
+    <!-- Content Containe Start -->
+    <div class="content-container">
 
-                <!-- Income Container Starts -->
-                <div class="income-container">
+      <!-- Income Container Starts -->
+      <div class="income-container">
 
-                    <div class="income-sort-container-row">
-                        <div class="sort-item">
-                            <button class="buttons">
-                                <img src="/Icons/byDay.png" alt="View By Day" class="icon">
-                                View By Day
-                            </button>
-                        </div>
-                        <div class="sort-item">
-                            <button class="buttons">
-                                <img src="/Icons/byWeek.png" alt="View By Weeks" class="icon">
-                                View By Week
-                            </button>
-                        </div>
-                        <div class="sort-item">
-                            <button class="buttons">
-                                <img src="/Icons/byMonth.png" alt="View By Month" class="icon">
-                                View By Month
-                            </button>
-                        </div>
-                        <div class="sort-item">
-                            <button class="buttons">
-                                <img src="/Icons/byYear.png" alt="View By Year" class="icon">
-                                View By Year
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="income-content-container">
-                        <div class="income-search-container">
-                            <img src="/Icons/search.png" alt="Search" class="icon">
-                            <input type="text" name="income-search" id="incomeSearch" placeholder="Search Income...">
-                        </div>
-                        <div class="income-view-container">
-                        </div>
-                    </div>
-
-                </div>
-                <!-- Income Container End -->
-            </div>
-            <!-- Content Container End -->
+        <div class="income-sort-container-row">
+          <div class="sort-item">
+            <button class="buttons">
+              <img src="/Icons/byDay.png" alt="View By Day" class="icon">
+              View By Day
+            </button>
+          </div>
+          <div class="sort-item">
+            <button class="buttons">
+              <img src="/Icons/byWeek.png" alt="View By Weeks" class="icon">
+              View By Week
+            </button>
+          </div>
+          <div class="sort-item">
+            <button class="buttons">
+              <img src="/Icons/byMonth.png" alt="View By Month" class="icon">
+              View By Month
+            </button>
+          </div>
+          <div class="sort-item">
+            <button class="buttons">
+              <img src="/Icons/byYear.png" alt="View By Year" class="icon">
+              View By Year
+            </button>
+          </div>
         </div>
-        <!-- Main Content Section End -->
 
-        <footer th:insert="fragments/footer :: footer">
-            <!-- Footer Included With Fragments -->
-        </footer>
+        <div class="income-content-container">
+          <div class="income-search-container">
+            <img src="/Icons/search.png" alt="Search" class="icon">
+            <input type="text" name="income-search" id="incomeSearch" placeholder="Search Income...">
+          </div>
+          <div class="income-view-container">
+          </div>
+        </div>
 
-        <!--   Scripts     -->
-        <script th:src="@{/js/sidenav.js}"></script>
-        <!-- <script src="/js/newCustomer.js"></script>
+      </div>
+      <!-- Income Container End -->
+    </div>
+    <!-- Content Container End -->
+  </div>
+  <!-- Main Content Section End -->
+
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
+
+  <!--   Scripts     -->
+  <script th:src="@{/js/sidenav.js}"></script>
+  <!-- <script src="/js/newCustomer.js"></script>
         <script src="/js/newPet.js"></script> -->
-    </body>
+</body>
 
 </html>
-

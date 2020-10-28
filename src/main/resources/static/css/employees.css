@@ -112,20 +112,6 @@ table tr:nth-child(even) {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* Messages */
-.success-messages {
-  width: 100%;
-  padding: 1rem;
-  text-align: center;
-}
-.success-messages h1 {
-  color: green;
-  font-size: 1.4em;
-}
-.error-messages h1 {
-  color: red;
-  font-size: 1.4em;
-}
 .delete-modal {
   display: none;
   position: fixed;
