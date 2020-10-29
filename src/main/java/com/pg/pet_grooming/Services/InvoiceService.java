@@ -1,8 +1,8 @@
 /*
- * This is the InvoiceService Class
- * This Class implements the InvoiceReposistory 
- * The controller sends request to this class
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Services;
 
 // Imports
@@ -21,8 +21,7 @@ import org.springframework.stereotype.Service;
 public class InvoiceService {
 
 // Inject Repository 
-    @Autowired
-    private InvoiceRepository invoiceRepository;
+    @Autowired private InvoiceRepository invoiceRepository;
 
     public Page<Invoice> getInvoices(int pageNum, String sortField, String sortDir) {
         //Paging

@@ -160,6 +160,7 @@ public class InvoiceController {
     @RequestMapping(value = "/invoice/save", method = {RequestMethod.POST, RequestMethod.GET})
     public String saveInvoice(Model model,Invoice invoice,
             @RequestParam("pet_owner_full_name") String petOwnerName,
+            @RequestParam("payment_method") String paymentMethod,
             @RequestParam("total")Double total,
             @RequestParam("invoice_date") String invoice_date,
             RedirectAttributes redirAttrs)throws ParseException, IOException {
@@ -170,11 +171,12 @@ public class InvoiceController {
         Date invoiceDate = (Date) dateTimeFormat.parse(invoice_date);
         invoice.setInvoiceDate(invoiceDate);
         invoice.setPetOwnerFullName(petOwnerName);
+        invoice.setPaymentMethod(paymentMethod);
         // Save Invoice
         invoiceService.save(invoice);
         // Save to income
         Income income = new Income();
-        income.setInvoice_num(invoice.getInvoice_num());
+        income.setInvoice_num(invoice.getInvoiceNum());
         income.setAmount(total);
         // Save Income
         incomeService.saveIncome(income);
@@ -182,7 +184,7 @@ public class InvoiceController {
         // Redirect to Invoice Template 
         redirAttrs.addFlashAttribute("success", "Invoice Saved!");
         
-        return "redirect:/invoices/template/"+invoice.getInvoice_num();
+        return "redirect:/invoices/template/"+invoice.getInvoiceNum();
     }
     
     // Template of invoice to export
@@ -270,9 +272,9 @@ public class InvoiceController {
             System.out.println(businessDetails.getImagePath());
         // Add Data
         context.put("logo",businessDetails.getImagePath());
-        context.put("invoiceNum", invoice.getInvoice_num());
+        context.put("invoiceNum", invoice.getInvoiceNum());
         context.put("invoiceDate",invoice.getInvoiceDate());
-        context.put("paymentMethod",invoice.getPayment_method());
+        context.put("paymentMethod",invoice.getPaymentMethod());
         context.put("businessName", businessDetails.getBusiness_name());
         context.put("businessCell", businessDetails.getBusiness_cell());
         context.put("businessEmail", businessDetails.getBusiness_email());

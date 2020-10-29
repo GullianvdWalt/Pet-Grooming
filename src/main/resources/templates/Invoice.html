@@ -1,4 +1,6 @@
-<!-- Created By Gullian Van Der Walt -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -57,7 +59,7 @@
 
           <div class="invoice-row">
             <label for="groomerSelect" class="appointment-details-label">Payment Method</label>
-            <select name="payment_method" id="groomerSelect">
+            <select th:name="payment_method" name="payment_method" id="groomerSelect" required>
               <option value="select">Select Payment Method</option>
               <option value="EFT">EFT</option>
               <option value="Cash">CASH</option>
@@ -66,7 +68,7 @@
 
           <div class="invoice-row">
             <label for="invoiceNote" class="invoice-label">Note</label>
-            <textarea type="text" class="invoice-data-note" id="invoiceNote" name="invoice_note" cols="10"
+            <textarea type="text" class="invoice-data-note" id="invoiceNote" name="invoiceNote" cols="10"
               rows="5">Thank You For Your Support</textarea>
           </div>
         </div>

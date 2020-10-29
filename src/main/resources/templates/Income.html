@@ -1,11 +1,13 @@
-<!-- Created By Gullian Van Der Walt -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> New Appointment</title>
+  <title>Income</title>
   <!-- Window Icon -->
   <link rel="icon" href="/icons/icon.ico">
   <!-- JQuery -->
@@ -28,52 +30,176 @@
 
   <!-- Main Content Section Start    -->
   <div class="content-section">
+
     <!-- Navbar Starts -->
     <nav th:insert="fragments/navbar :: navbar">
       <!-- Navigation Included With Fragments -->
     </nav>
+
     <!-- Content Containe Start -->
     <div class="content-container">
 
       <!-- Income Container Starts -->
       <div class="income-container">
 
-        <div class="income-sort-container-row">
+        <!-- Sort Container Starts -->
+        <div class="income-sort-container">
           <div class="sort-item">
-            <button class="buttons">
+            <a class="buttons" th:href="@{/finance/income}">
               <img src="/Icons/byDay.png" alt="View By Day" class="icon">
               View By Day
-            </button>
+            </a>
           </div>
           <div class="sort-item">
-            <button class="buttons">
+            <a class="buttons" th:href="@{/finance/income/week}">
               <img src="/Icons/byWeek.png" alt="View By Weeks" class="icon">
               View By Week
-            </button>
+            </a>
           </div>
           <div class="sort-item">
-            <button class="buttons">
+            <a class="buttons" th:href="@{/finance/income/month}">
               <img src="/Icons/byMonth.png" alt="View By Month" class="icon">
               View By Month
-            </button>
+            </a>
           </div>
           <div class="sort-item">
-            <button class="buttons">
+            <a class="buttons" th:href="@{/finance/income/year}">
               <img src="/Icons/byYear.png" alt="View By Year" class="icon">
               View By Year
-            </button>
+            </a>
           </div>
         </div>
+        <!-- Sort Container Ends -->
 
+        <!-- Income Table Container Start -->
         <div class="income-content-container">
-          <div class="income-search-container">
-            <img src="/Icons/search.png" alt="Search" class="icon">
-            <input type="text" name="income-search" id="incomeSearch" placeholder="Search Income...">
-          </div>
-          <div class="income-view-container">
-          </div>
-        </div>
 
+          <!-- Income Table Start -->
+          <table th:if="!${#lists.isEmpty(incomeList)}">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Invoice Number</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <div >
+              <tr th:each="income : ${incomeList}">
+                  <td th:text="${income.id}"></td>
+                  <td th:text="${#dates.format(income.created_date,'dd/MM/YYYY')}" ></td>
+                  <td>R <span th:text="${income.amount}"></span></td>
+                  <td># <span th:text="${income.invoice_num}"></span></td>
+                  <td class="view-column">
+                      <a th:href="@{/invoices/template/{id}(id = ${income.invoice_num})}" id="invoiceView" class="invoice-view">View Invoice</a>
+                  </td>
+              </tr>
+            </div>
+              <tr th:if="${#lists.isEmpty(incomeList)}">
+                  <td colspan="8" class="empty-customers-table-text"> There are currently no income.</td>
+              </tr>
+            </tbody>
+              </table>
+               <!-- Income Table Ends -->
+
+                <!-- Income By Year -->
+                <div th:if="!${#lists.isEmpty(incomeByYear)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="IncomeByYear : ${incomeByYear}">
+                        <td th:text="${IncomeByYear.yr}"></td>
+                        <td th:text="${IncomeByYear.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
+
+                <!-- Income By Month -->
+                <div th:if="!${#lists.isEmpty(incomeByMonth)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Month</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="IncomeByMonth : ${incomeByMonth}">
+                        <td th:text="${IncomeByMonth.mn}"></td>
+                        <td th:text="${IncomeByMonth.yr}"></td>
+                        <td th:text="${IncomeByMonth.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
+
+                <!-- Income By Week -->
+                <div th:if="!${#lists.isEmpty(incomeByWeek)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Week Start Date</th>
+                      <th>Week Number</th>
+                      <th>Month</th>
+                      <th>Year</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="IncomeByWeek : ${incomeByWeek}">
+                        <td th:text="${#dates.format(IncomeByWeek.startDate,'dd/MM/YYYY')}" ></td>
+                        <td th:text="${IncomeByWeek.wk}"></td>
+                        <td th:text="${IncomeByWeek.mn}"></td>
+                        <td th:text="${IncomeByWeek.yr}"></td>
+                        <td th:text="${IncomeByWeek.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
+        </div>
+        <!-- Income Table Container Ends-->
+
+          <!-- Paging Starts -->
+            <div class="paging-container">
+                <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+                <div>&nbsp;</div>
+                <div th:if="${totalPages > 1}" class="pages">
+                  Total Income Rows: [[${totalItems}]]
+                  &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+
+                  <a th:if="${currentPage > 1}" th:href="@{'/finance/income/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+                  <span th:unless="${currentPage > 1}">First</span>
+                  &nbsp;&nbsp;
+
+                  <a th:if="${currentPage > 1}" th:href="@{'/finance/income/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+                  <span th:unless="${currentPage > 1}">Previous</span>
+
+                  &nbsp;&nbsp;
+
+                  <span th:each="i: ${#numbers.sequence(2, totalPages)}">
+                  <a th:if="${currentPage != i}" th:href="@{'/finance/income/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span>
+                    &nbsp;
+                  </span>
+
+                  <a th:if="${currentPage < totalPages}" th:href="@{'/finance/income/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                  <span th:unless="${currentPage < totalPages}">Next</span>
+                  &nbsp;&nbsp;
+
+                  <a th:if="${currentPage < totalPages}" th:href="@{'/finance/income/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                  <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
+              </div>
+            <!-- Paging Ends -->
       </div>
       <!-- Income Container End -->
     </div>
@@ -87,8 +213,6 @@
 
   <!--   Scripts     -->
   <script th:src="@{/js/sidenav.js}"></script>
-  <!-- <script src="/js/newCustomer.js"></script>
-        <script src="/js/newPet.js"></script> -->
 </body>
 
 </html>

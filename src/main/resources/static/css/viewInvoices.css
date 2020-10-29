@@ -61,7 +61,10 @@ th {
   background-color: #ff69b4;
   color: #ffffff;
 }
-
+th a {
+  text-decoration: none;
+  color: #fff;
+}
 tr {
   font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;

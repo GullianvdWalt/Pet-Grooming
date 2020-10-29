@@ -46,7 +46,7 @@ public class Invoice extends Auditable<String>{
     @Id
     @Column(name = "invoice_num",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer invoice_num;
+    private Integer invoiceNum;
     
     @NotNull
     @Column(name = "invoice_date",nullable = false)
@@ -55,7 +55,7 @@ public class Invoice extends Auditable<String>{
     private Date invoiceDate;
     
     @Column(name = "invoice_note",nullable = true)
-    private String invoice_note;
+    private String invoiceNote;
     
     @Column(name = "discount",nullable = true)
     private Double discount;
@@ -66,7 +66,7 @@ public class Invoice extends Auditable<String>{
     
     @NotNull
     @Column(name = "payment_method",nullable = false)
-    private String payment_method;
+    private String paymentMethod;
     
     @Column(name = "pet_owner_full_name",nullable = true)
     private String petOwnerFullName;

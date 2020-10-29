@@ -1,5 +1,6 @@
-<!-- Created By Gullian Van Der Walt 01/08/2020 -->
-<!-- Last Updated 07/09/2020 -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -63,19 +64,19 @@
                 <th>
                   <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}"
                     title="Sort By ID">
-                    <i class="fa fa-sort" aria-hidden="true"> </i> ID
+                    <i class="fa fa-sort" aria-hidden="true"> ID</i>
                   </a>
                 </th>
                 <th>
                   <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=petOwnerFullName&sortDir=' + ${sortDir}}"
                     title="Sort By Customer Name">
-                    <i class="fa fa-sort" aria-hidden="true"></i> Customer Name
+                    <i class="fa fa-sort" aria-hidden="true"> Customer Name</i>
                   </a>
                 </th>
                 <th>
                   <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=petOwnerAddress&sortDir=' + ${sortDir}}"
                     title="Sort By Address">
-                    <i class="fa fa-sort" aria-hidden="true"></i> Address
+                    <i class="fa fa-sort" aria-hidden="true"> Address</i>
                   </a>
 
                 </th>
@@ -83,7 +84,7 @@
 
                   <a th:href="@{'/customers/page/' + ${currentPage} + '?sortField=petOwnerCity&sortDir=' + ${sortDir}}"
                     title="Sort By City">
-                    <i class="fa fa-sort" aria-hidden="true"> </i> City
+                    <i class="fa fa-sort" aria-hidden="true"> City</i>
                   </a>
                 </th>
                 <th>Cell</th>

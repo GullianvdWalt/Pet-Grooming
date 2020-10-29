@@ -123,7 +123,7 @@ public class SalaryController {
         //Get Salaries By Year
     @RequestMapping("/finance/salaries/year")
     public String getSalariesByYear(Model model){
-        // Get all expenses By Year
+        // Get all salaries By Year
         List<SalariesByYear> salariesByYear = salariesRepository.getByYear();
         // Add List To View
         model.addAttribute("salariesByYear", salariesByYear);
@@ -145,7 +145,7 @@ public class SalaryController {
         // Add List To View
         model.addAttribute("salariesByMonth", salariesByMonth);
         // Set Page Title
-        String pageTitle = "Expenses By Month";
+        String pageTitle = "Salaries By Month";
         model.addAttribute("pageTitle", pageTitle);
         // Set Page Title Icon
         String iconUrl = "payroll.png";
@@ -154,7 +154,7 @@ public class SalaryController {
         return "Salaries";
     }
     
-    // Get Expenses By Week
+    // Get Salaries By Week
     @RequestMapping("/finance/salaries/week")
     public String getSalariesByWeek(Model model){
         // Get all salaries By Week
@@ -162,10 +162,10 @@ public class SalaryController {
         // Add List To View
         model.addAttribute("salariesByWeek", salariesByWeek);
         // Set Page Title
-        String pageTitle = "Expenses By Week";
+        String pageTitle = "Salaries By Week";
         model.addAttribute("pageTitle", pageTitle);
         // Set Page Title Icon
-        String iconUrl = "exspense.png";
+        String iconUrl = "payroll.png";
         model.addAttribute("iconUrl", iconUrl);
 
         return "Salaries";

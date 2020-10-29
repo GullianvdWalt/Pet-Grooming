@@ -1,5 +1,8 @@
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -51,6 +54,7 @@
         </div>
 
         <div class="invoices-container">
+
           <!-- Invoice Table Container Start -->
           <div class="invoice-table-container">
 
@@ -58,24 +62,49 @@
             <table th:if="!${#lists.isEmpty(invoiceList)}">
               <thead>
                 <tr>
-                  <th>#Invoice Num</th>
-                  <th>Invoice Date</th>
-                  <th>Customer</th>
-                  <th>Total</th>
-                  <th>Payment Method</th>
+                  <th>
+                    <a th:href="@{'/finance/viewInvoices/page/' + ${currentPage} + '?sortField=invoiceNum&sortDir=' + ${reverseSortDir}}"
+                      title="Sort By Invoice Num">
+                      <i class="fa fa-sort" aria-hidden="true"> #Invoice Num</i>
+                    </a>
+                  </th>
+                  <th>
+                    <a th:href="@{'/finance/viewInvoices/page/' + ${currentPage} + '?sortField=invoiceDate&sortDir=' + ${reverseSortDir}}"
+                      title="Sort By Invoice Date">
+                      <i class="fa fa-sort" aria-hidden="true"> Invoice Date</i>
+                    </a>
+                  </th>
+                  <th>
+                    <a th:href="@{'/finance/viewInvoices/page/' + ${currentPage} + '?sortField=petOwnerFullName&sortDir=' + ${reverseSortDir}}"
+                      title="Sort By Customer Name">
+                      <i class="fa fa-sort" aria-hidden="true"> Customer</i>
+                    </a>
+                  </th>
+                  <th>
+                    <a th:href="@{'/finance/viewInvoices/page/' + ${currentPage} + '?sortField=total&sortDir=' + ${reverseSortDir}}"
+                      title="Sort By total">
+                      <i class="fa fa-sort" aria-hidden="true"> Total</i>
+                    </a>
+                  </th>
+                  <th>
+                    <a th:href="@{'/finance/viewInvoices/page/' + ${currentPage} + '?sortField=paymentMethod&sortDir=' + ${reverseSortDir}}"
+                      title="Sort By payment method">
+                      <i class="fa fa-sort" aria-hidden="true"> Payment Method</i>
+                    </a>
+                  </th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <div>
                         <tr th:each="invoice : ${invoiceList}">
-                            <td th:text="${invoice.invoice_num}"></td>
+                            <td th:text="${invoice.invoiceNum}"></td>
                             <td th:text="${invoice.invoiceDate}"></td>
                             <td th:text="${invoice.petOwnerFullName}"></td>
                             <td>R <span th:text="${invoice.total}"></span></td>
-                            <td th:text="${invoice.payment_method}"></td>
+                            <td th:text="${invoice.paymentMethod}"></td>
                             <td class="view-column">
-                                <a th:href="@{/invoices/template/{id}(id = ${invoice.invoice_num})}" id="invoiceView" class="invoice-view">Select</a>
+                                <a th:href="@{/invoices/template/{id}(id = ${invoice.invoiceNum})}" id="invoiceView" class="invoice-view">Select</a>
                             </td>
                         </tr>
                 </div>
