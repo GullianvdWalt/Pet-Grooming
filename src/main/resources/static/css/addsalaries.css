@@ -35,245 +35,241 @@
 
 */
 .add-salaries-container {
-    width: 100%;
-    min-height: 700px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
+  width: 100%;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
 }
 h2 {
-    text-align: center;
-    color: #ff69b4;
-    font-size: 1.6em;
-    padding: 1rem;
-    font-family: 'Roboto', sans-serif;
+  text-align: center;
+  color: #ff69b4;
+  font-size: 1.6em;
+  padding: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 .salary-container-row-bottom {
-    border: 2px solid #c4c4c4;
-    padding: 1rem;
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  border: 2px solid #c4c4c4;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .salary-container-col-top {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #c4c4c4;
-    padding: 2rem;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4c4c4;
+  padding: 2rem;
+  justify-content: center;
+  width: 100%;
 }
 .salary-form-row-top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 50%;
-    margin: 1rem 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  margin: 1rem 25%;
 }
 .salary-form-row-top input,
 textarea {
-    padding: 0.5rem;
-    width: 60%;
-    font-size: 1.2em;
-    color: #ff69b4;
+  padding: 0.5rem;
+  width: 60%;
+  font-size: 1.2em;
+}
+textarea {
+  width: 80%;
 }
 .salary-container-col-middle {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #c4c4c4;
-    padding: 1rem;
-    margin: 1rem 0;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4c4c4;
+  padding: 1rem;
+  margin: 1rem 0;
+  justify-content: center;
+  width: 100%;
 }
 .salary-form-label {
-    padding: 0.5rem;
-    width: 40%;
-    font-size: 1.2em;
+  padding: 0.5rem;
+  width: 40%;
+  font-size: 1.2em;
 }
 select {
-    padding: 0.5rem;
-    width: 60%;
-    font-size: 1.2em;
-    color: #ff69b4;
+  padding: 0.5rem;
+  width: 60%;
+  font-size: 1.2em;
 }
 .salary-pay-period-container {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
 }
 .salary-pay-period-container-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .salary-pay-period-container-col input {
-    width: 90%;
-    margin: 0.5rem 0;
-    font-size: 1.2em;
-    color: #ff69b4;
+  width: 90%;
+  margin: 0.5rem 0;
+  font-size: 1.2em;
 }
 h3 {
-    text-align: center;
-    font-size: 1.5em;
-    color: #ff69b4;
-    font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
 }
 .overtime-row,
 .deductions-row,
 .transport-money-row,
 .bonus-row {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #c4c4c4;
-    margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4c4c4;
+  margin: 1rem;
 }
 .overtime-row-row {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    margin: 1rem 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  margin: 1rem 25%;
 }
 .deductions-row-row-row {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    margin: 1.5rem 10%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 10%;
 }
 .deductions-row-row-row input {
-    padding: 0.5rem;
-    font-size: 1.2em;
-    color: #ff69b4;
+  padding: 0.5rem;
+  font-size: 1.2em;
 }
 .overtime-row-row-col,
 .deductions-row-row {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .overtime-row-row-col label {
-    text-align: left;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 .overtime-row-row-col input {
-    width: 60%;
-    padding: 0.5rem;
-    font-size: 1.2em;
-    color: #ff69b4;
+  width: 60%;
+  padding: 0.5rem;
+  font-size: 1.2em;
 }
 .overtime-button-row {
-    width: 70%;
-    text-align: center;
-    margin: 2rem 15%;
+  width: 70%;
+  text-align: center;
+  margin: 2rem 15%;
 }
 .transport-money-row-row {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 1rem 25%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 1rem 25%;
 }
 .transport-money-row-row-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .transport-money-row-row-col-row {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 1rem 15%;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 15%;
 }
 .transport-money-row-row-col-row input {
-    padding: 0.5rem;
-    font-size: 1.2em;
-    color: #ff69b4;
+  padding: 0.5rem;
+  font-size: 1.2em;
 }
 
 .transport-money-row-row-col-col {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 .transport-money-row-row-col-col input {
-    width: 50%;
-    margin: 1rem 25%;
-    font-size: 1.2em;
-    color: #ff69b4;
+  width: 50%;
+  margin: 1rem 25%;
+  font-size: 1.2em;
 }
 .transport-money-row-row-col-col label {
-    margin-bottom: 10px;
-    font-size: 1.2em;
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 .transport-button-row {
-    width: 70%;
-    text-align: center;
-    margin: 2rem 15%;
+  width: 70%;
+  text-align: center;
+  margin: 2rem 15%;
 }
 .bonus-row-row {
-    display: flex;
-    flex-direction: column;
-    padding: 4rem;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  justify-content: space-evenly;
 }
 .bonus-row-row-col {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 25%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 25%;
 }
 .bonus-row-row-col-col-row,
 .bonus-row-row-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .bonus-row-row-col-col-row input,
 .bonus-row-row-col input {
-    padding: 0.5rem;
-    font-size: 1.2em;
-    color: #ff69b4;
+  padding: 0.5rem;
+  font-size: 1.2em;
 }
 .salary-total-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
 }
 .salary-total-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 70%;
-    margin: 1rem 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  margin: 1rem 15%;
 }
 .salary-total-col label {
-    margin-bottom: 10px;
-    font-size: 1.2em;
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 .salary-total-col input {
-    padding: 0.5rem;
-    font-size: 1.2em;
-    color: #ff69b4;
+  padding: 0.5rem;
+  font-size: 1.2em;
 }
 .salary-total-button-row {
-    width: 70%;
-    text-align: center;
-    margin: 2rem 15%;
-    display: flex;
-    justify-content: space-between;
+  width: 70%;
+  text-align: center;
+  margin: 2rem 15%;
+  display: flex;
+  justify-content: space-between;
 }
 .bonus-button-row {
-    width: 70%;
-    text-align: center;
-    margin: 2rem 15%;
+  width: 70%;
+  text-align: center;
+  margin: 2rem 15%;
 }
 .button-container {
-    height: 10%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem;
-    margin: 1rem;
+  height: 10%;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
 }
 
+/* Date Picker */
+.daterangepicker .calendar-table th,
+.daterangepicker .calendar-table td {
+  min-width: 35px;
+}

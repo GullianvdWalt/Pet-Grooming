@@ -61,8 +61,6 @@ public class PetController {
     @PostMapping("/newCustomer/pet/new")
     public String addPet(@Valid @ModelAttribute("pet") Pet pet, BindingResult bindingResult,
             RedirectAttributes redirAttrs,Model model) {
-//       bindingResult.addError(new FieldError("pet", "id", ""));
-//       int petId = pet.getId();
         int ownerId = pet.getPet_owner_id();
         if (bindingResult.hasErrors()) {
             return "newPetForm";
@@ -72,6 +70,8 @@ public class PetController {
         // Direct to New Pet and pass Pet Owner Id
         return "redirect:/customerDetails/" + ownerId;
     }
+    
+    
 
     // Get Pet By ID
     @RequestMapping("/pet/findPetById/{ID}")

@@ -10,6 +10,10 @@ import com.pg.pet_grooming.Repositories.ExpensesRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,8 +24,14 @@ public class ExpensesService {
     private ExpensesRepository expenseRepository;
 
     // Return Expenses
-    public List<Expenses> getExpenses() {
-        return expenseRepository.findAll();
+    public Page<Expenses> getExpenses(int pageNum, String sortField, String sortDir) {
+        // Paging - 6 rows per page
+        Pageable pageable = PageRequest.of(pageNum - 1, 10, 
+                    sortDir.equals("asc") ? Sort.by(sortField).ascending()
+			: Sort.by(sortField).descending()
+	);
+        
+        return expenseRepository.findAll(pageable);
     }
 
     // Save New Expense

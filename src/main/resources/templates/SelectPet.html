@@ -39,6 +39,7 @@
       <div class="select-pets-container">
 
         <div class="select-pet-header-container">
+
           <div class="select-pet-heading-container">
             <h3>Select Pet</h3>
           </div>
@@ -47,12 +48,12 @@
         <div class="pet-select-container">
 
           <div class="search-input-container">
-            <form th:action="@{/employees}">
+            <form th:action="@{/newAppointments/select/page/1}">
               <input type="text" name="keyword" id="searchInput" th:value="${keyword}" class="search-input"
                 placeholder="Search..." autocomplete="off" required />
               <button type="submit" class="search-button" title="Search"><i class="fa fa-search"></i></button>
-              <a th:href="@{/employees}" class="search-button" title="Clear Search" onclick="clearSearch()"><i
-                  class="fa fa-times"></i></a>
+              <a th:href="@{/newAppointments/select}" class="search-button" title="Clear Search"
+                onclick="clearSearch()"><i class="fa fa-times"></i></a>
             </form>
           </div>
           <!-- Customers Table -->
@@ -83,33 +84,68 @@
                   </th>
                 </tr>
               </thead>
-              <tbody th:if="!${#lists.isEmpty(selectPet)}">
-                                    <tr th:each="Pet_PetOwner : ${selectPet}">
-                                        <td class="select-column">
+              <tbody>
+                <div th:if="!${#lists.isEmpty(customerList)}"  th:each="pet_owner : ${customerList}" >
+                    <tr th:each="pet : ${pet_owner.pets}">
+                                <td class="select-column">
+                                  <a th:href="@{/newAppointments/new/{id}(id = ${pet.id})}" id="petSelect" class="pet-select">Select</a>
+                                  <input type="hidden" th:name="petOwnerId" th:value="${pet_owner.id}" id="petOwnerId">
+                                </td>
+                                <td th:text=${pet.pet_name}></td>
+                                <td th:text=${pet.pet_breed}></td>
+                                <td th:text=${pet_owner.petOwnerFullName}></td>
+                                <td th:text=${pet_owner.petOwnerCell}></td>
+                                <td th:text=${pet_owner.petOwnerAddress}></td>
+                                <td th:text=${pet_owner.petOwnerCity}></td>
+                    </tr>
+                  </div>
+               </tbody>
+            </table>
+           </div>
+          </div>
 
-                                            <a th:href="@{/newAppointments/new/{pet_Id}(pet_Id = ${Pet_PetOwner.pet_id})}" id="petSelect" class="pet-select">Select</a>
-                                        </td>
-                                <input type="hidden" th:name="petOwnerId" th:value="${Pet_PetOwner.pet_owner_id}" id="petOwnerId">
-                                <td th:text=${Pet_PetOwner.pet_name}></td>
-                                <td th:text=${Pet_PetOwner.pet_breed}></td>
-                                <td th:text=${Pet_PetOwner.pet_owner_full_name}></td>
-                                <td th:text=${Pet_PetOwner.pet_owner_cell}></td>
-                                <td th:text=${Pet_PetOwner.pet_owner_address}></td>
-                                <td th:text=${Pet_PetOwner.pet_owner_city}></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
+          </div>
                 <!--  Select Customer Container Starts    -->
 
-            </div>
-            <!-- Content Container End   -->
+      <!-- Paging Starts -->
+        <div class="paging-container">
+            <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+            <div>&nbsp;</div>
+            <div th:if="${totalPages > 1}" class="pages">
+              Total Customers: [[${totalItems}]]
+              &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
-        </div>
-        <!--  Select Customer Section Ends   -->
+              <a th:if="${currentPage > 1}" th:href="@{'/newAppointments/select/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+              <span th:unless="${currentPage > 1}">First</span>
+              &nbsp;&nbsp;
+
+              <a th:if="${currentPage > 1}" th:href="@{'/newAppointments/select/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+              <span th:unless="${currentPage > 1}">Previous</span>
+
+              &nbsp;&nbsp;
+
+              <span th:each="i: ${#numbers.sequence(2, totalPages)}">
+			        <a th:if="${currentPage != i}" th:href="@{'/newAppointments/select/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                <span th:unless="${currentPage != i}">[[${i}]]</span>
+                &nbsp;
+              </span>
+
+              <a th:if="${currentPage < totalPages}" th:href="@{'/newAppointments/select/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+              <span th:unless="${currentPage < totalPages}">Next</span>
+              &nbsp;&nbsp;
+
+              <a th:if="${currentPage < totalPages}" th:href="@{'/newAppointments/select/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+              <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+          </div>
+        <!-- Paging Ends -->
+
+      </div>
+      <!-- Content Container Ends -->
+
+    </div>
+    <!-- Content Section Ends -->
+
 
 
         <footer th:insert="fragments/footer :: footer">

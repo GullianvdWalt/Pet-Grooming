@@ -1,4 +1,6 @@
-<!-- Created By Gullian Van Der Walt -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -56,17 +58,17 @@
           </div>
 
           <div class="invoice-row">
-            <label for="groomerSelect" class="appointment-details-label">Groomer</label>
-            <select name="payment_method" id="groomerSelect">
+            <label for="groomerSelect" class="appointment-details-label">Payment Method</label>
+            <select th:name="payment_method" name="payment_method" id="groomerSelect" required>
               <option value="select">Select Payment Method</option>
               <option value="EFT">EFT</option>
-              <option value="EFT">CASH</option>
+              <option value="Cash">CASH</option>
             </select>
           </div>
 
           <div class="invoice-row">
             <label for="invoiceNote" class="invoice-label">Note</label>
-            <textarea type="text" class="invoice-data-note" id="invoiceNote" name="invoice_note" cols="10"
+            <textarea type="text" class="invoice-data-note" id="invoiceNote" name="invoiceNote" cols="10"
               rows="5">Thank You For Your Support</textarea>
           </div>
         </div>
@@ -104,18 +106,24 @@
               <div class="customer-details-container-row">
                 <input type="hidden" name="pet_owner_id" th:value="${petOwner.id}">
                 <h5 class="customer-label">Customer Name</h5>
-                <h5 type="text" class="customer-input" id="customerFullnameInput" name="pet_owner_full_name"
-                  th:text="${petOwner.pet_owner_full_name}"></h5>
+                <h5 type="text" class="customer-input" id="customerFullnameInput" th:name="pet_owner_full_name" name="pet_owner_full_name"
+                  th:text="${petOwner.petOwnerFullName}"></h5>
+                <input type="hidden" name="pet_owner_full_name" th:value="${petOwner.petOwnerFullName}">
               </div>
               <div class="customer-details-container-row">
                 <h5 class="customer-label">Cell</h5>
                 <h5 type="text" class="customer-input" id="cellInput" name="pet_owner_cell"
-                  th:text="${petOwner.pet_owner_cell}"></h5>
+                  th:text="${petOwner.petOwnerCell}"></h5>
               </div>
               <div class="customer-details-container-row">
                 <h5 class="customer-label">Address</h5>
                 <h5 type="text" class="customer-input" name="pet_owner_address"
-                  th:text="${petOwner.pet_owner_address}"></h5>
+                  th:text="${petOwner.petOwnerAddress}"></h5>
+              </div>
+              <div class="customer-details-container-row">
+                <h5 class="customer-label">City</h5>
+                <h5 type="text" class="customer-input" name="pet_owner_city"
+                  th:text="${petOwner.petOwnerCity}"></h5>
               </div>
             </div>
             <div class="customer-details-container-col">

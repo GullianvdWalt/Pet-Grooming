@@ -9,6 +9,10 @@ import com.pg.pet_grooming.Repositories.PastAppointmentRepo;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,9 +21,15 @@ public class PastAppointmentService {
     @Autowired private PastAppointmentRepo pastAppointmentRepo;
     
         // Return Appointments
-    public List<PastAppointments> getAppointments(){
+    public Page<PastAppointments> getAppointments(int pageNum, String sortField, String sortDir){
         
-        return pastAppointmentRepo.findAll();
+        // Paging
+        Pageable pageable = PageRequest.of(pageNum - 1, 10, 
+        sortDir.equals("asc") ? Sort.by(sortField).ascending()
+            : Sort.by(sortField).descending()
+	);
+        
+        return pastAppointmentRepo.findAll(pageable);
     }
     
     // Save New Appointment

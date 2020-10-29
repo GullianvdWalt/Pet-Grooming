@@ -1,4 +1,8 @@
-// Created By Gullian Van Der Walt
+/*
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+ */
 // Class Used to genereate PDF Document for Salaries
 package com.pg.pet_grooming.Utilities;
 
@@ -53,7 +57,7 @@ public class PDFExporter {
         table.addCell(String.valueOf(salaries.getDate()));
         table.addCell(String.valueOf(employee.getId()));
         table.addCell(employee.getEmployee_full_name());
-        table.addCell(String.valueOf(salaries.getSalary_grand_total()));
+        table.addCell(String.valueOf(salaries.getSalaryGrandTotal()));
     }
 
     public void export(HttpServletResponse response) throws IOException {

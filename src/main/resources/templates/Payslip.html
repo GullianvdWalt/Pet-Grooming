@@ -3,182 +3,181 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Pet Grooming | Payslip</title>
-        <!-- Window Icon -->
-        <link rel="icon" href="/icons/icon.ico">
-        <!--    Styles     -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/payslip.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
-        <!--    Font Awesome    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Grooming | Payslip</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/payslip.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <body>
+<body>
 
 
-        <header th:insert="fragments/header :: header">
-            <!-- Header Included With Fragments -->
-        </header>
-        <!--    Main Section Starts    -->
-        <div class="content-section">
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+  <!--    Main Section Starts    -->
+  <div class="content-section">
 
-            <!-- Navbar Starts -->
-            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-                <!-- Navigation Included With Fragments -->
-            </nav>
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
 
-            <!-- Content-Container-Start -->
-            <div class="content-container" id="contentContainer">
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
 
-                <!-- Payslip Container Start -->
-                <div class="payslip-container">
-                    <h1>PAYSLIP</h1><br />
-                    <h3>Date Issued: <span th:text=${salaries.date}></span></h3><br />
-                    <div class="payslip-details-container">
-                        <div class="payslip-details-row">
-                            <h4>Name of Employer:</h4>
-                            <h4 th:text="${businessDetails.business_name}"></h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>Address</h4>
-                            <h4 th:text="${businessDetails.business_address}"></h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>Name of Employee:</h4>
-                            <h4 th:text="${employee.employee_full_name}"></h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>I.D. Number:</h4>
-                            <h4 th:text="${employee.emp_sa_id}"></h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>Occupation</h4>
-                            <h4 th:text=${employee.occupation}></h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>Pay Period:</h4>
-                            <h4> <span th:text="${salaries.pay_period_start}"> </span> -
-                                <span th:text="${salaries.pay_period_end}"></span></h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>Basic Wage:</h4>
-                            <h4>R<span th:text="${salaryDetails.wage}"></span> per Day Working</h4>
-                        </div>
-                        <div class="payslip-details-row">
-                            <h4>Payment Method:</h4>
-                            <h4 th:text="${salaries.payment_method}"></h4>
-                        </div>
-                    </div><br />
-                    <!-- Payslip Table Start -->
-                    <table class="payslip-details-table">
-                        <tr>
-                            <th>Description</th>
-                            <th>Amount In Rand</th>
-                        </tr>
-                        <tr>
-                            <th>Standard Pay <span>9</span>x R<span th:text="${salaryDetails.wage}"></span></th>
-                            <td th:text="${salaries.salary_subtotal}"></td>
-                        </tr>
-                        <tr>
-                            <th>Overtime Worked <span th:text="${salaries.overtime_hours}"></span> @ R<span
-                                    th:text="${salaryDetails.overtime}"></span> </th>
-                            <td th:text="${salaries.overtime_total}"></td>
-                        </tr>
-                        <tr>
-                            <th>Total Incl. Overtime</th>
-                            <td th:text="${salaries.salary_subtotal}"></td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Deductions</th>
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            <th>Amount</th>
-                        </tr>
-                        <tr>
-                            <td th:text="${salaries.deduction_description}"></td>
-                            <td th:text="${salaries.deduction_total}"></td>
-                        </tr>
-                        <tr>
-                            <th>Total after deductions:</th>
-                            <td th:text="${salaries.salary_total_aftr_deduct}"></td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Petrol Money</th>
-                        </tr>
-                        <tr>
-                            <th><b>R<span th:text="${salaryDetails.transport_amount}"></span> per day only when use of Taxi</b> </th>
-                            <td th:text="${salaries.transport_total}"></td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Bonus</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Bonus Per Dog Washed</th>
-                        </tr>
-                        <tr>
-                            <th>Small Dog <span th:text="${salaries.numSDog}"></span> @ R<span
-                                    th:text="${salaryDetails.bonus_small}"></span> each</th>
-                            <td th:text="${salaries.amountSDog}"></td>
-                        </tr>
-                        <tr>
-                            <th>Medium Dog <span th:text="${salaries.numMDog}"></span> @ R<span
-                                    th:text="${salaryDetails.bonus_medium}"></span> each</th>
-                            <td th:text="${salaries.amountMDog}"></td>
-                        </tr>
-                        <tr>
-                            <th>Large Dog <span th:text="${salaries.numLDog}"></span> @ R<span
-                                    th:text="${salaryDetails.bonus_large}"></span> each</th>
-                            <td th:text="${salaries.amountLDog}"></td>
-                        </tr>
-                        <tr>
-                            <th>Bonus Total:</th>
-                            <td th:text="${salaries.bonus_total}"></td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th>Salary Total Incl. Bonus</th>
-                            <td th:text="${salaries.salary_total_w_bonus}"></td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <th colspan="2">Date Given:</th>
-                        </tr>
-                        <tr>
-                            <th>Signature: <span class="signature-line">x</span></th>
-                            <th>Date: <span class="signature-date-line">.</span></th>
-                        </tr>
-                        <tr></tr>
-                    </table>
-                    <!-- Payslip Table End -->
-                    <div class="payslip-button-row">
-                        <a th:href="@{/genPdf/{fileName}/{id}(id = ${salaries.salary_id})}" class="buttons">Export Payslip</a>
-                        <!-- @{/salaries/payslip/{id}(id = ${salaries.salary_id})} -->
-                    </div>
-                </div>
-                <!-- Payslip Container Ends  -->
-
-            </div>
-            <!-- Content-Container-Ends -->
-
+      <!-- Payslip Container Start -->
+      <div class="payslip-container">
+        <h1>PAYSLIP</h1><br />
+        <h3>Date Issued: <span th:text=${salaries.date}></span></h3><br />
+        <div class="payslip-details-container">
+          <div class="payslip-details-row">
+            <h4>Name of Employer:</h4>
+            <h4 th:text="${businessDetails.business_name}"></h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>Address</h4>
+            <h4 th:text="${businessDetails.business_address}"></h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>Name of Employee:</h4>
+            <h4 th:text="${employee.employee_full_name}"></h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>I.D. Number:</h4>
+            <h4 th:text="${employee.emp_sa_id}"></h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>Occupation</h4>
+            <h4 th:text=${employee.occupation}></h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>Pay Period:</h4>
+            <h4> <span th:text="${salaries.pay_period_start}"> </span> -
+              <span th:text="${salaries.pay_period_end}"></span></h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>Basic Wage:</h4>
+            <h4>R<span th:text="${salaryDetails.wage}"></span> per Day Working</h4>
+          </div>
+          <div class="payslip-details-row">
+            <h4>Payment Method:</h4>
+            <h4 th:text="${salaries.payment_method}"></h4>
+          </div>
+        </div><br />
+        <!-- Payslip Table Start -->
+        <table class="payslip-details-table">
+          <tr>
+            <th>Description</th>
+            <th>Amount In Rand</th>
+          </tr>
+          <tr>
+            <th>Standard Pay <span>9</span>x R<span th:text="${salaryDetails.wage}"></span></th>
+            <td th:text="${salaries.salary_subtotal}"></td>
+          </tr>
+          <tr>
+            <th>Overtime Worked <span th:text="${salaries.overtime_hours}"></span> @ R<span
+                th:text="${salaryDetails.overtime}"></span> </th>
+            <td th:text="${salaries.overtimeTotal}"></td>
+          </tr>
+          <tr>
+            <th>Total Incl. Overtime</th>
+            <td th:text="${salaries.salary_subtotal}"></td>
+          </tr>
+          <tr>
+            <th colspan="2">Deductions</th>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td th:text="${salaries.deduction_description}"></td>
+            <td th:text="${salaries.deduction_total}"></td>
+          </tr>
+          <tr>
+            <th>Total after deductions:</th>
+            <td th:text="${salaries.salary_total_aftr_deduct}"></td>
+          </tr>
+          <tr>
+            <th colspan="2">Petrol Money</th>
+          </tr>
+          <tr>
+            <th><b>R<span th:text="${salaryDetails.transport_amount}"></span> per day only when use of Taxi</b> </th>
+            <td th:text="${salaries.transport_total}"></td>
+          </tr>
+          <tr>
+            <th colspan="2">Bonus</th>
+          </tr>
+          <tr>
+            <th colspan="2">Bonus Per Dog Washed</th>
+          </tr>
+          <tr>
+            <th>Small Dog <span th:text="${salaries.numSDog}"></span> @ R<span
+                th:text="${salaryDetails.bonus_small}"></span> each</th>
+            <td th:text="${salaries.amountSDog}"></td>
+          </tr>
+          <tr>
+            <th>Medium Dog <span th:text="${salaries.numMDog}"></span> @ R<span
+                th:text="${salaryDetails.bonus_medium}"></span> each</th>
+            <td th:text="${salaries.amountMDog}"></td>
+          </tr>
+          <tr>
+            <th>Large Dog <span th:text="${salaries.numLDog}"></span> @ R<span
+                th:text="${salaryDetails.bonus_large}"></span> each</th>
+            <td th:text="${salaries.amountLDog}"></td>
+          </tr>
+          <tr>
+            <th>Bonus Total:</th>
+            <td th:text="${salaries.bonusTotal}"></td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <th>Salary Total Incl. Bonus</th>
+            <td th:text="${salaries.salary_total_w_bonus}"></td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <th colspan="2">Date Given:</th>
+          </tr>
+          <tr>
+            <th>Signature: <span class="signature-line">x</span></th>
+            <th>Date: <span class="signature-date-line">.</span></th>
+          </tr>
+          <tr></tr>
+        </table>
+        <!-- Payslip Table End -->
+        <div class="payslip-button-row">
+          <a thhref="@{/finance/salaries}" class="buttons">Salaries</a>
+          <a th:href="@{/genPdf/{fileName}/{id}(id = ${salaries.salaryId})}" class="buttons">Export Payslip</a>
         </div>
-        <!--    Main Section Ends    -->
+      </div>
+      <!-- Payslip Container Ends  -->
+
+    </div>
+    <!-- Content-Container-Ends -->
+
+  </div>
+  <!--    Main Section Ends    -->
 
 
 
-        <footer th:insert="fragments/footer :: footer">
-            <!-- Footer Included With Fragments -->
-        </footer>
+  <footer th:insert="fragments/footer :: footer">
+    <!-- Footer Included With Fragments -->
+  </footer>
 
-        <!-- Scripts -->
-        <script th:src="@{/js/sidenav.js}"></script>
+  <!-- Scripts -->
+  <script th:src="@{/js/sidenav.js}"></script>
 
-    </body>
+</body>
 
 </html>
-

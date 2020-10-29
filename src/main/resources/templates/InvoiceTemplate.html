@@ -1,4 +1,6 @@
-<!-- Created By Gullian Van Der Walt -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -59,8 +61,8 @@
                       <img th:src="@{${businessDetails.ImagePath}}" class="icon" style="width:70px; height:70px;">
                     </td>
                     <td>
-                      Invoice #: <span th:text="${invoice.invoice_num}"></span><br />
-                      Created: <span th:text="${invoice.invoice_date}"></span><br />
+                      Invoice #: <span th:text="${invoice.invoiceNum}"></span><br />
+                      Created: <span th:text="${invoice.invoiceDate}"></span><br />
                     </td>
                   </tr>
                 </table>
@@ -90,7 +92,7 @@
             </tr>
             <tr class="details">
               <td>
-                <span th:text="${invoice.payment_method}"></span>
+                <span th:text="${invoice.paymentMethod}"></span>
               </td>
             </tr>
             <tr class="heading">
@@ -190,7 +192,7 @@
       </div>
       <!-- Invoice Container Ends -->
       <div class="button-container">
-        <a th:href="@{/genInvoicePdf/{fileName}/{id}(id = ${invoice.invoice_num})}" class="buttons">Export Invoice</a>
+        <a th:href="@{/genInvoicePdf/{fileName}/{id}(id = ${invoice.invoiceNum})}" class="buttons">Export Invoice</a>
       </div>
     </div>
     <!-- Content-Container-Ends -->

@@ -1,8 +1,4 @@
 /* Create By Gullian Van Der Walt 15/07/2020
-   Last Updated 08/09/2020
- * This is the Pet Owner Service Class
- * This Class implements the Pet Owner Reposistory 
- * The controller sends request to this class
  */
 package com.pg.pet_grooming.Services;
 
@@ -23,12 +19,12 @@ import org.springframework.data.domain.Sort;
 public class PetOwnerService {
 
     //Inject PetRepository
-    @Autowired
-    private PetOwnerRepository petOwnerRepository;
+    @Autowired private PetOwnerRepository petOwnerRepository;
 
     //Method To Return A List of PetOwners FROM MySQL Database, PetOwner Table
     public Page<PetOwner> getPetOwners(int pageNum, String sortField, String sortDir) {
-        Pageable pageable = PageRequest.of(pageNum - 1, 5, 
+        // Paging
+        Pageable pageable = PageRequest.of(pageNum - 1, 6, 
                     sortDir.equals("asc") ? Sort.by(sortField).ascending()
 			: Sort.by(sortField).descending()
 	);
@@ -36,6 +32,17 @@ public class PetOwnerService {
         
         return petOwnerRepository.findAll(pageable);
     }
+    
+    // New Appointment - Select Pet
+    //Method To Return A List of PetOwners FROM MySQL Database, PetOwner Table
+    public Page<PetOwner> getPetPetOwners(int pageNum, String sortField, String sortDir) {
+        Pageable pageable = PageRequest.of(pageNum - 1, 5, 
+                    sortDir.equals("asc") ? Sort.by(sortField).ascending()
+			: Sort.by(sortField).descending()
+	);
+        return petOwnerRepository.findAll(pageable);
+    }
+    
 
     //Save New Pet Owner From NewCustomer Form
     public void save(PetOwner petOwner) {

@@ -11,6 +11,10 @@ import com.pg.pet_grooming.Repositories.AppointmentRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,10 +24,16 @@ public class AppointmentsService {
     @Autowired
     private AppointmentRepository appointmentRepo;
 
-    // Return Appointments
-    public List<Appointments> getAppointments() {
+    // Return Appointments with Paging
+    public Page<Appointments> getAppointments(int pageNum, String sortField, String sortDir){
 
-        return appointmentRepo.findAll();
+        // 10 Appointments per page
+        Pageable pageable = PageRequest.of(pageNum - 1, 5, 
+                    sortDir.equals("asc") ? Sort.by(sortField).ascending()
+			: Sort.by(sortField).descending()
+	);
+        
+        return appointmentRepo.findAll(pageable);
     }
 
     // Save New Appointment

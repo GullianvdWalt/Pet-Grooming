@@ -49,6 +49,7 @@
         <div class="error-messages">
           <h1 th:text="${error}" th:if="${error}"></h1>
         </div>
+
         <!-- Appointment Details Section Starts  -->
         <form class="appointment-details-section" th:action="@{/newAppointments/new/save}" th:object="${newAppointment}"
           method="post">
@@ -77,18 +78,18 @@
                 <div>
                   <label for="customer-fullname-input">Full Name</label>
                   <input type="text" id="customer-fullname-input" name="pet_owner_full_name"
-                    th:value="${PetOwner.pet_owner_full_name}" />
+                    th:value="${PetOwner.petOwnerFullName}" />
                   <input type=" text" id="petOwnerId" name="pet_owner_id" th:value="${PetOwner.id}" hidden>
                 </div>
                 <div>
                   <label for="cell-input" class="cell-label">Cell</label>
-                  <input type="text" id="cell-input" name="pet_owner_cell" th:value="${PetOwner.pet_owner_cell}"
+                  <input type="text" id="cell-input" name="pet_owner_cell" th:value="${PetOwner.petOwnerCell}"
                     required />
                 </div>
                 <div>
                   <label for=" address-input" class="appointment-label">Address</label>
                   <input type="text" id="address-input" name="pet_owner_address"
-                    th:value="${PetOwner.pet_owner_address}" />
+                    th:value="|${PetOwner.petOwnerAddress} - ${PetOwner.petOwnerCity}|" />
                 </div>
               </div>
             </div>
@@ -132,7 +133,7 @@
           <!-- Services End -->
           <!--    Button Container   -->
           <div class="button-container">
-            <a th:href="@{/}" class="buttons"><img src="/icons/cancelSmall.png" alt="Cancel">Cancel</a>
+            <a th:href="@{/}" class="buttons" id="cancelBtn"><img src="/icons/cancelSmall.png" alt="Cancel">Cancel</a>
             <button type="submit" class="buttons"><img src="/icons/save1.png" alt="Save">Save</button>
           </div>
         </form>

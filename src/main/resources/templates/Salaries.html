@@ -1,102 +1,231 @@
-<!-- Created By Gullian Van Der Walt 01/09/2020 -->
-<!-- Last Updated 07/09/2020 -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Pet Grooming | Salaries</title>
-        <!-- Window Icon -->
-        <link rel="icon" href="/icons/icon.ico">
-        <!--    Styles     -->
-        <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
-        <link rel="stylesheet" th:href="@{/css/salaries.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
-        <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
-        <!--    Font Awesome    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Grooming | Salaries</title>
+  <!-- Window Icon -->
+  <link rel="icon" href="/icons/icon.ico">
+  <!--    Styles     -->
+  <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
+  <link rel="stylesheet" th:href="@{/css/salaries.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/partials.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/jquery.datetimepicker.min.css}" />
+  <!--    Font Awesome    -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <body>
+<body>
 
 
-        <header th:insert="fragments/header :: header">
-            <!-- Header Included With Fragments -->
-        </header>
-        <!--    Main Section Starts    -->
-        <div class="content-section">
+  <header th:insert="fragments/header :: header">
+    <!-- Header Included With Fragments -->
+  </header>
+  <!--    Main Section Starts    -->
+  <div class="content-section">
 
-            <!-- Navbar Starts -->
-            <nav th:insert="fragments/navbar :: navbar" id="sideNav">
-                <!-- Navigation Included With Fragments -->
-            </nav>
+    <!-- Navbar Starts -->
+    <nav th:insert="fragments/navbar :: navbar" id="sideNav">
+      <!-- Navigation Included With Fragments -->
+    </nav>
 
-            <!-- Content-Container-Start -->
-            <div class="content-container" id="contentContainer">
+    <!-- Content-Container-Start -->
+    <div class="content-container" id="contentContainer">
 
-                <!-- Success Messages -->
-                <div class="success-messages">
-                    <h1 th:text="${success}" th:if="${success}"></h1>
+      <!-- Success Messages -->
+      <div class="success-messages">
+        <h1 th:text="${success}" th:if="${success}"></h1>
+      </div>
+      <!-- Error Messages -->
+      <div class="error-messages">
+        <h1 th:text="${error}" th:if="${error}"></h1>
+      </div>
+
+      <!-- Salaries Container Start -->
+      <div class="salaries-container">
+
+        <!-- Sort Container Starts -->
+        <div class="salaries-sort-container">
+          <div class="sort-item">
+            <a class="buttons" th:href="@{/finance/salaries}">
+              <img src="/Icons/byDay.png" alt="View By Day" class="icon">
+              View By Day
+            </a>
+          </div>
+          <div class="sort-item">
+            <a class="buttons" th:href="@{/finance/salaries/week}">
+              <img src="/Icons/byWeek.png" alt="View By Weeks" class="icon">
+              View By Week
+            </a>
+          </div>
+          <div class="sort-item">
+            <a class="buttons" th:href="@{/finance/salaries/month}">
+              <img src="/Icons/byMonth.png" alt="View By Month" class="icon">
+              View By Month
+            </a>
+          </div>
+          <div class="sort-item">
+            <a class="buttons" th:href="@{/finance/salaries/year}">
+              <img src="/Icons/byYear.png" alt="View By Year" class="icon">
+              View By Year
+            </a>
+          </div>
+        </div>
+        <!-- Sort Container Ends -->
+
+        <!-- Salaries Top Container Starts -->
+        <div class="salaries-top-container">
+          <div class="search-input-container">
+            <form th:action="@{/finance/salaries/page/1}">
+              <input type="text" name="keyword" id="searchInput" th:value="${keyword}" class="search-input"
+                placeholder="Search..." autocomplete="off" required />
+              <button type="submit" class="search-button" title="Search"><i class="fa fa-search"></i></button>
+              <a th:href="@{/finance/salaries}" class="search-button" title="Clear Search" onclick="clearSearch()"><i
+                  class="fa fa-times"></i></a>
+            </form>
+          </div>
+          <div class="salaries-add-button-container">
+            <a th:href="@{/selectEmployee}" class="buttons">
+              <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">Add Salary
+            </a>
+          </div>
+        </div>
+        <!-- Salaries Top Container Ends -->
+
+        <!-- Salaries Table Container Start -->
+        <div class="salaries-table-container">
+
+          <!-- Salaries Table Start -->
+          <table th:if="!${#lists.isEmpty(listSalaries)}">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Employee Full Name</th>
+                  <th>Grand Total</th>
+                  <th>Bonus Total</th>
+                  <th>Overtime Total</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <div >
+              <tr th:each="salaries : ${listSalaries}">
+                  <td th:text="${salaries.date}"></td>
+                  <td th:text="${salaries.employeeFullName}"></td>
+                  <td>R<span th:text="${salaries.salaryGrandTotal}"></span></td>
+                  <td>R<span th:text="${salaries.bonusTotal}"></span></td>
+                  <td>R<span th:text="${salaries.overtimeTotal}"></span></td>
+                  <td class="view-column">
+                      <a th:href="@{/salaries/payslip/{id}(id = ${salaries.salaryId})}" id="salaryView" class="salary-view">Select</a>
+                  </td>
+              </tr>
+            </div>
+              <tr th:if="${#lists.isEmpty(listSalaries)}">
+                  <td colspan="8" class="empty-customers-table-text"> There are currently no salaries.</td>
+              </tr>
+            </tbody>
+              </table>
+               <!-- Salaries Table Ends -->
+                <!-- Salaries By Year -->
+                <div th:if="!${#lists.isEmpty(salariesByYear)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="SalariesByYear : ${salariesByYear}">
+                        <td th:text="${SalariesByYear.yr}"></td>
+                        <td th:text="${SalariesByYear.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
                 </div>
-                <!-- Error Messages -->
-                <div class="error-messages">
-                    <h1 th:text="${error}" th:if="${error}"></h1>
+                <!-- Salaries By Month -->
+                <div th:if="!${#lists.isEmpty(salariesByMonth)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Month</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="SalariesByMonth : ${salariesByMonth}">
+                        <td th:text="${SalariesByMonth.mn}"></td>
+                        <td th:text="${SalariesByMonth.yr}"></td>
+                        <td th:text="${SalariesByMonth.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
                 </div>
 
-                <!-- Salaries Container Start -->
-                <div class="salaries-container">
-
-                    <div class="salaries-top-container">
-                        <div class="salaries-search-container">
-
-                            <input type="text" class="search-salaries-input" name="searchSalaries" id="searchSalaries"
-                                   placeholder="Search Salaries">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                        <div class="salaries-add-button-container">
-                            <a th:href="@{/selectEmployee}" class="buttons">
-                                <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">Add Salary
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <!-- Salaries Table Container Start -->
-                    <div class="salaries-table-container">
-                        <!-- Salaries Table Start -->
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Employee Full Name</th>
-                                    <th>Grand Total</th>
-                                    <th>Bonus Total</th>
-                                    <th>Overtime Total</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <div th:if="!${#lists.isEmpty(listSalaries)}">
-                                <tr th:each="salaries : ${listSalaries}">
-                                    <td th:text="${salaries.date}"></td>
-                                    <td th:text="${salaries.employee_full_name}"></td>
-                                    <td>R<span th:text="${salaries.salary_grand_total}"></span></td>
-                                    <td>R<span th:text="${salaries.bonus_total}"></span></td>
-                                    <td>R<span th:text="${salaries.overtime_total}"></span></td>
-                                    <td class="view-column">
-                                        <a th:href="@{/salaries/payslip/{id}(id = ${salaries.salary_id})}" id="salaryView" class="salary-view">Select</a>
-                                    </td>
-                                </tr>
-                            </div>
-                            <tr th:if="${#lists.isEmpty(listSalaries)}">
-                                <td colspan="8" class="empty-customers-table-text"> There are currently no salaries.</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- Salaries Table Ends -->
+                <!-- Salaries By Week -->
+                <div th:if="!${#lists.isEmpty(salariesByWeek)}">
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Week Start Date</th>
+                      <th>Week Number</th>
+                      <th>Month</th>
+                      <th>Year</th>
+                      <th>Total (R)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr th:each="SalariesByWeek : ${salariesByWeek}">
+                        <td th:text="${SalariesByWeek.startDate}"></td>
+                        <td th:text="${SalariesByWeek.wk}"></td>
+                        <td th:text="${SalariesByWeek.mn}"></td>
+                        <td th:text="${SalariesByWeek.yr}"></td>
+                        <td th:text="${SalariesByWeek.total}"></td>
+                      </tr>
+                  </tbody>
+                  </table>
+                </div>
                     </div>
                     <!-- Salaries Table Container Ends -->
+
+            <!-- Paging Starts -->
+              <div class="paging-container">
+                  <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+                  <div>&nbsp;</div>
+                  <div th:if="${totalPages > 1}" class="pages">
+                    Total Salaries: [[${totalItems}]]
+                    &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+
+                    <a th:if="${currentPage > 1}" th:href="@{'/finance/salaries/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+                    <span th:unless="${currentPage > 1}">First</span>
+                    &nbsp;&nbsp;
+
+                    <a th:if="${currentPage > 1}" th:href="@{'/finance/salaries/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+                    <span th:unless="${currentPage > 1}">Previous</span>
+
+                    &nbsp;&nbsp;
+
+                    <span th:each="i: ${#numbers.sequence(2, totalPages)}">
+                    <a th:if="${currentPage != i}" th:href="@{'/finance/salaries/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                      <span th:unless="${currentPage != i}">[[${i}]]</span>
+                      &nbsp;
+                    </span>
+
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/finance/salaries/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                    <span th:unless="${currentPage < totalPages}">Next</span>
+                    &nbsp;&nbsp;
+
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/finance/salaries/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                    <span th:unless="${currentPage < totalPages}">Last</span>
+                  </div>
+                </div>
+              <!-- Paging Ends -->
+
                 </div>
                 <!-- Salaries Container Ends  -->
 
@@ -117,4 +246,3 @@
     </body>
 
 </html>
-

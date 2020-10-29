@@ -10,7 +10,6 @@
 package com.pg.pet_grooming.Controllers;
 
 //Imports
-import com.pg.pet_grooming.DTO.Pet_PetOwner;
 import java.util.*;
 import javax.validation.Valid;
 import java.text.DateFormat;
@@ -26,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 // Local Imports
 import com.pg.pet_grooming.Models.PetOwner;
 import com.pg.pet_grooming.Services.PetOwnerService;
@@ -39,11 +41,9 @@ import com.pg.pet_grooming.Repositories.AppointmentRepository;
 import com.pg.pet_grooming.Services.Appointments_Pet_Services_Service;
 import com.pg.pet_grooming.Models.Appointments_Pet_Services;
 import com.pg.pet_grooming.Models.Employees;
-import com.pg.pet_grooming.Repositories.PastAppointmentRepo;
 import com.pg.pet_grooming.Repositories.ServicesRepository;
 import com.pg.pet_grooming.Services.EmployeeService;
-import org.springframework.dao.DataIntegrityViolationException;
-
+import com.pg.pet_grooming.Services.PetService;
 
 
 
@@ -61,25 +61,107 @@ public class AppointmentController {
     @Autowired private Appointments_Pet_Services_Service appPetServicesService;
     @Autowired private ServicesRepository servicesRepository;
     @Autowired private EmployeeService employeeService;
+    @Autowired private PetService petService;
+    
     
     // New Appointment Page - Select Pet
     @RequestMapping("/newAppointments/select")
-    public String newAppointmentSelect(Model model,Pet_PetOwner pet_petOwner){
-      // Set Page Title
-      String pageTitle = "New Appointment";
-      model.addAttribute("pageTitle", pageTitle);
-      // Set Page Title Icon
-      String iconUrl = "newAppointment.png";
-      model.addAttribute("iconUrl", iconUrl);
+    public String newAppointmentSelect(Model model){
+
+        return viewPage(model, "", 1, "petOwnerFullName", "asc");
+
+    }
+    
+    
+    // Paging
+    @RequestMapping("/newAppointments/select/page/{pageNum}")
+    public String viewPage(Model model,
+            @Param("keyword") String keyword,
+            @Valid @PathVariable(name = "pageNum") int pageNum,
+            @Valid @Param("sortField") String sortField,
+            @Valid @Param("sortDir")String sortDir){
+        
+        // Set Page Title
+        String pageTitle = "New Appointment";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "newAppointment.png";
+        model.addAttribute("iconUrl", iconUrl);
       
-      List<Pet_PetOwner> selectPetList = petRepository.SelectPetList();
-      model.addAttribute("selectPet", selectPetList);
+        
+        if(keyword == null || keyword == ""){
+
+            Page<PetOwner> page = petOwnerService.getPetPetOwners(pageNum, sortField, sortDir);
+            List<PetOwner> customerList = page.getContent();
+           
+            model.addAttribute("customerList", customerList);
+           
+            
+                     // Add Paging Details
+            model.addAttribute("currentPage", pageNum);		
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("totalItems", page.getTotalElements());
+            // Add Sorting Details
+            model.addAttribute("sortField", sortField);
+            model.addAttribute("sortDir", sortDir);
+            // Sort from asc order to desc
+            model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+           
+        }else{
+            // Search has been made via pet name
+            if(searchPet(keyword) == true){
+              // Get pet matching keyword with SQL query 
+              Pet pet = petService.findPetByKeyword(keyword);
+              // Add to a list PetOwner has only list of Pets (Many to one)
+              List<Pet> petList = new ArrayList<>();
+              petList.add(pet);
+             // Get Pet Owner via pet
+             PetOwner petOwner = pet.getPetOwner();
+             // Set the pet owner pet based on keyword SQL query
+             petOwner.setPets(petList);
+            // Add pet owner to customer list
+            List<PetOwner> customerList = new ArrayList<>();
+            customerList.add(petOwner);
+            model.addAttribute("customerList", customerList);
+
+          }else{
+            // Search is based on pet owner details
+            List<PetOwner> customerList = petOwnerService.findPetOwnerByKeyword(keyword);
+            model.addAttribute("customerList", customerList);
+          }
+            
+        }
+        model.addAttribute("keyword", keyword);
+        
+
+      //List<Pet_PetOwner> selectPetList = petRepository.SelectPetList();
+      //model.addAttribute("selectPet", selectPetList);
       
       return "SelectPet";
     }
     
-   @RequestMapping(value="/newAppointments/new/{pet_Id}", method={RequestMethod.POST,RequestMethod.GET})
-    public String getPet(Model model,@PathVariable("pet_Id") int petId, Appointments newAppointment){
+    
+        // Check if the keyword is pet name
+    public boolean searchPet(String keyword){
+        // No Search
+        if(keyword.equals(null)){
+        }
+
+        // Get All Pets
+        List<Pet> petList = petService.getPets();
+        
+        // Loop through all pets and check if keyword was pet name
+        for (int i = 0; i < petList.size(); i++) {
+            if(petList.get(i).getPet_name().equals(keyword)){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+   @RequestMapping(value="/newAppointments/new/{id}", method={RequestMethod.POST,RequestMethod.GET})
+    public String getPet(Model model,@PathVariable("id") int petId, Appointments newAppointment){
     
             if (petId > 0) {
              Pet pet = petRepository.getOne(petId);
@@ -88,10 +170,11 @@ public class AppointmentController {
                 PetOwner petOwner = petOwnerService.findPetOwnerById(pet.getPet_owner_id());
                 model.addAttribute("petOwner", petOwner);
             } catch (Exception e) {
+                model.addAttribute("error","No pet selected!");
                     e.printStackTrace();
             }
             }
-
+            
             // Set Page Title
             String pageTitle = "New Appointment";
             model.addAttribute("pageTitle", pageTitle);
@@ -100,6 +183,11 @@ public class AppointmentController {
             model.addAttribute("iconUrl", iconUrl);
 
             List<Services> serviceList = servicesService.getServices();
+            
+            if(serviceList.equals(null)){
+                model.addAttribute("error", "There are currently no services!");
+            }
+            
             model.addAttribute("serviceList", serviceList);
         
             model.addAttribute("newAppointment", newAppointment);
@@ -147,7 +235,7 @@ public class AppointmentController {
              pet = petRepository.getOne(petId);
              newAppointment.setPet(pet);
 
-            newAppointment.setApp_date_time(date);
+            newAppointment.setAppDateTime(date);
 
             // Find Services      
             serviceList = servicesRepository.findAllById(serviceIds);
@@ -163,8 +251,8 @@ public class AppointmentController {
             redirAttrs.addFlashAttribute("success", "Appointment Saved!");
          }    
         }catch(DataIntegrityViolationException ex){
-            
-            redirAttrs.addFlashAttribute("error", "The selected appointment time has already been taken!");
+//            
+            redirAttrs.addFlashAttribute("error","The selected appointment time has already been taken!");
             return "redirect:/";
         }
             

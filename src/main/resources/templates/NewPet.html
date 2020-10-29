@@ -1,5 +1,6 @@
+<!-- Created By Gullian Van Der Walt -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -70,25 +71,24 @@
                   <div class="form-row">
                     <label for="customer-name-input" class="customer-label">Name & Surname</label><br>
                     <input type="text" id="customer-name-input" class="customer-input" name="pet_owner_full_name"
-                      required readonly th:value="${petOwner.pet_owner_full_name}" />
+                      required readonly th:value="${petOwner.petOwnerFullName}" />
 
                   </div>
                   <div class="form-row">
                     <label for="customer-cell-input" class="customer-label">Cell</label><br>
                     <input type="text" id="customer-cell-input" class="customer-input" name="pet_owner_cell" required
-                      readonly th:value="${petOwner.pet_owner_cell}" />
+                      readonly th:value="${petOwner.petOwnerCell}" />
 
                   </div>
                   <div class="form-row">
                     <label for="customer-address-input" class="customer-label">Address</label><br>
                     <textarea type="text" id="customer-address-input" class="customer-input" name="pet_owner_address"
-                      th:value="${petOwner.pet_owner_address}" th:text="${petOwner.pet_owner_address}"
-                      readonly></textarea>
+                      th:value="${petOwner.petOwnerAddress}" th:text="${petOwner.petOwnerAddress}" readonly></textarea>
                   </div>
                   <div class="form-row">
                     <label for="customer-city-input" class="customer-label">Address</label><br>
                     <input type="text" id="customer-city-input" class="customer-input" name="pet_owner_address"
-                      th:value="${petOwner.pet_owner_city}" readonly></input>
+                      th:value="${petOwner.petOwnerCity}" readonly></input>
                   </div>
                 </div>
 

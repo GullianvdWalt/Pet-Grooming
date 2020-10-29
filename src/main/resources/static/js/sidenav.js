@@ -19,6 +19,7 @@ function toggleSideNav() {
     document.getElementById("navLinkNewApp").style.transition = "0.6s";
     document.getElementById("navLinkEmployees").style.transition = "0.6s";
     document.getElementById("navLinkFinance").style.transition = "0.6s";
+    document.getElementById("navLinkPastApp").style.transition = "0.6s";
     // document.getElementById("navLinkJobCard").style.transition = "0.6s";
     document.getElementById("navLinkManageBusiness").style.transition = "0.6s";
     // Hide Link Text
@@ -27,6 +28,7 @@ function toggleSideNav() {
     document.getElementById("navLinkNewApp").style.display = "none";
     document.getElementById("navLinkEmployees").style.display = "none";
     document.getElementById("navLinkFinance").style.display = "none";
+    document.getElementById("navLinkPastApp").style.transition = "none";
     // document.getElementById("navLinkJobCard").style.display = "none";
     document.getElementById("navLinkManageBusiness").style.display = "none";
     // Set Content Width
@@ -37,6 +39,7 @@ function toggleSideNav() {
     document.getElementById("newAppLink").style.textAlign = "center";
     document.getElementById("employeesLink").style.textAlign = "center";
     document.getElementById("financeLink").style.textAlign = "center";
+    document.getElementById("pastAppLink").style.textAlign = "center";
     // document.getElementById("jobCardLink").style.textAlign = "center";
     document.getElementById("manageBusinessLink").style.textAlign = "center";
     // Center Icons
@@ -54,6 +57,7 @@ function toggleSideNav() {
     document.getElementById("navLinkNewApp").style.transition = "0.6s";
     document.getElementById("navLinkEmployees").style.transition = "0.6s";
     document.getElementById("navLinkFinance").style.transition = "0.6s";
+    document.getElementById("navLinkPastApp").style.transition = "0.6s";
     // document.getElementById("navLinkJobCard").style.transition = "0.6s";
     document.getElementById("navLinkManageBusiness").style.transition = "0.6s";
     // Display Link Text
@@ -62,6 +66,7 @@ function toggleSideNav() {
     document.getElementById("navLinkNewApp").style.display = "inline-flex";
     document.getElementById("navLinkEmployees").style.display = "inline-flex";
     document.getElementById("navLinkFinance").style.display = "inline-flex";
+    document.getElementById("navLinkPastApp").style.transition = "inline-flex";
     // document.getElementById("navLinkJobCard").style.display = "inline-flex";
     document.getElementById("navLinkManageBusiness").style.display = "inline-flex";
     // Re-align links
@@ -70,6 +75,7 @@ function toggleSideNav() {
     document.getElementById("newAppLink").style.textAlign = "left";
     document.getElementById("employeesLink").style.textAlign = "left";
     document.getElementById("financeLink").style.textAlign = "left";
+    document.getElementById("navLinkPastApp").style.transition = "left";
     // document.getElementById("jobCardLink").style.textAlign = "left";
     document.getElementById("manageBusinessLink").style.textAlign = "left";
 

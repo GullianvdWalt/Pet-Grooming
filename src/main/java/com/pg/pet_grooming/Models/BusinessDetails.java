@@ -6,6 +6,7 @@
 package com.pg.pet_grooming.Models;
 
 import com.sun.istack.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +36,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @ToString   //Lombok, Adds Getters, Setters and ToString Methods
 @NoArgsConstructor //Lombok, Adds The Default Constructor
 @AllArgsConstructor         //JsonIdentityInfo 
-public class BusinessDetails extends Auditable<String> {
+public class BusinessDetails extends Auditable<String> implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -78,6 +79,10 @@ public class BusinessDetails extends Auditable<String> {
     @NotNull
     @Column(name = "business_address", nullable = false)
     private String business_address;
+    
+    @NotNull
+    @Column(name = "invoice_note", nullable = false)
+    private String invoiceNote;
 
     @Column(name = "logo", nullable = true)
     private String logo;

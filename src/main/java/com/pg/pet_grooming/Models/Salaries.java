@@ -37,7 +37,7 @@ public class Salaries {
     @Id
     @Column(name = "salary_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer salary_id;
+    private Integer salaryId;
 
     @NotNull
     @Column(name = "pay_period_start", nullable = false)
@@ -68,7 +68,7 @@ public class Salaries {
     private Integer overtime_hours;
 
     @Column(name = "overtime_total", nullable = true)
-    private Double overtime_total;
+    private Double overtimeTotal;
 
     @Column(name = "deduction_total", nullable = true)
     private Double deduction_total;
@@ -98,7 +98,7 @@ public class Salaries {
     private Integer amountSDog;
 
     @Column(name = "bonus_total", nullable = true)
-    private Double bonus_total;
+    private Double bonusTotal;
 
     @NotNull
     @Column(name = "salary_subtotal", nullable = false)
@@ -112,7 +112,7 @@ public class Salaries {
 
     @NotNull
     @Column(name = "salary_grand_total", nullable = false)
-    private Double salary_grand_total;
+    private Double salaryGrandTotal;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", insertable = false, updatable = false)
@@ -121,6 +121,6 @@ public class Salaries {
 
     @NotNull
     @Column(name = "employee_full_name", nullable = false)
-    private String employee_full_name;
+    private String employeeFullName;
 }
 

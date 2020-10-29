@@ -1,4 +1,6 @@
-/* Created By Gullian Van Der Walt  */
+/*   © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020  */
 
 /*      Styles For Customers      */
 
@@ -94,7 +96,9 @@ th a {
 th a:hover {
   color: #ff69b4;
 }
-
+th a:hover {
+  color: #505050;
+}
 td {
   font-size: 1.3em;
   text-align: center;
