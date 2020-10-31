@@ -18,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class IncomeByMonth {
     
+   private int yr; 
    private int mn;
-   private int yr;
    private double total;
 }

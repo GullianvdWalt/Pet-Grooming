@@ -6,6 +6,7 @@ package com.pg.pet_grooming.Models;
 
 
 import com.sun.istack.NotNull;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "income")
@@ -43,4 +45,9 @@ public class Income extends Auditable<String>{
     @JoinColumn(name = "invoice_num", referencedColumnName = "invoice_num",insertable = false, updatable = false)
     private Invoice invoice;
     private Integer invoice_num;
+    
+    @NotNull
+    @Column(unique = true,name = "invoice_date",nullable = false)
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
+    private Date invoiceDate;
 }

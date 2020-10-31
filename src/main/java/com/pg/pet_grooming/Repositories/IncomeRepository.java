@@ -18,18 +18,18 @@ import org.springframework.stereotype.Repository;
 public interface IncomeRepository extends JpaRepository<Income, Integer>{
     
       // Get Income By Year
-    @Query(value="SELECT new com.pg.pet_grooming.DAO.IncomeByYear(EXTRACT(YEAR FROM i.created_date) AS yr,"
+    @Query(value="SELECT new com.pg.pet_grooming.DAO.IncomeByYear(EXTRACT(YEAR FROM i.invoiceDate) AS yr,"
            + "SUM(i.amount) AS total) FROM Income i GROUP BY yr ORDER BY yr")
      List<IncomeByYear> getByYear();
    
     // Get Income By Month 
-    @Query(value="SELECT new com.pg.pet_grooming.DAO.IncomeByMonth (EXTRACT(YEAR FROM i.created_date) AS yr, EXTRACT(MONTH FROM i.created_date) AS mn, "
-           + "SUM(i.amount) AS total) FROM Income i GROUP BY yr, mn ORDER BY mn, yr")
+    @Query(value="SELECT new com.pg.pet_grooming.DAO.IncomeByMonth (EXTRACT(YEAR FROM i.invoiceDate) AS yr, EXTRACT(MONTH FROM i.invoiceDate) AS mn, "
+           + "SUM(i.amount) AS total) FROM Income i GROUP BY yr, mn ORDER BY yr DESC")
     List<IncomeByMonth> getByMonth();
    
     // Get Income By Week
-      @Query(value="SELECT new com.pg.pet_grooming.DAO.IncomeByWeek (i.created_date AS startDate,EXTRACT(WEEK FROM i.created_date) AS wk,"
-              + "EXTRACT(MONTH FROM i.created_date) AS mn, EXTRACT(YEAR FROM i.created_date) AS yr,"
-           + "SUM(i.amount) AS total) FROM Income i GROUP BY wk, mn,yr ORDER BY wk,mn, yr")
+      @Query(value="SELECT new com.pg.pet_grooming.DAO.IncomeByWeek (i.invoiceDate AS startDate,EXTRACT(WEEK FROM i.invoiceDate) AS wk,"
+              + "EXTRACT(MONTH FROM i.invoiceDate) AS mn, EXTRACT(YEAR FROM i.invoiceDate) AS yr,"
+           + "SUM(i.amount) AS total) FROM Income i GROUP BY wk, mn,yr ORDER BY yr DESC")
     List<IncomeByWeek> getByWeek();  
 }

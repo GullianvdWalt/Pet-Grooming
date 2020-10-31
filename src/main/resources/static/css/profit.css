@@ -1,11 +1,14 @@
-.income-container {
+/*   © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020  */
+.profit-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
 }
-.income-sort-container {
+.profit-sort-container {
   width: 100%;
   height: 10%;
   margin: 1rem 0;
@@ -19,7 +22,7 @@
   -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 026);
   box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.26);
 }
-.income-top-container {
+.profit-top-container {
   width: 100%;
   height: 20%;
   display: flex;
@@ -32,7 +35,7 @@
   -moz-box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
   box-shadow: 0px -2px 5px -1px rgba(80, 80, 80, 0.46);
 }
-.income-content-container {
+.profit-content-container {
   width: 100%;
   min-height: 100%;
   border: 2px solid #dcdcdc;
@@ -61,7 +64,6 @@ th {
   background-color: #ff69b4;
   color: #ffffff;
 }
-
 tr {
   font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;

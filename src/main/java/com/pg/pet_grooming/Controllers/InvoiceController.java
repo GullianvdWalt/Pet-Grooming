@@ -178,6 +178,7 @@ public class InvoiceController {
         Income income = new Income();
         income.setInvoice_num(invoice.getInvoiceNum());
         income.setAmount(total);
+        income.setInvoiceDate(invoiceDate);
         // Save Income
         incomeService.saveIncome(income);
         
