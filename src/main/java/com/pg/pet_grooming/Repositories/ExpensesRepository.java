@@ -34,13 +34,13 @@ public interface ExpensesRepository extends JpaRepository<Expenses, Integer> {
    
     // Get Expenses By Month 
     @Query(value="SELECT new com.pg.pet_grooming.DAO.ExpensesByMonth (EXTRACT(YEAR FROM e.expenseDate) AS yr, EXTRACT(MONTH FROM e.expenseDate) AS mn, "
-           + "SUM(e.expense_amount) AS total) FROM Expenses e GROUP BY yr, mn ORDER BY mn, yr")
+           + "SUM(e.expense_amount) AS total) FROM Expenses e GROUP BY yr, mn ORDER BY yr DESC")
     List<ExpensesByMonth> getByMonth();
    
     // Get Expenses By Week
       @Query(value="SELECT new com.pg.pet_grooming.DAO.ExpensesByWeek (e.expenseDate AS startDate,EXTRACT(WEEK FROM e.expenseDate) AS wk,"
               + "EXTRACT(MONTH FROM e.expenseDate) AS mn, EXTRACT(YEAR FROM e.expenseDate) AS yr,"
-           + "SUM(e.expense_amount) AS total) FROM Expenses e GROUP BY wk, mn,yr ORDER BY wk,mn, yr")
+           + "SUM(e.expense_amount) AS total) FROM Expenses e GROUP BY wk, mn,yr ORDER BY yr DESC")
     List<ExpensesByWeek> getByWeek();
     
     

@@ -72,7 +72,6 @@ public class AppointmentController {
 
     }
     
-    
     // Paging
     @RequestMapping("/newAppointments/select/page/{pageNum}")
     public String viewPage(Model model,

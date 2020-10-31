@@ -66,7 +66,7 @@ public class IncomeController {
         return "Income";
     }
     
-            //Get Income By Year
+    //Get Income By Year
     @RequestMapping("/finance/income/year")
     public String getIncomeByYear(Model model){
         // Get income By Year

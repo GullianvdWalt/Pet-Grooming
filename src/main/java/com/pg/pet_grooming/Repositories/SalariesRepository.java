@@ -28,18 +28,18 @@ public interface SalariesRepository extends JpaRepository<Salaries, Integer> {
    
     // Get Salaries By Year
     @Query(value="SELECT new com.pg.pet_grooming.DAO.SalariesByYear(EXTRACT(YEAR FROM s.date) AS yr,"
-           + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY yr ORDER BY yr")
+           + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY yr ORDER BY yr DESC")
      List<SalariesByYear> getByYear();
    
     // Get Salaries By Month 
     @Query(value="SELECT new com.pg.pet_grooming.DAO.SalariesByMonth (EXTRACT(YEAR FROM s.date) AS yr, EXTRACT(MONTH FROM s.date) AS mn, "
-           + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY yr, mn ORDER BY mn, yr")
+           + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY yr, mn ORDER BY yr DESC")
     List<SalariesByMonth> getByMonth();
    
     // Get Salaries By Week
       @Query(value="SELECT new com.pg.pet_grooming.DAO.SalariesByWeek (s.date AS startDate,EXTRACT(WEEK FROM s.date) AS wk,"
               + "EXTRACT(MONTH FROM s.date) AS mn, EXTRACT(YEAR FROM s.date) AS yr,"
-           + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY wk, mn,yr ORDER BY wk,mn, yr")
+           + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY wk, mn,yr ORDER BY yr DESC")
     List<SalariesByWeek> getByWeek();
 }
 

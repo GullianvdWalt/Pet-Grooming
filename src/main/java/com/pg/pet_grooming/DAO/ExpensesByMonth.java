@@ -19,9 +19,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExpensesByMonth {
-    
+   
    private int mn;
-   private int yr;
+   private int yr; 
    private double total;
   
 }

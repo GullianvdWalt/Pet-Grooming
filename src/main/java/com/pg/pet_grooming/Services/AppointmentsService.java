@@ -27,8 +27,7 @@ public class AppointmentsService {
     // Return Appointments with Paging
     public Page<Appointments> getAppointments(int pageNum, String sortField, String sortDir){
 
-        // 10 Appointments per page
-        Pageable pageable = PageRequest.of(pageNum - 1, 5, 
+        Pageable pageable = PageRequest.of(pageNum - 1, 8, 
                     sortDir.equals("asc") ? Sort.by(sortField).ascending()
 			: Sort.by(sortField).descending()
 	);

@@ -104,7 +104,7 @@
             <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
             <div>&nbsp;</div>
             <div th:if="${totalPages > 1}" class="pages">
-              Total Customers: [[${totalItems}]]
+              Total Appointments: [[${totalItems}]]
               &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
               <a th:if="${currentPage > 1}" th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>

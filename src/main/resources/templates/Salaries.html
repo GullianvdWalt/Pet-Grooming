@@ -142,7 +142,7 @@
                   <tbody>
                       <tr th:each="SalariesByYear : ${salariesByYear}">
                         <td th:text="${SalariesByYear.yr}"></td>
-                        <td th:text="${SalariesByYear.total}"></td>
+                        <td>R<span th:text="${SalariesByYear.total}"></span></td>
                       </tr>
                   </tbody>
                   </table>
@@ -161,7 +161,7 @@
                       <tr th:each="SalariesByMonth : ${salariesByMonth}">
                         <td th:text="${SalariesByMonth.mn}"></td>
                         <td th:text="${SalariesByMonth.yr}"></td>
-                        <td th:text="${SalariesByMonth.total}"></td>
+                        <td>R<span th:text="${SalariesByMonth.total}"></span></td>
                       </tr>
                   </tbody>
                   </table>
@@ -185,7 +185,7 @@
                         <td th:text="${SalariesByWeek.wk}"></td>
                         <td th:text="${SalariesByWeek.mn}"></td>
                         <td th:text="${SalariesByWeek.yr}"></td>
-                        <td th:text="${SalariesByWeek.total}"></td>
+                        <td>R<span th:text="${SalariesByWeek.total}"></span></td>
                       </tr>
                   </tbody>
                   </table>

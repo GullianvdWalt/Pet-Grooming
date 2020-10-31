@@ -1,9 +1,8 @@
 /*
- * Created By Gullian Van Der Walt
-   Last Updated - 2020/10/13, 09:21
- * This is the Invoice Model (Entity/Table)
- * 
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Models;
 
 // Imports

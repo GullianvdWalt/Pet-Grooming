@@ -157,7 +157,7 @@
         </table>
         <!-- Payslip Table End -->
         <div class="payslip-button-row">
-          <a thhref="@{/finance/salaries}" class="buttons">Salaries</a>
+          <a th:href="@{/finance/salaries}" class="buttons">Salaries</a>
           <a th:href="@{/genPdf/{fileName}/{id}(id = ${salaries.salaryId})}" class="buttons">Export Payslip</a>
         </div>
       </div>
