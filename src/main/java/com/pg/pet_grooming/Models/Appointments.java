@@ -1,10 +1,8 @@
 /*
- * Created By Gullian Van Der Walt - 01/08/2020
-   Last Updated - 2020/09/15, 14:12
-
- * This is the Appointments (Entity/Table)
- * 
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Models;
 
 // Imports

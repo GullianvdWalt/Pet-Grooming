@@ -243,17 +243,25 @@ public class SalaryController {
         DateFormat dateTimeFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ROOT);
 
         Date payDate = (Date) dateTimeFormat.parse(pay_date);
-        System.out.println(payDate);
         salary.setDate(payDate);
 
         Date startDate = (Date) dateTimeFormat.parse(pay_sDate);
-        System.out.println(startDate);
         salary.setPay_period_start(startDate);
 
         Date endDate = (Date) dateTimeFormat.parse(pay_eDate);
-        System.out.println(endDate);
         salary.setPay_period_end(endDate);
-
+//        double num = 0;
+//        if(overtime_total == 0){
+//            
+//            salary.setOvertimeTotal(num);
+//        }
+//        if(deduction_total == 0){
+//            salary.setDeduction_total(num);
+//        }
+//        if(overtime_hours == 0){
+//            salary.setOvertime_hours(0);
+//        }
+        
         salaryService.saveSalary(salary);
         redirAttrs.addFlashAttribute("success", "Salary Saved!");
         return "redirect:/salaries/payslip/" + salary.getSalaryId();

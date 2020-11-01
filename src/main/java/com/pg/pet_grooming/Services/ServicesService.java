@@ -1,10 +1,8 @@
 /*
-  Created By - Gullian Van Der Walt
-
- * This is the ServicesService Class
- * This Class implements the ServiceReposistory 
- * The controller sends request to this class
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Services;
 
 // Imports

@@ -5,6 +5,7 @@
 */
 package com.pg.pet_grooming.Repositories;
 
+
 import com.pg.pet_grooming.DAO.IncomeByMonth;
 import com.pg.pet_grooming.DAO.IncomeByWeek;
 import com.pg.pet_grooming.DAO.IncomeByYear;
@@ -32,4 +33,6 @@ public interface IncomeRepository extends JpaRepository<Income, Integer>{
               + "EXTRACT(MONTH FROM i.invoiceDate) AS mn, EXTRACT(YEAR FROM i.invoiceDate) AS yr,"
            + "SUM(i.amount) AS total) FROM Income i GROUP BY wk, mn,yr ORDER BY yr DESC")
     List<IncomeByWeek> getByWeek();  
+    
+
 }

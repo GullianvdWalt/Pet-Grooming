@@ -1,6 +1,8 @@
 /*
-    Created By Gullian Van Der Walt
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Repositories;
 
 // Imports
@@ -42,7 +44,6 @@ public interface ExpensesRepository extends JpaRepository<Expenses, Integer> {
               + "EXTRACT(MONTH FROM e.expenseDate) AS mn, EXTRACT(YEAR FROM e.expenseDate) AS yr,"
            + "SUM(e.expense_amount) AS total) FROM Expenses e GROUP BY wk, mn,yr ORDER BY yr DESC")
     List<ExpensesByWeek> getByWeek();
-    
-    
+   
 }
 

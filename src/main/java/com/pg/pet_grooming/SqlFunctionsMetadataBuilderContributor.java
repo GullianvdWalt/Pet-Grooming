@@ -1,11 +1,8 @@
 /*
- * Created By Gullian Van Der Walt 10/09/2020
- * 
- * Last Update : 2020/09/11, 06:40
-
-   Class for using SQL functions in JPA SQL
-
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming;
 
 import org.hibernate.boot.MetadataBuilder;

@@ -1,7 +1,8 @@
 /*
-    Created By Gullian Van Der Walt 18/09/2020
-    Last Updated 2020/09/18, 10:23
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Services;
 
 // Imports

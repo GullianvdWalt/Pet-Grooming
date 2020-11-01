@@ -1,4 +1,6 @@
-/*      Created By Gullian Van Der Walt      */
+/*   © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020  */
 
 /*
     Fonts
@@ -111,9 +113,9 @@ h3 {
 /* Style Date & Time Labels */
 .date-container label,
 .time-container label {
-    margin-left: 1.5rem;
-    margin-right: 2rem;
-    font-size: 18px;
+  margin-left: 1.5rem;
+  margin-right: 2rem;
+  font-size: 18px;
 }
 /* Style Date & Time Inputs */
 .appointment-input,
@@ -131,8 +133,8 @@ option {
 
 /* Styles Services Table Container */
 .services-container {
-    width: 100%;
-    height: 50%;
+  width: 100%;
+  height: 50%;
 }
 
 /* Button Container */

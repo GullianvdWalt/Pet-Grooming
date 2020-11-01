@@ -1,9 +1,8 @@
 /*
- * Created By Gullian Van Der Walt - 01/08/2020
-   Last Updated - 2020/10/13, 17:23
- * This is the PetOwner Model (Entity/Table)
- * 
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Models;
 
 // Imports

@@ -1,6 +1,8 @@
 
-// Created by Gullian Van Der Walt - 11-09-2020
-// Last Updated - 11-09-2020
+/*   © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020  */
+
 // $(document).ready(function () {
 //   var petOwnerId = document.getElementById("petOwnerId");
 //   $('table #petOwnerSelect').on('click', function (event) {

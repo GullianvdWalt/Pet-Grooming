@@ -1,8 +1,8 @@
 /*
- * 
- * This is the Salaries Model (Entity/Table)
- * 
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Models;
 
 // Imports
@@ -64,19 +64,19 @@ public class Salaries {
     @Column(name = "payment_method", nullable = false)
     private String payment_method;
 
-    @Column(name = "overtime_hours", nullable = true)
+    @Column(name = "overtime_hours", nullable = true,columnDefinition = "default = 0")
     private Integer overtime_hours;
 
-    @Column(name = "overtime_total", nullable = true)
+    @Column(name = "overtime_total", nullable = true,columnDefinition = "default = 0")
     private Double overtimeTotal;
 
-    @Column(name = "deduction_total", nullable = true)
+    @Column(name = "deduction_total", nullable = true,columnDefinition = "default = 0")
     private Double deduction_total;
 
     @Column(name = "deduction_description", nullable = true)
     private String deduction_description;
 
-    @Column(name = "transport_total", nullable = true)
+    @Column(name = "transport_total", nullable = true,columnDefinition = "default = 0")
     private Double transport_total;
 
     @Column(name = "numLDog", nullable = true)

@@ -41,5 +41,6 @@ public interface SalariesRepository extends JpaRepository<Salaries, Integer> {
               + "EXTRACT(MONTH FROM s.date) AS mn, EXTRACT(YEAR FROM s.date) AS yr,"
            + "SUM(s.salaryGrandTotal) AS total) FROM Salaries s GROUP BY wk, mn,yr ORDER BY yr DESC")
     List<SalariesByWeek> getByWeek();
+    
 }
 

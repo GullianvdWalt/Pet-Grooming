@@ -1,9 +1,8 @@
-  
-//    Created By Gullian Van Der Walt
-//    This is the Appointment Repository 
-//    The Appointment Service Class will implement this interface.
-//    This interface will extend the JpaRepository interface.
-//    This will provide services such as CRUD operations
+/*
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Repositories;
 
 // Imnports
