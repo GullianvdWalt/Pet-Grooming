@@ -42,10 +42,16 @@
       <!-- Profit Container Starts -->
       <div class="profit-container">
 
+        <div class="option-heading-container" th:if="${#lists.isEmpty(profitByYearList)} AND ${#lists.isEmpty(profitByYearListSaL)} AND
+                    ${#lists.isEmpty(profitByMonthListSal)} AND ${#lists.isEmpty(profitByMonthList)} AND
+                    ${#lists.isEmpty(profitByWeek)} AND ${#lists.isEmpty(profitByWeekList)}">
+            <h3 class="option-heading"> Select Profit View Option.</h3>
+      </div>
+
         <!-- Sort Container Starts -->
         <div class="profit-sort-container">
           <div class="sort-item">
-            <a class="buttons" th:href="@{/finance/profit}">
+            <a class="buttons" href="#" id="selectDate">
               <img src="/Icons/byDay.png" alt="View By Day" class="icon">
               View By Day
             </a>
@@ -74,38 +80,29 @@
         <!-- Profit Table Container Start -->
         <div class="profit-content-container">
 
-          <!-- Profit Table Start -->
-          <!-- <table th:if="!${#lists.isEmpty(profitList)}">
+          <!-- Profit By Day -->
+          <table th:if="!${#lists.isEmpty(profitByDayList)}">
               <thead>
                 <tr>
-                  <th>Id</th>
                   <th>Date</th>
-                  <th>Amount</th>
-                  <th>Invoice Number</th>
-                  <th>Actions</th>
+                  <th>Total</th>
                 </tr>
               </thead>
               <tbody>
                 <div >
-              <tr th:each="profit : ${profitList}">
-                  <td th:text="${profit.id}"></td>
-                  <td th:text="${#dates.format(profit.created_date,'dd/MM/YYYY')}" ></td>
-                  <td>R <span th:text="${profit.amount}"></span></td>
-                  <td># <span th:text="${profit.invoice_num}"></span></td>
-                  <td class="view-column">
-                      <a th:href="@{/invoices/template/{id}(id = ${profit.invoice_num})}" id="invoiceView" class="invoice-view">View Invoice</a>
-                  </td>
-              </tr>
+                <tr>
+                    <td colspan="2">With Salary Deductions</td>
+                </tr>
+                <tr th:each="ProfitByDay : ${profitByDayList}">
+                    <td th:text="${#dates.format(ProfitByDay.dt,'dd/MM/YYYY')}" ></td>
+                    <td>R <span th:text="${ProfitByDay.total}"></span></td>
+                </tr>
             </div>
-              <tr th:if="${#lists.isEmpty(profitList)}">
-                  <td colspan="8" class="empty-customers-table-text"> There are currently no profit.</td>
-              </tr>
             </tbody>
-              </table> -->
-          <!-- Profit Table Ends -->
+              </table>
 
           <!-- Profit By Year -->
-          <div th:if="!${#lists.isEmpty(profitByYearList)}">
+          <div th:if="!${#lists.isEmpty(profitByYearList)} OR !${#lists.isEmpty(profitByYearListSaL)}">
             <table>
               <thead>
                 <tr>
@@ -204,7 +201,7 @@
           <!-- Profit Table Container Ends-->
 
           <!-- Paging Starts -->
-          <div class="paging-container">
+          <!-- <div class="paging-container">
             <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
             <div>&nbsp;</div>
             <div th:if="${totalPages > 1}" class="pages">
@@ -235,10 +232,27 @@
                   <a th:if="${currentPage < totalPages}" th:href="@{'/profit/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
                   <span th:unless="${currentPage < totalPages}">Last</span>
                 </div>
-              </div>
+              </div> -->
             <!-- Paging Ends -->
       </div>
 
+      <!-- Select Date Modal Starts -->
+      <div class="select-date-modal" id="selectDateModal">
+          <form class="select-date-modal-container" th:action="@{/finance/profit/day}">
+              <div class="select-date-modal-header">
+                  <h3>Select Date</h3>
+              </div>
+              <div class="select-date-modal-body">
+                  <h4>Please select a date</h4>
+
+              </div>
+              <div class="select-date-modal-footer">
+                  <button type="submit" class="buttons">Submit</button>
+                  <button class="buttons" id="selectDateCancel">Cancel</button>
+              </div>
+          </form>
+      </div>
+      <!-- Select Date Modal Ends -->
       </div>
       <!-- Profit Container End -->
     </div>

@@ -1,108 +1,111 @@
+/*   © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020  */
+
 .content-container {
-    padding: 1rem;
+  padding: 1rem;
 }
 .select-customers-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 700px;
-    margin-top: 50px;
-    border: 3px solid #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  min-height: 700px;
+  margin-top: 50px;
+  border: 3px solid #dcdcdc;
 }
 .select-customers-header-container {
-    height: 20%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
-    justify-content: center;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  justify-content: center;
 }
 .select-customer-heading-container {
-    width: 50%;
-    text-align: center;
+  width: 50%;
+  text-align: center;
 }
 .select-customer-heading-container h3 {
-    font-size: 1.4rem;
-    color: #ff69b4;
-    font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  color: #ff69b4;
+  font-family: 'Roboto', sans-serif;
 }
 .next-button-container {
-    width: 70%;
-    margin: 4rem 15%;
-    text-align: center;
-    padding: 1rem;
+  width: 70%;
+  margin: 4rem 15%;
+  text-align: center;
+  padding: 1rem;
 }
 .next-button {
-    background-color: #505050;
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    padding: 1rem 2rem 1rem 2rem;
-    border-radius: 15px;
+  background-color: #505050;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 15px;
 }
 .next-button:hover {
-    color: #ff69b4;
+  color: #ff69b4;
 }
 .pet-col {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    min-height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  min-height: 500px;
 }
 .customer-select-table-pet {
-    width: 100%;
-    padding: 1rem;
-    border-collapse: collapse;
+  width: 100%;
+  padding: 1rem;
+  border-collapse: collapse;
 }
 th {
-    background-color: #505050;
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem;
-    color: #ffffff;
-    font-size: 1.2rem;
+  background-color: #505050;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
 }
 td {
-    padding: 1rem;
+  padding: 1rem;
 }
 tr {
-    padding: 1rem;
+  padding: 1rem;
 }
 /* Checkbox Styles Start */
 .checkbox-column {
-    background-color: #ffffff;
-    text-align: left;
+  background-color: #ffffff;
+  text-align: left;
 }
 /*  Checkbox */
 .customer-select-checkbox {
-    width: 45px;
-    height: 45px;
-    -webkit-appearance: none;
-    outline: none;
-    transition: 0.5s;
-    padding-left: 5px;
-    cursor: pointer;
+  width: 45px;
+  height: 45px;
+  -webkit-appearance: none;
+  outline: none;
+  transition: 0.5s;
+  padding-left: 5px;
+  cursor: pointer;
 }
 .customer-select-checkbox:before {
-    content: '';
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    border: 4px solid #ff69b4;
-    box-sizing: border-box;
-    transition: 0.5s;
+  content: '';
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 4px solid #ff69b4;
+  box-sizing: border-box;
+  transition: 0.5s;
 }
 .customer-select-checkbox:checked:before {
-    border-left: none;
-    border-top: none;
-    width: 20px;
-    border-color: #ff69b4;
-    transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  width: 20px;
+  border-color: #ff69b4;
+  transform: rotate(45deg);
 }
-

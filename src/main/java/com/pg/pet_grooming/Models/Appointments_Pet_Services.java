@@ -1,6 +1,7 @@
 /*
- * Created By Gullian Van Der Walt - 01/08/2020
-   Last Updated - 2020/09/18, 15:16
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
 
  * This is the Appointments_Pet_Services (Entity/Table)
    Used to Join Appointments and Services

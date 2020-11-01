@@ -1,8 +1,8 @@
 /*
-    Created By Gullian Van Der Walt - 2020/10/06, 08:52
-
-    Config Class to get images from directory
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Configs;
 
 import java.nio.file.Path;

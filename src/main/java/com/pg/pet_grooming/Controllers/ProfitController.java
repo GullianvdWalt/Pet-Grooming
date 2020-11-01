@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 // Local Imports
 import com.pg.pet_grooming.DAO.ExpensesByMonth;
 import com.pg.pet_grooming.DAO.ExpensesByYear;
@@ -23,6 +24,7 @@ import com.pg.pet_grooming.DAO.ExpensesByWeek;
 import com.pg.pet_grooming.DAO.IncomeByMonth;
 import com.pg.pet_grooming.DAO.IncomeByYear;
 import com.pg.pet_grooming.DAO.IncomeByWeek;
+import com.pg.pet_grooming.DAO.ProfitByDay;
 import com.pg.pet_grooming.DAO.ProfitByMonth;
 import com.pg.pet_grooming.DAO.ProfitByYear;
 import com.pg.pet_grooming.DAO.ProfitByWeek;
@@ -35,42 +37,21 @@ import com.pg.pet_grooming.Repositories.IncomeRepository;
 import com.pg.pet_grooming.Repositories.ProfitRepository;
 import com.pg.pet_grooming.Repositories.SalariesRepository;
 import com.pg.pet_grooming.Services.ProfitService;
+import java.util.Date;
+
 
 @Controller
 public class ProfitController {
    
-    @Autowired private ProfitService profitService;
+
     @Autowired private ProfitRepository profitRepository;
     @Autowired private IncomeRepository incomeRepo;
     @Autowired private ExpensesRepository expensesRepo;
     @Autowired private SalariesRepository salaryRepo;
-    
+     
+    // Profit Main Page
     @RequestMapping("/finance/profit")
     public String getProfit(Model model){
-        return viewPage(model, 1, "id", "asc");
-    }
-    // (View By Day)    
-    @RequestMapping("/finance/profit/page/{pageNum}")
-    public String viewPage(Model model,
-            @Valid @PathVariable(name = "pageNum") int pageNum,
-            @Valid @Param("sortField") String sortField,
-            @Valid @Param("sortDir")String sortDir){
-
-        Page<Profit> page = profitService.getProfit(pageNum, sortField, sortDir);
-        List<Profit> profitList = page.getContent();
-
-        // Add List of to view
-       model.addAttribute("profitList", profitList);
-       
-        // Add Paging Details
-       model.addAttribute("currentPage", pageNum);		
-       model.addAttribute("totalPages", page.getTotalPages());
-       model.addAttribute("totalItems", page.getTotalElements());
-       // Add Sorting Details
-       model.addAttribute("sortField", sortField);
-       model.addAttribute("sortDir", sortDir);
-       // Sort from asc order to desc
-       model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         
         // Set Page Title
         String pageTitle = "Profit";
@@ -261,6 +242,24 @@ public class ProfitController {
         String iconUrl = "exspenseReport.png";
         model.addAttribute("iconUrl", iconUrl);
 
+        return "Profit";
+    }
+    // Get Profit By Day
+    @RequestMapping("/finance/profit/day")
+    public String getProfitByDay(Model model,
+            @RequestParam("day") Date date){
+        
+        List<ProfitByDay> profitByDayList = profitRepository.getByDay(date);
+        
+        model.addAttribute("profitByDayList", profitByDayList);
+        // Set Page Title
+        String pageTitle = "Profit";
+        model.addAttribute("pageTitle", pageTitle);
+        // Set Page Title Icon
+        String iconUrl = "exspenseReport.png";
+        model.addAttribute("iconUrl", iconUrl);
+        
+                
         return "Profit";
     }
 }

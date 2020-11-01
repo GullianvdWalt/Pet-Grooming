@@ -1,5 +1,6 @@
-<!-- Created By Gullian Van Der Walt 01/09/2020 -->
-<!-- Last Updated 07/09/2020 -->
+<!-- © Pet Grooming
+     © Gullian Van Der Walt
+     Pearson Pretoria ITSP300 - Project 2020 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -119,13 +120,14 @@
               </div><br>
               <div class="overtime-row-row-col">
                 <label for="overtime-rate">Overtime - Rate</label><br>
-                <input type="number" id="overtimeRate" th:value="${overtime}" required>
+                <input type="number" id="overtimeRate" th:value="${overtime}">
               </div>
             </div>
             <div class="overtime-row-row">
               <div class="overtime-row-row-col">
                 <label for="overtime-total">Total</label><br>
-                <input type="number" name="overtimeTotal" id="overtimeTotal" placeholder="Handled By System...">
+                <input type="number" name="overtimeTotal" th:name="overtimeTotal" id="overtimeTotal"
+                  placeholder="Handled By System...">
               </div><br>
               <div class="overtime-button-row">
                 <button class="buttons" id="calcOvertimeBtn">Calculate Overtime Total</button>
@@ -144,8 +146,8 @@
               </div>
               <div class="deductions-row-row-row">
                 <label for="deduction-total"><b>Deduction Total:</b> </label><br>
-                <input type="number" name="deduction_total" id="deductionTotal" placeholder="Enter Deductions Total"
-                  autocomplete="off">
+                <input type="number" name="deduction_total" th:name="deduction_total" id="deductionTotal"
+                  placeholder="Enter Deductions Total" autocomplete="off">
               </div>
             </div>
           </div>

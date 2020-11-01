@@ -1,9 +1,8 @@
 /*
- * 
- * This is the Salary_Calculate Model (Entity/Table)    
- * This Model/Class will be used to calculate employee salary
- * The various amounts will be stored in the db for further use in maybe reports
- */
+*   © Pet Grooming
+    © Gullian Van Der Walt
+*   Pearson Pretoria ITSP300 - Project 2020
+*/
 package com.pg.pet_grooming.Models;
 
 // Imports 
