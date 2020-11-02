@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customers</title>
   <!-- Window Icon -->
-  <link rel="icon" href="/icons/icon.ico">
+  <link rel="icon" href="/Icons/icon.ico">
   <!--    Styles      -->
   <link rel="stylesheet" th:href="@{/css/styles-all.css}" />
   <link rel="stylesheet" th:href="@{/css/customers.css}" />
@@ -49,7 +49,7 @@
           </div>
           <div class="add-new-button-container">
             <a class="buttons" th:href="@{/newCustomer/petOwner}">
-              <img src="/icons/plusCircleFill.jpg" alt="add-customer" class="icon">
+              <img src="/Icons/plusCircleFill.jpg" alt="add-customer" class="icon">
               New Customer
             </a>
           </div>
@@ -111,7 +111,7 @@
                   </td>
                   <td>
                     <a th:href="@{/customerDetails/{ownerId}(ownerId = ${pet_owner.id})}" id="edit-button"><img
-                        src="/icons/editSmall.png" alt="edit" class="edit-icon" title="Edit Customer" /></a>
+                        src="/Icons/editSmall.png" alt="edit" class="edit-icon" title="Edit Customer" /></a>
                   </td>
                 </tr>
               </div>

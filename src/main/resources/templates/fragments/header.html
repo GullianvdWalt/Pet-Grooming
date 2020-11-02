@@ -16,7 +16,7 @@ and open the template in the editor.
     </div>
 
     <div class="title-container">
-      <!-- /icons/dog.jpg -->
+      <!-- /Icons/dog.jpg -->
       <img th:src="@{/Icons/{icon}(icon=${iconUrl})}" alt="Page Icon" class="page-title-icon">
       <!-- Title Is Return Via Controller -->
       <h2 class="page-title" th:text="${pageTitle}">Page Title</h2>
@@ -24,7 +24,7 @@ and open the template in the editor.
     <div class="content-right-container">
       <!-- # - Thymeleaf syntax to display logged-in user -->
       <div>
-        <!-- <span><img th:src="@{'/img/icons'} + ${#authentication.getPrincipal().getUsername()} + '.jpg'" alt="user-icon"></span> -->
+        <!-- <span><img th:src="@{'/img/Icons'} + ${#authentication.getPrincipal().getUsername()} + '.jpg'" alt="user-icon"></span> -->
         <span class="username" th:text="${#authentication.getPrincipal().getUsername()}"></span>
       </div>
       <div>
