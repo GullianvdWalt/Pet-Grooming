@@ -44,7 +44,7 @@ public class ApplicationController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         
         if(authentication == null || authentication instanceof AnonymousAuthenticationToken){
-              return "Login";
+              return "login";
         }
         
         return "redirect:/";
