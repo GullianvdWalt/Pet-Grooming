@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath ${packageClassName}</exec.args>
+                <exec.executable>java</exec.executable>
+                <Env.DBHOSTNAME>eu-cdbr-west-03.cleardb.net</Env.DBHOSTNAME>
+                <Env.DBUSERNAME>bf444106f7fbb2</Env.DBUSERNAME>
+                <Env.DBPASSWORD>8d2e5881</Env.DBPASSWORD>
+                <Env.DBSCHEMA>heroku_cef7cf72d8787e6</Env.DBSCHEMA>
+            </properties>
+        </action>
+    </actions>
