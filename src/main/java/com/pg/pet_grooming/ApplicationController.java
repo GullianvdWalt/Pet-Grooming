@@ -53,7 +53,7 @@ public class ApplicationController {
     // Method To Logout
     @GetMapping("/logout")
     public String logout() {
-        return "Login";
+        return "login";
     }
 
     // Method To Register
