@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profit</title>
+  <title th:text="${pageTitle}"></title>
   <!-- Window Icon -->
   <link rel="icon" href="/Icons/icon.ico">
   <!-- JQuery -->
@@ -266,6 +266,23 @@
 
   <!--   Scripts     -->
   <script th:src="@{/js/sidenav.js}"></script>
+  <script type="text/javascript" th:inline="javascript">
+    $(document).ready(function () {
+      $('input[name="dates"]').daterangepicker();
+    });
+
+    $(function () {
+      $('input[name="app_date_time"]').daterangepicker({
+        timePicker: true,
+        singleDatePicker: true,
+        minYear: 2020,
+        maxYear: parseInt(moment().format('YYYY'), 10),
+        locale: {
+          format: 'YYYY/MM/DD hh:mm'
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
